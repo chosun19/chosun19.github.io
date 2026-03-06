@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보보안 전문가 포트폴리오 - 홍기웅</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<canvas id="particles"></canvas>
+<div id="root"></div>
+
+<script>
+// Floating particles
+(function() {
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight * 3;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = -(Math.random() * 0.3 + 0.1);
+            this.opacity = Math.random() * 0.3 + 0.05;
+            this.fadeSpeed = Math.random() * 0.003 + 0.001;
+            this.growing = Math.random() > 0.5;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.growing) {
+                this.opacity += this.fadeSpeed;
+                if (this.opacity >= 0.35) this.growing = false;
+            } else {
+                this.opacity -= this.fadeSpeed;
+                if (this.opacity <= 0.02) this.reset();
+            }
+            if (this.y < -10 || this.x < -10 || this.x > w + 10) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(201, 169, 110, ${this.opacity})`;
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(201, 169, 110, ${this.opacity * 0.15})`;
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+    function animate() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
+    animate();
+})();
+</script>
+
+<script type="text/babel">
+    const { useEffect, useState } = React;
+
+    const projectGradients = [
+        ['#2E7D32', '#43A047'],
+        ['#1565C0', '#1E88E5'],
+        ['#6A1B9A', '#8E24AA'],
+        ['#00695C', '#00897B'],
+        ['#E65100', '#F57C00'],
+        ['#4527A0', '#5E35B1'],
+        ['#AD1457', '#D81B60'],
+    ];
+
+    const ProjectDetail = ({ project, index, onBack }) => {
+        const [c1, c2] = projectGradients[index % projectGradients.length];
+        const grad = `linear-gradient(135deg, ${c1}, ${c2})`;
+
+        useEffect(() => {
+            window.scrollTo(0, 0);
+        }, [index]);
+
+        const terminalLines = project.terminalLog || [];
+
+        return (
+            <div className="detail-page">
+                <div className="detail-hero" style={{background: `linear-gradient(135deg, ${c1}10, ${c2}06)`}}>
+                    <div className="section-container">
+                        <button className="detail-back" onClick={onBack}>&larr; 경력 목록</button>
+
+                        <div className="detail-hero-top">
+                            <div className="sec-terminal">
+                                <div className="sec-terminal-titlebar">
+                                    <div className="sec-terminal-dots">
+                                        <span className="sec-dot sec-dot-red"></span>
+                                        <span className="sec-dot sec-dot-yellow"></span>
+                                        <span className="sec-dot sec-dot-green"></span>
+                                    </div>
+                                    <div className="sec-terminal-title">security@{project.company} ~</div>
+                                </div>
+                                <div className="sec-terminal-body">
+                                    {terminalLines.map((line, i) => (
+                                        <div key={i} className={`sec-terminal-line ${line.type || ''}`} style={{animationDelay: `${0.5 + i * 0.15}s`}}>
+                                            {line.type === 'cmd' && <span className="sec-prompt" style={{color: c1}}>$ </span>}
+                                            {line.type === 'success' && <span style={{color: '#4CAF50'}}>[OK] </span>}
+                                            {line.type === 'info' && <span style={{color: '#64B5F6'}}>[i] </span>}
+                                            <span>{line.text}</span>
+                                        </div>
+                                    ))}
+                                    <div className="sec-terminal-cursor" style={{animationDelay: `${0.5 + terminalLines.length * 0.15}s`}}>
+                                        <span className="sec-prompt" style={{color: c1}}>$ </span>
+                                        <span className="sec-blink">_</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="detail-hero-info">
+                                <h1 className="detail-hero-title">{project.title}</h1>
+                                <div className="detail-hero-meta">
+                                    <span className="detail-hero-meta-item">Period {project.period}</span>
+                                    <span className="detail-hero-meta-item">Role {project.role}</span>
+                                    {project.salary && <span className="detail-hero-meta-item">Salary {project.salary}</span>}
+                                    {project.region && <span className="detail-hero-meta-item">Region {project.region}</span>}
+                                </div>
+                                <p className="detail-hero-desc">{project.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="section-container">
+                    <div className="detail-section">
+                        <div className="detail-section-title">
+                            <span className="detail-section-dot" style={{background: grad}}></span>
+                            주요 성과
+                        </div>
+                        <div className="detail-metrics">
+                            {project.achievements.map((a, i) => (
+                                <div key={i} className="detail-metric-card">
+                                    <div className="detail-metric-value" style={{color: c1}}>{a.value}</div>
+                                    <div className="detail-metric-label">{a.label}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                    <div className="detail-section">
+                        <div className="detail-section-title">
+                            <span className="detail-section-dot" style={{background: grad}}></span>
+                            주요 수행 업무
+                        </div>
+                        <div className="detail-highlights">
+                            {project.highlights.map((h, i) => (
+                                <div key={i} className="detail-highlight-card">
+                                    <div className="detail-highlight-num" style={{background: grad}}>{String(i + 1).padStart(2, '0')}</div>
+                                    <div className="detail-highlight-text">{h}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                    <div className="detail-section">
+                        <div className="detail-section-title">
+                            <span className="detail-section-dot" style={{background: grad}}></span>
+                            업무 키워드
+                        </div>
+                        <div className="detail-tech">
+                            {project.tech.map((t, i) => (
+                                <span key={i} className="detail-tech-badge" style={{
+                                    borderColor: `${c1}40`,
+                                    color: c1
+                                }}>{t}</span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    const Portfolio = () => {
+        const [selectedProject, setSelectedProject] = useState(null);
+        const scrollPosRef = React.useRef(0);
+
+        const selectProject = (idx) => {
+            scrollPosRef.current = window.scrollY;
+            setSelectedProject(idx);
+        };
+
+        const goBack = () => {
+            setSelectedProject(null);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    window.scrollTo(0, scrollPosRef.current);
+                });
+            });
+        };
+
+        useEffect(() => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            return () => observer.disconnect();
+        }, [selectedProject]);
+
+        const scrollTo = (id) => {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        const techStack = {
+            '보안 인증': ['ISMS 인증', 'PG 보안 인증', '보안성 심의', '전자금융 보안', '컴플라이언스'],
+            '보안 관리': ['정보보안 정책 수립', '보안 거버넌스', '위험분석', '증적 관리', '위수탁사 점검'],
+            '보안 솔루션': ['방화벽', 'SSL VPN', 'NAC', 'DLP', 'IPS', '서버/DB 접근제어'],
+            '보안 관제': ['침해사고 탐지/대응', '로그 분석', '이상 트래픽 분석', '악성코드 분석', 'CERT'],
+            '인프라 운영': ['Linux', 'Windows Server', 'Splunk', 'VLAN', '망 분리', '네트워크 장비'],
+            '감사/진단': ['취약점 진단', '모의해킹', '보안 감사 대응', '보안 교육/훈련', '운영 실태 점검']
+        };
+
+        const projects = [
+            {
+                iconEmoji: '\u{1F6E1}',
+                company: '이지샵',
+                title: '이지샵 - IT기획팀 매니저',
+                period: '2024.12 ~ 재직중',
+                role: 'IT기획팀 매니저 / 정보보안',
+                salary: '6,500만원',
+                region: '서울',
+                description: 'ISMS 인증 및 PG 보안 인증을 총괄하며, 전사 정보보안 거버넌스 수립 및 보안 인프라 운영을 담당하고 있습니다.',
+                highlights: [
+                    'ISMS 최초 인증 취득 (인증 범위 설정, 위험분석, 정책/지침 정비, 증적 체계 구축, 결함 16건 전건 조치)',
+                    'ISMS 1차 사후심사 총괄 수행 (결함 9건 전건 조치, 결함조치보고서 작성/제출)',
+                    'PG(전자금융/결제대행) 보안 인증 최초 취득',
+                    '연간 정보보안 계획 수립 및 전사 보안 지표 설정',
+                    '정보보안 정책/지침 제개정 (계정관리, 네트워크 접근통제, 자료 반출 통제 등)',
+                    'SSL VPN 신규 도입 주도 (솔루션 선정, 구축, 접근통제 정책 설계)',
+                    '위수탁사 개인정보 처리 실태 점검 기획 및 보완조치 관리',
+                    '보안 이벤트 분석 및 이상 행위 대응 (사고 보고 및 재발 방지 대책 수립)'
+                ],
+                tech: ['ISMS', 'PG 인증', '보안 거버넌스', 'SSL VPN', 'NAC', 'DLP', '접근통제', '정책 수립', '위험분석'],
+                terminalLog: [
+                    { type: 'cmd', text: 'isms --audit --type initial' },
+                    { type: 'success', text: 'ISMS 최초 인증 취득 완료' },
+                    { type: 'cmd', text: 'isms --audit --type follow-up-1' },
+                    { type: 'success', text: '1차 사후심사 통과 (결함 9건 전건 조치)' },
+                    { type: 'cmd', text: 'pg-cert --apply --type payment-gateway' },
+                    { type: 'success', text: 'PG 보안 인증 최초 취득 완료' },
+                    { type: 'cmd', text: 'vpn --deploy --type ssl' },
+                    { type: 'success', text: 'SSL VPN 신규 도입 및 안정화 완료' },
+                ],
+                achievements: [
+                    { label: 'ISMS', value: '최초 인증' },
+                    { label: 'PG 인증', value: '최초 취득' },
+                    { label: 'SSL VPN', value: '신규 도입' }
+                ]
+            },
+            {
+                iconEmoji: '\u{1F3E6}',
+                company: '뱅크웨어글로벌',
+                title: '뱅크웨어글로벌 - ITS Unit 책임연구원',
+                period: '2022.08 ~ 2024.11 (2년 4개월)',
+                role: 'ITS Unit 책임연구원 / 정보보안',
+                salary: '5,800만원',
+                region: '서울',
+                description: '금융기관 차세대 시스템 구축 프로젝트에서 보안 담당으로 참여하여 보안성 심의 대응, 보안 통제 설계 및 SI 제안 단계 보안 컨설팅을 수행했습니다.',
+                highlights: [
+                    'OK저축은행 차세대 시스템 보안성 심의 대응 (기준 분석, 검토보고서 작성, 심의 완료)',
+                    '금융권 차세대 프로젝트 2개 기관 보안 운영 수행',
+                    '금융기관 보안성 심의 요구사항 분석 및 검토보고서 작성',
+                    '구축 단계별 보안 통제 요구사항 정의 및 이행 점검',
+                    '취약점 진단/모의해킹 결과 분석 및 조치 방안 검토',
+                    'SI 제안 단계 보안 아키텍처 구성 및 보안 요구사항 정의',
+                    '금융 규제/고객 보안 기준 기반 대응 방안 문서화'
+                ],
+                tech: ['보안성 심의', '금융 규제', '보안 아키텍처', 'DB접근제어', '방화벽', '취약점 진단', '모의해킹', 'SI 보안'],
+                terminalLog: [
+                    { type: 'cmd', text: 'security-review --target ok-savings-bank --type next-gen' },
+                    { type: 'success', text: 'OK저축은행 보안성 심의 완료' },
+                    { type: 'cmd', text: 'vuln-assess --scope financial-infra --orgs 2' },
+                    { type: 'info', text: '금융권 2개 기관 보안 통제 이행 점검' },
+                    { type: 'cmd', text: 'proposal --security-arch --compliance financial' },
+                    { type: 'success', text: 'SI 보안 컨설팅/제안서 작성 완료' },
+                ],
+                achievements: [
+                    { label: '보안성 심의', value: '완료' },
+                    { label: '금융기관', value: '2개 기관' },
+                    { label: 'SI 제안', value: '보안 설계' }
+                ]
+            },
+            {
+                iconEmoji: '\u{1F50D}',
+                company: '윈스',
+                title: '윈스 - 파견관제팀 선임연구원',
+                period: '2019.02 ~ 2022.07 (3년 6개월)',
+                role: '파견관제팀 선임연구원 / 정보보안',
+                salary: '4,800만원',
+                region: '대전',
+                description: '산림청/문화체육관광부 사이버안전센터 위탁 운영 및 보안 관제, 침해사고 대응, ISMS 대응 지원을 수행했습니다.',
+                highlights: [
+                    '산림청/문화체육관광부 사이버안전센터 운영(위탁) 및 보안 이벤트 실시간 모니터링',
+                    '침해사고 탐지/분석/대응 (악성코드 유포, 이상 트래픽/행위 탐지/차단)',
+                    'IPS/방화벽/백신/로그 수집 분석 시스템 운영 및 이벤트 분석',
+                    '관제 결과 기반 분석 보고서 및 대응 결과 보고서 작성',
+                    'CERT 및 사고 대응 프로세스 지원 (초기 대응, 후속조치, 재발방지)',
+                    '문화체육관광부 소속/산하기관 보안 진단, 자체 감사/국정감사 대응 지원',
+                    'ISMS 대응 자료 준비 및 증적 관리 지원',
+                    '공공기관 보안 교육 및 사이버 모의훈련 수행'
+                ],
+                tech: ['보안 관제', 'IPS', '방화벽', '침해사고 대응', 'CERT', '로그 분석', 'ISMS 지원', '보안 교육'],
+                terminalLog: [
+                    { type: 'cmd', text: 'soc --monitor --org forest-service,mcst' },
+                    { type: 'info', text: '사이버안전센터 실시간 관제 운영 중' },
+                    { type: 'cmd', text: 'cert --respond --type malware,traffic-anomaly' },
+                    { type: 'success', text: '침해사고 탐지/대응 수행 완료' },
+                    { type: 'cmd', text: 'audit --support --target mcst --type isms,inspection' },
+                    { type: 'success', text: '감사 대응 및 보안 진단 완료' },
+                ],
+                achievements: [
+                    { label: '관제 대상', value: '2개 기관' },
+                    { label: 'CERT', value: '사고 대응' },
+                    { label: '보안 훈련', value: '교육 수행' }
+                ]
+            },
+            {
+                iconEmoji: '\u{1F5A5}',
+                company: '새일시스템즈',
+                title: '새일시스템즈 - 사이버안전센터 대리',
+                period: '2018.01 ~ 2019.02 (1년 2개월)',
+                role: '사이버안전센터 대리 / 인프라',
+                salary: '3,800만원',
+                region: '세종',
+                description: '산업통상자원부 사이버안전센터 시스템 운영, 보안 장비 운영/로그 분석, 훈련/행사 인프라 구축을 담당했습니다.',
+                highlights: [
+                    '산업통상자원부 사이버안전센터 서버/네트워크 인프라 운영 및 장애 대응',
+                    '산하기관 현장 장애 대응 지원',
+                    '방화벽/VPN/침입탐지 등 보안 장비 운영',
+                    'Splunk 기반 로그 수집/분석 및 탐지 이벤트 모니터링',
+                    '을지훈련장 인프라 설계/운영',
+                    '사이버보안 경진대회 네트워크 구성 지원',
+                    '접근통제/로그 보관/구성 현황 등 감사 자료 준비 및 인터뷰 대응'
+                ],
+                tech: ['서버 운영', '네트워크 운영', 'Splunk', '방화벽', 'VPN', 'IDS', '장애 대응', '보안 감사'],
+                terminalLog: [
+                    { type: 'cmd', text: 'infra --manage --org motie-soc' },
+                    { type: 'info', text: '서버/네트워크 인프라 운영 및 장애 대응' },
+                    { type: 'cmd', text: 'splunk --analyze --source firewall,ids,vpn' },
+                    { type: 'success', text: '로그 수집/분석 체계 운영' },
+                    { type: 'cmd', text: 'infra --deploy --target training-env' },
+                    { type: 'success', text: '훈련장/경진대회 인프라 구축 완료' },
+                ],
+                achievements: [
+                    { label: '인프라', value: '센터 운영' },
+                    { label: 'Splunk', value: '로그 분석' },
+                    { label: '감사', value: '대응 지원' }
+                ]
+            },
+            {
+                iconEmoji: '\u{1F527}',
+                company: '콤텍정보통신',
+                title: '콤텍정보통신 - 시스템운영 주임',
+                period: '2017.05 ~ 2017.08 (4개월)',
+                role: '시스템운영 주임 / 인프라 (계약직)',
+                salary: '3,200만원',
+                region: '대전',
+                description: '대전통합전산센터 보안 인프라 고도화 사업에 참여하여 보안/네트워크 장비 교체 및 설정 작업을 지원했습니다.',
+                highlights: [
+                    '공공기관 전산센터 보안 인프라 고도화 사업 참여 (대전통합전산센터)',
+                    '방화벽/IPS/스위치 등 보안/네트워크 장비 교체 및 설정 작업 지원',
+                    'VLAN 설계 및 망 분리 적용 테스트',
+                    '정책 변경 영향도 확인 및 이슈 정리',
+                    '작업 내역서/변경점 요약서 등 산출물 문서화 및 유관부서 협업'
+                ],
+                tech: ['방화벽', 'IPS', '스위치', 'VLAN', '망 분리', '인프라 고도화', '문서화'],
+                terminalLog: [
+                    { type: 'cmd', text: 'infra --upgrade --target daejeon-idc' },
+                    { type: 'info', text: '보안/네트워크 장비 교체 작업 수행' },
+                    { type: 'cmd', text: 'vlan --design --test segregation' },
+                    { type: 'success', text: 'VLAN 설계 및 망 분리 테스트 완료' },
+                ],
+                achievements: [
+                    { label: '프로젝트', value: 'IDC 고도화' },
+                    { label: 'VLAN', value: '망 분리' },
+                    { label: '장비', value: '교체/설정' }
+                ]
+            },
+            {
+                iconEmoji: '\u{1F527}',
+                company: '향수정보통신',
+                title: '향수정보통신 - 시스템운영 주임',
+                period: '2017.04 ~ 2017.05 (2개월)',
+                role: '시스템운영 주임 / 인프라 (계약직)',
+                salary: '3,200만원',
+                region: '대전',
+                description: '콤텍정보통신과 동일 프로젝트로, 대전통합전산센터 보안 인프라 고도화에 참여했습니다.',
+                highlights: [
+                    '공공기관 전산센터 보안 인프라 고도화 참여',
+                    '장비 교체/설정/전환 검증 지원',
+                    'VLAN/망 분리 테스트 및 영향도 검토',
+                    '산출물 문서화'
+                ],
+                tech: ['인프라 고도화', 'VLAN', '망 분리', '장비 전환', '문서화'],
+                terminalLog: [
+                    { type: 'cmd', text: 'infra --support --target daejeon-idc' },
+                    { type: 'info', text: '전환 계획 기반 테스트/검증 참여' },
+                    { type: 'success', text: '보안 인프라 고도화 지원 완료' },
+                ],
+                achievements: [
+                    { label: '프로젝트', value: 'IDC 고도화' },
+                    { label: '역할', value: '검증 지원' }
+                ]
+            },
+            {
+                iconEmoji: '\u{1F512}',
+                company: '비아이지',
+                title: '비아이지 - 보안관리부 사원',
+                period: '2015.04 ~ 2016.04 (1년 1개월)',
+                role: '보안관리부 사원 / 정보보안',
+                salary: '2,800만원',
+                region: '대전',
+                description: '사내 정보보안 솔루션 운영, 계정/접근권한 관리, 보안 교육 기획 및 운영을 담당했습니다.',
+                highlights: [
+                    '사내 정보보안 운영 (방화벽/백신/VPN 등 기본 보안 솔루션 정책 운영)',
+                    '계정/접근권한 관리 및 변경 이력 관리',
+                    '보안 로그 모니터링 및 이상 징후 대응 지원',
+                    '보안 정책/지침 준수 점검 및 개선사항 도출',
+                    '전사 보안 교육 기획/운영 (신입/정기 교육) 및 캠페인 수행'
+                ],
+                tech: ['방화벽', '백신', 'VPN', '계정 관리', '접근권한', '보안 교육', '정책 점검'],
+                terminalLog: [
+                    { type: 'cmd', text: 'security --operate --scope internal' },
+                    { type: 'info', text: '보안 솔루션 운영 및 정책 관리' },
+                    { type: 'cmd', text: 'training --plan --type quarterly' },
+                    { type: 'success', text: '정기 보안 교육 체계 구축 완료' },
+                ],
+                achievements: [
+                    { label: '솔루션', value: '정책 정비' },
+                    { label: '교육', value: '체계 구축' },
+                    { label: '점검', value: '개선 도출' }
+                ]
+            }
+        ];
+
+        const certifications = [
+            { name: '1종대형운전면허', date: '2009.06', org: '경찰청', type: 'cert' },
+            { name: 'CCNA (Cisco Certification Network Associate)', date: '2014.12', org: 'CISCO', type: 'cert' },
+            { name: 'LPIC Level 1', date: '2015.01', org: 'LINUX', type: 'cert' },
+            { name: 'MCSE (Microsoft Certified Systems Engineer)', date: '2016.11', org: 'Microsoft', type: 'cert' },
+            { name: '네트워크관리사 2급', date: '2016.10', org: '한국정보통신자격협회', type: 'cert' },
+            { name: '인터넷정보관리사 3급', date: '2016.11', org: '한국정보통신인력개발센터', type: 'cert' },
+            { name: 'AutoCAD 1급 기술자격시험', date: '2011.07', org: '한국ATC협회', type: 'cert' },
+            { name: 'OPIC Intermediate Low', date: '2018.07', org: '영어', type: 'lang' },
+            { name: 'ISO19011 경영시스템심사가이드라인 AUTL', date: '2021.04', org: 'GCT', type: 'cert' },
+            { name: 'ISO27001 국제심사원', date: '2021.04', org: 'GCT', type: 'cert' },
+            { name: 'ISO27017 CLOUD 정보보호관리체계 CI', date: '2021.09', org: 'GCT', type: 'cert' },
+            { name: 'ISO27018 CLOUD 정보보호관리체계 CP', date: '2021.09', org: 'GCT', type: 'cert' },
+            { name: 'ISO27701 프라이버시정보관리경영시스템 PMS', date: '2021.10', org: 'GCT', type: 'cert' },
+            { name: 'AWS Certified Cloud Practitioner', date: '2023.09', org: 'AWS', type: 'cert' },
+            { name: 'NAVER Cloud Platform Certified Associate', date: '2022.11', org: 'NAVER Cloud Platform', type: 'cert' },
+        ];
+
+        const education = [
+            { school: '아주대학교 정보통신대학원(석사)', major: '정보보안학과', period: '2015.08 ~ 2018.08', gpa: '3.7/4.5', type: '대학원(석사) 졸업' },
+            { school: '대전대신고등학교', major: '이과계열', period: '2005.03 ~ 2007.02', type: '졸업' }
+        ];
+
+        return (
+            <>
+                <nav>
+                    <div className="nav-inner">
+                        <div className="logo" onClick={goBack}>KIWOONG HONG</div>
+                        {selectedProject !== null ? (
+                            <button className="nav-back" onClick={goBack}>&larr; 포트폴리오</button>
+                        ) : (
+                            <ul className="nav-links">
+                                <li><a className="nav-link" onClick={() => scrollTo('home')}>Home</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('projects')}>Career</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('tech')}>Skills</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('certs')}>Certs</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('education')}>Education</a></li>
+                                <li><a className="nav-link" onClick={() => scrollTo('contact')}>Contact</a></li>
+                            </ul>
+                        )}
+                    </div>
+                </nav>
+
+                {selectedProject !== null ? (
+                    <ProjectDetail
+                        project={projects[selectedProject]}
+                        index={selectedProject}
+                        onBack={goBack}
+                    />
+                ) : (
+                <>
+                <section className="hero" id="home">
+                    <div className="hero-container">
+                        <div className="hero-left">
+                            <div className="hero-tag">Information Security Professional</div>
+                            <h1 className="hero-name">홍기웅</h1>
+                            <p className="hero-role">
+                                정보보호 업무 경력 9년 11개월의 보안 전문가입니다.
+                                보안관제 및 인프라 운영 실무를 시작으로 금융권 차세대 SI 보안 기획,
+                                ISMS 및 PG 보안 인증 총괄까지
+                                다양한 보안 도메인에서 실무 경험을 쌓아왔습니다.
+                            </p>
+                            <div className="hero-stats">
+                                <div className="h-stat">
+                                    <div className="h-stat-value">9.9+</div>
+                                    <div className="h-stat-label">Years</div>
+                                </div>
+                                <div className="h-stat">
+                                    <div className="h-stat-value">ISMS</div>
+                                    <div className="h-stat-label">Certified</div>
+                                </div>
+                                <div className="h-stat">
+                                    <div className="h-stat-value">ISO</div>
+                                    <div className="h-stat-label">Auditor</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="hero-right">
+                            <div className="hero-ornament">
+                                <div className="hero-ornament-ring"></div>
+                                <div className="hero-ornament-ring"></div>
+                                <div className="hero-ornament-ring"></div>
+                                <div className="hero-ornament-center">9.9+</div>
+                                <div className="hero-ornament-dot"></div>
+                                <div className="hero-ornament-dot"></div>
+                                <div className="hero-ornament-dot"></div>
+                                <div className="hero-ornament-dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="projects">
+                    <div className="section-container">
+                        <div className="section-header fade-in">
+                            <div>
+                                <div className="section-tag">Career</div>
+                                <h2 className="section-title">경력 사항</h2>
+                            </div>
+                            <p className="section-desc">
+                                보안관제 &middot; 인프라 운영 &middot; 금융권 SI 보안 &middot; ISMS/PG 인증 총괄 등
+                                정보보호 전 분야에서 실무 경험을 쌓아온 총 9년 11개월의 경력입니다.
+                                각 경력을 클릭하면 수행 업무와 성과를 확인할 수 있습니다.
+                            </p>
+                        </div>
+                        <div className="projects-list">
+                            {projects.map((p, idx) => (
+                                <div key={idx} className="project-card fade-in" onClick={() => selectProject(idx)} style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`}}>
+                                    <div className="project-card-left">
+                                        <div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>
+                                            {p.iconEmoji}
+                                        </div>
+                                    </div>
+                                    <div className="project-card-body">
+                                        <div className="project-card-header">
+                                            <div>
+                                                <h3 className="project-card-title">{p.title}</h3>
+                                                <div className="project-card-role">{p.role}</div>
+                                            </div>
+                                            <div className="project-card-period">{p.period}</div>
+                                        </div>
+                                        <p className="project-card-desc">{p.description}</p>
+                                        <div className="project-card-footer">
+                                            <div className="project-card-tags">
+                                                {p.tech.slice(0, 6).map((t, i) => (
+                                                    <span key={i} className="project-card-tag">{t}</span>
+                                                ))}
+                                                {p.tech.length > 6 && <span className="project-card-tag">+{p.tech.length - 6}</span>}
+                                            </div>
+                                            <div className="project-card-metrics">
+                                                {p.achievements.map((a, i) => (
+                                                    <div key={i} className="project-card-metric">
+                                                        <div className="project-card-metric-value">{a.value}</div>
+                                                        <div className="project-card-metric-label">{a.label}</div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="project-card-arrow">&rarr;</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="tech">
+                    <div className="section-container">
+                        <div className="section-header fade-in">
+                            <div>
+                                <div className="section-tag">Expertise</div>
+                                <h2 className="section-title">기술 스택</h2>
+                            </div>
+                            <p className="section-desc">
+                                ISMS 인증, 보안 관제, 금융 보안, 인프라 운영 등
+                                정보보호 실무에서 검증된 기술과 역량입니다.
+                            </p>
+                        </div>
+                        <div className="skills-grid">
+                            {Object.entries(techStack).map(([cat, items], idx) => (
+                                <div key={idx} className="skill-card fade-in" style={{transitionDelay: `${Math.min(idx * 0.04, 0.3)}s`}}>
+                                    <div className="skill-name">
+                                        <div className="skill-dot"></div>
+                                        {cat}
+                                    </div>
+                                    <div className="skill-badges">
+                                        {items.map((item, i) => (
+                                            <span key={i} className="skill-badge">{item}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="certs">
+                    <div className="section-container">
+                        <div className="section-header fade-in">
+                            <div>
+                                <div className="section-tag">Certifications</div>
+                                <h2 className="section-title">자격증 &middot; 어학</h2>
+                            </div>
+                            <p className="section-desc">
+                                정보보안 분야의 국제 자격증과 클라우드 인증을 통해 전문 역량을 검증하고 있습니다.
+                            </p>
+                        </div>
+                        <div className="projects-list">
+                            {certifications.map((cert, idx) => (
+                                <div key={idx} className="project-card fade-in" style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default'}}>
+                                    <div className="project-card-left">
+                                        <div style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>
+                                            {cert.type === 'lang' ? '\u{1F30D}' : '\u{1F4DC}'}
+                                        </div>
+                                    </div>
+                                    <div className="project-card-body">
+                                        <div className="project-card-header">
+                                            <div>
+                                                <h3 className="project-card-title">{cert.name}</h3>
+                                                <div className="project-card-role">{cert.org}</div>
+                                            </div>
+                                            <div className="project-card-period">{cert.date}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="education">
+                    <div className="section-container">
+                        <div className="section-header fade-in">
+                            <div>
+                                <div className="section-tag">Education</div>
+                                <h2 className="section-title">학력</h2>
+                            </div>
+                        </div>
+                        <div className="projects-list">
+                            {education.map((edu, idx) => (
+                                <div key={idx} className="project-card fade-in" style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default'}}>
+                                    <div className="project-card-left">
+                                        <div style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>
+                                            {'\u{1F393}'}
+                                        </div>
+                                    </div>
+                                    <div className="project-card-body">
+                                        <div className="project-card-header">
+                                            <div>
+                                                <h3 className="project-card-title">{edu.school}</h3>
+                                                <div className="project-card-role">{edu.major} &middot; {edu.type}</div>
+                                            </div>
+                                            <div className="project-card-period">{edu.period}</div>
+                                        </div>
+                                        {edu.gpa && (
+                                            <div className="project-card-footer" style={{marginTop: '8px'}}>
+                                                <div className="project-card-tags">
+                                                    <span className="project-card-tag">학점 {edu.gpa}</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="contact">
+                    <div className="section-container">
+                        <div className="section-header-full fade-in">
+                            <div className="section-tag">Get In Touch</div>
+                            <h2 className="section-title">연락처</h2>
+                        </div>
+                        <div className="contact-grid">
+                            <a href="mailto:cho*****@naver.com" className="contact-card fade-in">
+                                <span className="contact-emoji">&#9993;</span>
+                                <div className="contact-type">Email</div>
+                                <div className="contact-info">cho*****@naver.com</div>
+                            </a>
+                            <a href="tel:010-****-5692" className="contact-card fade-in" style={{transitionDelay: '0.1s'}}>
+                                <span className="contact-emoji">&#128241;</span>
+                                <div className="contact-type">Phone</div>
+                                <div className="contact-info">010-****-5692</div>
+                            </a>
+                            <div className="contact-card fade-in" style={{transitionDelay: '0.2s'}}>
+                                <span className="contact-emoji">&#128205;</span>
+                                <div className="contact-type">Address</div>
+                                <div className="contact-info">서울 구로구 신도림로</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer>
+                    <div className="section-container">
+                        <p className="footer-text">&copy; 2026 Kiwoong Hong. All rights reserved.</p>
+                    </div>
+                </footer>
+                </>
+                )}
+            </>
+        );
+    };
+
+    ReactDOM.render(<Portfolio />, document.getElementById('root'));
+</script>
+</body>
+</html>

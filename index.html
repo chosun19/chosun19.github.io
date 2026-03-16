@@ -231,10 +231,10 @@
         };
 
         const careerSummary = [
-            { title: '요약', value: '운영 기반으로 확장한 실무형 보안 전문가', desc: '관제·인프라 운영부터 인증 대응, 정책 수립, 거버넌스 운영까지 실제 조직 운영으로 연결해 온 실무 경력입니다.' },
-            { title: '핵심', value: '전사 보안거버넌스', desc: '규정 준수에 그치지 않고 점검-개선-보고가 순환되도록 정착형 운영 체계를 만들었습니다.' },
-            { title: '영역', value: '금융권 · 공공기관 · 기업 내부', desc: '보안성 심의, SOC, 사내 인증·정책 운영을 모두 수행한 다영역 경험입니다.' },
-            { title: '포인트', value: '재발방지 중심 운영', desc: '지적사항 해소 후 문서, 프로세스, 교육까지 확장해 유사 이슈 재발을 억제했습니다.' }
+            { title: '요약', emoji: '\u{1F4CC}', value: '운영 기반으로 확장한 실무형 보안 전문가', desc: '관제·인프라 운영부터 인증 대응, 정책 수립, 거버넌스 운영까지 실제 조직 운영으로 연결해 온 실무 경력입니다.' },
+            { title: '핵심', emoji: '\u{1F6E1}', value: '전사 보안거버넌스', desc: '규정 준수에 그치지 않고 점검-개선-보고가 순환되도록 정착형 운영 체계를 만들었습니다.' },
+            { title: '영역', emoji: '\u{1F3E2}', value: '금융권 · 공공기관 · 기업 내부', desc: '보안성 심의, SOC, 사내 인증·정책 운영을 모두 수행한 다영역 경험입니다.' },
+            { title: '포인트', emoji: '\u{1F501}', value: '재발방지 중심 운영', desc: '지적사항 해소 후 문서, 프로세스, 교육까지 확장해 유사 이슈 재발을 억제했습니다.' }
         ];
 
         const techStack = {
@@ -551,7 +551,7 @@
                             <div className="project-card fade-in" style={{cursor: 'default'}}>
                                 <div className="project-card-left">
                                     <div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>
-                                        {'\u{1F6E1}'}
+                                        {'\u{1F9ED}'}
                                     </div>
                                 </div>
                                 <div className="project-card-body">
@@ -578,7 +578,7 @@
                                 <div key={idx} className="project-card fade-in" style={{cursor: 'default', transitionDelay: `${Math.min(idx * 0.06, 0.2)}s`}}>
                                     <div className="project-card-left">
                                         <div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>
-                                            {'\u{1F6E1}'}
+                                            {item.emoji}
                                         </div>
                                     </div>
                                     <div className="project-card-body">
@@ -647,7 +647,7 @@
                         <div className="projects-list">
                             {certifications.map((cert, idx) => (
                                 <div key={idx} className="project-card fade-in" style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default'}}>
-                                    <div className="project-card-left"><div style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>{cert.type === 'lang' ? '\u{1F30D}' : '\u{1F4DC}'}</div></div>
+                                    <div className="project-card-left"><div style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>{cert.type === 'lang' ? '\u{1F30D}' : '\u{1F3C5}'}</div></div>
                                     <div className="project-card-body"><div className="project-card-header"><div><h3 className="project-card-title">{cert.name}</h3><div className="project-card-role">{cert.org}</div></div><div className="project-card-period">{cert.date}</div></div></div>
                                 </div>
                             ))}

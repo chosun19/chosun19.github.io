@@ -248,7 +248,7 @@
 
         const projectsPart1 = [
             {
-                iconEmoji: '\u{1F6E1}',
+                logoUrl: 'https://logo.clearbit.com/ezshop.co.kr',
                 company: '이지샵',
                 title: '이지샵 - IT기획팀',
                 period: '2024.12 ~ 재직중',
@@ -288,7 +288,7 @@
                 ]
             },
             {
-                iconEmoji: '\u{1F3E6}',
+                logoUrl: 'https://logo.clearbit.com/bankwareglobal.com',
                 company: '뱅크웨어글로벌',
                 title: '뱅크웨어글로벌 - ITS Unit',
                 period: '2022.08 ~ 2024.12 (2년 5개월)',
@@ -338,7 +338,7 @@
         const projects = [
             ...projectsPart1,
             {
-                iconEmoji: '\u{1F50D}',
+                logoUrl: 'https://logo.clearbit.com/wins21.co.kr',
                 company: '윈스',
                 title: '윈스 - 보안관제1팀',
                 period: '2019.02 ~ 2022.07 (3년 6개월)',
@@ -370,7 +370,7 @@
                 ]
             },
             {
-                iconEmoji: '\u{1F5A5}',
+                logoUrl: 'https://logo.clearbit.com/saeilsystems.co.kr',
                 company: '새일시스템즈',
                 title: '새일시스템즈 - 서비스사업부',
                 period: '2018.01 ~ 2019.02 (1년 2개월)',
@@ -400,7 +400,7 @@
                 ]
             },
             {
-                iconEmoji: '\u{1F527}',
+                logoUrl: 'https://logo.clearbit.com/comtec.co.kr',
                 company: '콤텍정보통신',
                 title: '콤텍정보통신 - 인프라운영',
                 period: '2017.05 ~ 2017.08 (4개월)',
@@ -430,7 +430,7 @@
                 ]
             },
             {
-                iconEmoji: '\u{1F527}',
+                logoUrl: 'https://logo.clearbit.com/hyangsoo.co.kr',
                 company: '향수정보통신',
                 title: '향수정보통신 - 인프라운영',
                 period: '2017.04 ~ 2017.05 (2개월)',
@@ -458,7 +458,7 @@
                 ]
             },
             {
-                iconEmoji: '\u{1F512}',
+                logoUrl: 'https://logo.clearbit.com/big.co.kr',
                 company: '비아이지',
                 title: '비아이지 - 보안관리부',
                 period: '2015.04 ~ 2016.04 (1년 1개월)',
@@ -547,7 +547,24 @@
                 <section className="section" id="about">
                     <div className="section-container">
                         <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">운영이 정착되는 보안체계</h2></div></div>
-                        <div className="projects-list"><div className="project-card fade-in" style={{cursor: 'default'}}><div className="project-card-body"><p className="project-card-desc" style={{marginTop: '0'}}>관제·진단·감사 대응, 그리고 내부 인증 전 과정을 경험하며 규정을 조직에서 실제로 작동하도록 만들고 재발방지 운영으로 이어지는 구조를 정리해 왔습니다.</p></div></div></div>
+                        <div className="projects-list">
+                            <div className="project-card fade-in" style={{cursor: 'default'}}>
+                                <div className="project-card-left">
+                                    <div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>
+                                        {'\u{1F6E1}'}
+                                    </div>
+                                </div>
+                                <div className="project-card-body">
+                                    <div className="project-card-header">
+                                        <div>
+                                            <h3 className="project-card-title">실행 중심 보안 운영</h3>
+                                            <div className="project-card-role">규정을 조직 운영에 정착시키는 실무 역량</div>
+                                        </div>
+                                    </div>
+                                    <p className="project-card-desc">관제·진단·감사 대응, 그리고 내부 인증 전 과정을 경험하며 규정을 조직에서 실제로 작동하도록 만들고 재발방지 운영으로 이어지는 구조를 정리해 왔습니다.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -556,10 +573,23 @@
                 <section className="section" id="projects">
                     <div className="section-container">
                         <div className="section-header fade-in"><div><div className="section-tag">Career Summary</div><h2 className="section-title">경력 요약</h2></div><p className="section-desc">총 10년의 경험을 핵심 메시지로 정리했습니다.</p></div>
-                        <div style={{marginBottom: '24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px'}}>
+                        <div className="projects-list" style={{marginBottom: '24px'}}>
                             {careerSummary.map((item, idx) => (
-                                <div key={idx} className="project-card fade-in" style={{margin: 0, paddingBottom: '18px', transitionDelay: `${Math.min(idx * 0.06, 0.2)}s`}}>
-                                    <div className="project-card-body"><div style={{color: '#93a1b8', marginBottom: '8px', fontSize: '13px', letterSpacing: '0.08em'}}>{item.title}</div><div className="project-card-title" style={{marginBottom: '4px'}}>{item.value}</div><div className="project-card-role">{item.desc}</div></div>
+                                <div key={idx} className="project-card fade-in" style={{cursor: 'default', transitionDelay: `${Math.min(idx * 0.06, 0.2)}s`}}>
+                                    <div className="project-card-left">
+                                        <div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>
+                                            {'\u{1F6E1}'}
+                                        </div>
+                                    </div>
+                                    <div className="project-card-body">
+                                        <div className="project-card-header">
+                                            <div>
+                                                <div style={{color: '#93a1b8', marginBottom: '8px', fontSize: '13px', letterSpacing: '0.08em'}}>{item.title}</div>
+                                                <h3 className="project-card-title">{item.value}</h3>
+                                            </div>
+                                        </div>
+                                        <p className="project-card-desc">{item.desc}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -567,7 +597,23 @@
                         <div className="projects-list">
                             {projects.map((p, idx) => (
                                 <div key={idx} className="project-card fade-in" onClick={() => selectProject(idx)} style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`}}>
-                                    <div className="project-card-left"><div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>{p.iconEmoji}</div></div>
+                                    <div className="project-card-left">
+                                        <div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px', overflow: 'hidden'}}>
+                                            <img
+                                                src={p.logoUrl}
+                                                alt={`${p.company} 로고`}
+                                                style={{width: '100%', height: '100%', objectFit: 'contain', padding: '8px'}}
+                                                onError={(e) => {
+                                                    e.currentTarget.style.display = 'none';
+                                                    const fallback = e.currentTarget.nextElementSibling;
+                                                    if (fallback) fallback.style.display = 'flex';
+                                                }}
+                                            />
+                                            <span style={{display: 'none', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
+                                                {'\u{1F6E1}'}
+                                            </span>
+                                        </div>
+                                    </div>
                                     <div className="project-card-body">
                                         <div className="project-card-header"><div><h3 className="project-card-title">{p.title}</h3><div className="project-card-role">{p.role} · {p.industry}</div></div><div className="project-card-period">{p.period}</div></div>
                                         <p className="project-card-desc">{p.description}</p>

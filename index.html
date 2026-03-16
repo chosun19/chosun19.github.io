@@ -133,6 +133,7 @@
                                 <div className="detail-hero-meta">
                                     <span className="detail-hero-meta-item">Period {project.period}</span>
                                     <span className="detail-hero-meta-item">Role {project.role}</span>
+                                    {project.employmentType && <span className="detail-hero-meta-item">Type {project.employmentType}</span>}
                                     {project.salary && <span className="detail-hero-meta-item">Salary {project.salary}</span>}
                                     {project.region && <span className="detail-hero-meta-item">Region {project.region}</span>}
                                     {project.industry && <span className="detail-hero-meta-item">Industry {project.industry}</span>}
@@ -254,6 +255,7 @@
                 period: '2024.12 ~ 재직중',
                 role: 'IT기획팀 매니저 / 정보보안',
                 salary: '6,300만원',
+                employmentType: '정규직',
                 region: '서울',
                 industry: '은행·카드·투자기관',
                 companyType: '중소기업·일반기업·비상장',
@@ -294,6 +296,7 @@
                 period: '2022.08 ~ 2024.12 (2년 5개월)',
                 role: 'ITS Unit 책임연구원 / 정보보안',
                 salary: '5,800만원',
+                employmentType: '정규직',
                 region: '서울',
                 industry: '소프트웨어·솔루션·ASP',
                 companyType: '중소기업·일반기업·비상장',
@@ -343,6 +346,7 @@
                 period: '2019.02 ~ 2022.07 (3년 6개월)',
                 role: '선임연구원 / 정보보안',
                 salary: '4,500만원',
+                employmentType: '정규직',
                 region: '대전',
                 industry: '소프트웨어·솔루션·ASP',
                 companyType: '중견기업·일반기업·코스닥상장(KOSDAQ)',
@@ -375,6 +379,7 @@
                 period: '2018.01 ~ 2019.02 (1년 2개월)',
                 role: '대리 / 보안운영',
                 salary: '3,400만원',
+                employmentType: '정규직',
                 region: '세종',
                 industry: '네트워크·통신',
                 companyType: '소기업·일반기업·비상장',
@@ -405,6 +410,7 @@
                 period: '2017.05 ~ 2017.08 (4개월)',
                 role: '주임 / 시스템엔지니어',
                 salary: '3,200만원',
+                employmentType: '계약직',
                 region: '대전',
                 industry: '컴퓨터·하드웨어·장비',
                 companyType: '중견기업·일반기업·비상장',
@@ -435,6 +441,7 @@
                 period: '2017.04 ~ 2017.05 (2개월)',
                 role: '주임 / 시스템엔지니어',
                 salary: '3,200만원',
+                employmentType: '계약직',
                 region: '대전',
                 industry: '네트워크·통신',
                 companyType: '소기업·일반기업·비상장',
@@ -463,6 +470,7 @@
                 period: '2015.04 ~ 2016.04 (1년 1개월)',
                 role: '사원 / 정보보안',
                 salary: '2,800만원',
+                employmentType: '정규직',
                 region: '대전',
                 industry: '제조업기타',
                 companyType: '중소기업·일반기업·비상장',
@@ -535,7 +543,7 @@
                                 <div className="h-stat" style={{flex: '0 0 auto', width: 'auto', minWidth: 0, marginRight: 0, paddingRight: '6px'}}><div className="h-stat-value" style={{whiteSpace: 'nowrap', wordBreak: 'keep-all', fontSize: '42px', letterSpacing: '-0.01em'}}>10년</div><div className="h-stat-label">경력</div></div>
                                 <div className="h-stat" style={{flex: '0 0 auto', width: 'auto', minWidth: 0, marginRight: 0, paddingRight: '6px'}}><div className="h-stat-value" style={{whiteSpace: 'nowrap', wordBreak: 'keep-all', fontSize: '42px', letterSpacing: '-0.01em'}}>ISMS·PG</div><div className="h-stat-label">인증 총괄</div></div>
                                 <div className="h-stat" style={{flex: '0 0 auto', width: 'auto', minWidth: 0, marginRight: 0, paddingRight: '6px'}}><div className="h-stat-value" style={{whiteSpace: 'nowrap', wordBreak: 'keep-all', fontSize: '42px', letterSpacing: '-0.01em'}}>거버넌스</div><div className="h-stat-label">관리·운영</div></div>
-                                <div className="h-stat" style={{flex: '0 0 auto', width: 'auto', minWidth: 0, marginRight: 0, paddingRight: '6px'}}><div className="h-stat-value" style={{whiteSpace: 'nowrap', wordBreak: 'keep-all', fontSize: '36px', letterSpacing: '-0.01em'}}>보안시스템</div><div className="h-stat-label">인프라 운영</div></div>
+                                <div className="h-stat" style={{flex: '0 0 auto', width: 'auto', minWidth: 0, marginRight: 0, paddingRight: '6px'}}><div className="h-stat-value" style={{whiteSpace: 'nowrap', wordBreak: 'keep-all', fontSize: '42px', letterSpacing: '-0.01em'}}>보안시스템</div><div className="h-stat-label">인프라 운영</div></div>
                             </div>
                         </div>
                         <div className="hero-right"><div className="hero-ornament"><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-center">10Y+</div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div></div></div>
@@ -615,7 +623,7 @@
                                         </div>
                                     </div>
                                     <div className="project-card-body">
-                                        <div className="project-card-header"><div><h3 className="project-card-title">{p.title}</h3><div className="project-card-role">{p.role} · {p.industry}</div></div><div className="project-card-period">{p.period}</div></div>
+                                        <div className="project-card-header"><div><h3 className="project-card-title">{p.title}</h3><div className="project-card-role">{p.role} · {p.industry}{p.employmentType ? ` · ${p.employmentType}` : ''}</div></div><div className="project-card-period">{p.period}</div></div>
                                         <p className="project-card-desc">{p.description}</p>
                                         <div className="project-card-footer"><div className="project-card-tags">{p.tech.slice(0, 6).map((t, i) => <span key={i} className="project-card-tag">{t}</span>)}{p.tech.length > 6 && <span className="project-card-tag">+{p.tech.length - 6}</span>}</div><div className="project-card-metrics">{p.achievements.map((a, i) => (<div key={i} className="project-card-metric"><div className="project-card-metric-value">{a.value}</div><div className="project-card-metric-label">{a.label}</div></div>))}</div></div>
                                     </div>

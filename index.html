@@ -323,16 +323,17 @@
 
         const certifications = [
             { name: 'CCNA (Cisco Certification Network Associate)', date: '2014.12', org: 'CISCO', type: 'cert' },
-            { name: 'LPIC-1', date: '2015.01', org: 'LINUX', type: 'cert' },
+            { name: 'LPIC Level 1', date: '2015.01', org: 'LINUX', type: 'cert' },
             { name: 'MCSE (Microsoft Certified Systems Engineer)', date: '2016.11', org: 'Microsoft', type: 'cert' },
             { name: '네트워크관리사 2급', date: '2016.10', org: '한국정보통신자격협회', type: 'cert' },
-            { name: 'ISO 19011 (AU/TL) 경영시스템 심사 가이드라인', date: '2021.04', org: 'GCT', type: 'cert' },
-            { name: 'ISO/IEC 27001 (ISMS) 정보보안경영시스템', date: '2021.04', org: 'GCT', type: 'cert' },
-            { name: 'ISO/IEC 27017 & 27018 (CICP) 클라우드 보안·개인정보 보호 경영시스템', date: '2021.09', org: 'GCT', type: 'cert' },
-            { name: 'ISO/IEC 27701 (PIMS) 개인정보보호경영시스템', date: '2021.10', org: 'GCT', type: 'cert' },
+            { name: 'OPIC Intermediate Low', date: '2018.07', org: '영어', type: 'lang' },
+            { name: 'ISO19011 경영시스템심사가이드라인 AUTL', date: '2021.04', org: 'GCT', type: 'cert' },
+            { name: 'ISO27001 국제심사원', date: '2021.04', org: 'GCT', type: 'cert' },
+            { name: 'ISO27017 CLOUD 정보보호관리체계 CI', date: '2021.09', org: 'GCT', type: 'cert' },
+            { name: 'ISO27018 CLOUD 정보보호관리체계 CP', date: '2021.09', org: 'GCT', type: 'cert' },
+            { name: 'ISO27701 프라이버시정보관리경영시스템 PMS', date: '2021.10', org: 'GCT', type: 'cert' },
             { name: 'AWS Certified Cloud Practitioner', date: '2023.09', org: 'AWS', type: 'cert' },
-            { name: 'NAVER Cloud Platform Certified Associate', date: '2022.11', org: 'NAVER Cloud Platform', type: 'cert' },
-            { name: 'OPIC Intermediate Low', date: '2018.07', org: '영어', type: 'lang' }
+            { name: 'NAVER Cloud Platform Certified Associate', date: '2022.11', org: 'NAVER Cloud Platform', type: 'cert' }
         ];
         const projects = [
             ...projectsPart1,
@@ -371,7 +372,7 @@
             {
                 logoUrl: 'https://images.weserv.nl/?url=seilsystem.kr/theme/wering/img/hdft/hd_logo.png',
                 company: '새일시스템즈',
-                title: '새일시스템즈 - 시스템운영',
+                title: '새일시스템즈 - 서비스사업부',
                 period: '2018.01 ~ 2019.02 (1년 2개월)',
                 role: '대리 / 보안운영',
                 salary: '3,400만원',
@@ -401,7 +402,7 @@
             {
                 logoUrl: 'https://itcenpns.com/resources/itcen/assets/svg/logos/logo_pns.svg',
                 company: '콤텍정보통신',
-                title: '콤텍정보통신 - 인프라운영팀',
+                title: '콤텍정보통신 - 인프라운영',
                 period: '2017.05 ~ 2017.08 (4개월)',
                 role: '주임 / 시스템엔지니어',
                 salary: '3,200만원',
@@ -431,7 +432,7 @@
             {
                 logoUrl: 'https://images.weserv.nl/?url=hyangsu.co.kr/data/skin/respon_default/images/skin/hd_logo_on.png',
                 company: '향수정보통신',
-                title: '향수정보통신 - 인프라운영팀',
+                title: '향수정보통신 - 인프라운영',
                 period: '2017.04 ~ 2017.05 (2개월)',
                 role: '주임 / 시스템엔지니어',
                 salary: '3,200만원',
@@ -493,7 +494,7 @@
             { school: '아주대학교 정보통신대학원(석사)', major: '정보보안학과', period: '2015.08 ~ 2018.08', gpa: '3.7/4.5', type: '대학원(석사) 졸업' },
             { school: '대전대신고등학교', major: '이과계열', period: '2005.03 ~ 2007.02', type: '졸업' },
             { school: '국제정보보안센터(I2SEC)', major: '정보보호 전문가 과정', period: '2014.07 ~ 2014.11', type: '교육수료' },
-            { school: 'IT SCHOOL', major: '시스템통합엔지니어양성 과정', period: '2016.06 ~ 2016.11', type: '교육수료' }
+            { school: '대전 IT SCHOOL', major: '시스템통합엔지니어양성 과정', period: '2016.06 ~ 2016.11', type: '교육수료' }
         ];
 
         return (
@@ -530,14 +531,15 @@
                         <div className="hero-left">
                             <div className="hero-tag">Information Security Professional</div>
                             <h1 className="hero-name">홍기웅</h1>
-                            <p className="hero-role">운영 경험을 기반으로 보안 체계를 구축해 온 실무형 보안 전문가입니다.</p>
+                            <p className="hero-role">운영 경험을 기반으로 보안 체계를 구축해 온 실무형 보안 전문가</p>
                             <div className="hero-stats">
                                 <div className="h-stat"><div className="h-stat-value">10년</div><div className="h-stat-label">경력</div></div>
-                                <div className="h-stat"><div className="h-stat-value">ISMS</div><div className="h-stat-label">총괄 운영</div></div>
-                                <div className="h-stat"><div className="h-stat-value">PG</div><div className="h-stat-label">보안 인증</div></div>
+                                <div className="h-stat"><div className="h-stat-value">ISMS·PG</div><div className="h-stat-label">인증 총괄</div></div>
+                                <div className="h-stat"><div className="h-stat-value">거버넌스</div><div className="h-stat-label">관리·운영</div></div>
+                                <div className="h-stat"><div className="h-stat-value">보안시스템</div><div className="h-stat-label">인프라 운영</div></div>
                             </div>
                         </div>
-                        <div className="hero-right"><div className="hero-ornament"><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-center">9Y+</div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div></div></div>
+                        <div className="hero-right"><div className="hero-ornament"><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-center">10Y+</div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div></div></div>
                     </div>
                 </section>
 

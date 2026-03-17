@@ -9,6 +9,81 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        @media (max-width: 900px) {
+            .section-container {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+            .hero-container {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            .hero-name {
+                font-size: 72px !important;
+                line-height: 0.95 !important;
+            }
+            .hero-role {
+                font-size: 24px !important;
+                line-height: 1.45 !important;
+            }
+            .hero-right {
+                display: flex !important;
+                justify-content: center !important;
+            }
+            .hero-stats {
+                display: grid !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 10px !important;
+                width: 100% !important;
+            }
+            .h-stat {
+                width: auto !important;
+                min-width: 0 !important;
+                margin-right: 0 !important;
+                padding-right: 0 !important;
+            }
+            .h-stat-value {
+                font-size: 32px !important;
+                white-space: nowrap !important;
+            }
+            .project-card {
+                padding: 14px !important;
+            }
+            .project-card-header {
+                display: block !important;
+            }
+            .project-card-period {
+                margin-top: 6px !important;
+                display: inline-block !important;
+            }
+            .project-card-footer {
+                display: block !important;
+            }
+            .project-card-tags {
+                width: 100% !important;
+            }
+            .project-card-metrics {
+                width: 100% !important;
+                margin-top: 10px !important;
+                display: flex !important;
+                gap: 8px !important;
+                flex-wrap: wrap !important;
+            }
+            .project-card-arrow {
+                display: none !important;
+            }
+            .detail-hero-top {
+                grid-template-columns: 1fr !important;
+                gap: 14px !important;
+            }
+            .detail-hero-meta {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 6px !important;
+            }
+        }
+    </style>
 </head>
 <body>
 <canvas id="particles"></canvas>
@@ -498,10 +573,10 @@
         ];
 
         const education = [
-            { school: '아주대학교 정보통신대학원(석사)', major: '정보보안학과', period: '2015.08 ~ 2018.08', type: '대학원(석사) 졸업' },
+            { school: '아주대학교 정보통신대학원(석사)', major: '정보보안학과', period: '2015.08 ~ 2018.08', gpa: '3.7/4.5', type: '대학원(석사) 졸업' },
             { school: '대전대신고등학교', major: '이과계열', period: '2005.03 ~ 2007.02', type: '졸업' },
-            { school: 'I2SEC(국제정보보안센터)', major: '정보보호 전문가 과정', period: '2014.07 ~ 2014.11', type: '교육수료' },
-            { school: 'IT SCHOOL', major: '시스템통합엔지니어양성 과정', period: '2016.06 ~ 2016.11', type: '교육수료' }
+            { school: '국제정보보안센터(I2SEC)', major: '정보보호 전문가 과정', period: '2014.07 ~ 2014.11', type: '교육수료' },
+            { school: '대전 IT SCHOOL', major: '시스템통합엔지니어양성 과정', period: '2016.06 ~ 2016.11', type: '교육수료' }
         ];
 
         return (
@@ -687,7 +762,7 @@
                 <section className="section" id="contact">
                     <div className="section-container">
                         <div className="section-header-full fade-in"><div className="section-tag">Get In Touch</div><h2 className="section-title">연락처</h2></div>
-                        <div className="contact-grid"><a href="mailto:chosun19@naver.com" className="contact-card fade-in"><span className="contact-emoji">&#9993;</span><div className="contact-type">Email</div><div className="contact-info">chosun19@naver.com</div></a><a href="tel:010-9990-5692" className="contact-card fade-in" style={{transitionDelay: '0.1s'}}><span className="contact-emoji">&#128241;</span><div className="contact-type">Phone</div><div className="contact-info">010-9990-5692</div></a><div className="contact-card fade-in" style={{transitionDelay: '0.2s'}}><span className="contact-emoji">&#128205;</span><div className="contact-type">Address</div><div className="contact-info">서울 구로구 신도림로</div></div></div>
+                        <div className="contact-grid"><a href="mailto:cho*****@naver.com" className="contact-card fade-in"><span className="contact-emoji">&#9993;</span><div className="contact-type">Email</div><div className="contact-info">cho*****@naver.com</div></a><a href="tel:010-****-5692" className="contact-card fade-in" style={{transitionDelay: '0.1s'}}><span className="contact-emoji">&#128241;</span><div className="contact-type">Phone</div><div className="contact-info">010-****-5692</div></a><div className="contact-card fade-in" style={{transitionDelay: '0.2s'}}><span className="contact-emoji">&#128205;</span><div className="contact-type">Address</div><div className="contact-info">서울 구로구 신도림로</div></div></div>
                     </div>
                 </section>
 

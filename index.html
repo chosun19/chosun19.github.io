@@ -10,7 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <style>
+        .mobile-only-br {
+            display: none;
+        }
+        .contact-info-eq {
+            font-size: inherit;
+        }
         @media (max-width: 900px) {
+            html, body {
+                overflow-x: hidden !important;
+            }
             .section-container {
                 padding-left: 16px !important;
                 padding-right: 16px !important;
@@ -48,7 +57,7 @@
                 overflow: visible !important;
             }
             .h-stat-value {
-                font-size: 26px !important;
+                font-size: 22px !important;
                 word-break: keep-all !important;
                 white-space: nowrap !important;
                 letter-spacing: -0.02em !important;
@@ -100,11 +109,17 @@
                 justify-self: center !important;
             }
             .contact-card .contact-info {
-                font-size: 13px !important;
+                font-size: 12px !important;
                 line-height: 1.35 !important;
                 white-space: normal !important;
                 overflow-wrap: anywhere !important;
                 word-break: break-all !important;
+            }
+            .contact-info-eq {
+                font-size: 12px !important;
+            }
+            .mobile-only-br {
+                display: block !important;
             }
         }
         @media (max-width: 480px) {
@@ -119,7 +134,7 @@
                 gap: 8px !important;
             }
             .hero-ornament {
-                transform: scale(0.84) !important;
+                transform: scale(0.74) !important;
                 transform-origin: center center !important;
             }
         }
@@ -802,7 +817,7 @@
                 <section className="section" id="contact">
                     <div className="section-container">
                         <div className="section-header-full fade-in"><div className="section-tag">Get In Touch</div><h2 className="section-title">연락처</h2></div>
-                        <div className="contact-grid"><a href="mailto:chosun19@naver.com" className="contact-card fade-in"><span className="contact-emoji">&#9993;</span><div className="contact-type">Email</div><div className="contact-info">chosun19@naver.com</div></a><a href="tel:010-9990-5692" className="contact-card fade-in" style={{transitionDelay: '0.1s'}}><span className="contact-emoji">&#128241;</span><div className="contact-type">Phone</div><div className="contact-info">010-9990-5692</div></a><div className="contact-card fade-in" style={{transitionDelay: '0.2s'}}><span className="contact-emoji">&#128205;</span><div className="contact-type">Address</div><div className="contact-info">서울 구로구 신도림로</div></div></div>
+                        <div className="contact-grid"><a href="mailto:chosun19@naver.com" className="contact-card fade-in"><span className="contact-emoji">&#9993;</span><div className="contact-type">Email</div><div className="contact-info contact-info-eq">chosun19<br className="mobile-only-br" />@naver.com</div></a><a href="tel:010-9990-5692" className="contact-card fade-in" style={{transitionDelay: '0.1s'}}><span className="contact-emoji">&#128241;</span><div className="contact-type">Phone</div><div className="contact-info contact-info-eq">010-9990-5692</div></a><div className="contact-card fade-in" style={{transitionDelay: '0.2s'}}><span className="contact-emoji">&#128205;</span><div className="contact-type">Address</div><div className="contact-info">서울 구로구<br className="mobile-only-br" />신도림로</div></div></div>
                     </div>
                 </section>
 

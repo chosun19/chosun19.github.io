@@ -16,6 +16,41 @@
         .contact-info-eq {
             font-size: inherit;
         }
+        .project-card-clickhint {
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(201, 169, 110, 0.45);
+            color: #d4b06b;
+            font-size: 12px;
+            letter-spacing: 0.02em;
+            background: rgba(201, 169, 110, 0.08);
+            transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+        }
+        .project-card[role="button"] {
+            cursor: pointer !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .project-card[role="button"]:hover,
+        .project-card[role="button"]:focus-visible {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+            border-color: rgba(201, 169, 110, 0.45) !important;
+            outline: none;
+        }
+        .project-card[role="button"]:hover .project-card-clickhint,
+        .project-card[role="button"]:focus-visible .project-card-clickhint {
+            transform: translateX(3px);
+            background: rgba(201, 169, 110, 0.16);
+            border-color: rgba(201, 169, 110, 0.75);
+        }
+        .project-card[role="button"]:hover .project-card-arrow,
+        .project-card[role="button"]:focus-visible .project-card-arrow {
+            transform: translateX(3px);
+        }
         @media (max-width: 900px) {
             html, body {
                 overflow-x: hidden !important;
@@ -120,6 +155,10 @@
             }
             .mobile-only-br {
                 display: block !important;
+            }
+            .project-card-clickhint {
+                font-size: 11px;
+                padding: 5px 9px;
             }
         }
         @media (max-width: 480px) {
@@ -384,6 +423,7 @@
                 title: '이지샵 - IT기획팀',
                 period: '2024.12 ~ 재직중',
                 role: 'IT기획팀 매니저 / 정보보안',
+                salary: '6,300만원',
                 employmentType: '정규직',
                 region: '서울',
                 industry: '은행·카드·투자기관',
@@ -424,6 +464,7 @@
                 title: '뱅크웨어글로벌 - ITS Unit',
                 period: '2022.08 ~ 2024.12 (2년 5개월)',
                 role: 'ITS Unit 책임연구원 / 정보보안',
+                salary: '5,800만원',
                 employmentType: '정규직',
                 region: '서울',
                 industry: '소프트웨어·솔루션·ASP',
@@ -474,6 +515,7 @@
                 title: '윈스 - 정보보안1팀',
                 period: '2019.02 ~ 2022.07 (3년 6개월)',
                 role: '선임연구원 / 정보보안',
+                salary: '4,500만원',
                 employmentType: '정규직',
                 region: '대전',
                 industry: '소프트웨어·솔루션·ASP',
@@ -510,6 +552,7 @@
                 title: '새일시스템즈 - 인프라운영팀',
                 period: '2018.01 ~ 2019.02 (1년 2개월)',
                 role: '대리 / 보안운영',
+                salary: '3,400만원',
                 employmentType: '정규직',
                 region: '세종',
                 industry: '네트워크·통신',
@@ -541,6 +584,7 @@
                 title: '콤텍정보통신 - 인프라운영',
                 period: '2017.05 ~ 2017.08 (4개월)',
                 role: '주임 / 시스템엔지니어',
+                salary: '3,200만원',
                 employmentType: '계약직',
                 region: '대전',
                 industry: '컴퓨터·하드웨어·장비',
@@ -572,6 +616,7 @@
                 title: '향수정보통신 - 인프라운영',
                 period: '2017.04 ~ 2017.05 (2개월)',
                 role: '주임 / 시스템엔지니어',
+                salary: '3,200만원',
                 employmentType: '계약직',
                 region: '대전',
                 industry: '네트워크·통신',
@@ -601,6 +646,7 @@
                 title: '비아이지 - 보안관리부',
                 period: '2015.04 ~ 2016.04 (1년 1개월)',
                 role: '사원 / 정보보안',
+                salary: '2,800만원',
                 employmentType: '정규직',
                 region: '대전',
                 industry: '제조업기타',
@@ -732,10 +778,21 @@
                                 </div>
                             ))}
                         </div>
-                        <div className="section-header fade-in"><div><div className="section-tag">Career</div><h2 className="section-title">경력 사항</h2></div></div>
+                        <div className="section-header fade-in"><div><div className="section-tag">Career</div><h2 className="section-title">경력 사항</h2></div><p className="section-desc">카드를 클릭(모바일은 탭)하면 상세 경력을 볼 수 있습니다.</p></div>
                         <div className="projects-list">
                             {projects.map((p, idx) => (
-                                <div key={idx} className="project-card fade-in" onClick={() => selectProject(idx)} style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`}}>
+                                <div
+                                    key={idx}
+                                    className="project-card fade-in"
+                                    onClick={() => selectProject(idx)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') selectProject(idx);
+                                    }}
+                                    role="button"
+                                    tabIndex={0}
+                                    title={`${p.company} 상세 경력 보기`}
+                                    style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`}}
+                                >
                                     <div className="project-card-left">
                                         <div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px', overflow: 'hidden'}}>
                                             <img
@@ -757,6 +814,7 @@
                                         <div className="project-card-header"><div><h3 className="project-card-title">{p.title}</h3><div className="project-card-role">{p.role} · {p.industry}{p.employmentType ? ` · ${p.employmentType}` : ''}</div></div><div className="project-card-period">{p.period}</div></div>
                                         <p className="project-card-desc">{p.description}</p>
                                         <div className="project-card-footer"><div className="project-card-tags">{p.tech.slice(0, 6).map((t, i) => <span key={i} className="project-card-tag">{t}</span>)}{p.tech.length > 6 && <span className="project-card-tag">+{p.tech.length - 6}</span>}</div><div className="project-card-metrics">{p.achievements.map((a, i) => (<div key={i} className="project-card-metric"><div className="project-card-metric-value">{a.value}</div><div className="project-card-metric-label">{a.label}</div></div>))}</div></div>
+                                        <div className="project-card-clickhint">상세보기 &rarr;</div>
                                     </div>
                                     <div className="project-card-arrow">&rarr;</div>
                                 </div>

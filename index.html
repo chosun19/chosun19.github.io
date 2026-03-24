@@ -143,14 +143,14 @@
             }
             .contact-grid {
                 display: grid !important;
-                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
                 gap: 10px !important;
             }
             .contact-grid .contact-card:nth-child(3) {
-                grid-column: 1 / -1 !important;
-                max-width: calc(50% - 5px) !important;
+                grid-column: auto !important;
+                max-width: none !important;
                 width: 100% !important;
-                justify-self: center !important;
+                justify-self: stretch !important;
             }
             .contact-card .contact-info {
                 font-size: 12px !important;
@@ -184,6 +184,16 @@
             .hero-ornament {
                 transform: scale(0.74) !important;
                 transform-origin: center center !important;
+            }
+        }
+        @media (max-width: 600px) {
+            .contact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+            .contact-grid .contact-card:nth-child(3) {
+                grid-column: 1 / 2 !important;
+                max-width: none !important;
+                justify-self: stretch !important;
             }
         }
     </style>

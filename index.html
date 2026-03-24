@@ -33,6 +33,15 @@
         .project-card[role="button"] {
             cursor: pointer !important;
             transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            position: relative;
+        }
+        .project-card[role="button"] .project-card-body {
+            padding-right: 56px !important;
+        }
+        .project-card[role="button"] .project-card-arrow {
+            right: 14px !important;
+            top: 18px !important;
+            z-index: 2;
         }
         .project-card[role="button"]:hover,
         .project-card[role="button"]:focus-visible {

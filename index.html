@@ -209,19 +209,22 @@
                 display: block !important;
             }
         }
-        @media (min-width: 601px) and (max-width: 900px) {
+        @media (min-width: 601px) and (max-width: 1200px) {
             .section-container {
                 padding-left: 10px !important;
                 padding-right: 10px !important;
             }
             .contact-grid {
+                display: grid !important;
+                width: 100% !important;
                 grid-template-columns: 1.65fr 1.2fr 1.65fr !important;
                 gap: 6px !important;
                 align-items: stretch !important;
             }
             .contact-grid .contact-card {
                 max-width: none !important;
-                width: 100% !important;
+                width: auto !important;
+                min-width: 0 !important;
                 height: auto !important;
                 min-height: 220px !important;
                 padding: 18px 10px !important;

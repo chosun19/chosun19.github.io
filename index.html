@@ -153,17 +153,17 @@
                 justify-self: stretch !important;
             }
             .contact-card .contact-info {
-                font-size: 12px !important;
-                line-height: 1.35 !important;
-                white-space: normal !important;
-                overflow-wrap: anywhere !important;
-                word-break: break-all !important;
+                font-size: 13px !important;
+                line-height: 1.4 !important;
+                white-space: nowrap !important;
+                overflow-wrap: normal !important;
+                word-break: keep-all !important;
             }
             .contact-info-eq {
-                font-size: 12px !important;
+                font-size: 13px !important;
             }
             .mobile-only-br {
-                display: block !important;
+                display: none !important;
             }
             .project-card-clickhint {
                 font-size: 11px;
@@ -194,6 +194,19 @@
                 grid-column: 1 / 2 !important;
                 max-width: none !important;
                 justify-self: stretch !important;
+            }
+            .contact-card .contact-info {
+                font-size: 12px !important;
+                line-height: 1.35 !important;
+                white-space: normal !important;
+                overflow-wrap: anywhere !important;
+                word-break: break-all !important;
+            }
+            .contact-info-eq {
+                font-size: 12px !important;
+            }
+            .mobile-only-br {
+                display: block !important;
             }
         }
     </style>
@@ -432,7 +445,7 @@
             '보안 솔루션': ['방화벽', 'SSL VPN', 'NAC', 'DLP', 'IPS', '서버/DB 접근통제'],
             '보안 관제': ['침해사고 탐지/대응', '로그 분석', '이상 트래픽 분석', '악성코드 분석', 'CERT'],
             '인프라 운영': ['Linux', 'Windows Server', 'Splunk', 'VLAN', '망 분리', '네트워크 장비'],
-            '감사/진단': ['취약점 진단', '모의해킹', '보안 감사 대응', '보안 교육/훈련', '운영 실태 점검']
+            '감사/진단': ['취약점 진단', '보안 감사 대응', '보안 교육/훈련', '운영 실태 점검']
         };
 
         const projectsPart1 = [

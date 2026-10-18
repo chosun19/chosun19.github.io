@@ -1,14 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>정보보안 전문가 포트폴리오 - 홍기웅</title>
+    <title>홍기웅 | 정보보호·금융보안 포트폴리오</title>
+    <meta name="description" content="홍기웅의 정보보호 포트폴리오. ISMS 최초 인증·사후심사, PG 보안 인증, 금융감독원 FIRST·CPC 대응, 보안성 검토와 보안 운영 경험을 소개합니다.">
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <style>
         .mobile-only-br {
             display: none;
@@ -352,7 +353,7 @@
                                         <span className="sec-dot sec-dot-yellow"></span>
                                         <span className="sec-dot sec-dot-green"></span>
                                     </div>
-                                    <div className="sec-terminal-title">security@{project.company} ~</div>
+                                    <div className="sec-terminal-title">{project.company} | 업무 요약</div>
                                 </div>
                                 <div className="sec-terminal-body">
                                     {project.terminalLog.map((line, i) => (
@@ -474,286 +475,689 @@
         };
 
         const careerSummary = [
-            { title: '요약', emoji: '\u{1F4CC}', value: '운영 기반으로 확장한 실무형 보안 전문가', desc: '관제·인프라 운영부터 인증 대응, 정책 수립, 거버넌스 운영까지 실제 조직 운영으로 연결해 온 실무 경력입니다.' },
-            { title: '핵심', emoji: '\u{1F6E1}', value: '전사 보안거버넌스', desc: '규정 준수에 그치지 않고 점검-개선-보고가 순환되도록 정착형 운영 체계를 만들었습니다.' },
-            { title: '영역', emoji: '\u{1F3E2}', value: '금융권 · 공공기관 · 기업 내부', desc: '보안성 심의, SOC, 사내 인증·정책 운영을 모두 수행한 다영역 경험입니다.' },
-            { title: '포인트', emoji: '\u{1F501}', value: '재발방지 중심 운영', desc: '지적사항 해소 후 문서, 프로세스, 교육까지 확장해 유사 이슈 재발을 억제했습니다.' }
+            {
+                "title": "관리체계",
+                "emoji": "🛡",
+                "value": "ISMS·PG 인증과 사후관리",
+                "desc": "ISMS 최초 인증 취득과 이후 사후심사 대응, PG 최초 보안 인증 및 지속적인 금융 컴플라이언스 업무를 수행했습니다."
+            },
+            {
+                "title": "금융보안",
+                "emoji": "📌",
+                "value": "금감원 대응과 CISO·임원 보고",
+                "desc": "FIRST·CPC 요청사항 확인부터 내부 점검, CISO·임원 보고, 보고서 작성·금융감독원 제출과 사내 공유까지 담당합니다."
+            },
+            {
+                "title": "보안성 검토",
+                "emoji": "🏢",
+                "value": "보안 요구사항과 보완조치 관리",
+                "desc": "금융권 SI와 신규 전자금융 서비스의 자체 보안성 심의 대응 및 보안성 검토를 수행하고 개발·인프라·운영 부서와 조치를 협의했습니다."
+            },
+            {
+                "title": "운영 기반",
+                "emoji": "🔁",
+                "value": "솔루션·인프라 도입과 보안운영",
+                "desc": "NAS·Chakra Max·SSL VPN·IPS·방화벽 등 보안솔루션과 인프라 신규 도입, NAC·DLP 운영, 개인정보 처리 근거·처리방침 및 위수탁사 점검을 경험했습니다."
+            }
         ];
 
         const techStack = {
-            '보안 인증': ['ISMS 인증', 'PG 인증', '보안성 심의', '전자금융 보안', '컴플라이언스'],
-            '보안 관리': ['정보보안 정책 수립', '보안 거버넌스', '위험분석', '증적 관리', '위수탁사 점검'],
-            '보안 솔루션': ['방화벽', 'SSL VPN', 'NAC', 'DLP', 'IPS', '서버/DB 접근통제'],
-            '보안 관제': ['침해사고 탐지/대응', '로그 분석', '이상 트래픽 분석', '악성코드 분석', 'CERT'],
-            '인프라 운영': ['Linux', 'Windows Server', 'Splunk', 'VLAN', '망 분리', '네트워크 장비'],
-            '감사/진단': ['취약점 진단', '보안 감사 대응', '보안 교육/훈련', '운영 실태 점검']
+            "인증·관리체계": [
+                "ISMS 최초 인증·사후심사",
+                "PG 보안 인증",
+                "정책·지침",
+                "위험평가",
+                "심사 증적 관리"
+            ],
+            "금융보안·대외 대응": [
+                "금융감독원 대응",
+                "FIRST",
+                "CPC",
+                "CISO·임원 보고",
+                "대외 보고서 작성·제출",
+                "사내 보안정보 공유"
+            ],
+            "보안성 검토": [
+                "자체 보안성 심의 대응",
+                "신규 서비스 검토",
+                "SI 보안 요구사항",
+                "취약점 결과 검토",
+                "모의해킹 결과 검토",
+                "보완조치 이행 확인"
+            ],
+            "개인정보보호": [
+                "개인정보 처리 흐름",
+                "처리 근거 검토",
+                "개인정보 처리방침",
+                "위수탁사 점검",
+                "관계기관 질의·외부 법률자문 대응"
+            ],
+            "보안솔루션·인프라": [
+                "NAS",
+                "Chakra Max",
+                "SSL VPN",
+                "NAC",
+                "DLP",
+                "방화벽",
+                "IPS·IDS",
+                "DB접근제어",
+                "서버·네트워크",
+                "Splunk"
+            ],
+            "보안관제·교육": [
+                "보안 이벤트 분석",
+                "이상 트래픽 분석",
+                "침해사고 대응 지원",
+                "보안 감사 대응",
+                "임직원 보안교육",
+                "해킹메일·DDoS 대응훈련"
+            ]
         };
 
-        const projectsPart1 = [
+        const projects = [
             {
-                logoUrl: 'https://www.easyshop.co.kr/static/home/new_images/homepage/logo.svg',
-                company: '이지샵',
-                title: '이지샵 - IT기획팀',
-                period: '2024.12 ~ 재직중',
-                role: 'IT기획팀 매니저 / 정보보안',
-                salary: '6,300만원',
-                employmentType: '정규직',
-                region: '서울',
-                industry: '은행·카드·투자기관',
-                companyType: '중소기업·일반기업·비상장',
-                description: 'ISMS·PG 보안 인증 총괄 및 전사 보안거버넌스 운영을 책임집니다. 인증 대응을 넘어 운영체계와 프로세스로 정착시켜 재발방지까지 연결했습니다.',
-                highlights: [
-                    'ISMS 인증 및 PG 보안 심사 전담 수행(사전 점검, 증적 체계 정비, 보완 계획 수립, 심사 대응 총괄)',
-                    '최초 심사 지적사항 16건 전건 조치 및 1차 사후심사 9건 조치 완료 보고 체계 운영',
-                    '위·수탁사 개인정보 처리 실태 점검 기획 및 보완조치 관리',
-                    '내부 점검 체계 수립(접근권한·계정관리·로그 점검·개인정보 처리 통제)',
-                    '연간 정보보안 계획 수립 및 전사 보안 지표 설정',
-                    '정보보안 정책·지침 제·개정(계정관리, 네트워크 접근통제, 자료 반출 통제) 및 준수 점검',
-                    'SSL VPN 신규 도입 주도(검토·선정·구축·접근통제 정책 설계·안정화)',
-                    '기존 보안솔루션(VPN, NAC, DLP 등) 운영 개선 및 사용자 계정·접근권한·로그 관리 체계 운영',
-                    '보안 이벤트 분석 및 이상 행위 대응, 사고 보고와 재발방지 대책 수립'
+                "logoUrl": "https://www.easyshop.co.kr/static/home/new_images/homepage/logo.svg",
+                "salary": "6,300만원",
+                "employmentType": "정규직",
+                "region": "서울",
+                "industry": "은행·카드·투자기관",
+                "companyType": "중소기업·일반기업·비상장",
+                "company": "이지샵",
+                "title": "이지샵 - 정보인프라팀",
+                "period": "2024.12 ~ 재직 중",
+                "role": "정보인프라팀 매니저 / 정보보안",
+                "description": "사내 정보보호·개인정보보호 담당자로서 ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 금융감독원 요청사항 대응, CISO·임원 보고와 대외 보고서 작성·제출을 담당하며, NAS·Chakra Max·SSL VPN·IPS·방화벽 등 보안솔루션과 인프라 신규 도입·운영 경험을 갖추고 있습니다.",
+                "highlights": [
+                    "PG 금융보안 컴플라이언스: 금융보안 통합관제시스템(FIRST)·CPC 등을 통한 보안 위협정보, 공지 및 점검·자료제출 요구사항 확인",
+                    "금융감독원 대응: 내부 현황 확인과 유관 부서 자료 취합, 보고서·증빙자료 작성 후 금융감독원 제출",
+                    "CISO·임원 보고 및 사내 공유: 주요 보안 이슈와 대외 요청사항의 대응 현황 보고, 보안 위협정보 전파와 후속조치 협의",
+                    "ISMS 최초 인증 및 사후심사: 인증 범위·정보자산 정리, 위험평가, 정책·지침과 증적 정비, 심사 보완조치 관리 및 사후심사 통과",
+                    "PG 최초 보안 인증: 요구사항에 따른 결제·개인정보 처리 시스템의 보안 통제 점검, 심사 대응과 보완조치 이행, 인증 이후 금융 컴플라이언스 지속 대응",
+                    "신규 전자금융 서비스 검토: 자체 보안성 심의, 서비스·결제·개인정보 흐름, 접근통제·로그 및 취약점 결과 검토와 보완조치 확인",
+                    "금융감독원 신고 지원: 신규 서비스 관련 신고 대상 여부 검토 및 신고·제출자료 작성 지원",
+                    "정책·내부 점검: 연간 보안계획과 지표 수립, 계정·접근권한·로그·자료 반출 관련 정책·지침 정비 및 운영 점검",
+                    "개인정보보호: 처리 근거 쟁점에 대한 관계기관 질의·외부 법률자문 대응, 개인정보 처리방침 정비 및 위수탁사 점검",
+                    "보안솔루션·인프라 신규 도입: NAS, Chakra Max, SSL VPN, IPS·방화벽 등 다양한 제품의 신규 도입과 운영",
+                    "운영 기준·통제 정비: 보안솔루션의 접근통제 정책 및 운영 기준 정비, VPN·NAC·DLP 운영과 계정·권한·로그 관리",
+                    "보안 이벤트 분석과 이상행위 대응, 대응 결과 보고 및 재발 방지 대책 검토"
                 ],
-                tech: ['ISMS', 'PG 인증', '보안 거버넌스', 'SSL VPN', 'NAC', 'DLP', 'SIEM', '계정권한 관리'],
-                terminalLog: [
-                    { type: 'cmd', text: 'isms --audit --mode initial' },
-                    { type: 'success', text: 'ISMS 사전점검 항목 정비 완료' },
-                    { type: 'cmd', text: 'isms --audit --type follow-up-1' },
-                    { type: 'success', text: '1차 사후심사 대응 리포트 제출 및 통과' },
-                    { type: 'cmd', text: 'pg-cert --apply --type payment-gateway' },
-                    { type: 'success', text: 'PG 보안 인증 취득' },
-                    { type: 'cmd', text: 'vpn --deploy --type ssl' },
-                    { type: 'success', text: 'SSL VPN 도입 및 운영 안정화 완료' }
+                "tech": [
+                    "ISMS 최초·사후심사",
+                    "PG 인증",
+                    "금융감독원 대응",
+                    "FIRST·CPC",
+                    "CISO·임원 보고",
+                    "개인정보보호",
+                    "보안솔루션·인프라 도입",
+                    "NAS",
+                    "Chakra Max",
+                    "SSL VPN",
+                    "IPS·방화벽",
+                    "NAC",
+                    "DLP"
                 ],
-                achievements: [
-                    { label: 'ISMS', value: '최초 인증' },
-                    { label: 'PG 인증', value: '최초 취득' },
-                    { label: 'SSL VPN', value: '도입·안정화' },
-                    { label: '거버넌스', value: '전사 운영' }
+                "terminalLog": [
+                    {
+                        "type": "success",
+                        "text": "ISMS 최초 인증 취득 및 이후 사후심사 통과"
+                    },
+                    {
+                        "type": "success",
+                        "text": "PG 최초 보안 인증 취득"
+                    },
+                    {
+                        "type": "info",
+                        "text": "FIRST·CPC 요청사항 확인과 대응 현황 관리"
+                    },
+                    {
+                        "type": "info",
+                        "text": "CISO·임원 보고와 금융감독원 보고서 작성·제출"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안 위협정보 사내 공유 및 후속조치 협의"
+                    },
+                    {
+                        "type": "info",
+                        "text": "NAS·Chakra Max·SSL VPN·IPS·방화벽 신규 도입·운영"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "ISMS 최초·사후심사",
+                        "value": "취득·유지"
+                    },
+                    {
+                        "label": "PG 보안 인증",
+                        "value": "최초 취득"
+                    },
+                    {
+                        "label": "금융감독원 대응",
+                        "value": "보고·제출"
+                    },
+                    {
+                        "label": "보안솔루션·인프라",
+                        "value": "신규 도입"
+                    }
                 ]
             },
             {
-                logoUrl: 'https://bankwareglobal.com/images/logo-renewal.png',
-                company: '뱅크웨어글로벌',
-                title: '뱅크웨어글로벌 - ITS Unit',
-                period: '2022.08 ~ 2024.12 (2년 5개월)',
-                role: 'ITS Unit 책임 / 정보보안',
-                salary: '5,800만원',
-                employmentType: '정규직',
-                region: '서울',
-                industry: '소프트웨어·솔루션·ASP',
-                companyType: '중소기업·일반기업·비상장',
-                description: '금융기관 차세대 SI 프로젝트의 보안성을 담당하며, 보안성 심의 대응부터 구축 단계 이행 점검까지 실무 전반을 수행했습니다.',
-                highlights: [
-                    '금융기관 차세대 SI 프로젝트 보안 담당 수행(2개 기관), 보안성 심의 대응 전담',
-                    '요구사항 분석, 검토보고서 작성, 심의자료 준비·응대와 지적사항 개선 반영',
-                    '구축 단계별 보안 통제 요구사항 정의(설계/개발/오픈 연계) 및 이행 점검',
-                    '취약점 진단·모의해킹 결과 분석, 조치 방안 검토 및 이행 지원',
-                    '금융권 시스템 보안 솔루션 운영·기술 지원(방화벽, 백신, DB 접근통제)',
-                    'SI 제안 단계 보안 아키텍처 구성 및 보안 요구사항 정의, 규제기준 기반 대응안 문서화'
+                "logoUrl": "https://bankwareglobal.com/images/logo-renewal.png",
+                "salary": "5,800만원",
+                "employmentType": "정규직",
+                "region": "서울",
+                "industry": "소프트웨어·솔루션·ASP",
+                "companyType": "중소기업·일반기업·비상장",
+                "company": "뱅크웨어글로벌",
+                "title": "뱅크웨어글로벌 - ITS Unit",
+                "period": "2022.08 ~ 2024.11",
+                "role": "ITS Unit 책임 / 정보보안",
+                "description": "금융기관 차세대 SI 프로젝트의 정보보안 담당자로 참여하여 자체 보안성 심의 대응과 보안성 검토를 수행했습니다. 설계·개발·오픈 단계별 보안 요구사항을 정리하고 유관 부서와 보완조치 이행을 확인했습니다.",
+                "highlights": [
+                    "자체 보안성 심의·검토: 심의 기준과 고객사 요구사항 분석, 시스템 구성·데이터 흐름·접근통제 검토",
+                    "심의 대응자료: 보안성 검토보고서와 심의자료 작성, 질의·보완 요청 대응 및 관련 부서 협의",
+                    "구축 단계 통제: 설계·개발·오픈 단계별 요구사항 반영 여부 확인과 보완조치 이행 점검",
+                    "취약점·모의해킹 결과 검토: 시스템별 보완 필요사항을 정리하고 개발·인프라·운영 담당자와 조치 방안 및 적용 방법 협의",
+                    "보안솔루션 운영: DB접근제어·방화벽·백신 운영·점검과 기술 지원, 보안정책 적용 현황 확인",
+                    "SI 제안 지원: 보안 아키텍처와 요구사항 정의, 금융 규제·고객 기준에 따른 대응 방안 검토와 제안서 보안 부분 작성",
+                    "주요 성과: OK저축은행 차세대 시스템 보안성 심의 대응 완료, 검토 근거와 보완조치 결과 문서화"
                 ],
-                tech: ['보안성 심의', '금융 규제', 'SI 보안', '보안 아키텍처', 'DB접근제어', '방화벽', '취약점 진단', '모의해킹'],
-                terminalLog: [
-                    { type: 'cmd', text: 'security-review --target financial-nextgen' },
-                    { type: 'success', text: '금융권 차세대 보안성 심의 대응 착수' },
-                    { type: 'cmd', text: 'compliance --prepare --for audit' },
-                    { type: 'success', text: '심의 자료 정합성 완료' }
+                "tech": [
+                    "자체 보안성 심의",
+                    "보안성 검토",
+                    "SI 보안 요구사항",
+                    "보완조치 관리",
+                    "취약점 결과 검토",
+                    "모의해킹 결과 검토",
+                    "DB접근제어",
+                    "보안 아키텍처"
                 ],
-                achievements: [
-                    { label: '보안성심의', value: '2건 완료' },
-                    { label: '제안단계', value: '보안아키텍처 수립' },
-                    { label: 'SI 운영', value: '기술 지원' },
-                    { label: '기관', value: '금융권' }
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "금융권 차세대 SI 자체 보안성 심의 대응·검토"
+                    },
+                    {
+                        "type": "info",
+                        "text": "설계·개발·오픈 단계별 보안 요구사항 확인"
+                    },
+                    {
+                        "type": "info",
+                        "text": "취약점·모의해킹 결과 검토 및 보완조치 이행 점검"
+                    },
+                    {
+                        "type": "success",
+                        "text": "OK저축은행 차세대 보안성 심의 대응 완료"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안 아키텍처 검토와 SI 제안서 작성"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "자체 보안성 심의",
+                        "value": "대응·검토"
+                    },
+                    {
+                        "label": "구축 단계별 통제",
+                        "value": "이행 확인"
+                    },
+                    {
+                        "label": "OK저축은행",
+                        "value": "심의 대응"
+                    },
+                    {
+                        "label": "SI 제안",
+                        "value": "보안 검토"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://www.wins21.com/assets/images/main/winstechnet.png",
+                "salary": "4,500만원",
+                "employmentType": "정규직",
+                "region": "대전",
+                "industry": "소프트웨어·솔루션·ASP",
+                "companyType": "중견기업·일반기업·코스닥상장(KOSDAQ)",
+                "company": "윈스",
+                "title": "윈스 - 정보보안1팀",
+                "period": "2019.02 ~ 2022.07",
+                "role": "정보보안1팀 선임 / 정보보안",
+                "description": "산림청·문화체육관광부 사이버안전센터 위탁 운영에 참여하여 보안관제와 침해사고 대응을 수행했습니다. 공공기관 보안 진단·점검, 감사·ISMS 대응자료 준비와 교육·모의훈련도 지원했습니다.",
+                "highlights": [
+                    "보안관제: 보안 이벤트 실시간 모니터링, 악성코드 유포·이상 트래픽·비정상 행위 탐지·분석 및 대응",
+                    "관제 시스템 운영: IPS·방화벽·백신과 로그 수집·분석 시스템 운영·점검, 보안정책과 취약 구성 확인",
+                    "대응·보고: 초기 대응과 후속조치 지원, 주요 보안 이벤트 분석 및 정기·수시 대응 결과 보고서 작성",
+                    "문화체육관광부 점검: 소속·산하기관의 보안 진단·점검, 통제 적용 현황 확인 및 보완사항 정리",
+                    "감사·ISMS 지원: 자체 감사·국정감사 운영 현황자료 작성, ISMS 심사 증적 수집·정리 및 대응자료 준비",
+                    "교육·훈련: 임직원 보안교육과 해킹메일·DDoS 대응훈련 운영 지원, 결과 분석과 개선사항 공유"
+                ],
+                "tech": [
+                    "보안관제",
+                    "이상징후 분석",
+                    "침해사고 대응 지원",
+                    "IPS",
+                    "방화벽",
+                    "로그 분석",
+                    "ISMS 대응 지원",
+                    "감사 대응",
+                    "교육·훈련"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "산림청·문화체육관광부 사이버안전센터 운영 참여"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안 이벤트·이상 트래픽 분석과 대응 결과 보고"
+                    },
+                    {
+                        "type": "info",
+                        "text": "소속·산하기관 보안 점검 및 감사 대응 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "ISMS 심사 운영 증적과 점검자료 정리"
+                    },
+                    {
+                        "type": "info",
+                        "text": "해킹메일·DDoS 대응훈련 결과 분석 및 개선 지원"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "사이버안전센터",
+                        "value": "관제·대응"
+                    },
+                    {
+                        "label": "공공기관 보안",
+                        "value": "진단·점검"
+                    },
+                    {
+                        "label": "감사·ISMS",
+                        "value": "자료 지원"
+                    },
+                    {
+                        "label": "사고예방",
+                        "value": "교육·훈련"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://images.weserv.nl/?url=seilsystem.kr/theme/wering/img/hdft/hd_logo.png",
+                "salary": "3,400만원",
+                "employmentType": "정규직",
+                "region": "세종",
+                "industry": "네트워크·통신",
+                "companyType": "소기업·일반기업·비상장",
+                "company": "새일시스템즈",
+                "title": "새일시스템즈 - SE사업부",
+                "period": "2018.01 ~ 2019.02",
+                "role": "SE사업부 대리 / 인프라·보안운영",
+                "description": "산업통상자원부 사이버안전센터에서 서버·네트워크와 보안장비를 운영하고 장애에 대응했습니다. Splunk 로그 분석, 을지훈련장·경진대회 인프라 구성과 보안 감사 대응자료 정리 업무도 수행했습니다.",
+                "highlights": [
+                    "센터 인프라 운영: 서버·네트워크 상태 확인과 장애 대응, 산하기관 현장 장애 원인 파악·복구 지원",
+                    "보안장비 운영: 방화벽·VPN·침입탐지 장비 점검과 보안정책 적용 현황 확인",
+                    "로그 분석: Splunk 기반 로그 수집·분석, 탐지 이벤트 모니터링과 이상징후 대응 지원",
+                    "훈련·행사 지원: 을지훈련장 인프라 설계·구성·운영과 사이버보안 경진대회 네트워크 구성 지원",
+                    "감사 대응: 접근통제·로그 보관·장비 구성 현황 확인, 증빙자료 정리와 인터뷰 대응 및 보완사항 검토 지원"
+                ],
+                "tech": [
+                    "서버·네트워크 운영",
+                    "Splunk",
+                    "방화벽",
+                    "VPN",
+                    "IDS",
+                    "장애 대응",
+                    "훈련 인프라",
+                    "보안 감사 지원"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "산업통상자원부 사이버안전센터 인프라 운영"
+                    },
+                    {
+                        "type": "info",
+                        "text": "방화벽·VPN·IDS 점검과 장애 대응 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "Splunk 로그 분석 및 이상징후 확인"
+                    },
+                    {
+                        "type": "info",
+                        "text": "을지훈련장·경진대회 네트워크 구성 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안 감사 운영 현황·증빙자료 정리"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "사이버안전센터",
+                        "value": "인프라 운영"
+                    },
+                    {
+                        "label": "Splunk",
+                        "value": "로그 분석"
+                    },
+                    {
+                        "label": "훈련·행사",
+                        "value": "구성 지원"
+                    },
+                    {
+                        "label": "보안 감사",
+                        "value": "대응 지원"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://itcenpns.com/resources/itcen/assets/svg/logos/logo_pns.svg",
+                "salary": "3,200만원",
+                "employmentType": "계약직",
+                "region": "대전",
+                "industry": "컴퓨터·하드웨어·장비",
+                "companyType": "중견기업·일반기업·비상장",
+                "company": "콤텍정보통신",
+                "title": "콤텍정보통신 - 시스템운영",
+                "period": "2017.06 ~ 2017.08",
+                "role": "시스템운영 주임 / 인프라 (계약직)",
+                "description": "대전통합전산센터 보안 인프라 고도화 사업에 참여하여 보안·네트워크 장비 교체와 설정, VLAN·망 분리 적용 테스트 및 전환 검증을 지원했습니다.",
+                "highlights": [
+                    "보안 인프라 고도화: 방화벽·IPS·스위치 등 보안·네트워크 장비 교체 및 설정 작업 지원",
+                    "전환 검증: VLAN 구성과 망 분리 적용 테스트, 정책 변경 영향 확인 및 장비 동작·발생 이슈 정리",
+                    "산출물 작성: 작업 내역서와 구성·정책 변경사항 요약, 작업 결과 문서화 및 유관 부서 공유",
+                    "주요 프로젝트: 향수정보통신 경력과 동일한 대전통합전산센터 보안 인프라 고도화 사업 참여"
+                ],
+                "tech": [
+                    "방화벽",
+                    "IPS",
+                    "스위치",
+                    "VLAN",
+                    "망 분리 테스트",
+                    "장비 교체·설정 지원",
+                    "전환 검증",
+                    "작업 문서화"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "대전통합전산센터 보안 인프라 고도화 참여"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안·네트워크 장비 교체와 설정 작업 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "VLAN·망 분리 테스트 및 정책 변경 영향 확인"
+                    },
+                    {
+                        "type": "info",
+                        "text": "작업 내역과 변경사항 문서화·공유"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "대전통합전산센터",
+                        "value": "고도화 지원"
+                    },
+                    {
+                        "label": "보안·네트워크 장비",
+                        "value": "교체·설정"
+                    },
+                    {
+                        "label": "VLAN·망 분리",
+                        "value": "전환 검증"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://images.weserv.nl/?url=hyangsu.co.kr/data/skin/respon_default/images/skin/hd_logo_on.png",
+                "salary": "3,200만원",
+                "employmentType": "계약직",
+                "region": "대전",
+                "industry": "네트워크·통신",
+                "companyType": "소기업·일반기업·비상장",
+                "company": "향수정보통신",
+                "title": "향수정보통신 - 시스템운영",
+                "period": "2017.04 ~ 2017.05",
+                "role": "시스템운영 주임 / 인프라 (계약직)",
+                "description": "콤텍정보통신 경력과 동일한 대전통합전산센터 보안 인프라 고도화 사업에 참여했습니다. 장비 교체·설정과 전환 검증, VLAN·망 분리 테스트 및 결과 문서화를 지원했습니다.",
+                "highlights": [
+                    "장비 교체·검증: 공공기관 전산센터 보안·네트워크 장비 교체와 설정 및 전환 검증 지원",
+                    "네트워크 테스트: VLAN·망 분리 적용과 변경 영향 검토, 전환 계획에 따른 테스트 결과 정리",
+                    "문서화·협업: 장비 설정·변경 내역과 작업 산출물 작성, 확인한 이슈 및 검증 결과를 유관 부서에 공유"
+                ],
+                "tech": [
+                    "보안 인프라 고도화",
+                    "장비 전환 검증",
+                    "VLAN",
+                    "망 분리 테스트",
+                    "변경 영향 검토",
+                    "산출물 작성"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "대전통합전산센터 보안 인프라 고도화 참여"
+                    },
+                    {
+                        "type": "info",
+                        "text": "전환 계획에 따른 장비 교체·설정·검증 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "VLAN·망 분리 테스트 및 영향 검토"
+                    },
+                    {
+                        "type": "info",
+                        "text": "작업 결과와 변경 내역 문서화"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "대전통합전산센터",
+                        "value": "고도화 지원"
+                    },
+                    {
+                        "label": "장비 전환",
+                        "value": "검증 지원"
+                    },
+                    {
+                        "label": "작업 결과",
+                        "value": "문서화"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://images.weserv.nl/?url=www.big21c.co.kr/img/common/logo.gif",
+                "salary": "2,800만원",
+                "employmentType": "정규직",
+                "region": "대전",
+                "industry": "제조업기타",
+                "companyType": "중소기업·일반기업·비상장",
+                "company": "비아이지",
+                "title": "비아이지 - 보안관리부",
+                "period": "2015.04 ~ 2016.04",
+                "role": "보안관리부 사원 / 정보보안",
+                "description": "사내 방화벽·백신·VPN 정책과 사용자 계정·접근권한을 관리했습니다. 보안 로그 및 정책 준수 여부를 점검하고 신입·정기 보안교육과 캠페인을 운영했습니다.",
+                "highlights": [
+                    "보안솔루션 운영: 방화벽·백신·VPN 정책 관리, 보안 로그 점검과 이상징후 대응 지원",
+                    "사용자 관리: 계정·접근권한과 변경 이력 관리, 통제 적용 현황 확인 및 운영 기준 정비 지원",
+                    "정책 준수 점검: 사내 보안정책·지침 이행 여부 확인 및 개선사항 정리",
+                    "임직원 교육: 신입·분기별 정기 보안교육 기획·운영과 보안 수칙 안내·캠페인 수행",
+                    "교육 개선: 교육 피드백을 반영한 내용과 진행 방식 보완, 사용자 보안관리 기준 정착 지원"
+                ],
+                "tech": [
+                    "방화벽",
+                    "백신",
+                    "VPN",
+                    "계정·접근권한",
+                    "보안 로그 점검",
+                    "임직원 보안교육",
+                    "보안정책 점검"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "사내 보안솔루션 정책과 로그 점검"
+                    },
+                    {
+                        "type": "info",
+                        "text": "사용자 계정·접근권한 및 변경 이력 관리"
+                    },
+                    {
+                        "type": "info",
+                        "text": "신입·정기 보안교육과 보안 캠페인 운영"
+                    },
+                    {
+                        "type": "info",
+                        "text": "교육 피드백과 정책 점검 결과를 개선에 반영"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "보안솔루션",
+                        "value": "정책 운영"
+                    },
+                    {
+                        "label": "계정·권한",
+                        "value": "이력 관리"
+                    },
+                    {
+                        "label": "임직원 교육",
+                        "value": "정기 운영"
+                    }
                 ]
             }
         ];
 
         const certifications = [
-            { name: 'CCNA (Cisco Certification Network Associate)', date: '2014.12', org: 'CISCO', type: 'cert' },
-            { name: 'LPIC-1', date: '2015.01', org: 'LINUX', type: 'cert' },
-            { name: 'MCSE (Microsoft Certified Systems Engineer)', date: '2016.11', org: 'Microsoft', type: 'cert' },
-            { name: '네트워크관리사 2급', date: '2016.10', org: '한국정보통신자격협회', type: 'cert' },
-            { name: 'ISO 19011 (AU/TL) 경영시스템 심사 가이드라인', date: '2021.04', org: 'GCT', type: 'cert' },
-            { name: 'ISO/IEC 27001 (ISMS) 정보보안경영시스템', date: '2021.04', org: 'GCT', type: 'cert' },
-            { name: 'ISO/IEC 27017 & 27018 (CICP) 클라우드 보안·개인정보 보호 경영시스템', date: '2021.09', org: 'GCT', type: 'cert' },
-            { name: 'ISO/IEC 27701 (PIMS) 개인정보보호경영시스템', date: '2021.10', org: 'GCT', type: 'cert' },
-            { name: 'AWS Certified Cloud Practitioner', date: '2023.09', org: 'AWS', type: 'cert' },
-            { name: 'NAVER Cloud Platform Certified Associate', date: '2022.11', org: 'NAVER Cloud Platform', type: 'cert' },
-            { name: 'OPIC Intermediate Low', date: '2018.07', org: '영어', type: 'lang' }
-        ];
-        const projects = [
-            ...projectsPart1,
             {
-                logoUrl: 'https://www.wins21.com/assets/images/main/winstechnet.png',
-                company: '윈스',
-                title: '윈스 - 정보보안1팀',
-                period: '2019.02 ~ 2022.07 (3년 6개월)',
-                role: '선임 / 정보보안',
-                salary: '4,500만원',
-                employmentType: '정규직',
-                region: '대전',
-                industry: '소프트웨어·솔루션·ASP',
-                companyType: '중견기업·일반기업·코스닥상장(KOSDAQ)',
-                description: '산림청·문화체육관광부 사이버안전센터 위탁 운영 중심으로 침해사고 대응과 SOC 운영을 수행했습니다.',
-                highlights: [
-                    '사이버안전센터 운영(위탁) 및 보안 이벤트 실시간 모니터링',
-                    '침해사고 탐지·분석·대응(악성코드 유포, 이상 트래픽/행위 탐지·차단)',
-                    'IPS/방화벽/백신/로그 수집 분석 시스템 운영 및 보고서 작성',
-                    '해킹메일 모의훈련 및 DDoS 대응훈련 기획·실행 지원, 결과 분석 및 개선안 도출',
-                    '주요 보안 인프라 진단 수행(취약 구성 점검, 정책 적정성 검토, 개선 이행 추적)',
-                    'ISMS 인증 대응 증적 자료 수집·정리 및 심사 대응 문서 준비',
-                    'CERT 대응 프로세스 지원: 초기대응, 후속조치, 재발방지 개선 포인트 도출'
-                ],
-                tech: ['보안 관제', '침해사고 대응', '로그 분석', 'IPS', '방화벽', 'CERT', '해킹메일 훈련', 'DDoS 훈련', '인프라 진단', 'ISMS 지원'],
-                terminalLog: [
-                    { type: 'cmd', text: 'soc --monitor --org forest,mcst' },
-                    { type: 'success', text: '실시간 관제 운영 정상화' },
-                    { type: 'cmd', text: 'incident --respond --type malware,traffic-anomaly' },
-                    { type: 'success', text: '이상 징후 대응 및 보고 완료' },
-                    { type: 'cmd', text: 'audit --support --target isms-data' },
-                    { type: 'success', text: 'ISMS 대응 자료 준비 완료' }
-                ],
-                achievements: [
-                    { label: '침해대응', value: '탐지·차단' },
-                    { label: '사고예방', value: '훈련·진단' },
-                    { label: '관제', value: '실시간 운영' },
-                    { label: '기관', value: '공공기관' }
-                ]
+                "name": "ISO/IEC 27001 정보보호경영시스템 심사원보",
+                "date": "2021.04",
+                "org": "GCT",
+                "type": "cert",
+                "status": "심사원보 취득"
             },
             {
-                logoUrl: 'https://images.weserv.nl/?url=seilsystem.kr/theme/wering/img/hdft/hd_logo.png',
-                company: '새일시스템즈',
-                title: '새일시스템즈 - 인프라운영팀',
-                period: '2018.01 ~ 2019.02 (1년 2개월)',
-                role: '대리 / 보안운영',
-                salary: '3,400만원',
-                employmentType: '정규직',
-                region: '세종',
-                industry: '네트워크·통신',
-                companyType: '소기업·일반기업·비상장',
-                description: '산업통상자원부 사이버안전센터에서만 인프라 운영, Splunk 분석, 행사/훈련 인프라 지원 업무를 수행했습니다.',
-                highlights: [
-                    '산업통상자원부 사이버안전센터 시스템 운영 및 장애 대응',
-                    '방화벽/VPN/침입탐지 운영 및 Splunk 기반 로그 분석',
-                    '이상 징후 분석 및 대응 지원, 을지훈련장 인프라 설계·운영',
-                    '사이버보안 경진대회 네트워크 구성 지원 및 보안 감사 대응 자료 정리'
-                ],
-                tech: ['서버 운영', '네트워크 운영', 'Splunk', '방화벽', 'VPN', 'IDS', '보안 감사'],
-                terminalLog: [
-                    { type: 'cmd', text: 'infra --manage --org motie-soc' },
-                    { type: 'success', text: '인프라 운영 및 장애 대응 수행' },
-                    { type: 'cmd', text: 'splunk --analyze --stream logs' },
-                    { type: 'success', text: '로그 분석 및 탐지 모니터링 운영' }
-                ],
-                achievements: [
-                    { label: '인프라', value: '센터 운영' },
-                    { label: 'Splunk', value: '분석 운영' },
-                    { label: '감사', value: '대응 지원' },
-                    { label: '기관', value: '공공기관' }
-                ]
+                "name": "ISO/IEC 27017 클라우드 보안 심사원보",
+                "date": "2021.09",
+                "org": "GCT",
+                "type": "cert",
+                "status": "심사원보 취득"
             },
             {
-                logoUrl: 'https://itcenpns.com/resources/itcen/assets/svg/logos/logo_pns.svg',
-                company: '콤텍정보통신',
-                title: '콤텍정보통신 - 인프라운영',
-                period: '2017.05 ~ 2017.08 (4개월)',
-                role: '주임 / 시스템엔지니어',
-                salary: '3,200만원',
-                employmentType: '계약직',
-                region: '대전',
-                industry: '컴퓨터·하드웨어·장비',
-                companyType: '중견기업·일반기업·비상장',
-                description: '대전통합전산센터 보안 인프라 고도화 사업에서 보안 네트워크 장비 교체 및 망 분리 테스트를 수행했습니다.',
-                highlights: [
-                    '공공기관 전산센터 보안 인프라 고도화 사업 참여',
-                    '방화벽/IPS/스위치 장비 교체 및 설정 지원',
-                    'VLAN 망 분리 적용 테스트, 정책 변경 영향도 확인',
-                    '작업 내역서/변경점 요약서 작성 및 유관부서 협업'
-                ],
-                tech: ['방화벽', 'IPS', '스위치', 'VLAN', '망 분리', '인프라 고도화', '문서화'],
-                terminalLog: [
-                    { type: 'cmd', text: 'infra --upgrade --target daejeon-idc' },
-                    { type: 'success', text: '장비 교체 작업 지원 완료' },
-                    { type: 'cmd', text: 'vlan --segregation-test' },
-                    { type: 'success', text: '망 분리 테스트 완료' }
-                ],
-                achievements: [
-                    { label: '프로젝트', value: 'IDC 고도화' },
-                    { label: '작업', value: '교체/설정' },
-                    { label: '분리', value: '망 분리 테스트' },
-                    { label: '기관', value: '공공기관' }
-                ]
+                "name": "ISO/IEC 27018 퍼블릭 클라우드 개인정보보호 심사원보",
+                "date": "2021.09",
+                "org": "GCT",
+                "type": "cert",
+                "status": "심사원보 취득"
             },
             {
-                logoUrl: 'https://images.weserv.nl/?url=hyangsu.co.kr/data/skin/respon_default/images/skin/hd_logo_on.png',
-                company: '향수정보통신',
-                title: '향수정보통신 - 인프라운영',
-                period: '2017.04 ~ 2017.05 (2개월)',
-                role: '주임 / 시스템엔지니어',
-                salary: '3,200만원',
-                employmentType: '계약직',
-                region: '대전',
-                industry: '네트워크·통신',
-                companyType: '소기업·일반기업·비상장',
-                description: '보안 인프라 고도화 과제에서 장비 교체/설정/전환 검증 지원과 VLAN 망 분리 테스트를 수행했습니다.',
-                highlights: [
-                    '공공기관 전산센터 보안 인프라 고도화 참여',
-                    '장비 전환 검증 및 영향을 확인해 산출물 정비',
-                    'VLAN/망 분리 테스트 및 영향도 검토',
-                    '문서화 및 인수인계 정리'
-                ],
-                tech: ['인프라 고도화', 'VLAN', '망 분리', '장비 전환', '문서화'],
-                terminalLog: [
-                    { type: 'cmd', text: 'infra --support --target daejeon-idc' },
-                    { type: 'info', text: '전환 검증 지원 수행' },
-                    { type: 'success', text: '보안 인프라 고도화 지원 완료' }
-                ],
-                achievements: [
-                    { label: '지원', value: '전환검증' },
-                    { label: '안정화', value: '문서 정비' },
-                    { label: '기관', value: '공공기관' }
-                ]
+                "name": "ISO/IEC 27701 개인정보보호경영시스템 심사원보",
+                "date": "2021.10",
+                "org": "GCT",
+                "type": "cert",
+                "status": "심사원보 취득"
             },
             {
-                logoUrl: 'https://images.weserv.nl/?url=www.big21c.co.kr/img/common/logo.gif',
-                company: '비아이지',
-                title: '비아이지 - 보안관리부',
-                period: '2015.04 ~ 2016.04 (1년 1개월)',
-                role: '사원 / 정보보안',
-                salary: '2,800만원',
-                employmentType: '정규직',
-                region: '대전',
-                industry: '제조업기타',
-                companyType: '중소기업·일반기업·비상장',
-                description: '사내 보안솔루션 정책 운영과 계정·접근권한·로그 관리, 보안 교육 운영을 통해 기본 보안 운영 구조를 정착했습니다.',
-                highlights: [
-                    '방화벽·백신·VPN 등 보안솔루션 정책 운영',
-                    '계정/접근권한 관리 및 변경 이력 관리',
-                    '보안 로그 모니터링 및 이상 징후 대응 지원',
-                    '보안 정책·지침 준수 점검 및 개선사항 도출',
-                    '전사 보안 교육 기획·운영(신입/정기 교육) 및 캠페인 수행'
-                ],
-                tech: ['방화벽', '백신', 'VPN', '계정관리', '접근권한', '보안 교육', '정책 점검'],
-                terminalLog: [
-                    { type: 'cmd', text: 'security --operate --scope internal' },
-                    { type: 'info', text: '보안 솔루션 운영 및 정책 관리' },
-                    { type: 'cmd', text: 'training --plan --type quarterly' },
-                    { type: 'success', text: '보안 교육 체계 구축 완료' }
-                ],
-                achievements: [
-                    { label: '운영', value: '정책 정비' },
-                    { label: '교육', value: '체계화' },
-                    { label: '점검', value: '개선 도출' }
-                ]
+                "name": "NAVER Cloud Platform Certified Associate",
+                "date": "2022.11",
+                "org": "NAVER Cloud Platform",
+                "type": "cert",
+                "status": "취득"
+            },
+            {
+                "name": "MCSE: Server Infrastructure / Cloud Platform and Infrastructure",
+                "date": "2016.11",
+                "org": "Microsoft",
+                "type": "cert",
+                "status": "취득"
+            },
+            {
+                "name": "ISO 19011 경영시스템 심사 가이드라인 과정",
+                "date": "2021.04",
+                "org": "GCT",
+                "type": "course",
+                "status": "교육 수료"
+            },
+            {
+                "name": "LPIC 101 시험",
+                "date": "2015.01",
+                "org": "Linux Professional Institute",
+                "type": "exam",
+                "status": "시험 합격"
+            },
+            {
+                "name": "AWS Certified Cloud Practitioner",
+                "date": "2023.09",
+                "org": "AWS",
+                "type": "cert",
+                "expires": "2026-09-06"
+            },
+            {
+                "name": "CCNA (Cisco Certified Network Associate)",
+                "date": "2014.12",
+                "org": "Cisco",
+                "type": "cert",
+                "expires": "2017-12-26"
+            },
+            {
+                "name": "네트워크관리사 2급",
+                "date": "2016.10",
+                "org": "한국정보통신자격협회",
+                "type": "cert",
+                "expires": "2021-10-17"
+            },
+            {
+                "name": "OPIc Intermediate Low",
+                "date": "2018.07",
+                "org": "영어",
+                "type": "lang",
+                "expires": "2020-06-29"
             }
         ];
 
         const education = [
-            { school: '아주대학교 정보통신대학원(석사)', major: '정보보안학과', period: '2015.08 ~ 2018.08', gpa: '3.7/4.5', type: '대학원(석사) 졸업' },
-            { school: '대전대신고등학교', major: '이과계열', period: '2005.03 ~ 2007.02', type: '졸업' },
-            { school: 'I2SEC(국제정보보안센터)', major: '정보보호 전문가 과정', period: '2014.07 ~ 2014.11', type: '교육수료' },
-            { school: 'IT SCHOOL', major: '시스템통합엔지니어양성 과정', period: '2016.06 ~ 2016.11', type: '교육수료' }
+            {
+                "school": "아주대학교 정보통신대학원",
+                "major": "정보통신공학과 사이버보안전공",
+                "period": "2015.08 ~ 2018.08",
+                "gpa": "3.67 / 4.5",
+                "type": "석사 졸업"
+            },
+            {
+                "school": "군산대학교",
+                "major": "해양건설공학과",
+                "period": "2007.03 ~ 2014.02",
+                "gpa": "3.26 / 4.5",
+                "type": "학사 졸업"
+            },
+            {
+                "school": "대전대신고등학교",
+                "major": "이과계열",
+                "period": "2004.03 ~ 2007.02",
+                "type": "졸업"
+            },
+            {
+                "school": "I2sec",
+                "major": "정보보호전문가 과정",
+                "period": "2014.07 ~ 2014.11",
+                "type": "교육수료"
+            },
+            {
+                "school": "IT School",
+                "major": "시스템통합엔지니어양성 과정",
+                "period": "2016.06 ~ 2016.11",
+                "type": "교육수료"
+            }
         ];
-
         return (
             <>
                 <nav>
@@ -788,15 +1192,15 @@
                         <div className="hero-left">
                             <div className="hero-tag">Information Security Professional</div>
                             <h1 className="hero-name">홍기웅</h1>
-                            <p className="hero-role">운영 경험을 기반으로 보안 체계를 구축해 온 실무형 보안 전문가</p>
-                            <div className="hero-stats" style={{display: 'flex', flexWrap: 'nowrap', gap: '6px', width: '100%', alignItems: 'flex-end'}}>
-                                <div className="h-stat" style={{flex: '0 0 auto', width: 'auto', minWidth: 0, marginRight: 0, paddingRight: '6px'}}><div className="h-stat-value" style={{whiteSpace: 'nowrap', wordBreak: 'keep-all', fontSize: '42px', letterSpacing: '-0.01em'}}>10년</div><div className="h-stat-label">경력</div></div>
-                                <div className="h-stat" style={{flex: '0 0 auto', width: 'auto', minWidth: 0, marginRight: 0, paddingRight: '6px'}}><div className="h-stat-value" style={{whiteSpace: 'nowrap', wordBreak: 'keep-all', fontSize: '42px', letterSpacing: '-0.01em'}}>ISMS·PG</div><div className="h-stat-label">인증 총괄</div></div>
-                                <div className="h-stat" style={{flex: '0 0 auto', width: 'auto', minWidth: 0, marginRight: 0, paddingRight: '6px'}}><div className="h-stat-value" style={{whiteSpace: 'nowrap', wordBreak: 'keep-all', fontSize: '42px', letterSpacing: '-0.01em'}}>거버넌스</div><div className="h-stat-label">관리·운영</div></div>
-                                <div className="h-stat" style={{flex: '0 0 auto', width: 'auto', minWidth: 0, marginRight: 0, paddingRight: '6px'}}><div className="h-stat-value" style={{whiteSpace: 'nowrap', wordBreak: 'keep-all', fontSize: '42px', letterSpacing: '-0.01em'}}>보안시스템</div><div className="h-stat-label">인프라 운영</div></div>
+                            <p className="hero-role">보안관제·인프라 운영 경험을 바탕으로<br />ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다.</p>
+                            <div className="hero-stats portfolio-focus">
+                                <div className="h-stat"><div className="h-stat-value">ISMS</div><div className="h-stat-label">최초 인증·사후심사</div></div>
+                                <div className="h-stat"><div className="h-stat-value">PG</div><div className="h-stat-label">최초 인증·유지관리</div></div>
+                                <div className="h-stat"><div className="h-stat-value">금감원</div><div className="h-stat-label">대응·보고서 제출</div></div>
+                                <div className="h-stat"><div className="h-stat-value">보안운영</div><div className="h-stat-label">솔루션·인프라 도입·운영</div></div>
                             </div>
                         </div>
-                        <div className="hero-right"><div className="hero-ornament"><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-center">10Y+</div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div></div></div>
+                        <div className="hero-right"><div className="hero-ornament"><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-center">SEC</div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div></div></div>
                     </div>
                 </section>
 
@@ -804,7 +1208,7 @@
 
                 <section className="section" id="about">
                     <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">운영이 정착되는 보안체계</h2></div></div>
+                        <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">소개</h2></div></div>
                         <div className="projects-list">
                             <div className="project-card fade-in" style={{cursor: 'default'}}>
                                 <div className="project-card-left">
@@ -815,11 +1219,13 @@
                                 <div className="project-card-body">
                                     <div className="project-card-header">
                                         <div>
-                                            <h3 className="project-card-title">실행 중심 보안 운영</h3>
-                                            <div className="project-card-role">규정을 조직 운영에 정착시키는 실무 역량</div>
+                                            <h3 className="project-card-title">운영 경험을 바탕으로 보안 요구사항을 실행에 연결합니다</h3>
+                                            <div className="project-card-role">정보보호 관리체계 · 금융보안 컴플라이언스 · 기술 운영</div>
                                         </div>
                                     </div>
-                                    <p className="project-card-desc">관제·진단·감사 대응, 그리고 내부 인증 전 과정을 경험하며 규정을 조직에서 실제로 작동하도록 만들고 재발방지 운영으로 이어지는 구조를 정리해 왔습니다.</p>
+                                    <p className="project-card-desc">보안관제와 인프라 운영부터 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영까지 경험한 정보보안 실무자입니다.</p>
+                                    <p className="project-card-desc">ISMS 최초 인증·사후심사 대응과 PG 최초 보안 인증 취득을 수행했으며, 현재는 금융감독원 요청사항 대응과 CISO·임원 보고, 대외 보고서 작성·제출 및 사내 보안정보 공유를 담당하고 있습니다.</p>
+                                    <p className="project-card-desc">NAS·Chakra Max·SSL VPN·IPS·방화벽 등 보안솔루션과 인프라의 신규 도입·운영 경험을 갖추고 있습니다. 현업과 보안 요구사항을 조율하고, 정보보호 정책과 기술적 통제를 실제 업무에 적용하는 데 강점이 있습니다.</p>
                                 </div>
                             </div>
                         </div>
@@ -830,7 +1236,7 @@
 
                 <section className="section" id="projects">
                     <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">Career Summary</div><h2 className="section-title">경력 요약</h2></div><p className="section-desc">총 10년의 경험을 핵심 메시지로 정리했습니다.</p></div>
+                        <div className="section-header fade-in"><div><div className="section-tag">Career Summary</div><h2 className="section-title">경력 요약</h2></div><p className="section-desc">인증 대응, 금융보안, 보안성 검토와 기술 운영 경험을 정리했습니다.</p></div>
                         <div className="projects-list" style={{marginBottom: '24px'}}>
                             {careerSummary.map((item, idx) => (
                                 <div key={idx} className="project-card fade-in" style={{cursor: 'default', transitionDelay: `${Math.min(idx * 0.06, 0.2)}s`}}>
@@ -859,7 +1265,7 @@
                                     className="project-card fade-in"
                                     onClick={() => selectProject(idx)}
                                     onKeyDown={(e) => {
-                                        if (e.key === 'Enter' || e.key === ' ') selectProject(idx);
+                                        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectProject(idx); }
                                     }}
                                     role="button"
                                     tabIndex={0}
@@ -900,7 +1306,7 @@
 
                 <section className="section" id="tech">
                     <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">Expertise</div><h2 className="section-title">기술 스택</h2></div></div>
+                        <div className="section-header fade-in"><div><div className="section-tag">Expertise</div><h2 className="section-title">업무 역량과 활용 기술</h2></div></div>
                         <div className="skills-grid">
                             {Object.entries(techStack).map(([cat, items], idx) => (
                                 <div key={idx} className="skill-card fade-in" style={{transitionDelay: `${Math.min(idx * 0.04, 0.3)}s`}}><div className="skill-name"><div className="skill-dot"></div>{cat}</div><div className="skill-badges">{items.map((item, i) => <span key={i} className="skill-badge">{item}</span>)}</div></div>
@@ -913,12 +1319,12 @@
 
                 <section className="section" id="certs">
                     <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">Certifications</div><h2 className="section-title">자격증 &middot; 어학</h2></div></div>
+                        <div className="section-header fade-in"><div><div className="section-tag">Certifications</div><h2 className="section-title">자격·교육·어학 이력</h2></div></div>
                         <div className="projects-list">
                             {certifications.map((cert, idx) => (
                                 <div key={idx} className="project-card fade-in" style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default'}}>
                                     <div className="project-card-left"><div style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>{cert.type === 'lang' ? '\u{1F30D}' : '\u{1F3C5}'}</div></div>
-                                    <div className="project-card-body"><div className="project-card-header"><div><h3 className="project-card-title">{cert.name}</h3><div className="project-card-role">{cert.org}</div></div><div className="project-card-period">{cert.date}</div></div></div>
+                                    <div className="project-card-body"><div className="project-card-header"><div><h3 className="project-card-title">{cert.name}</h3><div className="project-card-role">{cert.org}</div><div className="credential-meta"><span className="credential-status">{cert.expires ? (new Date(cert.expires + 'T23:59:59').getTime() < Date.now() ? '유효기간 만료' : '취득') : cert.status}</span>{cert.expires && <span>유효기간 {cert.expires.replace(/-/g, '.')}까지</span>}</div></div><div className="project-card-period">취득·이수 {cert.date}</div></div></div>
                                 </div>
                             ))}
                         </div>
@@ -940,6 +1346,10 @@
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                        <div className="military-record fade-in">
+                            <div><h3>병역</h3><p>의무경찰 수경 · 만기전역</p></div>
+                            <p>2008.05.08 ~ 2010.03.27</p>
                         </div>
                     </div>
                 </section>

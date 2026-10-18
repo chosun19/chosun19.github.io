@@ -17,18 +17,58 @@
         .contact-info-eq {
             font-size: inherit;
         }
+        .career-guide {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: -8px 0 24px;
+            padding: 22px 24px;
+            border: 1px solid rgba(201, 169, 110, 0.4);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            background: linear-gradient(110deg, rgba(201, 169, 110, 0.16), rgba(201, 169, 110, 0.04));
+        }
+        .career-guide-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 44px;
+            height: 44px;
+            border-radius: 12px;
+            color: var(--gold-3);
+            background: rgba(201, 169, 110, 0.12);
+        }
+        .career-guide-copy {
+            min-width: 0;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+        .career-guide strong {
+            display: block;
+            color: var(--gold-3);
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .career-guide p {
+            margin-top: 5px;
+            color: var(--text);
+            font-size: 13px;
+            line-height: 1.7;
+        }
         .project-card-clickhint {
-            margin-top: 10px;
+            margin-top: 16px;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 6px 10px;
+            padding: 8px 14px;
             border-radius: 999px;
             border: 1px solid rgba(201, 169, 110, 0.45);
-            color: #d4b06b;
-            font-size: 12px;
+            color: #17130d;
+            font-size: 13px;
+            font-weight: 700;
             letter-spacing: 0.02em;
-            background: rgba(201, 169, 110, 0.08);
+            background: var(--gold);
             transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
         }
         .project-card[role="button"] {
@@ -54,7 +94,7 @@
         .project-card[role="button"]:hover .project-card-clickhint,
         .project-card[role="button"]:focus-visible .project-card-clickhint {
             transform: translateX(3px);
-            background: rgba(201, 169, 110, 0.16);
+            background: var(--gold-2);
             border-color: rgba(201, 169, 110, 0.75);
         }
         .project-card[role="button"]:hover .project-card-arrow,
@@ -167,8 +207,8 @@
                 display: none !important;
             }
             .project-card-clickhint {
-                font-size: 11px;
-                padding: 5px 9px;
+                font-size: 12px;
+                padding: 7px 11px;
             }
         }
         @media (max-width: 480px) {
@@ -188,6 +228,19 @@
             }
         }
         @media (max-width: 600px) {
+            .career-guide {
+                align-items: flex-start;
+                gap: 12px;
+                padding: 18px 16px;
+            }
+            .career-guide-icon {
+                flex-basis: 36px;
+                height: 36px;
+                border-radius: 10px;
+            }
+            .career-guide strong {
+                font-size: 15px;
+            }
             .hero-stats {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
             }
@@ -1091,7 +1144,7 @@
                 "status": "교육 수료"
             },
             {
-                "name": "LPIC 101 시험",
+                "name": "LPIC-101",
                 "date": "2015.01",
                 "org": "Linux Professional Institute",
                 "type": "exam",
@@ -1260,7 +1313,19 @@
                                 </div>
                             ))}
                         </div>
-                        <div className="section-header fade-in"><div><div className="section-tag">Career</div><h2 className="section-title">경력 사항</h2></div><p className="section-desc">카드를 클릭(모바일은 탭)하면 상세 경력을 볼 수 있습니다.</p></div>
+                        <div className="section-header fade-in"><div><div className="section-tag">Career</div><h2 className="section-title">경력 사항</h2></div></div>
+                        <div className="career-guide" id="career-guide">
+                            <div className="career-guide-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="m5 3 5.5 16 3-6 6-3L5 3Z" />
+                                    <path d="m14 14 5 5M15 3v3M3 15h3" />
+                                </svg>
+                            </div>
+                            <div className="career-guide-copy">
+                                <strong>카드를 클릭하면 상세 경력을 볼 수 있습니다.</strong>
+                                <p>모바일에서는 카드를 탭해 주세요. 담당 업무와 주요 성과를 확인할 수 있습니다.</p>
+                            </div>
+                        </div>
                         <div className="projects-list">
                             {projects.map((p, idx) => (
                                 <div
@@ -1271,6 +1336,7 @@
                                         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectProject(idx); }
                                     }}
                                     role="button"
+                                    aria-describedby="career-guide"
                                     tabIndex={0}
                                     title={`${p.company} 상세 경력 보기`}
                                     style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`}}
@@ -1296,7 +1362,7 @@
                                         <div className="project-card-header"><div><h3 className="project-card-title">{p.title}</h3><div className="project-card-role">{p.role} · {p.industry}{p.employmentType ? ` · ${p.employmentType}` : ''}</div></div><div className="project-card-period">{p.period}</div></div>
                                         <p className="project-card-desc">{p.description}</p>
                                         <div className="project-card-footer"><div className="project-card-tags">{p.tech.slice(0, 6).map((t, i) => <span key={i} className="project-card-tag">{t}</span>)}{p.tech.length > 6 && <span className="project-card-tag">+{p.tech.length - 6}</span>}</div><div className="project-card-metrics">{p.achievements.map((a, i) => (<div key={i} className="project-card-metric"><div className="project-card-metric-value">{a.value}</div><div className="project-card-metric-label">{a.label}</div></div>))}</div></div>
-                                        <div className="project-card-clickhint">상세보기 &rarr;</div>
+                                        <div className="project-card-clickhint">상세 경력 보기 &rarr;</div>
                                     </div>
                                     <div className="project-card-arrow">&rarr;</div>
                                 </div>

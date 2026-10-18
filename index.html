@@ -9,7 +9,7 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css?v=20261018-layout">
     <style>
         .mobile-only-br {
             display: none;
@@ -90,7 +90,7 @@
             }
             .hero-stats {
                 display: grid !important;
-                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
                 gap: 10px !important;
                 width: 100% !important;
             }
@@ -188,6 +188,9 @@
             }
         }
         @media (max-width: 600px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
             .contact-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
             }
@@ -1346,10 +1349,22 @@
                                     </div>
                                 </div>
                             ))}
-                        </div>
-                        <div className="military-record fade-in">
-                            <div><h3>병역</h3><p>의무경찰 수경 · 만기전역</p></div>
-                            <p>2008.05.08 ~ 2010.03.27</p>
+                            <div className="project-card fade-in" style={{cursor: 'default'}}>
+                                <div className="project-card-left">
+                                    <div className="project-card-icon" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', color: 'var(--gold)'}}>
+                                        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                                            <path d="M12 3 4.5 6v5.5c0 4.5 3 7.6 7.5 9.5 4.5-1.9 7.5-5 7.5-9.5V6L12 3Z" />
+                                            <path d="m8.5 11.5 2.3 2.3 4.7-4.8" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="project-card-body">
+                                    <div className="project-card-header">
+                                        <div><h3 className="project-card-title">병역</h3><div className="project-card-role">의무경찰 수경 · 만기전역</div></div>
+                                        <div className="project-card-period">2008.05.08 ~ 2010.03.27</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

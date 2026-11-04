@@ -500,19 +500,19 @@
     const ismsScreens = [
         {
             id: 'audit', title: '심사 이력 관리', category: '심사 차수·증적·보완조치',
-            src: './assets/isms/audit-history.png', height: 906,
+            src: './assets/isms/audit-history.png?v=20261104-menu', height: 906,
             description: '최초심사와 사후심사 자료를 차수별로 구분해 관리하는 실제 화면입니다. 이전 심사의 증적과 결함 보완조치내역서를 보관하며 다음 심사를 준비합니다.',
-            alt: '직접 구현한 ISMS 심사 이력 관리 화면. 최초심사와 사후심사가 카드로 구분되어 있으며 내부 일정과 수량은 마스킹되어 있습니다.'
+            alt: '직접 구현한 ISMS 심사 이력 관리 화면. 왼쪽에 현황·통제항목·증적·자산 관리 메뉴가 있고, 최초심사와 사후심사가 카드로 구분되어 있으며 내부 정보는 마스킹되어 있습니다.'
         },
         {
             id: 'law', title: '법령 조회·개정 비교', category: '외부 기준의 변경 확인',
-            src: './assets/isms/law-comparison.png', height: 904,
+            src: './assets/isms/law-comparison.png?v=20261104-menu', height: 904,
             description: '법령과 조문을 조회하고 개정 전후 문구를 나란히 비교하는 화면입니다. 기준의 변경 내용을 확인해 내부 정책·지침 검토에 활용합니다.',
             alt: '직접 구현한 법령 조회 화면. 법령 검색과 조문 조회 입력란 아래에 개정 전후 문구 비교가 표시되어 있습니다.'
         },
         {
             id: 'policy', title: '정책·지침 검토', category: '현황 확인·개선 의견 관리',
-            src: './assets/isms/policy-review.png', height: 910,
+            src: './assets/isms/policy-review.png?v=20261104-menu', height: 910,
             description: '내부 정책·지침을 법령과 대조하고 보완이 필요한 부분을 검토하는 화면입니다. 문서별 검토 기록과 개선 의견을 확인하며 반영 여부를 관리합니다.',
             alt: '직접 구현한 정책·지침 검토 화면. 문서별 카드에 법령 대조와 개선 의견 영역이 표시되며 내부 문서 정보와 검토 내용은 마스킹되어 있습니다.'
         }
@@ -542,7 +542,7 @@
                 <div className="isms-screen-window">
                     <div className="isms-window-bar"><span className="isms-window-mark" aria-hidden="true"></span><span>ISMS 현황 / {current.title}</span><span className="isms-window-counter">0{activeIndex + 1} / 03</span></div>
                     <button type="button" className="isms-screen-preview" onClick={() => setExpanded(true)} aria-label={`${current.title} 화면 확대 보기`} aria-haspopup="dialog">
-                        <img src={current.src} alt={current.alt} width="1310" height={current.height} loading="lazy" />
+                        <img src={current.src} alt={current.alt} width="1710" height={current.height} loading="lazy" />
                         <span className="isms-zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" /></svg>화면 크게 보기</span>
                     </button>
                     <div className="isms-screen-caption" aria-live="polite"><strong>{current.category}</strong><p>{current.description}</p></div>
@@ -550,15 +550,15 @@
                 <div className="isms-screen-picker" role="group" aria-label="실제 구현 화면 선택">
                     {ismsScreens.map((screen, index) => (
                         <button key={screen.id} type="button" className={`isms-screen-option${index === activeIndex ? ' is-active' : ''}`} aria-pressed={index === activeIndex} onClick={() => setActiveIndex(index)}>
-                            <span className="isms-thumb"><img src={screen.src} alt="" width="1310" height={screen.height} loading="lazy" /></span>
+                            <span className="isms-thumb"><img src={screen.src} alt="" width="1710" height={screen.height} loading="lazy" /></span>
                             <span className="isms-option-copy"><span className="isms-option-number">0{index + 1}</span><span><strong>{screen.title}</strong><span>{screen.category}</span></span></span>
                         </button>
                     ))}
                 </div>
-                <p className="isms-gallery-disclosure">실제 프로그램 캡처입니다. 회사·서비스 식별정보, 내부 일정·수량, 문서 세부정보와 검토 의견은 가렸으며, 심사 차수 표기 오타 1건을 정정했습니다.</p>
+                <p className="isms-gallery-disclosure">실제 프로그램 캡처입니다. 왼쪽 메뉴를 포함해 전체 구성을 확인할 수 있습니다. 내부 식별정보·일정·수량·문서 세부정보·검토 의견은 가렸으며, 2025년 심사 차수 표기 오타를 정정했습니다.</p>
                 {expanded && <dialog className="isms-lightbox" ref={dialogRef} aria-labelledby="isms-lightbox-title" onClose={() => setExpanded(false)} onClick={event => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={event => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveScreen(event.key === 'ArrowRight' ? 1 : -1); } }}>
                     <div className="isms-lightbox-bar"><h3 id="isms-lightbox-title">{current.title}</h3><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="확대 화면 닫기">닫기 <span aria-hidden="true">&times;</span></button></div>
-                    <div className="isms-lightbox-image"><img src={current.src} alt={current.alt} width="1310" height={current.height} /></div>
+                    <div className="isms-lightbox-image"><img src={current.src} alt={current.alt} width="1710" height={current.height} /></div>
                     <div className="isms-lightbox-footer"><button type="button" onClick={() => moveScreen(-1)} aria-label="이전 구현 화면">&larr; 이전</button><span>0{activeIndex + 1} / 03 · 내부 정보 마스킹</span><button type="button" onClick={() => moveScreen(1)} aria-label="다음 구현 화면">다음 &rarr;</button></div>
                 </dialog>}
             </div>

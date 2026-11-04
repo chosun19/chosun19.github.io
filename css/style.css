@@ -1771,6 +1771,130 @@ nav {
     .section-header { margin-bottom: 48px; }
 }
 
+/* ISMS case study uses a conceptual workflow, not internal system screenshots. */
+.isms-hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    color: var(--gold-2);
+    font-size: 14px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-hover);
+    padding-bottom: 8px;
+    word-break: keep-all;
+}
+.isms-hero-link:hover { color: var(--gold-3); }
+.isms-hero-link:focus-visible,
+.nav-link[href]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 6px;
+}
+#isms-tool { scroll-margin-top: 96px; }
+.isms-case-intro {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 56px;
+}
+.isms-case-kicker,
+.isms-feature-label {
+    color: var(--gold-2);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+.isms-case-story h3 {
+    margin: 18px 0 24px;
+    font-size: clamp(24px, 2.8vw, 36px);
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+}
+.isms-case-story p {
+    color: var(--text-2);
+    font-size: 15px;
+    line-height: 1.95;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+.isms-case-story p + p { margin-top: 16px; }
+.isms-cycle {
+    min-width: 0;
+    padding: 32px;
+    border: 1px solid var(--border-hover);
+    border-radius: 16px;
+    background: radial-gradient(ellipse at top right, rgba(201, 169, 110, 0.09), transparent 75%), var(--bg-card);
+}
+.isms-cycle-heading {
+    color: var(--gold-3);
+    font-size: 13px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-hover);
+}
+.isms-cycle ol { list-style: none; }
+.isms-cycle li {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 24px;
+}
+.isms-step-num {
+    flex-shrink: 0;
+    color: var(--gold);
+    font: 20px 'JetBrains Mono', monospace;
+}
+.isms-cycle li strong { display: block; font-size: 16px; font-weight: 500; }
+.isms-cycle li div > span { display: block; margin-top: 4px; color: var(--text-2); font-size: 12px; word-break: keep-all; }
+.isms-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 40px;
+}
+.isms-feature {
+    padding: 28px 0 32px;
+    border-top: 1px solid var(--border-hover);
+}
+.isms-feature h3 {
+    margin: 12px 0;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.6;
+    word-break: keep-all;
+}
+.isms-feature p {
+    max-width: 50ch;
+    color: var(--text-2);
+    font-size: 14px;
+    line-height: 1.9;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+.isms-case-outcome {
+    margin-top: 24px;
+    padding: 28px 32px;
+    border-left: 2px solid var(--gold);
+    background: linear-gradient(100deg, rgba(201, 169, 110, 0.08), transparent);
+}
+.isms-case-outcome div > p { margin-top: 12px; font-size: 16px; line-height: 1.9; word-break: keep-all; }
+.isms-review-note { margin-top: 16px; color: var(--text-2); font-size: 12px; line-height: 1.8; }
+@media (min-width: 901px) { .nav-links { gap: 28px; } }
+@media (max-width: 900px) {
+    .isms-case-intro { grid-template-columns: 1fr; gap: 28px; margin-bottom: 36px; }
+    .isms-cycle { padding: 24px; }
+    .isms-cycle ol { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; }
+    .isms-cycle li { align-items: flex-start; gap: 12px; }
+    .isms-feature-grid { gap: 0 24px; }
+}
+@media (max-width: 600px) {
+    .isms-hero-link { font-size: 12px; }
+    .isms-feature-grid { grid-template-columns: 1fr; }
+    .isms-case-outcome { padding: 22px 20px; }
+    .isms-cycle ol { grid-template-columns: 1fr; }
+}
+
 /* Keep the updated text and status labels readable at every viewport size. */
 .hero-stats.portfolio-focus {
     display: grid;

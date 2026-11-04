@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>홍기웅 | 정보보호·금융보안 포트폴리오</title>
-    <meta name="description" content="홍기웅의 정보보호 포트폴리오. ISMS 최초 인증·사후심사, PG 보안 인증, 금융감독원 FIRST·CPC 대응, 보안성 검토와 보안 운영 경험을 소개합니다.">
+    <meta name="description" content="홍기웅의 정보보호 포트폴리오. 직접 구축·활용하는 ISMS 통합관리 도구, 인증·심사 대응, 금융보안 컴플라이언스와 보안 운영 경험을 소개합니다.">
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v=20261018-layout">
+    <link rel="stylesheet" href="./css/style.css?v=20261104-isms">
     <style>
         .mobile-only-br {
             display: none;
@@ -501,6 +501,15 @@
         const [selectedProject, setSelectedProject] = useState(null);
         const scrollPosRef = React.useRef(0);
 
+        useEffect(() => {
+            // The fragment target is rendered by React after the initial HTML loads.
+            if (window.location.hash !== '#isms-tool') return;
+            const frame = requestAnimationFrame(() => {
+                document.getElementById('isms-tool')?.scrollIntoView({ behavior: 'instant' });
+            });
+            return () => cancelAnimationFrame(frame);
+        }, []);
+
         const selectProject = (idx) => {
             scrollPosRef.current = window.scrollY;
             setSelectedProject(idx);
@@ -534,8 +543,8 @@
             {
                 "title": "관리체계",
                 "emoji": "🛡",
-                "value": "ISMS·PG 인증과 사후관리",
-                "desc": "ISMS 최초 인증 취득과 이후 사후심사 대응, PG 최초 보안 인증 및 지속적인 금융 컴플라이언스 업무를 수행했습니다."
+                "value": "인증 대응을 넘어 ISMS 통합관리 도구 구축",
+                "desc": "ISMS 최초 인증·사후심사와 PG 최초 보안 인증 대응 경험을 바탕으로, 법령·정책 검토부터 자산·통제항목·증적·보완조치·심사 이력까지 함께 관리하는 업무용 도구를 직접 기획·구현해 활용하고 있습니다."
             },
             {
                 "title": "금융보안",
@@ -563,7 +572,10 @@
                 "PG 보안 인증",
                 "정책·지침",
                 "위험평가",
-                "심사 증적 관리"
+                "심사 증적 관리",
+                "ISMS 통합관리 도구 구축",
+                "법령·정책 대조 검토",
+                "심사 이력·보완조치 관리"
             ],
             "금융보안·대외 대응": [
                 "금융감독원 대응",
@@ -622,12 +634,15 @@
                 "title": "이지샵 - 정보인프라팀",
                 "period": "2024.12 ~ 재직 중",
                 "role": "정보인프라팀 매니저 / 정보보안",
-                "description": "사내 정보보호·개인정보보호 담당자로서 ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 금융감독원 요청사항 대응, CISO·임원 보고와 대외 보고서 작성·제출을 담당하며, NAS·Chakra Max·SSL VPN·IPS·방화벽 등 보안솔루션과 인프라 신규 도입·운영 경험을 갖추고 있습니다.",
+                "description": "사내 정보보호 담당자로서 ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다. 실무에서 고민한 관리 방식을 ISMS 통합관리 도구로 직접 구현하여 법령·정책 검토, 자산·통제항목, 증적·보완조치와 차수별 심사 이력을 함께 관리하고 있습니다. 보안솔루션·인프라의 신규 도입과 운영도 담당합니다.",
                 "highlights": [
                     "PG 금융보안 컴플라이언스: 금융보안 통합관제시스템(FIRST)·CPC 등을 통한 보안 위협정보, 공지 및 점검·자료제출 요구사항 확인",
                     "금융감독원 대응: 내부 현황 확인과 유관 부서 자료 취합, 보고서·증빙자료 작성 후 금융감독원 제출",
                     "CISO·임원 보고 및 사내 공유: 주요 보안 이슈와 대외 요청사항의 대응 현황 보고, 보안 위협정보 전파와 후속조치 협의",
                     "ISMS 최초 인증 및 사후심사: 인증 범위·정보자산 정리, 위험평가, 정책·지침과 증적 정비, 심사 보완조치 관리 및 사후심사 통과",
+                    "ISMS 통합관리 도구 직접 구축·활용: 사내 정보보호 업무의 관리 요구사항을 정리하고 기능을 직접 구현, 사용 중 발견한 개선점을 반복 반영",
+                    "법령·정책 검토 지원: 법령 조회와 개정 전후 비교, 내부 정책·지침과의 대조 및 개선 의견을 통해 현재 상태와 보완 필요사항 확인, 최종 반영 여부는 담당자 검토",
+                    "자산·통제항목·심사 기록 통합관리: 최초심사·1차 사후심사 기록과 2차 사후심사 준비자료를 반영하고, 이전 심사의 증적과 결함 보완조치내역서까지 차수별 관리",
                     "PG 최초 보안 인증: 요구사항에 따른 결제·개인정보 처리 시스템의 보안 통제 점검, 심사 대응과 보완조치 이행, 인증 이후 금융 컴플라이언스 지속 대응",
                     "신규 전자금융 서비스 검토: 자체 보안성 심의, 서비스·결제·개인정보 흐름, 접근통제·로그 및 취약점 결과 검토와 보완조치 확인",
                     "금융감독원 신고 지원: 신규 서비스 관련 신고 대상 여부 검토 및 신고·제출자료 작성 지원",
@@ -639,6 +654,7 @@
                 ],
                 "tech": [
                     "ISMS 최초·사후심사",
+                    "ISMS 통합관리 도구",
                     "PG 인증",
                     "금융감독원 대응",
                     "FIRST·CPC",
@@ -660,6 +676,14 @@
                     {
                         "type": "success",
                         "text": "PG 최초 보안 인증 취득"
+                    },
+                    {
+                        "type": "info",
+                        "text": "ISMS 통합관리 도구 직접 구축·사내 업무 활용"
+                    },
+                    {
+                        "type": "info",
+                        "text": "최초·1차 심사 이력과 2차 사후심사 준비자료 통합관리"
                     },
                     {
                         "type": "info",
@@ -714,7 +738,6 @@
                     "심의 대응자료: 보안성 검토보고서와 심의자료 작성, 질의·보완 요청 대응 및 관련 부서 협의",
                     "구축 단계 통제: 설계·개발·오픈 단계별 요구사항 반영 여부 확인과 보완조치 이행 점검",
                     "취약점·모의해킹 결과 검토: 시스템별 보완 필요사항을 정리하고 개발·인프라·운영 담당자와 조치 방안 및 적용 방법 협의",
-                    "보안솔루션 운영: DB접근제어·방화벽·백신 운영·점검과 기술 지원, 보안정책 적용 현황 확인",
                     "SI 제안 지원: 보안 아키텍처와 요구사항 정의, 금융 규제·고객 기준에 따른 대응 방안 검토와 제안서 보안 부분 작성",
                     "주요 성과: OK저축은행 차세대 시스템 보안성 심의 대응 완료, 검토 근거와 보완조치 결과 문서화"
                 ],
@@ -725,7 +748,6 @@
                     "보완조치 관리",
                     "취약점 결과 검토",
                     "모의해킹 결과 검토",
-                    "DB접근제어",
                     "보안 아키텍처"
                 ],
                 "terminalLog": [
@@ -1225,6 +1247,7 @@
                             <ul className="nav-links">
                                 <li><a className="nav-link" onClick={() => scrollTo('home')}>Home</a></li>
                                 <li><a className="nav-link" onClick={() => scrollTo('about')}>About</a></li>
+                                <li><a className="nav-link" href="#isms-tool">ISMS Tool</a></li>
                                 <li><a className="nav-link" onClick={() => scrollTo('projects')}>Career</a></li>
                                 <li><a className="nav-link" onClick={() => scrollTo('tech')}>Skills</a></li>
                                 <li><a className="nav-link" onClick={() => scrollTo('certs')}>Certs</a></li>
@@ -1249,6 +1272,7 @@
                             <div className="hero-tag">Information Security Professional</div>
                             <h1 className="hero-name">홍기웅</h1>
                             <p className="hero-role">보안관제·인프라 운영 경험을 바탕으로<br />ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다.</p>
+                            <a className="isms-hero-link" href="#isms-tool">직접 만든 ISMS 통합관리 도구와 운영 사례 <span aria-hidden="true">&rarr;</span></a>
                             <div className="hero-stats portfolio-focus">
                                 <div className="h-stat"><div className="h-stat-value">ISMS</div><div className="h-stat-label">최초 인증·사후심사</div></div>
                                 <div className="h-stat"><div className="h-stat-value">PG</div><div className="h-stat-label">최초 인증·유지관리</div></div>
@@ -1282,8 +1306,63 @@
                                     <p className="project-card-desc">보안관제와 인프라 운영부터 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영까지 경험한 정보보안 실무자입니다.</p>
                                     <p className="project-card-desc">ISMS 최초 인증·사후심사 대응과 PG 최초 보안 인증 취득을 수행했으며, 현재는 금융감독원 요청사항 대응과 CISO·임원 보고, 대외 보고서 작성·제출 및 사내 보안정보 공유를 담당하고 있습니다.</p>
                                     <p className="project-card-desc">NAS·Chakra Max·SSL VPN·IPS·방화벽 등 보안솔루션과 인프라의 신규 도입·운영 경험을 갖추고 있습니다. 현업과 보안 요구사항을 조율하고, 정보보호 정책과 기술적 통제를 실제 업무에 적용하는 데 강점이 있습니다.</p>
+                                    <p className="project-card-desc">사내 정보보호 업무를 맡으며 고민한 관리 방식을 ISMS 통합관리 도구로 직접 구현했습니다. 법령과 내부 정책의 대조, 자산·통제항목 관리, 심사 증적과 결함 보완조치 이력을 한곳에 모아 현황을 파악하고, 실제 사용 과정에서 필요한 기능을 하나씩 개선하고 있습니다.</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section isms-case" id="isms-tool" aria-labelledby="isms-case-title">
+                    <div className="section-container">
+                        <div className="section-header fade-in">
+                            <div><div className="section-tag">Built From Practice</div><h2 className="section-title" id="isms-case-title">ISMS 통합관리 도구</h2></div>
+                            <p className="section-desc">사내 보안 업무의 고민을 직접 만든 도구와 운영 개선으로 연결했습니다.</p>
+                        </div>
+                        <div className="isms-case-intro fade-in">
+                            <div className="isms-case-story">
+                                <div className="isms-case-kicker">직접 기획·구현 / 사내 업무 활용</div>
+                                <h3>심사 때만 정리하는 자료가 아닌,<br />계속 이어지는 보안 관리.</h3>
+                                <p>정책은 현재 기준에 맞는지, 통제항목별 증적은 준비되어 있는지, 이전 결함은 어떻게 보완했는지. 사내 정보보호 업무를 맡으며 이런 질문을 한곳에서 확인하고 싶었습니다.</p>
+                                <p>실무에 필요한 관리 방식을 직접 설계하고 구현했습니다. 사용하면서 부족한 부분을 하나씩 고쳐 나가며, 현재 보안 현황과 보완할 부분을 함께 확인하는 ISMS 통합관리 도구로 발전시키고 있습니다.</p>
+                            </div>
+                            <div className="isms-cycle" aria-label="도구로 연결한 보안 관리 흐름">
+                                <div className="isms-cycle-heading">업무를 연결하는 관리 흐름</div>
+                                <ol>
+                                    <li><span className="isms-step-num" aria-hidden="true">01</span><div><strong>현황 파악</strong><span>자산·통제항목·증적 확인</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">02</span><div><strong>기준 대조</strong><span>법령과 내부 정책·지침 비교</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">03</span><div><strong>보완·개선</strong><span>개선 의견 검토와 조치내역 관리</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">04</span><div><strong>이력 축적</strong><span>심사 차수별 기록을 다음 준비에 활용</span></div></li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div className="isms-feature-grid">
+                            <article className="isms-feature fade-in">
+                                <div className="isms-feature-label">법령 / 정책</div>
+                                <h3>현재 기준과 내부 문서의 간격 확인</h3>
+                                <p>법령 조회와 개정 전후 비교, 실제 정책·지침과의 대조를 통해 반영 현황과 보완 필요사항을 확인합니다. 개선 의견을 검토하고 내부 반영 여부를 관리합니다.</p>
+                            </article>
+                            <article className="isms-feature fade-in">
+                                <div className="isms-feature-label">자산 / 통제항목</div>
+                                <h3>ISMS 운영 현황을 한곳에서 관리</h3>
+                                <p>자산과 통제항목을 함께 관리하고 점검·개선 업무와 증적을 확인합니다. 개별 문서 확인에 그치지 않고 전체 준비 상태와 후속 업무를 함께 살펴봅니다.</p>
+                            </article>
+                            <article className="isms-feature fade-in">
+                                <div className="isms-feature-label">증적 / 보완조치</div>
+                                <h3>무엇을 제출했고 어떻게 보완했는지</h3>
+                                <p>심사 증적뿐 아니라 결함에 대한 보완조치내역서도 보관·관리합니다. 과거 지적사항과 조치 근거를 함께 확인하며 이후 점검과 심사 준비에 활용합니다.</p>
+                            </article>
+                            <article className="isms-feature fade-in">
+                                <div className="isms-feature-label">심사 / 이력</div>
+                                <h3>최초심사부터 사후심사까지 이어지는 기록</h3>
+                                <p>최초심사와 1차 사후심사 기록, 2차 사후심사 준비·운영 자료까지 반영했습니다. 차수별 자료를 구분해 이전 기록을 보존하고 다음 심사를 준비합니다.</p>
+                            </article>
+                        </div>
+                        <div className="isms-case-outcome fade-in">
+                            <div><div className="isms-feature-label">실무에 적용한 변화</div><p>법령·정책 검토, 현재 통제 현황, 심사 증적과 보완조치 이력을 한 흐름으로 관리하며, 사내 보안 업무를 지속적으로 점검하고 개선하는 데 활용하고 있습니다.</p></div>
+                            <p className="isms-review-note">법령·정책 대조와 개선 의견은 검토 보조자료로 활용하며, 최종 판단과 반영 여부는 담당자가 확인합니다.</p>
                         </div>
                     </div>
                 </section>

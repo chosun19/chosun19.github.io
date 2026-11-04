@@ -1772,20 +1772,6 @@ nav {
 }
 
 /* ISMS case study uses a conceptual workflow, not internal system screenshots. */
-.isms-hero-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 24px;
-    color: var(--gold-2);
-    font-size: 14px;
-    text-decoration: none;
-    border-bottom: 1px solid var(--border-hover);
-    padding-bottom: 8px;
-    word-break: keep-all;
-}
-.isms-hero-link:hover { color: var(--gold-3); }
-.isms-hero-link:focus-visible,
 .nav-link[href]:focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 6px;
@@ -1932,7 +1918,6 @@ nav {
     .isms-feature-grid { gap: 0 24px; }
 }
 @media (max-width: 600px) {
-    .isms-hero-link { font-size: 12px; }
     .isms-gallery-heading { display: block; }
     .isms-gallery-heading h3 { font-size: 22px; }
     .isms-gallery-note { display: block; margin-top: 12px; }
@@ -2055,10 +2040,8 @@ nav {
 .hero-ornament { width: 300px; height: 300px; }
 .hero-ornament-center { font-size: 62px; color: rgba(201, 169, 110, 0.3); letter-spacing: -2px; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; margin-top: 28px; }
-.hero-actions .isms-hero-link { margin: 0; padding: 14px 22px; border: 1px solid var(--gold); border-radius: 6px; background: var(--gold); color: #18150f; font-size: 13px; font-weight: 600; transition: background 0.2s; }
-.hero-actions .isms-hero-link:hover { background: var(--gold-2); }
-.hero-career-link { display: inline-flex; align-items: center; gap: 12px; color: var(--gold-2); font-size: 13px; font-weight: 500; text-decoration: none; padding: 14px 22px; border: 1px solid rgba(201, 169, 110, 0.65); border-radius: 6px; background: rgba(201, 169, 110, 0.025); transition: border-color 0.2s, background 0.2s; }
-.hero-career-link:hover { color: var(--gold-2); border-color: var(--gold); background: rgba(201, 169, 110, 0.05); }
+.hero-career-link { display: inline-flex; align-items: center; gap: 12px; color: #18150f; font-size: 13px; font-weight: 600; text-decoration: none; padding: 14px 22px; border: 1px solid var(--gold); border-radius: 6px; background: var(--gold); transition: background 0.2s; }
+.hero-career-link:hover { background: var(--gold-2); }
 .hero-stats.portfolio-focus { margin-top: 40px; }
 .isms-case { background: radial-gradient(ellipse at 15% 20%, rgba(201, 169, 110, 0.035), transparent 55%); }
 .isms-gallery { margin: 48px 0 56px; }
@@ -2146,7 +2129,6 @@ nav {
     .hero { min-height: auto; padding: 130px 0 64px; }
     .hero-actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
     .hero-actions > a { width: 100%; min-height: 48px; justify-content: space-between; }
-    .hero-actions .isms-hero-link { padding: 12px 16px; font-size: 12px; }
     .hero-career-link { padding: 12px 16px; font-size: 12px; }
     .career-summary-grid { grid-template-columns: 1fr; gap: 12px; margin-bottom: 48px; }
     .compact-section .section-header { gap: 16px; }

@@ -9,7 +9,7 @@
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v=20261104-isms-gallery">
+    <link rel="stylesheet" href="./css/style.css?v=20261104-refined">
     <style>
         .mobile-only-br {
             display: none;
@@ -268,8 +268,8 @@
         }
         @media (min-width: 601px) and (max-width: 1200px) {
             .section-container {
-                padding-left: 10px !important;
-                padding-right: 10px !important;
+                padding-left: 28px !important;
+                padding-right: 28px !important;
             }
             .contact-grid {
                 display: grid !important;
@@ -515,6 +515,42 @@
             src: './assets/isms/policy-review.png?v=20261104-menu', height: 910,
             description: '내부 정책·지침을 법령과 대조하고 보완이 필요한 부분을 검토하는 화면입니다. 문서별 검토 기록과 개선 의견을 확인하며 반영 여부를 관리합니다.',
             alt: '직접 구현한 정책·지침 검토 화면. 문서별 카드에 법령 대조와 개선 의견 영역이 표시되며 내부 문서 정보와 검토 내용은 마스킹되어 있습니다.'
+        },
+        {
+            id: 'controls', title: '통제항목 관리', category: '요구사항·증적·점검 상태',
+            src: './assets/isms/control-management.png?v=20261104-refined', height: 904,
+            description: '통제항목별 요구사항과 증적, 점검·검토 상태를 함께 확인하는 화면입니다. 영역·분류·상태에 따라 항목을 찾아 현재 관리 상태를 살펴볼 수 있습니다.',
+            alt: '왼쪽 메뉴와 통제항목별 요구사항, 분류·상태 필터, 내용 검토 기능이 보이는 실제 관리 화면. 내부 점검 결과와 담당자 정보는 마스킹되어 있습니다.'
+        },
+        {
+            id: 'evidence', title: '증적 보관함', category: '업무별 증적 분류·이력 보존',
+            src: './assets/isms/evidence-library.png?v=20261104-refined', height: 899,
+            description: '운영명세·위험평가·정책·자산·기술 진단 등 업무별 폴더로 증적을 분류합니다. 현재 자료와 이전 심사 자료를 구분해 필요한 근거를 찾아볼 수 있게 구성했습니다.',
+            alt: '운영명세, 위험평가, 정책·지침, 자산목록, 기술 진단 등 업무별 증적 폴더가 표시되는 실제 화면. 실제 증적 수량은 비공개 처리되어 있습니다.'
+        },
+        {
+            id: 'assets', title: '자산 관리', category: '자산 유형·대상 범위 확인',
+            src: './assets/isms/asset-management.png?v=20261104-refined', height: 900,
+            description: '시스템·네트워크·보안장비·DB·애플리케이션·단말기·문서 등 유형별 자산을 확인합니다. ISMS 대상 범위와 확인이 필요한 자산을 구분해 관리합니다.',
+            alt: '유형별 자산 시트와 대상 범위 필터, 자산 목록이 표시되는 실제 자산 관리 화면. 내부 수량·범위·담당자·상태 정보는 마스킹되어 있습니다.'
+        },
+        {
+            id: 'tasks', title: '점검·개선 업무', category: '보완 필요사항·조치 이력',
+            src: './assets/isms/improvement-tracking.png?v=20261104-refined', height: 904,
+            description: '점검에서 확인한 사항을 후속 업무로 이어 관리합니다. 진행 상태별로 업무를 구분하고 보완 의견, 조치 가이드와 처리 이력을 확인할 수 있게 구성했습니다.',
+            alt: '진행 상태별 필터와 조치 업무 카드가 보이는 실제 점검·개선 업무 화면. 내부 수량·담당자·일정·보완 의견은 마스킹되어 있습니다.'
+        },
+        {
+            id: 'criteria', title: '인증기준·심사항목', category: '기준별 요구사항·증적 연결',
+            src: './assets/isms/audit-criteria.png?v=20261104-refined', height: 902,
+            description: '심사에서 사용하는 인증기준과 항목별 요구사항을 확인하고 관련 증적을 연결해 관리하는 화면입니다. 기준과 실제 준비자료를 함께 살펴볼 수 있습니다.',
+            alt: '인증기준 메뉴와 심사항목별 요구사항 카드, 상세 보기 기능이 표시되는 실제 화면. 내부 증적 수량은 비공개 처리되어 있습니다.'
+        },
+        {
+            id: 'report', title: '점검 결과 보고서', category: '점검 현황 취합·보고서 출력',
+            src: './assets/isms/inspection-report.png?v=20261104-refined', height: 905,
+            description: '통제항목별 점검·검토 내용을 모아 보고서로 확인합니다. 확인·보완사항과 처리 상태를 취합하고 인쇄·PDF 저장·엑셀 내려받기를 지원하도록 구현했습니다.',
+            alt: '심사별 점검 현황과 항목별 결과 표, PDF 저장·엑셀 다운로드 기능이 보이는 실제 보고서 화면. 내부 일정·담당자·점검 결과와 보완 의견은 마스킹되어 있습니다.'
         }
     ];
 
@@ -537,10 +573,10 @@
             <div className="isms-gallery" id="isms-screens">
                 <div className="isms-gallery-heading">
                     <div><div className="isms-feature-label">직접 구현한 실제 화면</div><h3>설명보다 확실한, 실무의 결과물.</h3></div>
-                    <span className="isms-gallery-note">내부 정보 마스킹 · 클릭/탭하여 확대</span>
+                    <span className="isms-gallery-note">{ismsScreens.length}개 실제 화면 · 클릭/탭하여 확대</span>
                 </div>
                 <div className="isms-screen-window">
-                    <div className="isms-window-bar"><span className="isms-window-mark" aria-hidden="true"></span><span>ISMS 현황 / {current.title}</span><span className="isms-window-counter">0{activeIndex + 1} / 03</span></div>
+                    <div className="isms-window-bar"><span className="isms-window-mark" aria-hidden="true"></span><span>ISMS 현황 / {current.title}</span><div className="isms-window-navigation"><button type="button" onClick={() => moveScreen(-1)} aria-label="이전 화면 선택">&larr;</button><span className="isms-window-counter">{String(activeIndex + 1).padStart(2, '0')} / {String(ismsScreens.length).padStart(2, '0')}</span><button type="button" onClick={() => moveScreen(1)} aria-label="다음 화면 선택">&rarr;</button></div></div>
                     <button type="button" className="isms-screen-preview" onClick={() => setExpanded(true)} aria-label={`${current.title} 화면 확대 보기`} aria-haspopup="dialog">
                         <img src={current.src} alt={current.alt} width="1710" height={current.height} loading="lazy" />
                         <span className="isms-zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" /></svg>화면 크게 보기</span>
@@ -559,19 +595,34 @@
                 {expanded && <dialog className="isms-lightbox" ref={dialogRef} aria-labelledby="isms-lightbox-title" onClose={() => setExpanded(false)} onClick={event => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={event => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveScreen(event.key === 'ArrowRight' ? 1 : -1); } }}>
                     <div className="isms-lightbox-bar"><h3 id="isms-lightbox-title">{current.title}</h3><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="확대 화면 닫기">닫기 <span aria-hidden="true">&times;</span></button></div>
                     <div className="isms-lightbox-image"><img src={current.src} alt={current.alt} width="1710" height={current.height} /></div>
-                    <div className="isms-lightbox-footer"><button type="button" onClick={() => moveScreen(-1)} aria-label="이전 구현 화면">&larr; 이전</button><span>0{activeIndex + 1} / 03 · 내부 정보 마스킹</span><button type="button" onClick={() => moveScreen(1)} aria-label="다음 구현 화면">다음 &rarr;</button></div>
+                    <div className="isms-lightbox-footer"><button type="button" onClick={() => moveScreen(-1)} aria-label="이전 구현 화면">&larr; 이전</button><span>{String(activeIndex + 1).padStart(2, '0')} / {String(ismsScreens.length).padStart(2, '0')} · 내부 정보 마스킹</span><button type="button" onClick={() => moveScreen(1)} aria-label="다음 구현 화면">다음 &rarr;</button></div>
                 </dialog>}
             </div>
         );
     };
 
+    const CredentialCard = ({ cert, index }) => {
+        const expired = cert.expires && new Date(cert.expires + 'T23:59:59').getTime() < Date.now();
+        const category = { cert: '자격', course: '교육', exam: '시험', lang: '어학' }[cert.type];
+        const status = cert.expires ? (expired ? '유효기간 만료' : '취득') : cert.status;
+        return (
+            <article className={`credential-card fade-in${index < 4 ? ' is-primary' : ''}${expired ? ' is-expired' : ''}`}>
+                <div className="credential-card-top"><span>{category}</span><time>{cert.date}</time></div>
+                <div className="credential-card-main"><h3>{cert.name}</h3><p>{cert.org}</p></div>
+                <div className="credential-card-bottom"><span className="credential-card-status">{status}</span>{cert.expires && <span className="credential-expiry">유효기간 {cert.expires.replace(/-/g, '.')}까지</span>}</div>
+            </article>
+        );
+    };
+
     const Portfolio = () => {
         const [selectedProject, setSelectedProject] = useState(null);
+        const [menuOpen, setMenuOpen] = useState(false);
+        const menuButtonRef = React.useRef(null);
         const scrollPosRef = React.useRef(0);
 
         useEffect(() => {
             // The fragment target is rendered by React after the initial HTML loads.
-            if (!['#isms-tool', '#isms-screens'].includes(window.location.hash)) return;
+            if (!window.location.hash) return;
             let cancelled = false;
             let frame;
             document.fonts.ready.then(() => {
@@ -584,6 +635,7 @@
         }, []);
 
         const selectProject = (idx) => {
+            setMenuOpen(false);
             scrollPosRef.current = window.scrollY;
             setSelectedProject(idx);
         };
@@ -607,10 +659,6 @@
             document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
             return () => observer.disconnect();
         }, [selectedProject]);
-
-        const scrollTo = (id) => {
-            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-        };
 
         const careerSummary = [
             {
@@ -1311,22 +1359,25 @@
         ];
         return (
             <>
-                <nav>
+                <nav aria-label="포트폴리오 탐색" onKeyDown={event => { if (event.key === 'Escape' && menuOpen) { setMenuOpen(false); menuButtonRef.current?.focus(); } }}>
                     <div className="nav-inner">
                         <div className="logo" onClick={goBack}>KIWOONG HONG</div>
                         {selectedProject !== null ? (
                             <button className="nav-back" onClick={goBack}>&larr; 포트폴리오</button>
                         ) : (
-                            <ul className="nav-links">
-                                <li><a className="nav-link" onClick={() => scrollTo('home')}>Home</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('about')}>About</a></li>
+                            <>
+                            <button type="button" className="mobile-nav-toggle" ref={menuButtonRef} aria-expanded={menuOpen} aria-controls="portfolio-nav" onClick={() => setMenuOpen(open => !open)}><span>{menuOpen ? '닫기' : '메뉴'}</span><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">{menuOpen ? <path d="m5 5 10 10M5 15 15 5" /> : <path d="M3 5h14M3 10h14M3 15h14" />}</svg></button>
+                            <ul id="portfolio-nav" className={`nav-links${menuOpen ? ' is-open' : ''}`} onClick={event => { if (event.target.closest('a')) setMenuOpen(false); }}>
+                                <li><a className="nav-link" href="#home">Home</a></li>
+                                <li><a className="nav-link" href="#about">About</a></li>
                                 <li><a className="nav-link" href="#isms-tool">ISMS Tool</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('projects')}>Career</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('tech')}>Skills</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('certs')}>Certs</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('education')}>Education</a></li>
-                                <li><a className="nav-link" onClick={() => scrollTo('contact')}>Contact</a></li>
+                                <li><a className="nav-link" href="#projects">Career</a></li>
+                                <li><a className="nav-link" href="#tech">Skills</a></li>
+                                <li><a className="nav-link" href="#certs">Certs</a></li>
+                                <li><a className="nav-link" href="#education">Education</a></li>
+                                <li><a className="nav-link" href="#contact">Contact</a></li>
                             </ul>
+                            </>
                         )}
                     </div>
                 </nav>
@@ -1345,7 +1396,7 @@
                             <div className="hero-tag">Information Security Professional</div>
                             <h1 className="hero-name">홍기웅</h1>
                             <p className="hero-role">보안관제·인프라 운영 경험을 바탕으로<br />ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다.</p>
-                            <a className="isms-hero-link" href="#isms-screens">직접 만든 ISMS 통합관리 도구와 운영 사례 <span aria-hidden="true">&rarr;</span></a>
+                            <div className="hero-actions"><a className="isms-hero-link" href="#isms-screens">직접 구현한 ISMS 도구 <span aria-hidden="true">&rarr;</span></a><a className="hero-career-link" href="#projects">경력 살펴보기 <span aria-hidden="true">&rarr;</span></a></div>
                             <div className="hero-stats portfolio-focus">
                                 <div className="h-stat"><div className="h-stat-value">ISMS</div><div className="h-stat-label">최초 인증·사후심사</div></div>
                                 <div className="h-stat"><div className="h-stat-value">PG</div><div className="h-stat-label">최초 인증·유지관리</div></div>
@@ -1353,7 +1404,7 @@
                                 <div className="h-stat"><div className="h-stat-value">보안운영</div><div className="h-stat-label">솔루션·인프라 도입·운영</div></div>
                             </div>
                         </div>
-                        <div className="hero-right"><div className="hero-ornament"><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-ring"></div><div className="hero-ornament-center">SEC</div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div><div className="hero-ornament-dot"></div></div></div>
+                        <div className="hero-right"><a className="hero-evidence" href="#isms-screens"><div className="hero-evidence-top"><span>BUILT FROM PRACTICE</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div><h2>ISMS 통합관리</h2><p>직접 기획·구현하고, 사내 업무에 활용하는 도구</p><div className="hero-evidence-image"><img src="./assets/isms/control-management.png?v=20261104-refined" alt="직접 구현한 ISMS 도구의 통제항목 관리 화면. 내부 정보는 마스킹되어 있습니다." width="1710" height="904" /></div><div className="hero-evidence-bottom"><span>정책 · 통제 · 증적 · 심사 이력</span><span>실제 화면 보기 &rarr;</span></div></a></div>
                     </div>
                 </section>
 
@@ -1362,26 +1413,9 @@
                 <section className="section" id="about">
                     <div className="section-container">
                         <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">소개</h2></div></div>
-                        <div className="projects-list">
-                            <div className="project-card fade-in" style={{cursor: 'default'}}>
-                                <div className="project-card-left">
-                                    <div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>
-                                        {'\u{1F9ED}'}
-                                    </div>
-                                </div>
-                                <div className="project-card-body">
-                                    <div className="project-card-header">
-                                        <div>
-                                            <h3 className="project-card-title">운영 경험을 바탕으로 보안 요구사항을 실행에 연결합니다</h3>
-                                            <div className="project-card-role">정보보호 관리체계 · 금융보안 컴플라이언스 · 기술 운영</div>
-                                        </div>
-                                    </div>
-                                    <p className="project-card-desc">보안관제와 인프라 운영부터 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영까지 경험한 정보보안 실무자입니다.</p>
-                                    <p className="project-card-desc">ISMS 최초 인증·사후심사 대응과 PG 최초 보안 인증 취득을 수행했으며, 현재는 금융감독원 요청사항 대응과 CISO·임원 보고, 대외 보고서 작성·제출 및 사내 보안정보 공유를 담당하고 있습니다.</p>
-                                    <p className="project-card-desc">NAS·Chakra Max·SSL VPN·IPS·방화벽 등 보안솔루션과 인프라의 신규 도입·운영 경험을 갖추고 있습니다. 현업과 보안 요구사항을 조율하고, 정보보호 정책과 기술적 통제를 실제 업무에 적용하는 데 강점이 있습니다.</p>
-                                    <p className="project-card-desc">사내 정보보호 업무를 맡으며 고민한 관리 방식을 ISMS 통합관리 도구로 직접 구현했습니다. 법령과 내부 정책의 대조, 자산·통제항목 관리, 심사 증적과 결함 보완조치 이력을 한곳에 모아 현황을 파악하고, 실제 사용 과정에서 필요한 기능을 하나씩 개선하고 있습니다.</p>
-                                </div>
-                            </div>
+                        <div className="about-editorial fade-in">
+                            <div className="about-principle"><div className="isms-feature-label">운영에서 배운 보안</div><h3>보안 요구사항을<br />실제로 작동하는<br /><span>운영으로 연결합니다.</span></h3><div className="about-keywords"><span>정보보호 관리체계</span><span>금융보안 컴플라이언스</span><span>보안솔루션·인프라</span></div></div>
+                            <div className="about-copy"><p>보안관제와 인프라 운영부터 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영까지 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했으며, 금융감독원 요청사항 대응과 CISO·임원 보고, 대외 보고서 작성·제출을 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비 등 보안솔루션·인프라를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 실제 업무에 적용합니다.</p><div className="about-built-note"><strong>실무의 고민을, 직접 만든 도구로.</strong><p>법령·정책 검토, 자산·통제항목, 증적·보완조치와 심사 이력을 ISMS 통합관리 도구로 연결했습니다. 실제 업무에서 사용하며 필요한 기능을 하나씩 개선하고 있습니다.</p></div></div>
                         </div>
                     </div>
                 </section>
@@ -1446,24 +1480,9 @@
                 <section className="section" id="projects">
                     <div className="section-container">
                         <div className="section-header fade-in"><div><div className="section-tag">Career Summary</div><h2 className="section-title">경력 요약</h2></div><p className="section-desc">인증 대응, 금융보안, 보안성 검토와 기술 운영 경험을 정리했습니다.</p></div>
-                        <div className="projects-list" style={{marginBottom: '24px'}}>
+                        <div className="career-summary-grid">
                             {careerSummary.map((item, idx) => (
-                                <div key={idx} className="project-card fade-in" style={{cursor: 'default', transitionDelay: `${Math.min(idx * 0.06, 0.2)}s`}}>
-                                    <div className="project-card-left">
-                                        <div className="project-card-icon" style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>
-                                            {item.emoji}
-                                        </div>
-                                    </div>
-                                    <div className="project-card-body">
-                                        <div className="project-card-header">
-                                            <div>
-                                                <div style={{color: '#93a1b8', marginBottom: '8px', fontSize: '13px', letterSpacing: '0.08em'}}>{item.title}</div>
-                                                <h3 className="project-card-title">{item.value}</h3>
-                                            </div>
-                                        </div>
-                                        <p className="project-card-desc">{item.desc}</p>
-                                    </div>
-                                </div>
+                                <article key={idx} className="career-summary-card fade-in"><div className="career-summary-label"><span>{item.title}</span><span>{String(idx + 1).padStart(2, '0')}</span></div><h3>{item.value}</h3><p>{item.desc}</p></article>
                             ))}
                         </div>
                         <div className="section-header fade-in"><div><div className="section-tag">Career</div><h2 className="section-title">경력 사항</h2></div></div>
@@ -1539,51 +1558,25 @@
 
                 <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
 
-                <section className="section" id="certs">
+                <section className="section compact-section" id="certs">
                     <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">Certifications</div><h2 className="section-title">자격·교육·어학 이력</h2></div></div>
-                        <div className="projects-list">
-                            {certifications.map((cert, idx) => (
-                                <div key={idx} className="project-card fade-in" style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default'}}>
-                                    <div className="project-card-left"><div style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>{cert.type === 'lang' ? '\u{1F30D}' : '\u{1F3C5}'}</div></div>
-                                    <div className="project-card-body"><div className="project-card-header"><div><h3 className="project-card-title">{cert.name}</h3><div className="project-card-role">{cert.org}</div><div className="credential-meta"><span className="credential-status">{cert.expires ? (new Date(cert.expires + 'T23:59:59').getTime() < Date.now() ? '유효기간 만료' : '취득') : cert.status}</span>{cert.expires && <span>유효기간 {cert.expires.replace(/-/g, '.')}까지</span>}</div></div><div className="project-card-period">취득·이수 {cert.date}</div></div></div>
-                                </div>
-                            ))}
+                        <div className="section-header fade-in"><div><div className="section-tag">Credentials</div><h2 className="section-title">자격·교육·어학 이력</h2></div></div>
+                        <div className="credential-grid">
+                            {certifications.map((cert, idx) => <CredentialCard key={cert.name} cert={cert} index={idx} />)}
                         </div>
                     </div>
                 </section>
 
                 <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
 
-                <section className="section" id="education">
+                <section className="section compact-section" id="education">
                     <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">Education</div><h2 className="section-title">학력 · 교육</h2></div></div>
-                        <div className="projects-list">
+                        <div className="section-header fade-in"><div><div className="section-tag">Education &amp; Background</div><h2 className="section-title">학력 · 교육</h2></div></div>
+                        <div className="education-grid">
                             {education.map((edu, idx) => (
-                                <div key={idx} className="project-card fade-in" style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`, cursor: 'default'}}>
-                                    <div className="project-card-left"><div style={{fontSize: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', background: 'var(--bg-secondary)', borderRadius: '12px'}}>{edu.type === '교육수료' ? '\u{1F4DA}' : '\u{1F393}'}</div></div>
-                                    <div className="project-card-body">
-                                        <div className="project-card-header"><div><h3 className="project-card-title">{edu.school}</h3><div className="project-card-role">{edu.major} &middot; {edu.type}</div></div><div className="project-card-period">{edu.period}</div></div>
-                                        {edu.gpa && <div className="project-card-footer" style={{marginTop: '8px'}}><div className="project-card-tags"><span className="project-card-tag">학점 {edu.gpa}</span></div></div>}
-                                    </div>
-                                </div>
+                                <article key={edu.school} className={`education-card fade-in${idx === 0 ? ' is-primary' : ''}`}><div className="credential-card-top"><span>{idx === 0 ? '대학원' : idx === 1 ? '대학교' : idx === 2 ? '고등학교' : '교육'}</span><span>{edu.type}</span></div><div className="education-card-main"><h3>{edu.school}</h3><p>{edu.major}</p></div><div className="education-card-bottom"><span>{edu.period}</span>{edu.gpa && <span className="education-gpa">{edu.gpa}</span>}</div></article>
                             ))}
-                            <div className="project-card fade-in" style={{cursor: 'default'}}>
-                                <div className="project-card-left">
-                                    <div className="project-card-icon" style={{display: 'flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', color: 'var(--gold)'}}>
-                                        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                                            <path d="M12 3 4.5 6v5.5c0 4.5 3 7.6 7.5 9.5 4.5-1.9 7.5-5 7.5-9.5V6L12 3Z" />
-                                            <path d="m8.5 11.5 2.3 2.3 4.7-4.8" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div className="project-card-body">
-                                    <div className="project-card-header">
-                                        <div><h3 className="project-card-title">병역</h3><div className="project-card-role">의무경찰 수경 · 만기전역</div></div>
-                                        <div className="project-card-period">2008.05.08 ~ 2010.03.27</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <article className="education-card is-service fade-in"><div className="credential-card-top"><span>병역</span><span>만기전역</span></div><div className="education-card-main"><h3>의무경찰 수경</h3><p>병역 의무 이행</p></div><div className="education-card-bottom"><span>2008.05.08 ~ 2010.03.27</span><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.5 3 7.6 7.5 9.5 4.5-1.9 7.5-5 7.5-9.5V6L12 3Z" /><path d="m8.5 11.5 2.3 2.3 4.7-4.8" /></svg></div></article>
                         </div>
                     </div>
                 </section>

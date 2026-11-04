@@ -572,10 +572,15 @@
         useEffect(() => {
             // The fragment target is rendered by React after the initial HTML loads.
             if (!['#isms-tool', '#isms-screens'].includes(window.location.hash)) return;
-            const frame = requestAnimationFrame(() => {
-                document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' });
+            let cancelled = false;
+            let frame;
+            document.fonts.ready.then(() => {
+                if (cancelled) return;
+                frame = requestAnimationFrame(() => {
+                    document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' });
+                });
             });
-            return () => cancelAnimationFrame(frame);
+            return () => { cancelled = true; cancelAnimationFrame(frame); };
         }, []);
 
         const selectProject = (idx) => {

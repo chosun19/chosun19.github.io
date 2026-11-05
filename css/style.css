@@ -1951,10 +1951,11 @@ nav {
     padding-left: 12px;
 }
 .portfolio-focus .h-stat-value {
-    font-size: clamp(20px, 2vw, 28px);
-    white-space: nowrap;
+    font-size: clamp(17px, 1.45vw, 21px);
+    white-space: normal;
     word-break: keep-all;
-    line-height: 1.2;
+    line-height: 1.5;
+    letter-spacing: -0.035em;
 }
 .portfolio-focus .h-stat-label {
     color: var(--text-2);
@@ -1962,6 +1963,12 @@ nav {
     line-height: 1.6;
     word-break: keep-all;
     overflow-wrap: normal;
+}
+@media (min-width: 1101px) and (max-width: 1399px) {
+    .hero-stats.portfolio-focus { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+}
+@media (min-width: 601px) and (max-width: 700px) {
+    .hero-stats.portfolio-focus { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 20px 16px !important; }
 }
 .project-card-footer {
     flex-wrap: wrap;
@@ -2149,7 +2156,7 @@ nav {
 @media (max-width: 359px) { .credential-grid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; transition-delay: 0ms !important; }
     #particles { display: none; }
     .fade-in { opacity: 1; transform: none; }
 }

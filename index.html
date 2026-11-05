@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>홍기웅 | 정보보호·금융보안 포트폴리오</title>
-    <meta name="description" content="홍기웅의 정보보호 포트폴리오. 직접 구축·활용하는 ISMS 통합관리 도구, 인증·심사 대응, 금융보안 컴플라이언스와 보안 운영 경험을 소개합니다.">
+    <meta name="description" content="홍기웅의 정보보호·금융보안 포트폴리오. ISMS 인증 대응, PG 보안 관리, 금융감독원 대응, 보안 인프라 운영 경험과 직접 구현한 ISMS 통합관리 도구를 소개합니다.">
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v=20261104-career-cta">
+    <link rel="stylesheet" href="./css/style.css?v=20261105-copy-review">
     <link rel="stylesheet" href="./css/isms-case.css?v=20261105-ai-assistant">
     <style>
         .mobile-only-br {
@@ -143,9 +143,9 @@
                 overflow: visible !important;
             }
             .h-stat-value {
-                font-size: 22px !important;
+                font-size: clamp(16px, 3vw, 22px) !important;
                 word-break: keep-all !important;
-                white-space: nowrap !important;
+                white-space: normal !important;
                 letter-spacing: -0.02em !important;
             }
             .project-card {
@@ -431,12 +431,12 @@
                             <div className="detail-hero-info">
                                 <h1 className="detail-hero-title">{project.title}</h1>
                                 <div className="detail-hero-meta">
-                                    <span className="detail-hero-meta-item">Period {project.period}</span>
-                                    <span className="detail-hero-meta-item">Role {project.role}</span>
-                                    {project.employmentType && <span className="detail-hero-meta-item">Type {project.employmentType}</span>}
-                                    {project.salary && <span className="detail-hero-meta-item">Salary {project.salary}</span>}
-                                    {project.region && <span className="detail-hero-meta-item">Region {project.region}</span>}
-                                    {project.industry && <span className="detail-hero-meta-item">Industry {project.industry}</span>}
+                                    <span className="detail-hero-meta-item">근무 기간 {project.period}</span>
+                                    <span className="detail-hero-meta-item">직무 {project.role}</span>
+                                    {project.employmentType && <span className="detail-hero-meta-item">고용 형태 {project.employmentType}</span>}
+                                    {project.salary && <span className="detail-hero-meta-item">연봉 {project.salary}</span>}
+                                    {project.region && <span className="detail-hero-meta-item">근무 지역 {project.region}</span>}
+                                    {project.industry && <span className="detail-hero-meta-item">업종 {project.industry}</span>}
                                 </div>
                                 <p className="detail-hero-desc">{project.description}</p>
                             </div>
@@ -448,7 +448,7 @@
                     <div className="detail-section">
                         <div className="detail-section-title">
                             <span className="detail-section-dot" style={{background: grad}}></span>
-                            주요 성과
+                            주요 업무·성과
                         </div>
                         <div className="detail-metrics">
                             {project.achievements.map((a, i) => (
@@ -465,7 +465,7 @@
                     <div className="detail-section">
                         <div className="detail-section-title">
                             <span className="detail-section-dot" style={{background: grad}}></span>
-                            주요 수행 업무
+                            담당 업무
                         </div>
                         <div className="detail-highlights">
                             {project.highlights.map((h, i) => (
@@ -641,7 +641,7 @@
         return (
             <div className="isms-gallery" id="isms-screens">
                 <div className="isms-gallery-heading">
-                    <div><div className="isms-feature-label">구현 화면으로 확인</div><h3>운영 현황부터 증적 검토·AI 문서 작성까지.</h3></div>
+                    <div><div className="isms-feature-label">구현 화면</div><h3>운영 현황·증적 검토·AI 문서 작성</h3></div>
                     <span className="isms-gallery-note">{ismsScreens.length}개 기능 화면 · 목록에서 직접 선택</span>
                 </div>
                 <div className="isms-proof-groups" role="group" aria-label="구현 화면 업무 흐름">
@@ -663,7 +663,7 @@
                         </button>
                     ))}
                 </div>
-                <p className="isms-gallery-disclosure">모두 실제 앱에서 촬영한 화면입니다. 운영 화면은 내부 식별정보·일정·문서·검토 내용을 가렸으며, 추가 기능 화면은 별도의 가상 데이터 환경에서 촬영했습니다. 각 화면의 시연·마스킹 표시로 구분할 수 있습니다.</p>
+                <p className="isms-gallery-disclosure">실제 앱에서 촬영한 화면입니다. 운영 화면의 내부 정보는 가렸으며, 기능 시연 화면은 별도의 가상 자료로 촬영했습니다. 각 화면에 자료 구분을 표시했습니다.</p>
                 {expanded && <dialog className="isms-lightbox" ref={dialogRef} aria-labelledby="isms-lightbox-title" onClose={() => setExpanded(false)} onClick={event => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={event => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveScreen(event.key === 'ArrowRight' ? 1 : -1); } }}>
                     <div className="isms-lightbox-bar"><h3 id="isms-lightbox-title">{current.title}</h3><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="확대 화면 닫기">닫기 <span aria-hidden="true">&times;</span></button></div>
                     <div className="isms-lightbox-image"><img src={current.src} alt={current.alt} width={current.width || 1710} height={current.height} /></div>
@@ -675,7 +675,7 @@
 
     const ismsDesignDecisions = [
         {id: 'revision', label: '같은 이름의 새 증적', question: '파일명은 그대로인데 내용이 바뀌면?',
-         problem: '문서의 일정·담당자·본문이 수정되어도 파일명이 같으면, 이전 자료에 대한 검토가 현재 결과처럼 남을 수 있습니다.',
+         problem: '문서의 일정·담당자·본문을 수정해도 파일명이 같으면 이전 검토가 현재 자료에 대한 결과처럼 남을 수 있습니다.',
          decision: 'SHA-256으로 원본 내용을 구분하고 이전 사본과 검토를 보존했습니다. 자료가 바뀐 항목에는 재검토가 필요하다는 상태를 표시합니다.',
          check: '내용이 바뀐 파일이 별도 사본으로 저장되는지, 이전 검토가 현재 파일의 판단 근거로 표시되지 않는지 확인했습니다.',
          trace: ['자료 변경 확인', '이전 원본·검토 보존', '현재 자료 재검토']},
@@ -685,12 +685,12 @@
          check: '연결 항목을 바꾸어도 원본 해시가 유지되는지, 담당자가 제외한 연결이 자동 분석으로 다시 붙지 않는지 확인했습니다.',
          trace: ['원본 한 개 보관', '항목별 근거 연결', '담당자의 연결 수정']},
         {id: 'judgment', label: '검토와 승인 구분', question: '판독이 부족한 자료를 바로 미흡으로 볼 수 있을까?',
-         problem: '자료를 읽지 못했거나 추가 확인이 남아 있다는 사실만으로, 실제 통제가 이행되지 않았다고 판단하기 어렵습니다.',
+         problem: '자료를 읽지 못했거나 추가 확인이 필요하다는 이유만으로 실제 통제가 이행되지 않았다고 판단하기 어렵습니다.',
          decision: '적합·미흡·확인 필요를 구분하고 근거 위치, 남은 질문, 필요한 보완자료를 함께 남겼습니다. AI 검토 의견과 자체점검, 담당자 승인은 각각 기록합니다.',
          check: '자료 변경·판독 한계가 취약 확정으로 바뀌지 않는지, 검토 제안을 반영해도 회사 승인 상태가 자동 변경되지 않는지 확인했습니다.',
          trace: ['본문·근거 확인', '검토 의견과 질문', '담당자 판단·승인']},
         {id: 'history', label: '지난 심사와 현재 심사', question: '과거 심사 기록을 보존하며 다음 심사를 준비하려면?',
-         problem: '과거에 통과한 심사의 자료와 보완조치까지 현재 준비자료로 덮어쓰면 당시의 대응 근거를 다시 확인하기 어렵습니다.',
+         problem: '과거 심사의 자료와 보완조치를 현재 준비자료로 덮어쓰면 당시 대응 근거를 다시 확인하기 어렵습니다.',
          decision: '심사 차수마다 DB와 증적 사본을 구분했습니다. 과거 인증 결과와 보완조치는 해당 차수에 남기고, 새 심사의 자료와 검토는 별도로 관리합니다.',
          check: '창마다 선택한 심사가 유지되는지, 다른 차수의 조회·수정·다운로드에 자료가 섞이지 않는지 확인했습니다.',
          trace: ['차수별 자료 구분', '당시 보완조치 보존', '다음 심사 독립 관리']}
@@ -700,7 +700,7 @@
         const [active, setActive] = useState('revision');
         const item = ismsDesignDecisions.find(item => item.id === active);
         return <section className="isms-design" aria-labelledby="isms-design-title">
-            <div className="isms-design-heading"><div className="isms-feature-label">실무 요구를 설계 기준으로</div><h3 id="isms-design-title">구현하면서 먼저 정한 네 가지 기준</h3><p>자료를 모은 뒤에도 남는 문제를, 기록과 판단이 이어지는 방식으로 풀었습니다.</p></div>
+            <div className="isms-design-heading"><div className="isms-feature-label">설계 기준</div><h3 id="isms-design-title">구현하면서 먼저 정한 네 가지 기준</h3><p>파일 갱신, 증적 연결, 검토 상태, 심사 이력을 구분해 관리하도록 설계했습니다.</p></div>
             <div className="isms-decision-layout"><div className="isms-decision-options" role="group" aria-label="설계 고민 선택">{ismsDesignDecisions.map((decision, i) => <button type="button" key={decision.id} aria-pressed={active === decision.id} onClick={() => setActive(decision.id)}><span>0{i + 1}</span><strong>{decision.label}</strong><span aria-hidden="true">↗</span></button>)}</div>
                 <article className="isms-decision-detail" aria-live="polite"><h4>{item.question}</h4><dl><div><dt>실무에서 생긴 문제</dt><dd>{item.problem}</dd></div><div><dt>구현한 방식</dt><dd>{item.decision}</dd></div><div><dt>확인한 동작</dt><dd>{item.check}</dd></div></dl><ol className="isms-decision-trace" aria-label="선택한 설계의 처리 흐름">{item.trace.map((step, i) => <li key={step}><span>0{i + 1}</span>{step}</li>)}</ol></article>
             </div>
@@ -718,8 +718,8 @@
         const item = ismsAssistantSteps[active];
         return <section className="isms-assistant" id="isms-ai" aria-labelledby="isms-ai-title">
             <div className="isms-feature-label">AI 업무 도우미</div>
-            <div className="isms-assistant-heading"><h3 id="isms-ai-title">요청에서 문서와 검토 업무까지</h3><a href="#isms-screens">구현 화면에서 확인 ↗</a></div>
-            <p className="isms-assistant-lead">등록 자료를 바탕으로 답변하고, 그 결과를 실제 파일과 후속 업무로 연결했습니다. 담당자가 근거와 생성 결과를 확인한 뒤 업무에 반영하도록 구성했습니다.</p>
+            <div className="isms-assistant-heading"><h3 id="isms-ai-title">자료 검토부터 문서 작성·후속 업무까지</h3><a href="#isms-screens">구현 화면 보기 ↗</a></div>
+            <p className="isms-assistant-lead">등록 자료를 확인해 답변하고 문서 초안과 검토 업무를 생성합니다. 담당자는 인용 근거와 작성 결과를 확인한 뒤 업무에 반영할 수 있습니다.</p>
             <div className="isms-assistant-steps" role="group" aria-label="AI 업무 도우미 처리 단계">{ismsAssistantSteps.map((step,i)=><button type="button" key={step.title} aria-pressed={active===i} onClick={()=>setActive(i)}><span>0{i+1}</span><strong>{step.title}</strong><span aria-hidden="true">→</span></button>)}</div>
             <article className="isms-assistant-detail" aria-live="polite"><h4>{item.title}</h4><p>{item.body}</p><div><strong>구현하며 확인한 점</strong><p>{item.detail}</p></div></article>
             <p className="isms-assistant-note">모델은 구조화된 작성 결과를 반환하고 앱이 허용한 작업만 실행합니다. 같은 입력·모델·규칙의 기존 결과를 재사용하며, 규칙·자료가 바뀌면 다시 검토합니다. AI 의견은 담당자의 최종 판단과 구분합니다.</p>
@@ -727,13 +727,13 @@
     };
 
     const IsmsImplementation = () => <section className="isms-implementation" aria-labelledby="isms-implementation-title">
-        <div className="isms-feature-label">현재 구현한 범위</div><h3 id="isms-implementation-title">각 메뉴가 하나의 운영 흐름으로 이어지도록</h3>
+        <div className="isms-feature-label">구현 기능</div><h3 id="isms-implementation-title">메뉴별 관리 기능과 도구 구성</h3>
         <div className="isms-implementation-grid">{[
             ['통제항목·검토', '세부 요구사항별 근거와 판단', '문서 본문과 근거 위치, 확인 질문, 추가 증빙을 항목별로 관리합니다. 검토에서 남은 조치를 점검·개선 업무로 연결합니다.'],
             ['증적·문서', '원본 보존과 여러 항목 연결', '폴더 구조를 가져오고 내용을 판독합니다. 현재·이전 자료를 구분하며, 문서 뷰어와 원본 내려받기로 근거를 확인합니다.'],
             ['조직·자산', '서비스 범위와 담당 업무 확인', '조직도에서 인증범위와 보안 역할을 구분합니다. 구성원과 기존 담당 기록이 일치하는 통제항목·자산을 함께 보여줍니다.'],
             ['법령·정책', '외부 기준에서 내부 검토로', '법령·행정규칙 조회와 개정 전후 비교를 지원합니다. 내부 정책 원본, 개선 의견, 수정안, 승인본을 구분해 관리합니다.'],
-            ['심사·보고', '차수별 이력과 다음 점검', '과거 인증 결과·보완조치를 차수별로 보관합니다. 반복 점검 일정, 현황 보고서, 엑셀 내려받기를 통해 후속 업무를 관리합니다.'],
+            ['심사·보고', '차수별 이력과 점검 일정', '과거 인증 결과·보완조치를 차수별로 보관합니다. 반복 점검 일정을 관리하고, 점검 현황은 보고서와 Excel 파일로 확인합니다.'],
             ['AI 업무 도우미', '근거 확인부터 양식 작성·후속 검토까지', '등록 자료의 원문 인용을 대조하고 회사 양식으로 Word·Excel 초안을 작성합니다. 실제 생성 파일과 수행 단계, 검토 업무를 함께 관리하며 Codex·OpenAI API·로컬 AI 연결을 설정할 수 있습니다.']
         ].map(([label,title,body]) => <article key={label}><span>{label}</span><h4>{title}</h4><p>{body}</p></article>)}</div>
         <div className="isms-system-note"><strong>도구 구성</strong><p>Python 서버 · SQLite · JavaScript · SHA-256 원본 식별 · 법령 MCP · 선택형 AI 문서 분석</p><p>프로그램 소스와 회사별 자료·인증키를 분리해 다른 환경으로 옮길 수 있게 구성했습니다. 실제 문서 분석은 설정한 AI 제공자에 필요한 본문과 이미지를 전달하며, 검토 의견의 최종 반영은 담당자가 결정합니다.</p></div>
@@ -802,26 +802,26 @@
             {
                 "title": "관리체계",
                 "emoji": "🛡",
-                "value": "인증 대응을 넘어 ISMS 통합관리 도구 구축",
-                "desc": "ISMS 최초 인증·사후심사와 PG 최초 보안 인증 대응 경험을 바탕으로, 법령·정책 검토부터 자산·통제항목·증적·보완조치·심사 이력까지 함께 관리하는 업무용 도구를 직접 기획·구현해 활용하고 있습니다."
+                "value": "ISMS 인증 대응과 관리 도구 구축",
+                "desc": "ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 법령·정책, 자산·통제항목, 증적·보완조치·심사 이력을 관리하는 도구도 직접 기획·구현해 사용하고 있습니다."
             },
             {
                 "title": "금융보안",
                 "emoji": "📌",
                 "value": "금감원 대응과 CISO·임원 보고",
-                "desc": "FIRST·CPC 요청사항 확인부터 내부 점검, CISO·임원 보고, 보고서 작성·금융감독원 제출과 사내 공유까지 담당합니다."
+                "desc": "FIRST·CPC 요청사항을 확인하고 내부 점검과 대응자료 작성을 담당합니다. 대응 현황은 CISO·임원에게 보고하고, 금융감독원 제출과 사내 공유도 수행합니다."
             },
             {
                 "title": "보안성 검토",
                 "emoji": "🏢",
-                "value": "보안 요구사항과 보완조치 관리",
-                "desc": "금융권 SI와 신규 전자금융 서비스의 자체 보안성 심의 대응 및 보안성 검토를 수행하고 개발·인프라·운영 부서와 조치를 협의했습니다."
+                "value": "보안 요구사항 검토와 보완조치 확인",
+                "desc": "금융권 SI와 신규 전자금융 서비스의 자체 보안성 심의에 대응하고 보안성을 검토했습니다. 개발·인프라·운영 부서와 조치 방안을 협의하고 이행 여부를 확인했습니다."
             },
             {
-                "title": "운영 기반",
+                "title": "보안 운영",
                 "emoji": "🔁",
-                "value": "솔루션·인프라 도입과 보안운영",
-                "desc": "NAS·Chakra Max·SSL VPN·IPS·방화벽 등 보안솔루션과 인프라 신규 도입, NAC·DLP 운영, 개인정보 처리 근거·처리방침 및 위수탁사 점검을 경험했습니다."
+                "value": "보안 솔루션·인프라 도입 및 운영",
+                "desc": "NAS·Chakra Max·SSL VPN·IPS·방화벽을 도입하고 NAC·DLP를 운영했습니다. 개인정보 처리 근거 검토, 처리방침 정비, 위·수탁사 점검도 수행했습니다."
             }
         ];
 
@@ -856,10 +856,10 @@
                 "개인정보 처리 흐름",
                 "처리 근거 검토",
                 "개인정보 처리방침",
-                "위수탁사 점검",
+                "위·수탁사 점검",
                 "관계기관 질의·외부 법률자문 대응"
             ],
-            "보안솔루션·인프라": [
+            "보안 솔루션·인프라": [
                 "NAS",
                 "Chakra Max",
                 "SSL VPN",
@@ -867,7 +867,7 @@
                 "DLP",
                 "방화벽",
                 "IPS·IDS",
-                "DB접근제어",
+                "DB 접근제어",
                 "서버·네트워크",
                 "Splunk"
             ],
@@ -893,22 +893,23 @@
                 "title": "이지샵 - 정보인프라팀",
                 "period": "2024.12 ~ 재직 중",
                 "role": "정보인프라팀 매니저 / 정보보안",
-                "description": "사내 정보보호 담당자로서 ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다. 실무에서 고민한 관리 방식을 ISMS 통합관리 도구로 직접 구현하여 법령·정책 검토, 자산·통제항목, 증적·보완조치와 차수별 심사 이력을 함께 관리하고 있습니다. AI 업무 도우미의 근거 검증, 회사 양식 기반 문서 작성과 후속 검토 업무 연결도 구현했습니다. 보안솔루션·인프라의 신규 도입과 운영도 담당합니다.",
+                "summary": "ISMS·PG 인증 대응과 금융보안 업무, 보안 솔루션·인프라 도입 및 운영을 담당합니다. 증적·심사 이력 관리와 AI 문서 작성을 지원하는 ISMS 통합관리 도구를 직접 기획·구현해 사용하고 있습니다.",
+                "description": "사내 정보보호 담당자로서 ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다. 법령·정책 검토, 자산·통제항목, 증적·보완조치와 차수별 심사 이력을 함께 관리하려고 ISMS 통합관리 도구를 직접 기획·구현했습니다. AI 업무 도우미에는 인용 근거 검증, 회사 양식에 맞춘 문서 작성, 후속 검토 업무 등록 기능을 구현했습니다. 보안 솔루션·인프라 신규 도입과 운영도 담당합니다.",
                 "highlights": [
                     "PG 금융보안 컴플라이언스: 금융보안 통합관제시스템(FIRST)·CPC 등을 통한 보안 위협정보, 공지 및 점검·자료제출 요구사항 확인",
                     "금융감독원 대응: 내부 현황 확인과 유관 부서 자료 취합, 보고서·증빙자료 작성 후 금융감독원 제출",
                     "CISO·임원 보고 및 사내 공유: 주요 보안 이슈와 대외 요청사항의 대응 현황 보고, 보안 위협정보 전파와 후속조치 협의",
                     "ISMS 최초 인증 및 사후심사: 인증 범위·정보자산 정리, 위험평가, 정책·지침과 증적 정비, 심사 보완조치 관리 및 사후심사 통과",
                     "ISMS 통합관리 도구 직접 구축·활용: 사내 정보보호 업무의 관리 요구사항을 정리하고 기능을 직접 구현, 사용 중 발견한 개선점을 반복 반영",
-                    "법령·정책 검토 지원: 법령 조회와 개정 전후 비교, 내부 정책·지침과의 대조 및 개선 의견을 통해 현재 상태와 보완 필요사항 확인, 최종 반영 여부는 담당자 검토",
+                    "법령·정책 검토 지원: 법령과 개정 전후 조문 조회, 내부 정책·지침 대조, 보완 필요사항과 수정 의견 정리 및 반영 여부 검토",
                     "자산·통제항목·심사 기록 통합관리: 최초심사·1차 사후심사 기록과 2차 사후심사 준비자료를 반영하고, 이전 심사의 증적과 결함 보완조치내역서까지 차수별 관리",
                     "PG 최초 보안 인증: 요구사항에 따른 결제·개인정보 처리 시스템의 보안 통제 점검, 심사 대응과 보완조치 이행, 인증 이후 금융 컴플라이언스 지속 대응",
                     "신규 전자금융 서비스 검토: 자체 보안성 심의, 서비스·결제·개인정보 흐름, 접근통제·로그 및 취약점 결과 검토와 보완조치 확인",
                     "금융감독원 신고 지원: 신규 서비스 관련 신고 대상 여부 검토 및 신고·제출자료 작성 지원",
                     "정책·내부 점검: 연간 보안계획과 지표 수립, 계정·접근권한·로그·자료 반출 관련 정책·지침 정비 및 운영 점검",
-                    "개인정보보호: 처리 근거 쟁점에 대한 관계기관 질의·외부 법률자문 대응, 개인정보 처리방침 정비 및 위수탁사 점검",
-                    "보안솔루션·인프라 신규 도입: NAS, Chakra Max, SSL VPN, IPS·방화벽 등 다양한 제품의 신규 도입과 운영",
-                    "운영 기준·통제 정비: 보안솔루션의 접근통제 정책 및 운영 기준 정비, VPN·NAC·DLP 운영과 계정·권한·로그 관리",
+                    "개인정보보호: 처리 근거 쟁점에 대한 관계기관 질의·외부 법률자문 대응, 개인정보 처리방침 정비 및 위·수탁사 점검",
+                    "보안 솔루션·인프라 신규 도입: NAS, Chakra Max, SSL VPN, IPS·방화벽 등 다양한 제품의 신규 도입과 운영",
+                    "운영 기준·통제 정비: 보안 솔루션의 접근통제 정책 및 운영 기준 정비, VPN·NAC·DLP 운영과 계정·권한·로그 관리",
                     "보안 이벤트 분석과 이상행위 대응, 대응 결과 보고 및 재발 방지 대책 검토"
                 ],
                 "tech": [
@@ -919,7 +920,7 @@
                     "FIRST·CPC",
                     "CISO·임원 보고",
                     "개인정보보호",
-                    "보안솔루션·인프라 도입",
+                    "보안 솔루션·인프라 도입",
                     "NAS",
                     "Chakra Max",
                     "SSL VPN",
@@ -975,7 +976,7 @@
                         "value": "보고·제출"
                     },
                     {
-                        "label": "보안솔루션·인프라",
+                        "label": "보안 솔루션·인프라",
                         "value": "신규 도입"
                     }
                 ]
@@ -1117,7 +1118,7 @@
                         "value": "자료 지원"
                     },
                     {
-                        "label": "사고예방",
+                        "label": "사고 예방",
                         "value": "교육·훈련"
                     }
                 ]
@@ -1132,7 +1133,7 @@
                 "company": "새일시스템즈",
                 "title": "새일시스템즈 - SE사업부",
                 "period": "2018.01 ~ 2019.02",
-                "role": "SE사업부 대리 / 인프라·보안운영",
+                "role": "SE사업부 대리 / 인프라·보안 운영",
                 "description": "산업통상자원부 사이버안전센터에서 서버·네트워크와 보안장비를 운영하고 장애에 대응했습니다. Splunk 로그 분석, 을지훈련장·경진대회 인프라 구성과 보안 감사 대응자료 정리 업무도 수행했습니다.",
                 "highlights": [
                     "센터 인프라 운영: 서버·네트워크 상태 확인과 장애 대응, 산하기관 현장 장애 원인 파악·복구 지원",
@@ -1208,7 +1209,7 @@
                     "보안 인프라 고도화: 방화벽·IPS·스위치 등 보안·네트워크 장비 교체 및 설정 작업 지원",
                     "전환 검증: VLAN 구성과 망 분리 적용 테스트, 정책 변경 영향 확인 및 장비 동작·발생 이슈 정리",
                     "산출물 작성: 작업 내역서와 구성·정책 변경사항 요약, 작업 결과 문서화 및 유관 부서 공유",
-                    "주요 프로젝트: 향수정보통신 경력과 동일한 대전통합전산센터 보안 인프라 고도화 사업 참여"
+                    "참여 사업: 향수정보통신 재직 당시 참여했던 대전통합전산센터 보안 인프라 고도화 사업"
                 ],
                 "tech": [
                     "방화벽",
@@ -1264,7 +1265,7 @@
                 "title": "향수정보통신 - 시스템운영",
                 "period": "2017.04 ~ 2017.05",
                 "role": "시스템운영 주임 / 인프라 (계약직)",
-                "description": "콤텍정보통신 경력과 동일한 대전통합전산센터 보안 인프라 고도화 사업에 참여했습니다. 장비 교체·설정과 전환 검증, VLAN·망 분리 테스트 및 결과 문서화를 지원했습니다.",
+                "description": "대전통합전산센터 보안 인프라 고도화 사업에서 장비 교체·설정, 전환 검증, VLAN·망 분리 테스트와 결과 문서화를 지원했습니다. 이후 콤텍정보통신에서도 같은 사업에 참여했습니다.",
                 "highlights": [
                     "장비 교체·검증: 공공기관 전산센터 보안·네트워크 장비 교체와 설정 및 전환 검증 지원",
                     "네트워크 테스트: VLAN·망 분리 적용과 변경 영향 검토, 전환 계획에 따른 테스트 결과 정리",
@@ -1324,7 +1325,7 @@
                 "role": "보안관리부 사원 / 정보보안",
                 "description": "사내 방화벽·백신·VPN 정책과 사용자 계정·접근권한을 관리했습니다. 보안 로그 및 정책 준수 여부를 점검하고 신입·정기 보안교육과 캠페인을 운영했습니다.",
                 "highlights": [
-                    "보안솔루션 운영: 방화벽·백신·VPN 정책 관리, 보안 로그 점검과 이상징후 대응 지원",
+                    "보안 솔루션 운영: 방화벽·백신·VPN 정책 관리, 보안 로그 점검과 이상징후 대응 지원",
                     "사용자 관리: 계정·접근권한과 변경 이력 관리, 통제 적용 현황 확인 및 운영 기준 정비 지원",
                     "정책 준수 점검: 사내 보안정책·지침 이행 여부 확인 및 개선사항 정리",
                     "임직원 교육: 신입·분기별 정기 보안교육 기획·운영과 보안 수칙 안내·캠페인 수행",
@@ -1342,7 +1343,7 @@
                 "terminalLog": [
                     {
                         "type": "info",
-                        "text": "사내 보안솔루션 정책과 로그 점검"
+                        "text": "사내 보안 솔루션 정책과 로그 점검"
                     },
                     {
                         "type": "info",
@@ -1359,7 +1360,7 @@
                 ],
                 "achievements": [
                     {
-                        "label": "보안솔루션",
+                        "label": "보안 솔루션",
                         "value": "정책 운영"
                     },
                     {
@@ -1533,16 +1534,16 @@
                         <div className="hero-left">
                             <div className="hero-tag">Information Security Professional</div>
                             <h1 className="hero-name">홍기웅</h1>
-                            <p className="hero-role">보안관제·인프라 운영 경험을 바탕으로<br />ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다.</p>
+                            <p className="hero-role">보안관제와 인프라 운영을 거쳐<br />ISMS·PG 인증 대응과 금융보안 업무를 담당합니다.</p>
                             <div className="hero-actions"><a className="hero-career-link" href="#projects">경력 살펴보기 <span aria-hidden="true">&rarr;</span></a></div>
                             <div className="hero-stats portfolio-focus">
-                                <div className="h-stat"><div className="h-stat-value">ISMS</div><div className="h-stat-label">최초 인증·사후심사</div></div>
-                                <div className="h-stat"><div className="h-stat-value">PG</div><div className="h-stat-label">최초 인증·유지관리</div></div>
-                                <div className="h-stat"><div className="h-stat-value">금감원</div><div className="h-stat-label">대응·보고서 제출</div></div>
-                                <div className="h-stat"><div className="h-stat-value">보안운영</div><div className="h-stat-label">솔루션·인프라 도입·운영</div></div>
+                                <div className="h-stat"><div className="h-stat-value">ISMS 인증 대응</div><div className="h-stat-label">최초심사·사후심사 준비 및 대응</div></div>
+                                <div className="h-stat"><div className="h-stat-value">PG 보안 관리</div><div className="h-stat-label">보안 요구사항 검토·이행 관리</div></div>
+                                <div className="h-stat"><div className="h-stat-value">금감원 대응</div><div className="h-stat-label">요청자료 작성·보고서 제출</div></div>
+                                <div className="h-stat"><div className="h-stat-value">보안 인프라 운영</div><div className="h-stat-label">보안 솔루션·인프라 도입 및 운영</div></div>
                             </div>
                         </div>
-                        <div className="hero-right"><a className="hero-evidence" href="#isms-screens"><div className="hero-evidence-top"><span>BUILT FROM PRACTICE</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div><h2>ISMS 통합관리</h2><p>직접 기획·구현하고, 사내 업무에 활용하는 도구</p><div className="hero-evidence-image"><img src="./assets/isms/control-management.png?v=20261104-refined" alt="직접 구현한 ISMS 도구의 통제항목 관리 화면. 내부 정보는 마스킹되어 있습니다." width="1710" height="904" /></div><div className="hero-evidence-bottom"><span>정책 · 통제 · 증적 · 심사 이력</span><span>실제 화면 보기 &rarr;</span></div></a></div>
+                        <div className="hero-right"><a className="hero-evidence" href="#isms-screens"><div className="hero-evidence-top"><span>BUILT FROM PRACTICE</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div><h2>ISMS 통합관리 도구</h2><p>직접 기획·구현해 사내 업무에 사용하는 도구</p><div className="hero-evidence-image"><img src="./assets/isms/control-management.png?v=20261104-refined" alt="직접 구현한 ISMS 도구의 통제항목 관리 화면. 내부 정보는 마스킹되어 있습니다." width="1710" height="904" /></div><div className="hero-evidence-bottom"><span>정책 · 통제 · 증적 · 심사 이력</span><span>구현 화면 보기 &rarr;</span></div></a></div>
                     </div>
                 </section>
 
@@ -1552,8 +1553,8 @@
                     <div className="section-container">
                         <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">소개</h2></div></div>
                         <div className="about-editorial fade-in">
-                            <div className="about-principle"><div className="isms-feature-label">운영에서 배운 보안</div><h3>보안 요구사항을<br />실제로 작동하는<br /><span>운영으로 연결합니다.</span></h3><div className="about-keywords"><span>정보보호 관리체계</span><span>금융보안 컴플라이언스</span><span>보안솔루션·인프라</span></div></div>
-                            <div className="about-copy"><p>보안관제와 인프라 운영부터 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영까지 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했으며, 금융감독원 요청사항 대응과 CISO·임원 보고, 대외 보고서 작성·제출을 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비 등 보안솔루션·인프라를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 실제 업무에 적용합니다.</p><div className="about-built-note"><strong>실무의 고민을, 직접 만든 도구로.</strong><p>법령·정책 검토, 자산·통제항목, 증적·보완조치와 심사 이력을 ISMS 통합관리 도구로 연결했습니다. 실제 업무에서 사용하며 필요한 기능을 하나씩 개선하고 있습니다.</p></div></div>
+                            <div className="about-principle"><div className="isms-feature-label">정보보호 실무</div><h3>보안 요구사항을<br />점검하고 개선해<br /><span>실제 운영에 반영합니다.</span></h3><div className="about-keywords"><span>정보보호 관리체계</span><span>금융보안 컴플라이언스</span><span>보안 솔루션·인프라</span></div></div>
+                            <div className="about-copy"><p>보안관제와 인프라 운영, 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영을 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 현재 금융감독원 요청자료 작성·제출과 CISO·임원 보고를 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 업무에 적용합니다.</p><div className="about-built-note"><strong>심사 준비에 필요한 도구를 직접 만들었습니다.</strong><p>법령·정책, 자산·통제항목, 증적·보완조치와 심사 이력을 한곳에서 관리합니다. 사내 업무에 사용하며 필요한 기능을 개선하고 있습니다.</p></div></div>
                         </div>
                     </div>
                 </section>
@@ -1564,21 +1565,21 @@
                     <div className="section-container">
                         <div className="section-header fade-in">
                             <div><div className="section-tag">Built From Practice</div><h2 className="section-title" id="isms-case-title">ISMS 통합관리 도구</h2></div>
-                            <p className="section-desc">요구사항 정의부터 검토 기준, 자료 보존과 반복 개선까지.</p>
+                            <p className="section-desc">심사 준비에서 생긴 문제를 정리하고 기능으로 구현했습니다.</p>
                         </div>
                         <div className="isms-case-intro fade-in">
                             <div className="isms-case-story">
                                 <div className="isms-case-kicker">실무 요구사항 정의 · 설계 · 구현 검증</div>
-                                <h3>증적에서 판단 근거까지,<br />이어지는 관리체계를 만들었습니다.</h3>
-                                <p>같은 회의록을 여러 통제항목에서 사용하고, 파일명은 같아도 내용은 계속 바뀌었습니다. 이전 심사의 보완조치와 이번 심사의 준비 상태도 구분해 확인해야 했습니다.</p>
-                                <p>이런 업무 요구를 증적 수집, 항목별 근거 검토, 보완 업무, 심사 이력으로 정리했습니다. Codex를 활용해 기능을 구현하고, 실제 자료를 적용하며 발견한 매칭·판독·판정 문제를 반복해서 수정하고 있습니다.</p>
+                                <h3>증적과 검토 근거를<br />한곳에서 관리하도록 만들었습니다.</h3>
+                                <p>같은 회의록을 여러 통제항목에서 사용하고 파일명은 유지한 채 내용을 갱신하는 일이 많았습니다. 이전 심사의 보완조치와 이번 심사의 준비 상태도 구분해 확인해야 했습니다.</p>
+                                <p>필요한 기능을 증적 수집, 항목별 근거 검토, 보완 업무, 심사 이력 관리로 나눠 설계했습니다. Codex로 기능을 구현하고 실제 자료를 적용하면서 문서 판독, 증적 연결, 검토 상태 표시를 반복해서 개선하고 있습니다.</p>
                             </div>
                             <div className="isms-cycle" aria-label="도구로 연결한 보안 관리 흐름">
                                 <div className="isms-cycle-heading">직접 정의하고 검증한 것</div>
                                 <ol>
                                     <li><span className="isms-step-num" aria-hidden="true">01</span><div><strong>검토 기준</strong><span>적합·미흡·확인 필요와 보완 사유 구분</span></div></li>
                                     <li><span className="isms-step-num" aria-hidden="true">02</span><div><strong>자료 연결</strong><span>원본 하나와 여러 통제항목의 관계 관리</span></div></li>
-                                    <li><span className="isms-step-num" aria-hidden="true">03</span><div><strong>이력 보존</strong><span>현재 자료와 이전 심사·검토의 경계 유지</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">03</span><div><strong>이력 보존</strong><span>현재 자료와 이전 심사·검토 기록 구분</span></div></li>
                                     <li><span className="isms-step-num" aria-hidden="true">04</span><div><strong>업무 적용</strong><span>실제 자료로 동작을 확인하고 화면·흐름 개선</span></div></li>
                                 </ol>
                             </div>
@@ -1588,8 +1589,8 @@
                         <IsmsAssistant />
                         <IsmsImplementation />
                         <div className="isms-case-outcome fade-in">
-                            <div><div className="isms-feature-label">실무에 적용한 변화</div><p>어떤 자료를 근거로 검토했는지, 무엇을 더 확인해야 하는지, 이후에 어떻게 조치했는지를 이어서 확인할 수 있게 했습니다. 실제 업무에서 발견한 문제를 다음 기능 개선의 기준으로 삼고 있습니다.</p></div>
-                            <p className="isms-review-note">법령·정책 대조와 개선 의견은 검토 보조자료로 활용하며, 최종 판단과 반영 여부는 담당자가 확인합니다.</p>
+                            <div><div className="isms-feature-label">실무 적용</div><p>검토에 사용한 증적과 근거 위치, 남은 확인사항, 후속 조치와 처리 이력을 함께 확인할 수 있습니다. 사내 업무에서 발견한 문제는 다음 기능 개선에 반영하고 있습니다.</p></div>
+                            <p className="isms-review-note">법령·정책 검토 의견은 담당자가 확인한 뒤 반영합니다.</p>
                         </div>
                     </div>
                 </section>
@@ -1598,7 +1599,7 @@
 
                 <section className="section" id="projects">
                     <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">Career Summary</div><h2 className="section-title">경력 요약</h2></div><p className="section-desc">인증 대응, 금융보안, 보안성 검토와 기술 운영 경험을 정리했습니다.</p></div>
+                        <div className="section-header fade-in"><div><div className="section-tag">Career Summary</div><h2 className="section-title">경력 요약</h2></div><p className="section-desc">인증 대응·금융보안·보안성 검토·인프라 운영 경험</p></div>
                         <div className="career-summary-grid">
                             {careerSummary.map((item, idx) => (
                                 <article key={idx} className="career-summary-card fade-in"><div className="career-summary-label"><span>{item.title}</span><span>{String(idx + 1).padStart(2, '0')}</span></div><h3>{item.value}</h3><p>{item.desc}</p></article>
@@ -1613,8 +1614,8 @@
                                 </svg>
                             </div>
                             <div className="career-guide-copy">
-                                <strong>카드를 클릭하면 상세 경력을 볼 수 있습니다.</strong>
-                                <p>모바일에서는 카드를 탭해 주세요. 담당 업무와 주요 성과를 확인할 수 있습니다.</p>
+                                <strong>회사별 담당 업무와 성과</strong>
+                                <p>카드를 선택하면 상세 경력을 확인할 수 있습니다.</p>
                             </div>
                         </div>
                         <div className="projects-list">
@@ -1644,14 +1645,14 @@
                                                     if (fallback) fallback.style.display = 'flex';
                                                 }}
                                             />
-                                            <span style={{display: 'none', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%'}}>
-                                                {'\u{1F6E1}'}
+                                            <span aria-hidden="true" style={{display: 'none', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', fontSize: '15px', fontWeight: 600, color: 'var(--gold-2)'}}>
+                                                {p.company.slice(0, 2)}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="project-card-body">
                                         <div className="project-card-header"><div><h3 className="project-card-title">{p.title}</h3><div className="project-card-role">{p.role} · {p.industry}{p.employmentType ? ` · ${p.employmentType}` : ''}</div></div><div className="project-card-period">{p.period}</div></div>
-                                        <p className="project-card-desc">{p.description}</p>
+                                        <p className="project-card-desc">{p.summary || p.description}</p>
                                         <div className="project-card-footer"><div className="project-card-tags">{p.tech.slice(0, 6).map((t, i) => <span key={i} className="project-card-tag">{t}</span>)}{p.tech.length > 6 && <span className="project-card-tag">+{p.tech.length - 6}</span>}</div><div className="project-card-metrics">{p.achievements.map((a, i) => (<div key={i} className="project-card-metric"><div className="project-card-metric-value">{a.value}</div><div className="project-card-metric-label">{a.label}</div></div>))}</div></div>
                                         <div className="project-card-clickhint">상세 경력 보기 &rarr;</div>
                                     </div>

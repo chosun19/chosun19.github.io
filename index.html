@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/portfolio-ai.css?v=20261105-dlp-copy">
     <link rel="stylesheet" href="./css/portfolio-ai-isms.css?v=20261105-dlp-copy">
-    <link rel="stylesheet" href="./css/ai-dlp-case.css?v=20261105-ai-enhanced">
+    <link rel="stylesheet" href="./css/ai-dlp-case.css?v=20261106-single-gallery">
     <style>
         .mobile-only-br {
             display: none;
@@ -772,17 +772,17 @@
     ];
 
     const dlpScreens = [
-        {id: 'dashboard', title: 'DLP 현황', category: '처리 현황과 탐지 유형', src: './assets/ai-dlp/dashboard-original.png', width: 1649, height: 609, enhanced: {src: './assets/ai-dlp/dashboard-clean.png', width: 2063, height: 762},
+        {id: 'dashboard', title: 'DLP 현황', category: '처리 현황과 탐지 유형', src: './assets/ai-dlp/dashboard-clean.png', width: 2063, height: 762,
          alt: 'AI DLP 로컬 PoC의 현황 화면. 탐지·차단·피드백 기록과 유형별 분포를 보여주며 접속정보는 가렸습니다.',
          description: 'DLP 상태, 탐지·차단·피드백 기록과 탐지 유형 분포를 확인하는 화면입니다. 표시된 건수는 로컬 테스트 기록이며 사내 운영 실적이나 탐지 정확도가 아닙니다.'},
-        {id: 'input', title: '입력정보 보호', category: '원문과 대체값의 연결', src: './assets/ai-dlp/input-protection-original.png', width: 1917, height: 1405, enhanced: {src: './assets/ai-dlp/input-protection-clean.png', width: 1465, height: 1073},
-         alt: '가상 고객 응대 메모를 입력해 개인정보와 테스트용 비밀값의 치환 관계를 확인한 실제 콘솔 화면.',
+        {id: 'input', title: '입력정보 보호', category: '원문과 대체값의 연결', src: './assets/ai-dlp/input-protection-clean.png', width: 1465, height: 1073,
+         alt: '가상 고객 응대 메모의 개인정보와 테스트용 비밀값이 대체값에 연결되는 콘솔 참고 화면.',
          description: '가상의 이름·연락처·계좌·테스트용 비밀값을 넣고 탐지 유형과 대체값 연결을 확인했습니다. 실제 개인정보나 유효한 인증정보가 아닌 샘플 데이터입니다.'},
-        {id: 'research', title: '업무 식별자 치환', category: '업무용 명칭과 내부 경로 보호', src: './assets/ai-dlp/research-protection-original.png', width: 1915, height: 1409, enhanced: {src: './assets/ai-dlp/research-protection-clean.png', width: 1462, height: 1076},
-         alt: '연구·업무 기밀 형태의 가상 샘플을 사용해 후보물질·배치·문서 식별자를 치환한 실제 콘솔 화면.',
+        {id: 'research', title: '업무 식별자 치환', category: '업무용 명칭과 내부 경로 보호', src: './assets/ai-dlp/research-protection-clean.png', width: 1462, height: 1076,
+         alt: '연구·업무 기밀 형태의 가상 샘플에서 후보물질·배치·문서 식별자를 치환하는 콘솔 참고 화면.',
          description: '연구·업무 기밀 형태의 가상 샘플로 문서·후보물질·배치·업무 경로의 치환 관계를 확인했습니다. 실제 기업의 연구자료를 공개한 화면이 아닙니다.'},
-        {id: 'review', title: '요청·응답 대조', category: '치환 전후와 응답 복원 검토', src: './assets/ai-dlp/request-review-original.png', width: 1593, height: 1147, enhanced: {src: './assets/ai-dlp/request-review-clean.png', width: 1478, height: 1064},
-         alt: '원문 입력, 외부 AI 전달 내용, AI 응답과 역치환한 응답을 나란히 확인하는 실제 피드백 검토 화면.',
+        {id: 'review', title: '요청·응답 대조', category: '치환 전후와 응답 복원 검토', src: './assets/ai-dlp/request-review-clean.png', width: 1478, height: 1064,
+         alt: '원문 입력, 외부 AI 전달 내용, AI 응답과 역치환한 응답을 나란히 확인하는 피드백 검토 참고 화면.',
          description: '원문 입력과 AI 전달 내용, AI 응답과 역치환한 응답을 한 화면에서 대조합니다. 처리 결과에 대한 사용자 피드백과 요청별 치환 관계도 함께 검토합니다.'}
     ];
 
@@ -790,13 +790,9 @@
         const [activeIndex, setActiveIndex] = useState(0);
         const [expanded, setExpanded] = useState(false);
         const [nativeSize, setNativeSize] = useState(false);
-        const [imageMode, setImageMode] = useState('enhanced');
         const dialogRef = React.useRef(null);
         const imageViewportRef = React.useRef(null);
         const current = dlpScreens[activeIndex];
-        const isEnhanced = imageMode === 'enhanced';
-        const display = isEnhanced ? current.enhanced : current;
-        const displayAlt = isEnhanced ? `${current.title}의 실제 캡처를 바탕으로 AI로 가독성을 보정한 참고 화면. 세부 문구와 식별자는 실제 캡처에서 확인할 수 있습니다.` : current.alt;
         const move = offset => setActiveIndex(index => (index + offset + dlpScreens.length) % dlpScreens.length);
 
         useEffect(() => {
@@ -808,24 +804,23 @@
 
         useEffect(() => {
             imageViewportRef.current?.scrollTo({left: 0, top: 0});
-        }, [activeIndex, nativeSize, imageMode]);
+        }, [activeIndex, nativeSize]);
 
         return <section className="dlp-gallery" id="ai-dlp-screens" aria-labelledby="dlp-gallery-title">
-            <div className="dlp-gallery-heading"><div className="dlp-subheading"><span>구현 화면</span><h3 id="dlp-gallery-title">입력 보호부터 응답 복원까지</h3></div><span className="dlp-example-badge" aria-live="polite">{isEnhanced ? 'AI 가독성 보정본' : '로컬 PoC · 실제 캡처'}</span></div>
-            <div className="dlp-source-switch" role="group" aria-label="AI DLP 화면 자료 선택"><button type="button" aria-pressed={isEnhanced} onClick={() => setImageMode('enhanced')}>AI 보정본</button><button type="button" aria-pressed={!isEnhanced} onClick={() => setImageMode('original')}>실제 캡처</button><span>세부 문구·식별자는 실제 캡처에서 확인할 수 있습니다.</span></div>
+            <div className="dlp-gallery-heading"><div className="dlp-subheading"><span>구현 화면</span><h3 id="dlp-gallery-title">입력 보호부터 응답 복원까지</h3></div><span className="dlp-example-badge">로컬 PoC · 테스트 화면</span></div>
             <div className="dlp-screen-window">
                 <div className="dlp-screen-bar"><span>AI DLP / {current.title}</span><div className="dlp-screen-nav"><button type="button" onClick={() => move(-1)} aria-label="이전 AI DLP 화면">←</button><span>{String(activeIndex + 1).padStart(2, '0')} / 04</span><button type="button" onClick={() => move(1)} aria-label="다음 AI DLP 화면">→</button></div></div>
-                <button type="button" className="dlp-screen-preview" onClick={() => { setNativeSize(false); setExpanded(true); }} aria-label={`${current.title} AI DLP 캡처 확대 보기`} aria-haspopup="dialog"><img src={display.src} alt={displayAlt} width={display.width} height={display.height} loading="lazy" /><span className="dlp-screen-zoom" aria-hidden="true">화면 크게 보기 ↗</span></button>
+                <button type="button" className="dlp-screen-preview" onClick={() => { setNativeSize(false); setExpanded(true); }} aria-label={`${current.title} AI DLP 캡처 확대 보기`} aria-haspopup="dialog"><img src={current.src} alt={current.alt} width={current.width} height={current.height} loading="lazy" /><span className="dlp-screen-zoom" aria-hidden="true">화면 크게 보기 ↗</span></button>
                 <div className="dlp-screen-caption" aria-live="polite"><strong>{current.category}</strong><p>{current.description}</p></div>
             </div>
-            <div className="dlp-screen-picker" role="group" aria-label="AI DLP 구현 화면 선택">{dlpScreens.map((screen, index) => {const thumbnail = isEnhanced ? screen.enhanced : screen; return <button key={screen.id} type="button" aria-pressed={activeIndex === index} onClick={() => setActiveIndex(index)}><span className="dlp-screen-thumb"><img src={thumbnail.src} alt="" width={thumbnail.width} height={thumbnail.height} loading="lazy" /></span><span className="dlp-screen-option-copy"><span>0{index + 1}</span><strong>{screen.title}</strong><span>{screen.category}</span></span></button>;})}</div>
-            <p className="dlp-gallery-disclosure">AI 보정본은 실제 캡처를 바탕으로 가독성을 보완한 참고 이미지이며, 배경 얼룩은 추가 AI 생성 없이 정리했습니다. 세부 문구·식별자는 재구성 과정에서 달라질 수 있어 실제 캡처를 함께 제공합니다. 입력값은 테스트용 샘플이며, 접속정보는 가렸습니다.</p>
+            <div className="dlp-screen-picker" role="group" aria-label="AI DLP 구현 화면 선택">{dlpScreens.map((screen, index) => <button key={screen.id} type="button" aria-pressed={activeIndex === index} onClick={() => setActiveIndex(index)}><span className="dlp-screen-thumb"><img src={screen.src} alt="" width={screen.width} height={screen.height} loading="lazy" /></span><span className="dlp-screen-option-copy"><span>0{index + 1}</span><strong>{screen.title}</strong><span>{screen.category}</span></span></button>)}</div>
+            <p className="dlp-gallery-disclosure">로컬 PoC 구현을 소개하는 참고 화면입니다. 입력값은 테스트용 샘플이며, 접속정보는 가렸습니다.</p>
             {expanded && <dialog className="isms-lightbox dlp-lightbox" ref={dialogRef} aria-labelledby="dlp-lightbox-title" onClose={() => setExpanded(false)} onClick={event => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={event => { if (event.target !== imageViewportRef.current && (event.key === 'ArrowRight' || event.key === 'ArrowLeft')) { event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1); } }}>
                 <div className="isms-lightbox-bar"><h3 id="dlp-lightbox-title">AI DLP · {current.title}</h3><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="AI DLP 확대 화면 닫기">닫기 ×</button></div>
-                <div className="dlp-image-tools"><select aria-label="확대 이미지 종류" value={imageMode} onChange={event => setImageMode(event.target.value)}><option value="enhanced">AI 보정본</option><option value="original">실제 캡처</option></select><div role="group" aria-label="AI DLP 이미지 표시 크기"><button type="button" aria-pressed={!nativeSize} onClick={() => setNativeSize(false)}>화면 맞춤</button><button type="button" aria-pressed={nativeSize} onClick={() => setNativeSize(true)}>100% 보기</button></div><a href={current.src} target="_blank" rel="noopener noreferrer" aria-label={`${current.title} 실제 캡처 새 탭에서 열기`}>실제 캡처 열기 ↗</a></div>
-                <p className="dlp-image-help" id="dlp-image-help">{isEnhanced ? 'AI 가독성 보정 참고 이미지입니다. 세부 문구와 식별자는 실제 캡처를 기준으로 확인하세요.' : '실제 로컬 PoC 캡처입니다.'} {nativeSize ? '100% 크기에서는 가로·세로로 스크롤할 수 있습니다.' : '작은 글씨는 100% 보기로 확인할 수 있습니다.'}</p>
-                <div className="dlp-image-viewer" ref={imageViewportRef} tabIndex={0} role="region" aria-label="AI DLP 캡처 이미지" aria-describedby="dlp-image-help"><img src={display.src} alt={displayAlt} width={display.width} height={display.height} style={nativeSize ? {width: display.width, maxWidth: 'none'} : {width: '100%', maxWidth: display.width}} /></div>
-                <div className="isms-lightbox-footer"><button type="button" onClick={() => move(-1)}>← 이전</button><span>0{activeIndex + 1} / 04 · {isEnhanced ? 'AI 가독성 보정본' : '실제 로컬 PoC 캡처'}</span><button type="button" onClick={() => move(1)}>다음 →</button></div>
+                <div className="dlp-image-tools"><div role="group" aria-label="AI DLP 이미지 표시 크기"><button type="button" aria-pressed={!nativeSize} onClick={() => setNativeSize(false)}>화면 맞춤</button><button type="button" aria-pressed={nativeSize} onClick={() => setNativeSize(true)}>100% 보기</button></div><a href={current.src} target="_blank" rel="noopener noreferrer" aria-label={`${current.title} 이미지 새 탭에서 열기`}>이미지 열기 ↗</a></div>
+                <p className="dlp-image-help" id="dlp-image-help">{nativeSize ? '100% 크기에서는 가로·세로로 스크롤할 수 있습니다.' : '작은 글씨는 100% 보기로 확인할 수 있습니다.'}</p>
+                <div className="dlp-image-viewer" ref={imageViewportRef} tabIndex={0} role="region" aria-label="AI DLP 캡처 이미지" aria-describedby="dlp-image-help"><img src={current.src} alt={current.alt} width={current.width} height={current.height} style={nativeSize ? {width: current.width, maxWidth: 'none'} : {width: '100%', maxWidth: current.width}} /></div>
+                <div className="isms-lightbox-footer"><button type="button" onClick={() => move(-1)}>← 이전</button><span>0{activeIndex + 1} / 04</span><button type="button" onClick={() => move(1)}>다음 →</button></div>
             </dialog>}
         </section>;
     };
@@ -1742,7 +1737,7 @@
                             <a className="hero-evidence hero-dlp-evidence" href="#ai-dlp-screens">
                                 <div className="hero-evidence-top"><span>02 / AI DATA PROTECTION</span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div>
                                 <h2>AI DLP</h2><p>입력정보 보호 · 로컬 PoC 구현·검증</p>
-                                <div className="hero-evidence-image"><img src="./assets/ai-dlp/dashboard-clean.png" alt="실제 AI DLP 현황 캡처를 바탕으로 AI로 가독성을 보정한 미리보기. 접속정보는 가렸습니다." width="2063" height="762" /><span className="hero-image-source">AI 보정 미리보기</span></div>
+                                <div className="hero-evidence-image"><img src="./assets/ai-dlp/dashboard-clean.png" alt="AI DLP 로컬 PoC의 처리 현황과 탐지 유형을 소개하는 미리보기. 접속정보는 가렸습니다." width="2063" height="762" /></div>
                                 <div className="hero-evidence-bottom"><span>탐지 · 치환 · 응답 복원 · 기록</span><span>구현 화면 보기 →</span></div>
                             </a>
                         </div>

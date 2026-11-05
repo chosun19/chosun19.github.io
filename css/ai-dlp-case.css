@@ -10,7 +10,6 @@
 .hero-dlp-evidence { background: radial-gradient(ellipse at top right, rgba(112,155,167,.085), transparent 70%), var(--bg-card); }
 .hero-dlp-evidence .hero-evidence-image { position: relative; background: #f5f6fa; }
 .hero-dlp-evidence .hero-evidence-image img { object-fit: cover; object-position: center; }
-.hero-image-source { position: absolute; right: 5px; bottom: 5px; padding: 3px 6px; border-radius: 3px; background: rgba(12,14,20,.84); color: #ede9df; font-size: 9px; line-height: 1.7; }
 .hero-copy-label { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-bottom: 24px; font-size: 10px; line-height: 1.7; }
 .hero-copy-label a { color: var(--text-2); text-decoration: none; }
 .hero-copy-label a:first-child { color: var(--gold-2); padding: 5px 9px; border: 1px solid var(--border-hover); border-radius: 4px; background: rgba(201,169,110,.055); }
@@ -53,11 +52,6 @@
 .dlp-route .is-boundary { border-top-color: #789ba5; background: linear-gradient(180deg, rgba(112,155,167,.08), transparent); }
 .dlp-gallery { margin-top: 48px; scroll-margin-top: 96px; }
 .dlp-gallery-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 24px; }
-.dlp-source-switch { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 18px; }
-.dlp-source-switch button { min-height: 42px; padding: 9px 14px; border: 1px solid var(--border-hover); border-radius: 5px; background: transparent; color: var(--text-2); font: 11px 'Noto Sans KR', sans-serif; cursor: pointer; }
-.dlp-source-switch button[aria-pressed=true] { border-color: var(--gold); background: rgba(201,169,110,.1); color: var(--gold-3); }
-.dlp-source-switch > span { margin-left: auto; color: var(--text-2); font-size: 11px; line-height: 1.8; word-break: keep-all; }
-.dlp-source-switch button:focus-visible, .dlp-image-tools select:focus-visible { outline: 2px solid var(--gold-3); outline-offset: 3px; }
 .dlp-screen-window { overflow: hidden; border: 1px solid var(--border-hover); border-radius: 12px; background: var(--bg-card); }
 .dlp-screen-bar { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 58px; padding: 12px 20px; color: var(--gold-2); font-size: 12px; line-height: 1.7; }
 .dlp-screen-nav { display: flex; flex-shrink: 0; align-items: center; gap: 12px; }
@@ -82,7 +76,6 @@
 .dlp-lightbox .isms-lightbox-bar { padding: 12px 20px; }
 .dlp-image-tools { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding: 12px 20px; background: var(--bg-card); }
 .dlp-image-tools > div { display: flex; gap: 8px; }
-.dlp-image-tools select { min-height: 42px; max-width: 100%; padding: 8px 12px; border: 1px solid var(--border-hover); border-radius: 5px; color: var(--gold-2); background: var(--bg-card); font: 12px 'Noto Sans KR', sans-serif; }
 .dlp-image-tools button { min-height: 42px; }
 .dlp-image-tools button[aria-pressed=true] { border-color: var(--gold); color: var(--gold-3); background: rgba(201,169,110,.1); }
 .dlp-image-tools > a { display: inline-flex; align-items: center; min-height: 42px; color: var(--gold-2); text-decoration: none; font-size: 12px; }
@@ -90,7 +83,7 @@
 .dlp-image-viewer { max-height: 62dvh; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: stable; background: #f5f6fa; touch-action: pan-x pan-y pinch-zoom; }
 .dlp-image-viewer > img { display: block; height: auto; margin: 0 auto; }
 .dlp-image-viewer:focus-visible, .dlp-image-tools button:focus-visible, .dlp-image-tools > a:focus-visible { outline: 2px solid var(--gold-3); outline-offset: -3px; }
-@media (max-width:760px) { .dlp-source-switch > span { flex-basis: 100%; margin: 3px 0 0; font-size: 10px; } .dlp-image-tools { gap: 8px 12px; padding: 10px 16px; } .dlp-image-viewer { max-height: 48dvh; } }
+@media (max-width:760px) { .dlp-image-tools { gap: 8px 12px; padding: 10px 16px; } .dlp-image-viewer { max-height: 48dvh; } }
 .dlp-walkthrough { margin-top: 48px; padding: 28px; border: 1px solid var(--border-hover); border-radius: 12px; background: #10131b; }
 .dlp-example-heading { display: flex; justify-content: space-between; align-items: start; gap: 24px; }
 .dlp-example-heading h3 { font-size: 22px; line-height: 1.6; font-weight: 500; margin-top: 9px; letter-spacing: -.03em; word-break: keep-all; }

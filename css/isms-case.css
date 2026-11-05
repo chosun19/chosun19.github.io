@@ -1,0 +1,39 @@
+/* ISMS project case study: preserve the portfolio's existing gold palette. */
+#isms-tool .isms-design{margin:50px 0 64px}
+.isms-design-heading{max-width:780px;margin-bottom:26px}
+.isms-design-heading h3,.isms-implementation>h3{margin:12px 0;font-size:clamp(22px,2.4vw,30px);line-height:1.55;font-weight:550;letter-spacing:-.04em;word-break:keep-all}
+.isms-design-heading>p{font-size:14px;color:var(--text-2);line-height:1.9;word-break:keep-all}
+.isms-decision-layout{display:grid;grid-template-columns:260px minmax(0,1fr);border-top:1px solid var(--border-hover);border-bottom:1px solid var(--border-hover)}
+.isms-decision-options{display:flex;flex-direction:column;border-right:1px solid var(--border-hover);padding:14px 20px 14px 0}
+.isms-decision-options button{display:flex;align-items:center;gap:14px;padding:22px 15px;border:0;border-bottom:1px solid var(--border);background:none;color:var(--text-2);font:inherit;text-align:left;cursor:pointer}
+.isms-decision-options button>span:first-child{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold)}
+.isms-decision-options button>span:last-child{margin-left:auto;color:var(--gold);font-size:17px}
+.isms-decision-options button strong{font-size:13px;font-weight:500;word-break:keep-all}
+.isms-decision-options button[aria-pressed=true]{background:rgba(201,169,110,.09);color:var(--gold-3)}
+.isms-decision-options button:focus-visible,.isms-proof-groups button:focus-visible{outline:2px solid var(--gold-3);outline-offset:-2px}
+.isms-decision-detail{padding:30px 34px;min-width:0;min-height:400px}
+.isms-decision-detail h4{font-size:20px;font-weight:500;line-height:1.6;margin:0 0 24px;letter-spacing:-.03em;word-break:keep-all}
+.isms-decision-detail dl{display:flex;flex-direction:column;gap:19px}
+.isms-decision-detail dl>div{display:grid;grid-template-columns:106px minmax(0,1fr);gap:16px}
+.isms-decision-detail dt{font-size:11px;font-weight:600;color:var(--gold-2);line-height:1.9}
+.isms-decision-detail dd{font-size:13px;color:var(--text-2);line-height:1.9;word-break:keep-all;overflow-wrap:anywhere}
+.isms-decision-trace{list-style:none;display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:30px;padding-top:20px;border-top:1px solid var(--border)}
+.isms-decision-trace li{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--text)}
+.isms-decision-trace span{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold)}
+.isms-proof-groups{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.isms-proof-groups button{display:flex;align-items:center;gap:16px;padding:11px 16px;border:1px solid var(--border-hover);border-radius:6px;background:transparent;color:var(--text-2);font:inherit;font-size:12px;cursor:pointer}
+.isms-proof-groups button[aria-pressed=true]{color:var(--gold-3);background:rgba(201,169,110,.12);border-color:var(--gold)}
+.isms-proof-groups button span{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gold)}
+.isms-implementation{margin-top:64px}
+.isms-implementation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:54px;margin-top:28px}
+.isms-implementation-grid article{padding:23px 0;border-top:1px solid var(--border-hover);min-width:0}
+.isms-implementation-grid article>span{font-size:11px;color:var(--gold-2)}
+.isms-implementation-grid h4{font-size:17px;margin:9px 0 12px;font-weight:500;word-break:keep-all}
+.isms-implementation-grid p{font-size:13px;line-height:1.95;color:var(--text-2);word-break:keep-all;overflow-wrap:anywhere}
+.isms-system-note{margin-top:16px;padding:24px 28px;border-left:2px solid var(--gold);background:rgba(201,169,110,.04)}
+.isms-system-note strong{font-size:12px;color:var(--gold-2);font-weight:500}
+.isms-system-note p{font-size:12px;line-height:1.95;color:var(--text-2);margin-top:9px;word-break:keep-all;overflow-wrap:anywhere}
+#isms-tool .isms-case-outcome{margin-top:36px}
+@media(max-width:900px){.isms-decision-layout{grid-template-columns:220px minmax(0,1fr)}.isms-decision-detail{padding:26px}.isms-decision-detail dl>div{grid-template-columns:1fr;gap:5px}.isms-decision-options{padding-right:12px}.isms-decision-options button{padding:20px 10px;gap:10px}.isms-decision-detail h4{font-size:18px}}
+@media(max-width:680px){#isms-tool .isms-design{margin:36px 0 46px}.isms-decision-layout{grid-template-columns:1fr}.isms-decision-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;border-right:0;border-bottom:1px solid var(--border-hover);padding:12px 0}.isms-decision-options button{padding:14px 9px;border:1px solid var(--border);border-radius:5px;gap:7px}.isms-decision-options button strong{font-size:11px}.isms-decision-options button>span:last-child{display:none}.isms-decision-detail{min-height:0;padding:24px 0}.isms-decision-detail h4{font-size:18px}.isms-decision-detail dd{font-size:12px}.isms-decision-trace{gap:10px 14px}.isms-proof-groups{gap:7px}.isms-proof-groups button{padding:10px 12px;gap:10px;font-size:11px}.isms-implementation{margin-top:46px}.isms-implementation-grid{grid-template-columns:1fr;gap:0;margin-top:18px}.isms-implementation-grid article{padding:21px 0}.isms-system-note{padding:19px 20px}}
+@media(prefers-reduced-motion:reduce){.isms-decision-detail{scroll-behavior:auto}}

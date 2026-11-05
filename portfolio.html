@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홍기웅 | 정보보호·금융보안 포트폴리오</title>
+    <meta name="description" content="홍기웅의 정보보호·금융보안 포트폴리오. ISMS 인증 대응, PG 보안 관리, 금융감독원 대응, 보안 인프라 운영 경험과 직접 구현한 ISMS 통합관리 도구를 소개합니다.">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css?v=20261105-company-logos">
+    <link rel="stylesheet" href="./css/isms-case.css?v=20261105-ai-assistant">
+    <style>
+        .mobile-only-br {
+            display: none;
+        }
+        .contact-info-eq {
+            font-size: inherit;
+        }
+        .career-guide {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: -8px 0 24px;
+            padding: 22px 24px;
+            border: 1px solid rgba(201, 169, 110, 0.4);
+            border-left: 4px solid var(--gold);
+            border-radius: 12px;
+            background: linear-gradient(110deg, rgba(201, 169, 110, 0.16), rgba(201, 169, 110, 0.04));
+        }
+        .career-guide-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 0 0 44px;
+            height: 44px;
+            border-radius: 12px;
+            color: var(--gold-3);
+            background: rgba(201, 169, 110, 0.12);
+        }
+        .career-guide-copy {
+            min-width: 0;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+        .career-guide strong {
+            display: block;
+            color: var(--gold-3);
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .career-guide p {
+            margin-top: 5px;
+            color: var(--text);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+        .project-card-clickhint {
+            margin-top: 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(201, 169, 110, 0.45);
+            color: #17130d;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            background: var(--gold);
+            transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+        }
+        .project-card[role="button"] {
+            cursor: pointer !important;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+            position: relative;
+        }
+        .project-card[role="button"] .project-card-body {
+            padding-right: 56px !important;
+        }
+        .project-card[role="button"] .project-card-arrow {
+            right: 14px !important;
+            top: 18px !important;
+            z-index: 2;
+        }
+        .project-card[role="button"]:hover,
+        .project-card[role="button"]:focus-visible {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+            border-color: rgba(201, 169, 110, 0.45) !important;
+            outline: none;
+        }
+        .project-card[role="button"]:hover .project-card-clickhint,
+        .project-card[role="button"]:focus-visible .project-card-clickhint {
+            transform: translateX(3px);
+            background: var(--gold-2);
+            border-color: rgba(201, 169, 110, 0.75);
+        }
+        .project-card[role="button"]:hover .project-card-arrow,
+        .project-card[role="button"]:focus-visible .project-card-arrow {
+            transform: translateX(3px);
+        }
+        @media (max-width: 900px) {
+            html, body {
+                overflow-x: hidden !important;
+            }
+            .section-container {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+            .hero-container {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            .hero-name {
+                font-size: 72px !important;
+                line-height: 0.95 !important;
+            }
+            .hero-role {
+                font-size: 18px !important;
+                line-height: 1.5 !important;
+                white-space: normal !important;
+                word-break: keep-all !important;
+            }
+            .hero-right {
+                display: flex !important;
+                justify-content: center !important;
+                overflow: visible !important;
+            }
+            .hero-stats {
+                display: grid !important;
+                grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+                gap: 10px !important;
+                width: 100% !important;
+            }
+            .h-stat {
+                width: auto !important;
+                min-width: 0 !important;
+                margin-right: 0 !important;
+                padding-right: 0 !important;
+                overflow: visible !important;
+            }
+            .h-stat-value {
+                font-size: clamp(16px, 3vw, 22px) !important;
+                word-break: keep-all !important;
+                white-space: normal !important;
+                letter-spacing: -0.02em !important;
+            }
+            .project-card {
+                padding: 14px !important;
+            }
+            .project-card-header {
+                display: block !important;
+            }
+            .project-card-period {
+                margin-top: 6px !important;
+                display: inline-block !important;
+            }
+            .project-card-footer {
+                display: block !important;
+            }
+            .project-card-tags {
+                width: 100% !important;
+            }
+            .project-card-metrics {
+                width: 100% !important;
+                margin-top: 10px !important;
+                display: flex !important;
+                gap: 8px !important;
+                flex-wrap: wrap !important;
+            }
+            .project-card-arrow {
+                display: none !important;
+            }
+            .detail-hero-top {
+                grid-template-columns: 1fr !important;
+                gap: 14px !important;
+            }
+            .detail-hero-meta {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 6px !important;
+            }
+            .contact-grid {
+                display: grid !important;
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 10px !important;
+            }
+            .contact-grid .contact-card:nth-child(3) {
+                grid-column: auto !important;
+                max-width: none !important;
+                width: 100% !important;
+                justify-self: stretch !important;
+            }
+            .contact-card .contact-info {
+                font-size: 13px !important;
+                line-height: 1.4 !important;
+                white-space: nowrap !important;
+                overflow-wrap: normal !important;
+                word-break: keep-all !important;
+            }
+            .contact-info-eq {
+                font-size: 13px !important;
+            }
+            .mobile-only-br {
+                display: none !important;
+            }
+            .project-card-clickhint {
+                font-size: 12px;
+                padding: 7px 11px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero {
+                padding-top: 84px !important;
+            }
+            #home .hero-container {
+                padding-top: 8px !important;
+                overflow: visible !important;
+            }
+            .hero-stats {
+                gap: 8px !important;
+            }
+            .hero-ornament {
+                transform: scale(0.74) !important;
+                transform-origin: center center !important;
+            }
+        }
+        @media (max-width: 600px) {
+            .career-guide {
+                align-items: flex-start;
+                gap: 12px;
+                padding: 18px 16px;
+            }
+            .career-guide-icon {
+                flex-basis: 36px;
+                height: 36px;
+                border-radius: 10px;
+            }
+            .career-guide strong {
+                font-size: 15px;
+            }
+            .hero-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+            .contact-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+            .contact-grid .contact-card:nth-child(3) {
+                grid-column: 1 / 2 !important;
+                max-width: none !important;
+                justify-self: stretch !important;
+            }
+            .contact-card .contact-info {
+                font-size: 12px !important;
+                line-height: 1.35 !important;
+                white-space: normal !important;
+                overflow-wrap: anywhere !important;
+                word-break: break-all !important;
+            }
+            .contact-info-eq {
+                font-size: 12px !important;
+            }
+            .mobile-only-br {
+                display: block !important;
+            }
+        }
+        @media (min-width: 601px) and (max-width: 1200px) {
+            .section-container {
+                padding-left: 28px !important;
+                padding-right: 28px !important;
+            }
+            .contact-grid {
+                display: grid !important;
+                width: 100% !important;
+                grid-template-columns: 1.65fr 1.2fr 1.65fr !important;
+                gap: 6px !important;
+                align-items: stretch !important;
+            }
+            .contact-grid .contact-card {
+                max-width: none !important;
+                width: auto !important;
+                min-width: 0 !important;
+                height: auto !important;
+                min-height: 220px !important;
+                padding: 18px 10px !important;
+                overflow: visible !important;
+            }
+            .contact-card .contact-info {
+                width: 100% !important;
+                overflow: visible !important;
+                text-overflow: clip !important;
+                white-space: nowrap !important;
+                line-height: 1.5 !important;
+                font-size: 12px !important;
+                letter-spacing: 0 !important;
+                word-break: keep-all !important;
+            }
+            .contact-grid .contact-card:first-child .contact-info {
+                white-space: normal !important;
+                overflow-wrap: anywhere !important;
+                word-break: break-all !important;
+                line-height: 1.35 !important;
+            }
+            .contact-grid .contact-card .mobile-only-br {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<div id="root"></div>
+
+<script>
+// Floating particles
+(function() {
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight * 3;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.size = Math.random() * 2 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = -(Math.random() * 0.3 + 0.1);
+            this.opacity = Math.random() * 0.3 + 0.05;
+            this.fadeSpeed = Math.random() * 0.003 + 0.001;
+            this.growing = Math.random() > 0.5;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.growing) {
+                this.opacity += this.fadeSpeed;
+                if (this.opacity >= 0.35) this.growing = false;
+            } else {
+                this.opacity -= this.fadeSpeed;
+                if (this.opacity <= 0.02) this.reset();
+            }
+            if (this.y < -10 || this.x < -10 || this.x > w + 10) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(201, 169, 110, ${this.opacity})`;
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(201, 169, 110, ${this.opacity * 0.15})`;
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+    function animate() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
+    animate();
+})();
+</script>
+
+<script type="text/babel">
+    const { useEffect, useState } = React;
+
+    const projectGradients = [
+        ['#2E7D32', '#43A047'],
+        ['#1565C0', '#1E88E5'],
+        ['#6A1B9A', '#8E24AA'],
+        ['#00695C', '#00897B'],
+        ['#E65100', '#F57C00'],
+        ['#4527A0', '#5E35B1'],
+        ['#AD1457', '#D81B60'],
+    ];
+
+    const ProjectDetail = ({ project, index, onBack }) => {
+        const [c1, c2] = projectGradients[index % projectGradients.length];
+        const grad = `linear-gradient(135deg, ${c1}, ${c2})`;
+
+        useEffect(() => {
+            window.scrollTo(0, 0);
+        }, [index]);
+
+        return (
+            <div className="detail-page">
+                <div className="detail-hero" style={{background: `linear-gradient(135deg, ${c1}10, ${c2}06)`}}>
+                    <div className="section-container">
+                        <button className="detail-back" onClick={onBack}>&larr; 경력 목록</button>
+
+                        <div className="detail-hero-top">
+                            <div className="sec-terminal">
+                                <div className="sec-terminal-titlebar">
+                                    <div className="sec-terminal-dots">
+                                        <span className="sec-dot sec-dot-red"></span>
+                                        <span className="sec-dot sec-dot-yellow"></span>
+                                        <span className="sec-dot sec-dot-green"></span>
+                                    </div>
+                                    <div className="sec-terminal-title">{project.company} | 업무 요약</div>
+                                </div>
+                                <div className="sec-terminal-body">
+                                    {project.terminalLog.map((line, i) => (
+                                        <div key={i} className={`sec-terminal-line ${line.type || ''}`} style={{animationDelay: `${0.5 + i * 0.15}s`}}>
+                                            {line.type === 'cmd' && <span className="sec-prompt" style={{color: c1}}>$ </span>}
+                                            {line.type === 'success' && <span style={{color: '#4CAF50'}}>[OK] </span>}
+                                            {line.type === 'info' && <span style={{color: '#64B5F6'}}>[i] </span>}
+                                            <span>{line.text}</span>
+                                        </div>
+                                    ))}
+                                    <div className="sec-terminal-cursor" style={{animationDelay: `${0.5 + project.terminalLog.length * 0.15}s`}}>
+                                        <span className="sec-prompt" style={{color: c1}}>$ </span>
+                                        <span className="sec-blink">_</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="detail-hero-info">
+                                <h1 className="detail-hero-title">{project.title}</h1>
+                                <div className="detail-hero-meta">
+                                    <span className="detail-hero-meta-item">근무 기간 {project.period}</span>
+                                    <span className="detail-hero-meta-item">직무 {project.role}</span>
+                                    {project.employmentType && <span className="detail-hero-meta-item">고용 형태 {project.employmentType}</span>}
+                                    {project.salary && <span className="detail-hero-meta-item">연봉 {project.salary}</span>}
+                                    {project.region && <span className="detail-hero-meta-item">근무 지역 {project.region}</span>}
+                                    {project.industry && <span className="detail-hero-meta-item">업종 {project.industry}</span>}
+                                </div>
+                                <p className="detail-hero-desc">{project.description}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="section-container">
+                    <div className="detail-section">
+                        <div className="detail-section-title">
+                            <span className="detail-section-dot" style={{background: grad}}></span>
+                            주요 업무·성과
+                        </div>
+                        <div className="detail-metrics">
+                            {project.achievements.map((a, i) => (
+                                <div key={i} className="detail-metric-card">
+                                    <div className="detail-metric-value" style={{color: c1}}>{a.value}</div>
+                                    <div className="detail-metric-label">{a.label}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                    <div className="detail-section">
+                        <div className="detail-section-title">
+                            <span className="detail-section-dot" style={{background: grad}}></span>
+                            담당 업무
+                        </div>
+                        <div className="detail-highlights">
+                            {project.highlights.map((h, i) => (
+                                <div key={i} className="detail-highlight-card">
+                                    <div className="detail-highlight-num" style={{background: grad}}>{String(i + 1).padStart(2, '0')}</div>
+                                    <div className="detail-highlight-text">{h}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                    <div className="detail-section">
+                        <div className="detail-section-title">
+                            <span className="detail-section-dot" style={{background: grad}}></span>
+                            업무 키워드
+                        </div>
+                        <div className="detail-tech">
+                            {project.tech.map((t, i) => (
+                                <span key={i} className="detail-tech-badge" style={{
+                                    borderColor: `${c1}40`,
+                                    color: c1
+                                }}>{t}</span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    const ismsScreens = [
+        {
+            id: 'ai-assistant', title: 'AI 업무 도우미', category: '자료 확인에서 문서·검토 업무까지', sample: true,
+            src: './assets/isms/demo-ai-assistant.png?v=20261105-assistant-dark', width: 1710, height: 1160,
+            description: '가상기업의 등록 자료와 보고서 양식으로 실제 Codex를 호출한 화면입니다. 원문 인용을 대조한 뒤 Word 파일을 생성하고 검토 업무를 등록합니다. 생성 파일과 실제 수행한 단계를 함께 확인합니다.',
+            alt: '가상기업 자료로 실제 AI가 작성한 보고서의 Word 받기와 내용 검토, 양식 버전, 실행 단계와 검토 업무 등록 결과. 실제 회사의 자료나 심사 판정이 아닙니다.'
+        },
+        {
+            id: 'document-templates', title: '문서 양식 보관함', category: '회사 양식·작성 위치·원본 보존', sample: true,
+            src: './assets/isms/demo-document-templates.png?v=20261105-assistant-dark', width: 1710, height: 1080,
+            description: '시연용 Word 보고서와 Excel 점검대장 양식을 등록한 실제 화면입니다. 입력 표시와 빈 표 셀을 인식하고, 일반 양식의 작성 위치를 지정해 AI 작성에 사용할 수 있습니다. 원본 양식은 별도로 보관합니다.',
+            alt: '시연용 DOCX 보고서와 XLSX 점검대장, 분류와 작성 위치 수, 내용 확인과 AI 작성 버튼이 보이는 양식 보관함. 가상 자료입니다.'
+        },
+        {
+            id: 'template-result', title: '양식에 맞춘 Excel 작성', category: '원본 서식 유지·별도 결과물', sample: true,
+            src: './assets/isms/demo-template-result.png?v=20261105-assistant-dark', width: 1710, height: 1160,
+            description: '가상기업 자료로 실제 AI를 호출해 지정한 Excel 셀을 채운 결과입니다. 원본과 별도의 검토 초안으로 저장하며 셀 서식·수식·병합을 보존합니다. 생성된 파일과 실제 실행 내역을 확인할 수 있습니다.',
+            alt: '등록한 점검대장 양식과 버전, 실제 생성한 Excel 파일의 받기·내용 검토, 검토 업무 등록 단계가 표시된 결과 화면. 가상 자료를 사용한 기능 시연입니다.'
+        },
+        {
+            id: 'dashboard', title: 'ISMS 대시보드', category: '판정·남은 업무·일정 한눈에', sample: true,
+            src: './assets/isms/demo-dashboard.png?v=20261105-features', width: 1710, height: 1040,
+            description: '가상 데이터를 넣은 실제 앱 화면입니다. 적합·취약·확인 필요를 구분하고, 남은 조치와 정책 검토·일정·조직 범위로 이동하는 구성을 보여줍니다.',
+            alt: '가상 심사의 준비 현황, 남은 업무와 일정, 조직 범위를 표시한 실제 앱 대시보드. 시연용 샘플 데이터입니다.'
+        },
+        {
+            id: 'organization', title: '조직·서비스 범위', category: '조직도·보안 역할·담당 업무', sample: true,
+            src: './assets/isms/demo-organization.png?v=20261105-features', width: 1710, height: 1040,
+            description: '가상 조직을 사용해 인증범위 포함·일부 포함을 구분하고 보안 역할과 서비스 참여 조직을 확인하는 화면입니다. 조직을 선택하면 현재 담당 통제항목과 자산을 함께 확인합니다.',
+            alt: '가상 조직과 서비스 범위, 보안 역할을 한 화면에 배치한 조직도. 실제 회사의 인원이나 조직 구성이 아닙니다.'
+        },
+        {
+            id: 'control-detail', title: '통제항목 상세 검토', category: '관리판정·남은 질문·첨부 근거', sample: true,
+            src: './assets/isms/demo-control-detail.png?v=20261105-features', width: 1710, height: 1240,
+            description: '샘플 자료의 상세 검토 화면입니다. 내부 관리판정과 변경 사유, 남은 확인사항·조치방법·완료 기준, 실제 첨부 파일을 한 항목에서 확인하는 구성을 보여줍니다. 표시된 판정은 시연용 예시입니다.',
+            alt: '샘플 통제항목의 내부 관리판정, 보완 조치와 첨부 근거를 확인하는 상세 창. 실제 심사 결과가 아닙니다.'
+        },
+        {
+            id: 'evidence-links', title: '증적 다중 연결', category: '원본 하나를 여러 통제항목에', sample: true,
+            src: './assets/isms/demo-evidence-links.png?v=20261105-features', width: 1710, height: 1240,
+            description: '가상 회의기록 하나를 여러 예시 통제항목에 연결한 실제 화면입니다. 원본 해시와 연결 항목을 확인하고 담당자가 직접 연결을 조정하는 기능을 보여줍니다.',
+            alt: '가상 증적의 원본 해시와 여러 통제항목 선택 목록. 샘플 회의기록을 다중 연결한 기능 시연입니다.'
+        },
+        {
+            id: 'calendar', title: '점검 캘린더', category: '반복 점검·기한·후속 업무', sample: true,
+            src: './assets/isms/demo-calendar.png?v=20261105-features', width: 1710, height: 1040,
+            description: '접근권한 점검, 복구 결과 확인, 교육 이력 검토를 가상 일정으로 등록한 화면입니다. 반복 점검과 기한을 관리하고 해당 날짜의 업무를 확인합니다.',
+            alt: '가상 정기점검 일정을 배치한 월간 캘린더. 실제 회사의 심사나 점검 일정이 아닙니다.'
+        },
+        {
+            id: 'ai-settings', title: 'AI 분석 연결 설정', category: '분석 엔진·모델·연결 확인', sample: true,
+            src: './assets/isms/demo-ai-settings.png?v=20261105-features', width: 1390, height: 658,
+            description: '실제 AI 문서 분석 설정 영역입니다. Codex·OpenAI API·로컬 AI 중 분석 엔진과 모델을 선택하고 실행 전 연결을 확인합니다. 인증키 없이 촬영한 설정 화면이며 분석 결과를 보여주는 화면은 아닙니다.',
+            alt: '분석 엔진과 고정 모델, 연결 설정을 확인하는 실제 앱 영역. 실제 인증키나 회사 문서는 포함하지 않습니다.'
+        },
+        {
+            id: 'audit', title: '심사 이력 관리', category: '심사 차수·증적·보완조치',
+            src: './assets/isms/audit-history.png?v=20261104-menu', height: 906,
+            description: '최초심사와 사후심사 자료를 차수별로 구분해 관리하는 실제 화면입니다. 이전 심사의 증적과 결함 보완조치내역서를 보관하며 다음 심사를 준비합니다.',
+            alt: '직접 구현한 ISMS 심사 이력 관리 화면. 왼쪽에 현황·통제항목·증적·자산 관리 메뉴가 있고, 최초심사와 사후심사가 카드로 구분되어 있으며 내부 정보는 마스킹되어 있습니다.'
+        },
+        {
+            id: 'law', title: '법령 조회·개정 비교', category: '외부 기준의 변경 확인',
+            src: './assets/isms/law-comparison.png?v=20261104-menu', height: 904,
+            description: '법령과 조문을 조회하고 개정 전후 문구를 나란히 비교하는 화면입니다. 기준의 변경 내용을 확인해 내부 정책·지침 검토에 활용합니다.',
+            alt: '직접 구현한 법령 조회 화면. 법령 검색과 조문 조회 입력란 아래에 개정 전후 문구 비교가 표시되어 있습니다.'
+        },
+        {
+            id: 'policy', title: '정책·지침 검토', category: '현황 확인·개선 의견 관리',
+            src: './assets/isms/policy-review.png?v=20261104-menu', height: 910,
+            description: '내부 정책·지침을 법령과 대조하고 보완이 필요한 부분을 검토하는 화면입니다. 문서별 검토 기록과 개선 의견을 확인하며 반영 여부를 관리합니다.',
+            alt: '직접 구현한 정책·지침 검토 화면. 문서별 카드에 법령 대조와 개선 의견 영역이 표시되며 내부 문서 정보와 검토 내용은 마스킹되어 있습니다.'
+        },
+        {
+            id: 'controls', title: '통제항목 관리', category: '요구사항·증적·점검 상태',
+            src: './assets/isms/control-management.png?v=20261104-refined', height: 904,
+            description: '통제항목별 요구사항과 증적, 점검·검토 상태를 함께 확인하는 화면입니다. 영역·분류·상태에 따라 항목을 찾아 현재 관리 상태를 살펴볼 수 있습니다.',
+            alt: '왼쪽 메뉴와 통제항목별 요구사항, 분류·상태 필터, 내용 검토 기능이 보이는 실제 관리 화면. 내부 점검 결과와 담당자 정보는 마스킹되어 있습니다.'
+        },
+        {
+            id: 'evidence', title: '증적 보관함', category: '업무별 증적 분류·이력 보존',
+            src: './assets/isms/evidence-library.png?v=20261104-refined', height: 899,
+            description: '운영명세·위험평가·정책·자산·기술 진단 등 업무별 폴더로 증적을 분류합니다. 현재 자료와 이전 심사 자료를 구분해 필요한 근거를 찾아볼 수 있게 구성했습니다.',
+            alt: '운영명세, 위험평가, 정책·지침, 자산목록, 기술 진단 등 업무별 증적 폴더가 표시되는 실제 화면. 실제 증적 수량은 비공개 처리되어 있습니다.'
+        },
+        {
+            id: 'assets', title: '자산 관리', category: '자산 유형·대상 범위 확인',
+            src: './assets/isms/asset-management.png?v=20261104-refined', height: 900,
+            description: '시스템·네트워크·보안장비·DB·애플리케이션·단말기·문서 등 유형별 자산을 확인합니다. ISMS 대상 범위와 확인이 필요한 자산을 구분해 관리합니다.',
+            alt: '유형별 자산 시트와 대상 범위 필터, 자산 목록이 표시되는 실제 자산 관리 화면. 내부 수량·범위·담당자·상태 정보는 마스킹되어 있습니다.'
+        },
+        {
+            id: 'tasks', title: '점검·개선 업무', category: '보완 필요사항·조치 이력',
+            src: './assets/isms/improvement-tracking.png?v=20261104-refined', height: 904,
+            description: '점검에서 확인한 사항을 후속 업무로 이어 관리합니다. 진행 상태별로 업무를 구분하고 보완 의견, 조치 가이드와 처리 이력을 확인할 수 있게 구성했습니다.',
+            alt: '진행 상태별 필터와 조치 업무 카드가 보이는 실제 점검·개선 업무 화면. 내부 수량·담당자·일정·보완 의견은 마스킹되어 있습니다.'
+        },
+        {
+            id: 'criteria', title: '인증기준·심사항목', category: '기준별 요구사항·증적 연결',
+            src: './assets/isms/audit-criteria.png?v=20261104-refined', height: 902,
+            description: '심사에서 사용하는 인증기준과 항목별 요구사항을 확인하고 관련 증적을 연결해 관리하는 화면입니다. 기준과 실제 준비자료를 함께 살펴볼 수 있습니다.',
+            alt: '인증기준 메뉴와 심사항목별 요구사항 카드, 상세 보기 기능이 표시되는 실제 화면. 내부 증적 수량은 비공개 처리되어 있습니다.'
+        },
+        {
+            id: 'report', title: '점검 결과 보고서', category: '점검 현황 취합·보고서 출력',
+            src: './assets/isms/inspection-report.png?v=20261104-refined', height: 905,
+            description: '통제항목별 점검·검토 내용을 모아 보고서로 확인합니다. 확인·보완사항과 처리 상태를 취합하고 인쇄·PDF 저장·엑셀 내려받기를 지원하도록 구현했습니다.',
+            alt: '심사별 점검 현황과 항목별 결과 표, PDF 저장·엑셀 다운로드 기능이 보이는 실제 보고서 화면. 내부 일정·담당자·점검 결과와 보완 의견은 마스킹되어 있습니다.'
+        }
+    ];
+
+    const IsmsScreenshots = () => {
+        const groups = [
+            {id: 'all', name: '전체 기능', screens: ['dashboard', 'ai-assistant', 'document-templates', 'template-result', 'organization', 'controls', 'control-detail', 'evidence', 'evidence-links', 'assets', 'tasks', 'calendar', 'law', 'policy', 'ai-settings', 'audit', 'report', 'criteria']},
+            {id: 'review', name: '검토·증적', screens: ['controls', 'control-detail', 'evidence', 'evidence-links', 'tasks']},
+            {id: 'policy', name: '법령·정책', screens: ['law', 'policy', 'criteria']},
+            {id: 'operations', name: '조직·운영', screens: ['dashboard', 'organization', 'assets', 'calendar']},
+            {id: 'records', name: '심사·보고', screens: ['audit', 'report']},
+            {id: 'ai', name: 'AI·문서 작성', screens: ['ai-assistant', 'document-templates', 'template-result', 'ai-settings']}
+        ];
+        const [activeGroup, setActiveGroup] = useState('all');
+        const [activeIndex, setActiveIndex] = useState(ismsScreens.findIndex(screen => screen.id === 'dashboard'));
+        const [expanded, setExpanded] = useState(false);
+        const dialogRef = React.useRef(null);
+        const current = ismsScreens[activeIndex];
+        const visibleScreens = groups.find(group => group.id === activeGroup).screens.map(id => ismsScreens.find(screen => screen.id === id));
+        const position = visibleScreens.findIndex(screen => screen.id === current.id);
+
+        useEffect(() => {
+            if (!expanded) return;
+            const dialog = dialogRef.current;
+            dialog.showModal();
+            return () => dialog.close();
+        }, [expanded]);
+
+        const moveScreen = (offset) => {
+            const next = visibleScreens[(position + offset + visibleScreens.length) % visibleScreens.length];
+            setActiveIndex(ismsScreens.findIndex(screen => screen.id === next.id));
+        };
+
+        return (
+            <div className="isms-gallery" id="isms-screens">
+                <div className="isms-gallery-heading">
+                    <div><div className="isms-feature-label">구현 화면</div><h3>운영 현황·증적 검토·AI 문서 작성</h3></div>
+                    <span className="isms-gallery-note">{ismsScreens.length}개 기능 화면 · 목록에서 직접 선택</span>
+                </div>
+                <div className="isms-proof-groups" role="group" aria-label="구현 화면 업무 흐름">
+                    {groups.map(group => <button type="button" key={group.id} aria-pressed={activeGroup === group.id} onClick={() => { setActiveGroup(group.id); setActiveIndex(ismsScreens.findIndex(screen => screen.id === group.screens[0])); }}>{group.name}<span>{group.screens.length}</span></button>)}
+                </div>
+                <div className="isms-screen-window">
+                    <div className="isms-window-bar"><span className="isms-window-mark" aria-hidden="true"></span><span>ISMS 현황 / {current.title}</span><div className="isms-window-navigation"><button type="button" onClick={() => moveScreen(-1)} aria-label="이전 화면 선택">&larr;</button><span className="isms-window-counter">{String(position + 1).padStart(2, '0')} / {String(visibleScreens.length).padStart(2, '0')}</span><button type="button" onClick={() => moveScreen(1)} aria-label="다음 화면 선택">&rarr;</button></div></div>
+                    <button type="button" className="isms-screen-preview" onClick={() => setExpanded(true)} aria-label={`${current.title} 화면 확대 보기`} aria-haspopup="dialog">
+                        <img src={current.src} alt={current.alt} width={current.width || 1710} height={current.height} loading="lazy" />
+                        <span className="isms-zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5" /></svg>화면 크게 보기</span>
+                    </button>
+                    <div className="isms-screen-caption" aria-live="polite"><div className="isms-caption-heading"><strong>{current.category}</strong><span className="isms-screen-source">{current.sample ? '가상 데이터 · 실제 기능 시연' : '실제 운영 화면 · 내부 정보 마스킹'}</span></div><p>{current.description}</p></div>
+                </div>
+                <div className="isms-screen-picker" role="group" aria-label="실제 구현 화면 선택">
+                    {visibleScreens.map((screen, index) => (
+                        <button key={screen.id} type="button" className={`isms-screen-option${screen.id === current.id ? ' is-active' : ''}`} aria-pressed={screen.id === current.id} onClick={() => setActiveIndex(ismsScreens.findIndex(item => item.id === screen.id))}>
+                            <span className="isms-thumb"><img src={screen.src} alt="" width={screen.width || 1710} height={screen.height} loading="lazy" /></span>
+                            <span className="isms-option-copy"><span className="isms-option-number">{String(index + 1).padStart(2, '0')}</span><span><strong>{screen.title}</strong><span>{screen.category}</span></span></span>
+                        </button>
+                    ))}
+                </div>
+                <p className="isms-gallery-disclosure">실제 앱에서 촬영한 화면입니다. 운영 화면의 내부 정보는 가렸으며, 기능 시연 화면은 별도의 가상 자료로 촬영했습니다. 각 화면에 자료 구분을 표시했습니다.</p>
+                {expanded && <dialog className="isms-lightbox" ref={dialogRef} aria-labelledby="isms-lightbox-title" onClose={() => setExpanded(false)} onClick={event => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={event => { if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); moveScreen(event.key === 'ArrowRight' ? 1 : -1); } }}>
+                    <div className="isms-lightbox-bar"><h3 id="isms-lightbox-title">{current.title}</h3><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="확대 화면 닫기">닫기 <span aria-hidden="true">&times;</span></button></div>
+                    <div className="isms-lightbox-image"><img src={current.src} alt={current.alt} width={current.width || 1710} height={current.height} /></div>
+                    <div className="isms-lightbox-footer"><button type="button" onClick={() => moveScreen(-1)} aria-label="이전 구현 화면">&larr; 이전</button><span>{String(position + 1).padStart(2, '0')} / {String(visibleScreens.length).padStart(2, '0')} · {current.sample ? '가상 데이터 시연' : '내부 정보 마스킹'}</span><button type="button" onClick={() => moveScreen(1)} aria-label="다음 구현 화면">다음 &rarr;</button></div>
+                </dialog>}
+            </div>
+        );
+    };
+
+    const ismsDesignDecisions = [
+        {id: 'revision', label: '같은 이름의 새 증적', question: '파일명은 그대로인데 내용이 바뀌면?',
+         problem: '문서의 일정·담당자·본문을 수정해도 파일명이 같으면 이전 검토가 현재 자료에 대한 결과처럼 남을 수 있습니다.',
+         decision: 'SHA-256으로 원본 내용을 구분하고 이전 사본과 검토를 보존했습니다. 자료가 바뀐 항목에는 재검토가 필요하다는 상태를 표시합니다.',
+         check: '내용이 바뀐 파일이 별도 사본으로 저장되는지, 이전 검토가 현재 파일의 판단 근거로 표시되지 않는지 확인했습니다.',
+         trace: ['자료 변경 확인', '이전 원본·검토 보존', '현재 자료 재검토']},
+        {id: 'mapping', label: '증적 하나, 여러 통제', question: '한 문서가 여러 요구사항을 뒷받침한다면?',
+         problem: '회의록이나 점검 보고서를 항목마다 복사하면 같은 문서의 여러 사본을 계속 갱신해야 합니다.',
+         decision: '원본 파일과 통제항목 연결을 분리했습니다. 동일 내용의 파일은 재사용하고, 한 증적을 여러 항목에 연결하거나 담당자가 직접 연결을 조정할 수 있게 했습니다.',
+         check: '연결 항목을 바꾸어도 원본 해시가 유지되는지, 담당자가 제외한 연결이 자동 분석으로 다시 붙지 않는지 확인했습니다.',
+         trace: ['원본 한 개 보관', '항목별 근거 연결', '담당자의 연결 수정']},
+        {id: 'judgment', label: '검토와 승인 구분', question: '판독이 부족한 자료를 바로 미흡으로 볼 수 있을까?',
+         problem: '자료를 읽지 못했거나 추가 확인이 필요하다는 이유만으로 실제 통제가 이행되지 않았다고 판단하기 어렵습니다.',
+         decision: '적합·미흡·확인 필요를 구분하고 근거 위치, 남은 질문, 필요한 보완자료를 함께 남겼습니다. AI 검토 의견과 자체점검, 담당자 승인은 각각 기록합니다.',
+         check: '자료 변경·판독 한계가 취약 확정으로 바뀌지 않는지, 검토 제안을 반영해도 회사 승인 상태가 자동 변경되지 않는지 확인했습니다.',
+         trace: ['본문·근거 확인', '검토 의견과 질문', '담당자 판단·승인']},
+        {id: 'history', label: '지난 심사와 현재 심사', question: '과거 심사 기록을 보존하며 다음 심사를 준비하려면?',
+         problem: '과거 심사의 자료와 보완조치를 현재 준비자료로 덮어쓰면 당시 대응 근거를 다시 확인하기 어렵습니다.',
+         decision: '심사 차수마다 DB와 증적 사본을 구분했습니다. 과거 인증 결과와 보완조치는 해당 차수에 남기고, 새 심사의 자료와 검토는 별도로 관리합니다.',
+         check: '창마다 선택한 심사가 유지되는지, 다른 차수의 조회·수정·다운로드에 자료가 섞이지 않는지 확인했습니다.',
+         trace: ['차수별 자료 구분', '당시 보완조치 보존', '다음 심사 독립 관리']}
+    ];
+
+    const IsmsDesignDecisions = () => {
+        const [active, setActive] = useState('revision');
+        const item = ismsDesignDecisions.find(item => item.id === active);
+        return <section className="isms-design" aria-labelledby="isms-design-title">
+            <div className="isms-design-heading"><div className="isms-feature-label">설계 기준</div><h3 id="isms-design-title">구현하면서 먼저 정한 네 가지 기준</h3><p>파일 갱신, 증적 연결, 검토 상태, 심사 이력을 구분해 관리하도록 설계했습니다.</p></div>
+            <div className="isms-decision-layout"><div className="isms-decision-options" role="group" aria-label="설계 고민 선택">{ismsDesignDecisions.map((decision, i) => <button type="button" key={decision.id} aria-pressed={active === decision.id} onClick={() => setActive(decision.id)}><span>0{i + 1}</span><strong>{decision.label}</strong><span aria-hidden="true">↗</span></button>)}</div>
+                <article className="isms-decision-detail" aria-live="polite"><h4>{item.question}</h4><dl><div><dt>실무에서 생긴 문제</dt><dd>{item.problem}</dd></div><div><dt>구현한 방식</dt><dd>{item.decision}</dd></div><div><dt>확인한 동작</dt><dd>{item.check}</dd></div></dl><ol className="isms-decision-trace" aria-label="선택한 설계의 처리 흐름">{item.trace.map((step, i) => <li key={step}><span>0{i + 1}</span>{step}</li>)}</ol></article>
+            </div>
+        </section>;
+    };
+
+    const ismsAssistantSteps = [
+        {title: '참고 범위 선택', body: '선택한 심사의 통제항목·조직·자산·정책에서 요청과 관련된 자료를 구성합니다. 사용자도 참고 증적과 문서 양식을 지정할 수 있습니다.', detail: '다른 심사의 자료와 대화가 섞이지 않도록 요청 범위를 심사별로 제한했습니다.'},
+        {title: '근거와 입력 검증', body: 'AI가 반환한 출처 ID와 인용문이 실제 전달한 자료에 존재하는지 대조합니다. 발췌 범위와 이전 판독 기록의 시점을 결과에 남깁니다.', detail: '엑셀 셀마다 반복되던 출처를 행·파일 단위로 묶고, 출처 설명까지 포함한 최종 입력 크기를 검사하도록 개선했습니다.'},
+        {title: '회사 양식으로 작성', body: '등록한 Word·Excel 양식의 지정 문단·셀을 채워 실제 파일을 만듭니다. 원본 양식과 생성 파일을 별도로 보관하고 생성 파일의 해시를 대조합니다.', detail: '본문·표·머리말·셀 서식 등 수정하지 않을 부분을 보존하고, 누락되거나 알 수 없는 작성 위치는 반영하지 않도록 검증했습니다.'},
+        {title: '검토 업무로 연결', body: '작성 결과의 확인 방법과 완료 기준을 제안하고, 선택한 설정에 따라 담당자 검토 업무를 등록합니다. 정책 수정 제안도 현행 원본과 별도로 관리합니다.', detail: '문서 초안과 제안 업무를 만들며, 실제 점검·교육·승인 이력이나 통제항목의 최종 적합 판정을 자동으로 만들지 않습니다.'}
+    ];
+    const IsmsAssistant = () => {
+        const [active, setActive] = useState(0);
+        const item = ismsAssistantSteps[active];
+        return <section className="isms-assistant" id="isms-ai" aria-labelledby="isms-ai-title">
+            <div className="isms-feature-label">AI 업무 도우미</div>
+            <div className="isms-assistant-heading"><h3 id="isms-ai-title">자료 검토부터 문서 작성·후속 업무까지</h3><a href="#isms-screens">구현 화면 보기 ↗</a></div>
+            <p className="isms-assistant-lead">등록 자료를 확인해 답변하고 문서 초안과 검토 업무를 생성합니다. 담당자는 인용 근거와 작성 결과를 확인한 뒤 업무에 반영할 수 있습니다.</p>
+            <div className="isms-assistant-steps" role="group" aria-label="AI 업무 도우미 처리 단계">{ismsAssistantSteps.map((step,i)=><button type="button" key={step.title} aria-pressed={active===i} onClick={()=>setActive(i)}><span>0{i+1}</span><strong>{step.title}</strong><span aria-hidden="true">→</span></button>)}</div>
+            <article className="isms-assistant-detail" aria-live="polite"><h4>{item.title}</h4><p>{item.body}</p><div><strong>구현하며 확인한 점</strong><p>{item.detail}</p></div></article>
+            <p className="isms-assistant-note">모델은 구조화된 작성 결과를 반환하고 앱이 허용한 작업만 실행합니다. 같은 입력·모델·규칙의 기존 결과를 재사용하며, 규칙·자료가 바뀌면 다시 검토합니다. AI 의견은 담당자의 최종 판단과 구분합니다.</p>
+        </section>;
+    };
+
+    const IsmsImplementation = () => <section className="isms-implementation" aria-labelledby="isms-implementation-title">
+        <div className="isms-feature-label">구현 기능</div><h3 id="isms-implementation-title">메뉴별 관리 기능과 도구 구성</h3>
+        <div className="isms-implementation-grid">{[
+            ['통제항목·검토', '세부 요구사항별 근거와 판단', '문서 본문과 근거 위치, 확인 질문, 추가 증빙을 항목별로 관리합니다. 검토에서 남은 조치를 점검·개선 업무로 연결합니다.'],
+            ['증적·문서', '원본 보존과 여러 항목 연결', '폴더 구조를 가져오고 내용을 판독합니다. 현재·이전 자료를 구분하며, 문서 뷰어와 원본 내려받기로 근거를 확인합니다.'],
+            ['조직·자산', '서비스 범위와 담당 업무 확인', '조직도에서 인증범위와 보안 역할을 구분합니다. 구성원과 기존 담당 기록이 일치하는 통제항목·자산을 함께 보여줍니다.'],
+            ['법령·정책', '외부 기준에서 내부 검토로', '법령·행정규칙 조회와 개정 전후 비교를 지원합니다. 내부 정책 원본, 개선 의견, 수정안, 승인본을 구분해 관리합니다.'],
+            ['심사·보고', '차수별 이력과 점검 일정', '과거 인증 결과·보완조치를 차수별로 보관합니다. 반복 점검 일정을 관리하고, 점검 현황은 보고서와 Excel 파일로 확인합니다.'],
+            ['AI 업무 도우미', '근거 확인부터 양식 작성·후속 검토까지', '등록 자료의 원문 인용을 대조하고 회사 양식으로 Word·Excel 초안을 작성합니다. 실제 생성 파일과 수행 단계, 검토 업무를 함께 관리하며 Codex·OpenAI API·로컬 AI 연결을 설정할 수 있습니다.']
+        ].map(([label,title,body]) => <article key={label}><span>{label}</span><h4>{title}</h4><p>{body}</p></article>)}</div>
+        <div className="isms-system-note"><strong>도구 구성</strong><p>Python 서버 · SQLite · JavaScript · SHA-256 원본 식별 · 법령 MCP · 선택형 AI 문서 분석</p><p>프로그램 소스와 회사별 자료·인증키를 분리해 다른 환경으로 옮길 수 있게 구성했습니다. 실제 문서 분석은 설정한 AI 제공자에 필요한 본문과 이미지를 전달하며, 검토 의견의 최종 반영은 담당자가 결정합니다.</p></div>
+    </section>;
+
+    const CredentialCard = ({ cert, index }) => {
+        const expired = cert.expires && new Date(cert.expires + 'T23:59:59').getTime() < Date.now();
+        const category = { cert: '자격', course: '교육', exam: '시험', lang: '어학' }[cert.type];
+        const status = cert.expires ? (expired ? '유효기간 만료' : '취득') : cert.status;
+        return (
+            <article className={`credential-card fade-in${index < 4 ? ' is-primary' : ''}${expired ? ' is-expired' : ''}`}>
+                <div className="credential-card-top"><span>{category}</span><time>{cert.date}</time></div>
+                <div className="credential-card-main"><h3>{cert.name}</h3><p>{cert.org}</p></div>
+                <div className="credential-card-bottom"><span className="credential-card-status">{status}</span>{cert.expires && <span className="credential-expiry">유효기간 {cert.expires.replace(/-/g, '.')}까지</span>}</div>
+            </article>
+        );
+    };
+
+    const Portfolio = () => {
+        const [selectedProject, setSelectedProject] = useState(null);
+        const [menuOpen, setMenuOpen] = useState(false);
+        const menuButtonRef = React.useRef(null);
+        const scrollPosRef = React.useRef(0);
+
+        useEffect(() => {
+            // The fragment target is rendered by React after the initial HTML loads.
+            if (!window.location.hash) return;
+            let cancelled = false;
+            let frame;
+            document.fonts.ready.then(() => {
+                if (cancelled) return;
+                frame = requestAnimationFrame(() => {
+                    document.getElementById(window.location.hash.slice(1))?.scrollIntoView({ behavior: 'instant' });
+                });
+            });
+            return () => { cancelled = true; cancelAnimationFrame(frame); };
+        }, []);
+
+        const selectProject = (idx) => {
+            setMenuOpen(false);
+            scrollPosRef.current = window.scrollY;
+            setSelectedProject(idx);
+        };
+
+        const goBack = () => {
+            setSelectedProject(null);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    window.scrollTo(0, scrollPosRef.current);
+                });
+            });
+        };
+
+        useEffect(() => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            return () => observer.disconnect();
+        }, [selectedProject]);
+
+        const careerSummary = [
+            {
+                "title": "관리체계",
+                "emoji": "🛡",
+                "value": "ISMS 인증 대응과 관리 도구 구축",
+                "desc": "ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 법령·정책, 자산·통제항목, 증적·보완조치·심사 이력을 관리하는 도구도 직접 기획·구현해 사용하고 있습니다."
+            },
+            {
+                "title": "금융보안",
+                "emoji": "📌",
+                "value": "금감원 대응과 CISO·임원 보고",
+                "desc": "FIRST·CPC 요청사항을 확인하고 내부 점검과 대응자료 작성을 담당합니다. 대응 현황은 CISO·임원에게 보고하고, 금융감독원 제출과 사내 공유도 수행합니다."
+            },
+            {
+                "title": "보안성 검토",
+                "emoji": "🏢",
+                "value": "보안 요구사항 검토와 보완조치 확인",
+                "desc": "금융권 SI와 신규 전자금융 서비스의 자체 보안성 심의에 대응하고 보안성을 검토했습니다. 개발·인프라·운영 부서와 조치 방안을 협의하고 이행 여부를 확인했습니다."
+            },
+            {
+                "title": "보안 운영",
+                "emoji": "🔁",
+                "value": "보안 솔루션·인프라 도입 및 운영",
+                "desc": "NAS·Chakra Max·SSL VPN·IPS·방화벽을 도입하고 NAC·DLP를 운영했습니다. 개인정보 처리 근거 검토, 처리방침 정비, 위·수탁사 점검도 수행했습니다."
+            }
+        ];
+
+        const techStack = {
+            "인증·관리체계": [
+                "ISMS 최초 인증·사후심사",
+                "PG 보안 인증",
+                "정책·지침",
+                "위험평가",
+                "심사 증적 관리",
+                "ISMS 통합관리 도구 구축",
+                "법령·정책 대조 검토",
+                "심사 이력·보완조치 관리"
+            ],
+            "금융보안·대외 대응": [
+                "금융감독원 대응",
+                "FIRST",
+                "CPC",
+                "CISO·임원 보고",
+                "대외 보고서 작성·제출",
+                "사내 보안정보 공유"
+            ],
+            "보안성 검토": [
+                "자체 보안성 심의 대응",
+                "신규 서비스 검토",
+                "SI 보안 요구사항",
+                "취약점 결과 검토",
+                "모의해킹 결과 검토",
+                "보완조치 이행 확인"
+            ],
+            "개인정보보호": [
+                "개인정보 처리 흐름",
+                "처리 근거 검토",
+                "개인정보 처리방침",
+                "위·수탁사 점검",
+                "관계기관 질의·외부 법률자문 대응"
+            ],
+            "보안 솔루션·인프라": [
+                "NAS",
+                "Chakra Max",
+                "SSL VPN",
+                "NAC",
+                "DLP",
+                "방화벽",
+                "IPS·IDS",
+                "DB 접근제어",
+                "서버·네트워크",
+                "Splunk"
+            ],
+            "보안관제·교육": [
+                "보안 이벤트 분석",
+                "이상 트래픽 분석",
+                "침해사고 대응 지원",
+                "보안 감사 대응",
+                "임직원 보안교육",
+                "해킹메일·DDoS 대응훈련"
+            ]
+        };
+
+        const projects = [
+            {
+                "logoUrl": "https://www.easyshop.co.kr/static/home/new_images/homepage/logo.svg",
+                "salary": "6,300만원",
+                "employmentType": "정규직",
+                "region": "서울",
+                "industry": "은행·카드·투자기관",
+                "companyType": "중소기업·일반기업·비상장",
+                "company": "이지샵",
+                "title": "이지샵 - 정보인프라팀",
+                "period": "2024.12 ~ 재직 중",
+                "role": "정보인프라팀 매니저 / 정보보안",
+                "summary": "ISMS·PG 인증 대응과 금융보안 업무, 보안 솔루션·인프라 도입 및 운영을 담당합니다. 증적·심사 이력 관리와 AI 문서 작성을 지원하는 ISMS 통합관리 도구를 직접 기획·구현해 사용하고 있습니다.",
+                "description": "사내 정보보호 담당자로서 ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다. 법령·정책 검토, 자산·통제항목, 증적·보완조치와 차수별 심사 이력을 함께 관리하려고 ISMS 통합관리 도구를 직접 기획·구현했습니다. AI 업무 도우미에는 인용 근거 검증, 회사 양식에 맞춘 문서 작성, 후속 검토 업무 등록 기능을 구현했습니다. 보안 솔루션·인프라 신규 도입과 운영도 담당합니다.",
+                "highlights": [
+                    "PG 금융보안 컴플라이언스: 금융보안 통합관제시스템(FIRST)·CPC 등을 통한 보안 위협정보, 공지 및 점검·자료제출 요구사항 확인",
+                    "금융감독원 대응: 내부 현황 확인과 유관 부서 자료 취합, 보고서·증빙자료 작성 후 금융감독원 제출",
+                    "CISO·임원 보고 및 사내 공유: 주요 보안 이슈와 대외 요청사항의 대응 현황 보고, 보안 위협정보 전파와 후속조치 협의",
+                    "ISMS 최초 인증 및 사후심사: 인증 범위·정보자산 정리, 위험평가, 정책·지침과 증적 정비, 심사 보완조치 관리 및 사후심사 통과",
+                    "ISMS 통합관리 도구 직접 구축·활용: 사내 정보보호 업무의 관리 요구사항을 정리하고 기능을 직접 구현, 사용 중 발견한 개선점을 반복 반영",
+                    "법령·정책 검토 지원: 법령과 개정 전후 조문 조회, 내부 정책·지침 대조, 보완 필요사항과 수정 의견 정리 및 반영 여부 검토",
+                    "자산·통제항목·심사 기록 통합관리: 최초심사·1차 사후심사 기록과 2차 사후심사 준비자료를 반영하고, 이전 심사의 증적과 결함 보완조치내역서까지 차수별 관리",
+                    "PG 최초 보안 인증: 요구사항에 따른 결제·개인정보 처리 시스템의 보안 통제 점검, 심사 대응과 보완조치 이행, 인증 이후 금융 컴플라이언스 지속 대응",
+                    "신규 전자금융 서비스 검토: 자체 보안성 심의, 서비스·결제·개인정보 흐름, 접근통제·로그 및 취약점 결과 검토와 보완조치 확인",
+                    "금융감독원 신고 지원: 신규 서비스 관련 신고 대상 여부 검토 및 신고·제출자료 작성 지원",
+                    "정책·내부 점검: 연간 보안계획과 지표 수립, 계정·접근권한·로그·자료 반출 관련 정책·지침 정비 및 운영 점검",
+                    "개인정보보호: 처리 근거 쟁점에 대한 관계기관 질의·외부 법률자문 대응, 개인정보 처리방침 정비 및 위·수탁사 점검",
+                    "보안 솔루션·인프라 신규 도입: NAS, Chakra Max, SSL VPN, IPS·방화벽 등 다양한 제품의 신규 도입과 운영",
+                    "운영 기준·통제 정비: 보안 솔루션의 접근통제 정책 및 운영 기준 정비, VPN·NAC·DLP 운영과 계정·권한·로그 관리",
+                    "보안 이벤트 분석과 이상행위 대응, 대응 결과 보고 및 재발 방지 대책 검토"
+                ],
+                "tech": [
+                    "ISMS 최초·사후심사",
+                    "ISMS 통합관리 도구",
+                    "PG 인증",
+                    "금융감독원 대응",
+                    "FIRST·CPC",
+                    "CISO·임원 보고",
+                    "개인정보보호",
+                    "보안 솔루션·인프라 도입",
+                    "NAS",
+                    "Chakra Max",
+                    "SSL VPN",
+                    "IPS·방화벽",
+                    "NAC",
+                    "DLP"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "success",
+                        "text": "ISMS 최초 인증 취득 및 이후 사후심사 통과"
+                    },
+                    {
+                        "type": "success",
+                        "text": "PG 최초 보안 인증 취득"
+                    },
+                    {
+                        "type": "info",
+                        "text": "ISMS 통합관리 도구 직접 구축·사내 업무 활용"
+                    },
+                    {
+                        "type": "info",
+                        "text": "최초·1차 심사 이력과 2차 사후심사 준비자료 통합관리"
+                    },
+                    {
+                        "type": "info",
+                        "text": "FIRST·CPC 요청사항 확인과 대응 현황 관리"
+                    },
+                    {
+                        "type": "info",
+                        "text": "CISO·임원 보고와 금융감독원 보고서 작성·제출"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안 위협정보 사내 공유 및 후속조치 협의"
+                    },
+                    {
+                        "type": "info",
+                        "text": "NAS·Chakra Max·SSL VPN·IPS·방화벽 신규 도입·운영"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "ISMS 최초·사후심사",
+                        "value": "취득·유지"
+                    },
+                    {
+                        "label": "PG 보안 인증",
+                        "value": "최초 취득"
+                    },
+                    {
+                        "label": "금융감독원 대응",
+                        "value": "보고·제출"
+                    },
+                    {
+                        "label": "보안 솔루션·인프라",
+                        "value": "신규 도입"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://bankwareglobal.com/images/logo-renewal.png",
+                "salary": "5,800만원",
+                "employmentType": "정규직",
+                "region": "서울",
+                "industry": "소프트웨어·솔루션·ASP",
+                "companyType": "중소기업·일반기업·비상장",
+                "company": "뱅크웨어글로벌",
+                "title": "뱅크웨어글로벌 - ITS Unit",
+                "period": "2022.08 ~ 2024.11",
+                "role": "ITS Unit 책임 / 정보보안",
+                "description": "금융기관 차세대 SI 프로젝트의 정보보안 담당자로 참여하여 자체 보안성 심의 대응과 보안성 검토를 수행했습니다. 설계·개발·오픈 단계별 보안 요구사항을 정리하고 유관 부서와 보완조치 이행을 확인했습니다.",
+                "highlights": [
+                    "자체 보안성 심의·검토: 심의 기준과 고객사 요구사항 분석, 시스템 구성·데이터 흐름·접근통제 검토",
+                    "심의 대응자료: 보안성 검토보고서와 심의자료 작성, 질의·보완 요청 대응 및 관련 부서 협의",
+                    "구축 단계 통제: 설계·개발·오픈 단계별 요구사항 반영 여부 확인과 보완조치 이행 점검",
+                    "취약점·모의해킹 결과 검토: 시스템별 보완 필요사항을 정리하고 개발·인프라·운영 담당자와 조치 방안 및 적용 방법 협의",
+                    "SI 제안 지원: 보안 아키텍처와 요구사항 정의, 금융 규제·고객 기준에 따른 대응 방안 검토와 제안서 보안 부분 작성",
+                    "주요 성과: OK저축은행 차세대 시스템 보안성 심의 대응 완료, 검토 근거와 보완조치 결과 문서화"
+                ],
+                "tech": [
+                    "자체 보안성 심의",
+                    "보안성 검토",
+                    "SI 보안 요구사항",
+                    "보완조치 관리",
+                    "취약점 결과 검토",
+                    "모의해킹 결과 검토",
+                    "보안 아키텍처"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "금융권 차세대 SI 자체 보안성 심의 대응·검토"
+                    },
+                    {
+                        "type": "info",
+                        "text": "설계·개발·오픈 단계별 보안 요구사항 확인"
+                    },
+                    {
+                        "type": "info",
+                        "text": "취약점·모의해킹 결과 검토 및 보완조치 이행 점검"
+                    },
+                    {
+                        "type": "success",
+                        "text": "OK저축은행 차세대 보안성 심의 대응 완료"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안 아키텍처 검토와 SI 제안서 작성"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "자체 보안성 심의",
+                        "value": "대응·검토"
+                    },
+                    {
+                        "label": "구축 단계별 통제",
+                        "value": "이행 확인"
+                    },
+                    {
+                        "label": "OK저축은행",
+                        "value": "심의 대응"
+                    },
+                    {
+                        "label": "SI 제안",
+                        "value": "보안 검토"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://www.wins21.com/assets/images/main/winstechnet.png",
+                "salary": "4,500만원",
+                "employmentType": "정규직",
+                "region": "대전",
+                "industry": "소프트웨어·솔루션·ASP",
+                "companyType": "중견기업·일반기업·코스닥상장(KOSDAQ)",
+                "company": "윈스",
+                "title": "윈스 - 정보보안1팀",
+                "period": "2019.02 ~ 2022.07",
+                "role": "정보보안1팀 선임 / 정보보안",
+                "description": "산림청·문화체육관광부 사이버안전센터 위탁 운영에 참여하여 보안관제와 침해사고 대응을 수행했습니다. 공공기관 보안 진단·점검, 감사·ISMS 대응자료 준비와 교육·모의훈련도 지원했습니다.",
+                "highlights": [
+                    "보안관제: 보안 이벤트 실시간 모니터링, 악성코드 유포·이상 트래픽·비정상 행위 탐지·분석 및 대응",
+                    "관제 시스템 운영: IPS·방화벽·백신과 로그 수집·분석 시스템 운영·점검, 보안정책과 취약 구성 확인",
+                    "대응·보고: 초기 대응과 후속조치 지원, 주요 보안 이벤트 분석 및 정기·수시 대응 결과 보고서 작성",
+                    "문화체육관광부 점검: 소속·산하기관의 보안 진단·점검, 통제 적용 현황 확인 및 보완사항 정리",
+                    "감사·ISMS 지원: 자체 감사·국정감사 운영 현황자료 작성, ISMS 심사 증적 수집·정리 및 대응자료 준비",
+                    "교육·훈련: 임직원 보안교육과 해킹메일·DDoS 대응훈련 운영 지원, 결과 분석과 개선사항 공유"
+                ],
+                "tech": [
+                    "보안관제",
+                    "이상징후 분석",
+                    "침해사고 대응 지원",
+                    "IPS",
+                    "방화벽",
+                    "로그 분석",
+                    "ISMS 대응 지원",
+                    "감사 대응",
+                    "교육·훈련"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "산림청·문화체육관광부 사이버안전센터 운영 참여"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안 이벤트·이상 트래픽 분석과 대응 결과 보고"
+                    },
+                    {
+                        "type": "info",
+                        "text": "소속·산하기관 보안 점검 및 감사 대응 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "ISMS 심사 운영 증적과 점검자료 정리"
+                    },
+                    {
+                        "type": "info",
+                        "text": "해킹메일·DDoS 대응훈련 결과 분석 및 개선 지원"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "사이버안전센터",
+                        "value": "관제·대응"
+                    },
+                    {
+                        "label": "공공기관 보안",
+                        "value": "진단·점검"
+                    },
+                    {
+                        "label": "감사·ISMS",
+                        "value": "자료 지원"
+                    },
+                    {
+                        "label": "사고 예방",
+                        "value": "교육·훈련"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://images.weserv.nl/?url=seilsystem.kr/theme/wering/img/hdft/hd_logo.png",
+                "salary": "3,400만원",
+                "employmentType": "정규직",
+                "region": "세종",
+                "industry": "네트워크·통신",
+                "companyType": "소기업·일반기업·비상장",
+                "company": "새일시스템즈",
+                "title": "새일시스템즈 - SE사업부",
+                "period": "2018.01 ~ 2019.02",
+                "role": "SE사업부 대리 / 인프라·보안 운영",
+                "description": "산업통상자원부 사이버안전센터에서 서버·네트워크와 보안장비를 운영하고 장애에 대응했습니다. Splunk 로그 분석, 을지훈련장·경진대회 인프라 구성과 보안 감사 대응자료 정리 업무도 수행했습니다.",
+                "highlights": [
+                    "센터 인프라 운영: 서버·네트워크 상태 확인과 장애 대응, 산하기관 현장 장애 원인 파악·복구 지원",
+                    "보안장비 운영: 방화벽·VPN·침입탐지 장비 점검과 보안정책 적용 현황 확인",
+                    "로그 분석: Splunk 기반 로그 수집·분석, 탐지 이벤트 모니터링과 이상징후 대응 지원",
+                    "훈련·행사 지원: 을지훈련장 인프라 설계·구성·운영과 사이버보안 경진대회 네트워크 구성 지원",
+                    "감사 대응: 접근통제·로그 보관·장비 구성 현황 확인, 증빙자료 정리와 인터뷰 대응 및 보완사항 검토 지원"
+                ],
+                "tech": [
+                    "서버·네트워크 운영",
+                    "Splunk",
+                    "방화벽",
+                    "VPN",
+                    "IDS",
+                    "장애 대응",
+                    "훈련 인프라",
+                    "보안 감사 지원"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "산업통상자원부 사이버안전센터 인프라 운영"
+                    },
+                    {
+                        "type": "info",
+                        "text": "방화벽·VPN·IDS 점검과 장애 대응 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "Splunk 로그 분석 및 이상징후 확인"
+                    },
+                    {
+                        "type": "info",
+                        "text": "을지훈련장·경진대회 네트워크 구성 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안 감사 운영 현황·증빙자료 정리"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "사이버안전센터",
+                        "value": "인프라 운영"
+                    },
+                    {
+                        "label": "Splunk",
+                        "value": "로그 분석"
+                    },
+                    {
+                        "label": "훈련·행사",
+                        "value": "구성 지원"
+                    },
+                    {
+                        "label": "보안 감사",
+                        "value": "대응 지원"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://itcenpns.com/resources/itcen/assets/svg/logos/logo_pns.svg",
+                "salary": "3,200만원",
+                "employmentType": "계약직",
+                "region": "대전",
+                "industry": "컴퓨터·하드웨어·장비",
+                "companyType": "중견기업·일반기업·비상장",
+                "company": "콤텍정보통신",
+                "title": "콤텍정보통신 - 시스템운영",
+                "period": "2017.06 ~ 2017.08",
+                "role": "시스템운영 주임 / 인프라 (계약직)",
+                "description": "대전통합전산센터 보안 인프라 고도화 사업에 참여하여 보안·네트워크 장비 교체와 설정, VLAN·망 분리 적용 테스트 및 전환 검증을 지원했습니다.",
+                "highlights": [
+                    "보안 인프라 고도화: 방화벽·IPS·스위치 등 보안·네트워크 장비 교체 및 설정 작업 지원",
+                    "전환 검증: VLAN 구성과 망 분리 적용 테스트, 정책 변경 영향 확인 및 장비 동작·발생 이슈 정리",
+                    "산출물 작성: 작업 내역서와 구성·정책 변경사항 요약, 작업 결과 문서화 및 유관 부서 공유",
+                    "참여 사업: 향수정보통신 재직 당시 참여했던 대전통합전산센터 보안 인프라 고도화 사업"
+                ],
+                "tech": [
+                    "방화벽",
+                    "IPS",
+                    "스위치",
+                    "VLAN",
+                    "망 분리 테스트",
+                    "장비 교체·설정 지원",
+                    "전환 검증",
+                    "작업 문서화"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "대전통합전산센터 보안 인프라 고도화 참여"
+                    },
+                    {
+                        "type": "info",
+                        "text": "보안·네트워크 장비 교체와 설정 작업 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "VLAN·망 분리 테스트 및 정책 변경 영향 확인"
+                    },
+                    {
+                        "type": "info",
+                        "text": "작업 내역과 변경사항 문서화·공유"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "대전통합전산센터",
+                        "value": "고도화 지원"
+                    },
+                    {
+                        "label": "보안·네트워크 장비",
+                        "value": "교체·설정"
+                    },
+                    {
+                        "label": "VLAN·망 분리",
+                        "value": "전환 검증"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://images.weserv.nl/?url=hyangsu.co.kr/data/skin/respon_default/images/skin/hd_logo_on.png",
+                "salary": "3,200만원",
+                "employmentType": "계약직",
+                "region": "대전",
+                "industry": "네트워크·통신",
+                "companyType": "소기업·일반기업·비상장",
+                "company": "향수정보통신",
+                "title": "향수정보통신 - 시스템운영",
+                "period": "2017.04 ~ 2017.05",
+                "role": "시스템운영 주임 / 인프라 (계약직)",
+                "description": "대전통합전산센터 보안 인프라 고도화 사업에서 장비 교체·설정, 전환 검증, VLAN·망 분리 테스트와 결과 문서화를 지원했습니다. 이후 콤텍정보통신에서도 같은 사업에 참여했습니다.",
+                "highlights": [
+                    "장비 교체·검증: 공공기관 전산센터 보안·네트워크 장비 교체와 설정 및 전환 검증 지원",
+                    "네트워크 테스트: VLAN·망 분리 적용과 변경 영향 검토, 전환 계획에 따른 테스트 결과 정리",
+                    "문서화·협업: 장비 설정·변경 내역과 작업 산출물 작성, 확인한 이슈 및 검증 결과를 유관 부서에 공유"
+                ],
+                "tech": [
+                    "보안 인프라 고도화",
+                    "장비 전환 검증",
+                    "VLAN",
+                    "망 분리 테스트",
+                    "변경 영향 검토",
+                    "산출물 작성"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "대전통합전산센터 보안 인프라 고도화 참여"
+                    },
+                    {
+                        "type": "info",
+                        "text": "전환 계획에 따른 장비 교체·설정·검증 지원"
+                    },
+                    {
+                        "type": "info",
+                        "text": "VLAN·망 분리 테스트 및 영향 검토"
+                    },
+                    {
+                        "type": "info",
+                        "text": "작업 결과와 변경 내역 문서화"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "대전통합전산센터",
+                        "value": "고도화 지원"
+                    },
+                    {
+                        "label": "장비 전환",
+                        "value": "검증 지원"
+                    },
+                    {
+                        "label": "작업 결과",
+                        "value": "문서화"
+                    }
+                ]
+            },
+            {
+                "logoUrl": "https://images.weserv.nl/?url=www.big21c.co.kr/img/common/logo.gif",
+                "logoTreatment": "paper",
+                "salary": "2,800만원",
+                "employmentType": "정규직",
+                "region": "대전",
+                "industry": "제조업기타",
+                "companyType": "중소기업·일반기업·비상장",
+                "company": "비아이지",
+                "title": "비아이지 - 보안관리부",
+                "period": "2015.04 ~ 2016.04",
+                "role": "보안관리부 사원 / 정보보안",
+                "description": "사내 방화벽·백신·VPN 정책과 사용자 계정·접근권한을 관리했습니다. 보안 로그 및 정책 준수 여부를 점검하고 신입·정기 보안교육과 캠페인을 운영했습니다.",
+                "highlights": [
+                    "보안 솔루션 운영: 방화벽·백신·VPN 정책 관리, 보안 로그 점검과 이상징후 대응 지원",
+                    "사용자 관리: 계정·접근권한과 변경 이력 관리, 통제 적용 현황 확인 및 운영 기준 정비 지원",
+                    "정책 준수 점검: 사내 보안정책·지침 이행 여부 확인 및 개선사항 정리",
+                    "임직원 교육: 신입·분기별 정기 보안교육 기획·운영과 보안 수칙 안내·캠페인 수행",
+                    "교육 개선: 교육 피드백을 반영한 내용과 진행 방식 보완, 사용자 보안관리 기준 정착 지원"
+                ],
+                "tech": [
+                    "방화벽",
+                    "백신",
+                    "VPN",
+                    "계정·접근권한",
+                    "보안 로그 점검",
+                    "임직원 보안교육",
+                    "보안정책 점검"
+                ],
+                "terminalLog": [
+                    {
+                        "type": "info",
+                        "text": "사내 보안 솔루션 정책과 로그 점검"
+                    },
+                    {
+                        "type": "info",
+                        "text": "사용자 계정·접근권한 및 변경 이력 관리"
+                    },
+                    {
+                        "type": "info",
+                        "text": "신입·정기 보안교육과 보안 캠페인 운영"
+                    },
+                    {
+                        "type": "info",
+                        "text": "교육 피드백과 정책 점검 결과를 개선에 반영"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "label": "보안 솔루션",
+                        "value": "정책 운영"
+                    },
+                    {
+                        "label": "계정·권한",
+                        "value": "이력 관리"
+                    },
+                    {
+                        "label": "임직원 교육",
+                        "value": "정기 운영"
+                    }
+                ]
+            }
+        ];
+
+        const certifications = [
+            {
+                "name": "ISO/IEC 27001 정보보호경영시스템 심사원보",
+                "date": "2021.04",
+                "org": "GCT",
+                "type": "cert",
+                "status": "심사원보 취득"
+            },
+            {
+                "name": "ISO/IEC 27017 클라우드 보안 심사원보",
+                "date": "2021.09",
+                "org": "GCT",
+                "type": "cert",
+                "status": "심사원보 취득"
+            },
+            {
+                "name": "ISO/IEC 27018 퍼블릭 클라우드 개인정보보호 심사원보",
+                "date": "2021.09",
+                "org": "GCT",
+                "type": "cert",
+                "status": "심사원보 취득"
+            },
+            {
+                "name": "ISO/IEC 27701 개인정보보호경영시스템 심사원보",
+                "date": "2021.10",
+                "org": "GCT",
+                "type": "cert",
+                "status": "심사원보 취득"
+            },
+            {
+                "name": "NAVER Cloud Platform Certified Associate",
+                "date": "2022.11",
+                "org": "NAVER Cloud Platform",
+                "type": "cert",
+                "status": "취득"
+            },
+            {
+                "name": "MCSE: Server Infrastructure / Cloud Platform and Infrastructure",
+                "date": "2016.11",
+                "org": "Microsoft",
+                "type": "cert",
+                "status": "취득"
+            },
+            {
+                "name": "ISO 19011 경영시스템 심사 가이드라인 과정",
+                "date": "2021.04",
+                "org": "GCT",
+                "type": "course",
+                "status": "교육 수료"
+            },
+            {
+                "name": "LPIC-101",
+                "date": "2015.01",
+                "org": "Linux Professional Institute",
+                "type": "exam",
+                "status": "시험 합격"
+            },
+            {
+                "name": "AWS Certified Cloud Practitioner",
+                "date": "2023.09",
+                "org": "AWS",
+                "type": "cert",
+                "expires": "2026-09-06"
+            },
+            {
+                "name": "CCNA (Cisco Certified Network Associate)",
+                "date": "2014.12",
+                "org": "Cisco",
+                "type": "cert",
+                "expires": "2017-12-26"
+            },
+            {
+                "name": "네트워크관리사 2급",
+                "date": "2016.10",
+                "org": "한국정보통신자격협회",
+                "type": "cert",
+                "expires": "2021-10-17"
+            },
+            {
+                "name": "OPIc Intermediate Low",
+                "date": "2018.07",
+                "org": "영어",
+                "type": "lang",
+                "expires": "2020-06-29"
+            }
+        ];
+
+        const education = [
+            {
+                "school": "아주대학교 정보통신대학원",
+                "major": "정보통신공학과 사이버보안전공",
+                "period": "2015.08 ~ 2018.08",
+                "gpa": "3.67 / 4.5",
+                "type": "석사 졸업"
+            },
+            {
+                "school": "군산대학교",
+                "major": "해양건설공학과",
+                "period": "2007.03 ~ 2014.02",
+                "gpa": "3.26 / 4.5",
+                "type": "학사 졸업"
+            },
+            {
+                "school": "대전대신고등학교",
+                "major": "이과계열",
+                "period": "2004.03 ~ 2007.02",
+                "type": "졸업"
+            },
+            {
+                "school": "I2sec",
+                "major": "정보보호전문가 과정",
+                "period": "2014.07 ~ 2014.11",
+                "type": "교육수료"
+            },
+            {
+                "school": "IT School",
+                "major": "시스템통합엔지니어양성 과정",
+                "period": "2016.06 ~ 2016.11",
+                "type": "교육수료"
+            }
+        ];
+        return (
+            <>
+                <nav aria-label="포트폴리오 탐색" onKeyDown={event => { if (event.key === 'Escape' && menuOpen) { setMenuOpen(false); menuButtonRef.current?.focus(); } }}>
+                    <div className="nav-inner">
+                        <div className="logo" onClick={goBack}>KIWOONG HONG</div>
+                        {selectedProject !== null ? (
+                            <button className="nav-back" onClick={goBack}>&larr; 포트폴리오</button>
+                        ) : (
+                            <>
+                            <button type="button" className="mobile-nav-toggle" ref={menuButtonRef} aria-expanded={menuOpen} aria-controls="portfolio-nav" onClick={() => setMenuOpen(open => !open)}><span>{menuOpen ? '닫기' : '메뉴'}</span><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">{menuOpen ? <path d="m5 5 10 10M5 15 15 5" /> : <path d="M3 5h14M3 10h14M3 15h14" />}</svg></button>
+                            <ul id="portfolio-nav" className={`nav-links${menuOpen ? ' is-open' : ''}`} onClick={event => { if (event.target.closest('a')) setMenuOpen(false); }}>
+                                <li><a className="nav-link" href="#home">Home</a></li>
+                                <li><a className="nav-link" href="#about">About</a></li>
+                                <li><a className="nav-link" href="#isms-tool">ISMS Tool</a></li>
+                                <li><a className="nav-link" href="#projects">Career</a></li>
+                                <li><a className="nav-link" href="#tech">Skills</a></li>
+                                <li><a className="nav-link" href="#certs">Certs</a></li>
+                                <li><a className="nav-link" href="#education">Education</a></li>
+                                <li><a className="nav-link" href="#contact">Contact</a></li>
+                            </ul>
+                            </>
+                        )}
+                    </div>
+                </nav>
+
+                {selectedProject !== null ? (
+                    <ProjectDetail
+                        project={projects[selectedProject]}
+                        index={selectedProject}
+                        onBack={goBack}
+                    />
+                ) : (
+                <>
+                <section className="hero" id="home">
+                    <div className="hero-container">
+                        <div className="hero-left">
+                            <div className="hero-tag">Information Security Professional</div>
+                            <h1 className="hero-name">홍기웅</h1>
+                            <p className="hero-role">보안관제와 인프라 운영을 거쳐<br />ISMS·PG 인증 대응과 금융보안 업무를 담당합니다.</p>
+                            <div className="hero-actions"><a className="hero-career-link" href="#projects">경력 살펴보기 <span aria-hidden="true">&rarr;</span></a></div>
+                            <div className="hero-stats portfolio-focus">
+                                <div className="h-stat"><div className="h-stat-value">ISMS 인증 대응</div><div className="h-stat-label">최초심사·사후심사 준비 및 대응</div></div>
+                                <div className="h-stat"><div className="h-stat-value">PG 보안 관리</div><div className="h-stat-label">보안 요구사항 검토·이행 관리</div></div>
+                                <div className="h-stat"><div className="h-stat-value">금감원 대응</div><div className="h-stat-label">요청자료 작성·보고서 제출</div></div>
+                                <div className="h-stat"><div className="h-stat-value">보안 인프라 운영</div><div className="h-stat-label">보안 솔루션·인프라 도입 및 운영</div></div>
+                            </div>
+                        </div>
+                        <div className="hero-right"><a className="hero-evidence" href="#isms-screens"><div className="hero-evidence-top"><span>BUILT FROM PRACTICE</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div><h2>ISMS 통합관리 도구</h2><p>직접 기획·구현해 사내 업무에 사용하는 도구</p><div className="hero-evidence-image"><img src="./assets/isms/control-management.png?v=20261104-refined" alt="직접 구현한 ISMS 도구의 통제항목 관리 화면. 내부 정보는 마스킹되어 있습니다." width="1710" height="904" /></div><div className="hero-evidence-bottom"><span>정책 · 통제 · 증적 · 심사 이력</span><span>구현 화면 보기 &rarr;</span></div></a></div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="about">
+                    <div className="section-container">
+                        <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">소개</h2></div></div>
+                        <div className="about-editorial fade-in">
+                            <div className="about-principle"><div className="isms-feature-label">정보보호 실무</div><h3>보안 요구사항을<br />점검하고 개선해<br /><span>실제 운영에 반영합니다.</span></h3><div className="about-keywords"><span>정보보호 관리체계</span><span>금융보안 컴플라이언스</span><span>보안 솔루션·인프라</span></div></div>
+                            <div className="about-copy"><p>보안관제와 인프라 운영, 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영을 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 현재 금융감독원 요청자료 작성·제출과 CISO·임원 보고를 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 업무에 적용합니다.</p><div className="about-built-note"><strong>심사 준비에 필요한 도구를 직접 만들었습니다.</strong><p>법령·정책, 자산·통제항목, 증적·보완조치와 심사 이력을 한곳에서 관리합니다. 사내 업무에 사용하며 필요한 기능을 개선하고 있습니다.</p></div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section isms-case" id="isms-tool" aria-labelledby="isms-case-title">
+                    <div className="section-container">
+                        <div className="section-header fade-in">
+                            <div><div className="section-tag">Built From Practice</div><h2 className="section-title" id="isms-case-title">ISMS 통합관리 도구</h2></div>
+                            <p className="section-desc">심사 준비에서 생긴 문제를 정리하고 기능으로 구현했습니다.</p>
+                        </div>
+                        <div className="isms-case-intro fade-in">
+                            <div className="isms-case-story">
+                                <div className="isms-case-kicker">실무 요구사항 정의 · 설계 · 구현 검증</div>
+                                <h3>증적과 검토 근거를<br />한곳에서 관리하도록 만들었습니다.</h3>
+                                <p>같은 회의록을 여러 통제항목에서 사용하고 파일명은 유지한 채 내용을 갱신하는 일이 많았습니다. 이전 심사의 보완조치와 이번 심사의 준비 상태도 구분해 확인해야 했습니다.</p>
+                                <p>필요한 기능을 증적 수집, 항목별 근거 검토, 보완 업무, 심사 이력 관리로 나눠 설계했습니다. Codex로 기능을 구현하고 실제 자료를 적용하면서 문서 판독, 증적 연결, 검토 상태 표시를 반복해서 개선하고 있습니다.</p>
+                            </div>
+                            <div className="isms-cycle" aria-label="도구로 연결한 보안 관리 흐름">
+                                <div className="isms-cycle-heading">직접 정의하고 검증한 것</div>
+                                <ol>
+                                    <li><span className="isms-step-num" aria-hidden="true">01</span><div><strong>검토 기준</strong><span>적합·미흡·확인 필요와 보완 사유 구분</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">02</span><div><strong>자료 연결</strong><span>원본 하나와 여러 통제항목의 관계 관리</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">03</span><div><strong>이력 보존</strong><span>현재 자료와 이전 심사·검토 기록 구분</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">04</span><div><strong>업무 적용</strong><span>실제 자료로 동작을 확인하고 화면·흐름 개선</span></div></li>
+                                </ol>
+                            </div>
+                        </div>
+                        <IsmsDesignDecisions />
+                        <IsmsScreenshots />
+                        <IsmsAssistant />
+                        <IsmsImplementation />
+                        <div className="isms-case-outcome fade-in">
+                            <div><div className="isms-feature-label">실무 적용</div><p>검토에 사용한 증적과 근거 위치, 남은 확인사항, 후속 조치와 처리 이력을 함께 확인할 수 있습니다. 사내 업무에서 발견한 문제는 다음 기능 개선에 반영하고 있습니다.</p></div>
+                            <p className="isms-review-note">법령·정책 검토 의견은 담당자가 확인한 뒤 반영합니다.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="projects">
+                    <div className="section-container">
+                        <div className="section-header fade-in"><div><div className="section-tag">Career Summary</div><h2 className="section-title">경력 요약</h2></div><p className="section-desc">인증 대응·금융보안·보안성 검토·인프라 운영 경험</p></div>
+                        <div className="career-summary-grid">
+                            {careerSummary.map((item, idx) => (
+                                <article key={idx} className="career-summary-card fade-in"><div className="career-summary-label"><span>{item.title}</span><span>{String(idx + 1).padStart(2, '0')}</span></div><h3>{item.value}</h3><p>{item.desc}</p></article>
+                            ))}
+                        </div>
+                        <div className="section-header fade-in"><div><div className="section-tag">Career</div><h2 className="section-title">경력 사항</h2></div></div>
+                        <div className="career-guide" id="career-guide">
+                            <div className="career-guide-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="m5 3 5.5 16 3-6 6-3L5 3Z" />
+                                    <path d="m14 14 5 5M15 3v3M3 15h3" />
+                                </svg>
+                            </div>
+                            <div className="career-guide-copy">
+                                <strong>회사별 담당 업무와 성과</strong>
+                                <p>카드를 선택하면 상세 경력을 확인할 수 있습니다.</p>
+                            </div>
+                        </div>
+                        <div className="projects-list">
+                            {projects.map((p, idx) => (
+                                <div
+                                    key={idx}
+                                    className="project-card fade-in"
+                                    onClick={() => selectProject(idx)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectProject(idx); }
+                                    }}
+                                    role="button"
+                                    aria-describedby="career-guide"
+                                    tabIndex={0}
+                                    title={`${p.company} 상세 경력 보기`}
+                                    style={{transitionDelay: `${Math.min(idx * 0.06, 0.4)}s`}}
+                                >
+                                    <div className="project-card-left">
+                                        <div className="project-card-icon company-logo" data-logo-treatment={p.logoTreatment || 'transparent'}>
+                                            <img
+                                                src={p.logoUrl}
+                                                alt={`${p.company} 로고`}
+                                                onLoad={e => e.currentTarget.closest('.company-logo')?.classList.remove('is-unavailable')}
+                                                onError={(e) => {
+                                                    e.currentTarget.closest('.company-logo')?.classList.add('is-unavailable');
+                                                }}
+                                            />
+                                            <span className="company-logo-fallback" aria-hidden="true">
+                                                {p.company.slice(0, 2)}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="project-card-body">
+                                        <div className="project-card-header"><div><h3 className="project-card-title">{p.title}</h3><div className="project-card-role">{p.role} · {p.industry}{p.employmentType ? ` · ${p.employmentType}` : ''}</div></div><div className="project-card-period">{p.period}</div></div>
+                                        <p className="project-card-desc">{p.summary || p.description}</p>
+                                        <div className="project-card-footer"><div className="project-card-tags">{p.tech.slice(0, 6).map((t, i) => <span key={i} className="project-card-tag">{t}</span>)}{p.tech.length > 6 && <span className="project-card-tag">+{p.tech.length - 6}</span>}</div><div className="project-card-metrics">{p.achievements.map((a, i) => (<div key={i} className="project-card-metric"><div className="project-card-metric-value">{a.value}</div><div className="project-card-metric-label">{a.label}</div></div>))}</div></div>
+                                        <div className="project-card-clickhint">상세 경력 보기 &rarr;</div>
+                                    </div>
+                                    <div className="project-card-arrow">&rarr;</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="tech">
+                    <div className="section-container">
+                        <div className="section-header fade-in"><div><div className="section-tag">Expertise</div><h2 className="section-title">업무 역량과 활용 기술</h2></div></div>
+                        <div className="skills-grid">
+                            {Object.entries(techStack).map(([cat, items], idx) => (
+                                <div key={idx} className="skill-card fade-in" style={{transitionDelay: `${Math.min(idx * 0.04, 0.3)}s`}}><div className="skill-name"><div className="skill-dot"></div>{cat}</div><div className="skill-badges">{items.map((item, i) => <span key={i} className="skill-badge">{item}</span>)}</div></div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section compact-section" id="certs">
+                    <div className="section-container">
+                        <div className="section-header fade-in"><div><div className="section-tag">Credentials</div><h2 className="section-title">자격·교육·어학 이력</h2></div></div>
+                        <div className="credential-grid">
+                            {certifications.map((cert, idx) => <CredentialCard key={cert.name} cert={cert} index={idx} />)}
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section compact-section" id="education">
+                    <div className="section-container">
+                        <div className="section-header fade-in"><div><div className="section-tag">Education &amp; Background</div><h2 className="section-title">학력 · 교육</h2></div></div>
+                        <div className="education-grid">
+                            {education.map((edu, idx) => (
+                                <article key={edu.school} className={`education-card fade-in${idx === 0 ? ' is-primary' : ''}`}><div className="credential-card-top"><span>{idx === 0 ? '대학원' : idx === 1 ? '대학교' : idx === 2 ? '고등학교' : '교육'}</span><span>{edu.type}</span></div><div className="education-card-main"><h3>{edu.school}</h3><p>{edu.major}</p></div><div className="education-card-bottom"><span>{edu.period}</span>{edu.gpa && <span className="education-gpa">{edu.gpa}</span>}</div></article>
+                            ))}
+                            <article className="education-card is-service fade-in"><div className="credential-card-top"><span>병역</span><span>만기전역</span></div><div className="education-card-main"><h3>의무경찰 수경</h3><p>병역 의무 이행</p></div><div className="education-card-bottom"><span>2008.05.08 ~ 2010.03.27</span><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.5 3 7.6 7.5 9.5 4.5-1.9 7.5-5 7.5-9.5V6L12 3Z" /><path d="m8.5 11.5 2.3 2.3 4.7-4.8" /></svg></div></article>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="contact">
+                    <div className="section-container">
+                        <div className="section-header-full fade-in"><div className="section-tag">Get In Touch</div><h2 className="section-title">연락처</h2></div>
+                        <div className="contact-grid"><a href="mailto:chosun19@naver.com" className="contact-card fade-in"><span className="contact-emoji">&#9993;</span><div className="contact-type">Email</div><div className="contact-info contact-info-eq">chosun19<br className="mobile-only-br" />@naver.com</div></a><a href="tel:010-9990-5692" className="contact-card fade-in" style={{transitionDelay: '0.1s'}}><span className="contact-emoji">&#128241;</span><div className="contact-type">Phone</div><div className="contact-info contact-info-eq">010-9990-5692</div></a><div className="contact-card fade-in" style={{transitionDelay: '0.2s'}}><span className="contact-emoji">&#128205;</span><div className="contact-type">Address</div><div className="contact-info">서울 구로구<br className="mobile-only-br" />신도림동</div></div></div>
+                    </div>
+                </section>
+
+                <footer><div className="section-container"><p className="footer-text">&copy; 2026 Kiwoong Hong. All rights reserved.</p></div></footer>
+                </>
+                )}
+            </>
+        );
+    };
+
+    ReactDOM.render(<Portfolio />, document.getElementById('root'));
+</script>
+</body>
+</html>
+

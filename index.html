@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홍기웅 | 정보보호·금융보안 포트폴리오</title>
-    <meta name="description" content="홍기웅의 정보보호·금융보안 포트폴리오. ISMS 인증 대응, PG 보안 관리, 금융감독원 대응, 보안 인프라 운영 경험과 직접 구현한 ISMS 통합관리 도구를 소개합니다.">
+    <title>홍기웅 | ISMS 도구와 AI DLP 구축 사례</title>
+    <link rel="canonical" href="https://chosun19.github.io/">
+    <meta name="description" content="홍기웅의 정보보호 포트폴리오 확장본. 직접 기획·구현해 사내 업무에 사용하는 ISMS 통합관리 도구와 AI DLP 구현·로컬 검증 경험을 소개합니다.">
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v=20261105-company-logos">
-    <link rel="stylesheet" href="./css/isms-case.css?v=20261105-ai-assistant">
+    <link rel="stylesheet" href="./css/portfolio-ai.css?v=20261105-dlp-copy">
+    <link rel="stylesheet" href="./css/portfolio-ai-isms.css?v=20261105-dlp-copy">
+    <link rel="stylesheet" href="./css/ai-dlp-case.css?v=20261105-ai-enhanced">
     <style>
         .mobile-only-br {
             display: none;
@@ -739,6 +741,181 @@
         <div className="isms-system-note"><strong>도구 구성</strong><p>Python 서버 · SQLite · JavaScript · SHA-256 원본 식별 · 법령 MCP · 선택형 AI 문서 분석</p><p>프로그램 소스와 회사별 자료·인증키를 분리해 다른 환경으로 옮길 수 있게 구성했습니다. 실제 문서 분석은 설정한 AI 제공자에 필요한 본문과 이미지를 전달하며, 검토 의견의 최종 반영은 담당자가 결정합니다.</p></div>
     </section>;
 
+    const dlpExamples = [
+        {
+            id: 'privacy', label: '개인정보 예시',
+            original: '샘플 사용자에게 문의 답변을 작성해 주세요. 회신 주소는 demo.user@example.com입니다.',
+            protected: '[PERSON_001]에게 문의 답변을 작성해 주세요. 회신 주소는 [EMAIL_001]입니다.',
+            response: '[PERSON_001]님, 문의 주신 내용에 답변드립니다. 추가 안내는 [EMAIL_001]로 보내드리겠습니다.',
+            restored: '샘플 사용자님, 문의 주신 내용에 답변드립니다. 추가 안내는 demo.user@example.com로 보내드리겠습니다.',
+            mappings: [['샘플 사용자', '[PERSON_001]'], ['demo.user@example.com', '[EMAIL_001]']],
+            note: '보호 대상은 대체값으로 바꾸고, 답변에 돌아온 대체값은 사용자 화면에서 역치환하는 흐름입니다.'
+        },
+        {
+            id: 'research', label: '연구·업무 기밀 예시',
+            original: '가상 후보물질 SAMPLE-A의 시험 배치 BATCH-DEMO에 대한 검토 메모를 정리해 주세요.',
+            protected: '가상 후보물질 [COMPOUND_001]의 시험 배치 [BATCH_001]에 대한 검토 메모를 정리해 주세요.',
+            response: '[COMPOUND_001]의 [BATCH_001] 검토 내용을 요약했습니다. 추가 검토사항을 확인해 주세요.',
+            restored: 'SAMPLE-A의 BATCH-DEMO 검토 내용을 요약했습니다. 추가 검토사항을 확인해 주세요.',
+            mappings: [['SAMPLE-A', '[COMPOUND_001]'], ['BATCH-DEMO', '[BATCH_001]']],
+            note: '업무용 식별자를 대체값으로 처리하는 구조를 설명하는 가상 예시입니다. 실제 연구자료가 아닙니다.'
+        },
+        {
+            id: 'blocked', label: '전송 차단 예시', blocked: true,
+            original: '내용을 판독할 수 없는 첨부파일을 외부 AI에서 분석해 주세요.',
+            protected: '전송하지 않음\n검사할 수 없는 데이터는 요청을 중단하는 흐름',
+            response: '외부 AI를 호출하지 않음',
+            restored: '첨부파일을 확인할 수 없어 전송하지 않았습니다. 내용을 확인한 뒤 다시 요청해 주세요.',
+            mappings: [],
+            note: '검사할 수 없는 데이터나 위험한 요청은 외부 AI로 보내지 않는 전송 판단 구조를 설명합니다.'
+        }
+    ];
+
+    const dlpScreens = [
+        {id: 'dashboard', title: 'DLP 현황', category: '처리 현황과 탐지 유형', src: './assets/ai-dlp/dashboard-original.png', width: 1649, height: 609, enhanced: {src: './assets/ai-dlp/dashboard-ai.png', width: 2063, height: 762},
+         alt: 'AI DLP 로컬 PoC의 현황 화면. 탐지·차단·피드백 기록과 유형별 분포를 보여주며 접속정보는 가렸습니다.',
+         description: 'DLP 상태, 탐지·차단·피드백 기록과 탐지 유형 분포를 확인하는 화면입니다. 표시된 건수는 로컬 테스트 기록이며 사내 운영 실적이나 탐지 정확도가 아닙니다.'},
+        {id: 'input', title: '입력정보 보호', category: '원문과 대체값의 연결', src: './assets/ai-dlp/input-protection-original.png', width: 1917, height: 1405, enhanced: {src: './assets/ai-dlp/input-protection-ai.png', width: 1465, height: 1073},
+         alt: '가상 고객 응대 메모를 입력해 개인정보와 테스트용 비밀값의 치환 관계를 확인한 실제 콘솔 화면.',
+         description: '가상의 이름·연락처·계좌·테스트용 비밀값을 넣고 탐지 유형과 대체값 연결을 확인했습니다. 실제 개인정보나 유효한 인증정보가 아닌 샘플 데이터입니다.'},
+        {id: 'research', title: '업무 식별자 치환', category: '업무용 명칭과 내부 경로 보호', src: './assets/ai-dlp/research-protection-original.png', width: 1915, height: 1409, enhanced: {src: './assets/ai-dlp/research-protection-ai.png', width: 1462, height: 1076},
+         alt: '연구·업무 기밀 형태의 가상 샘플을 사용해 후보물질·배치·문서 식별자를 치환한 실제 콘솔 화면.',
+         description: '연구·업무 기밀 형태의 가상 샘플로 문서·후보물질·배치·업무 경로의 치환 관계를 확인했습니다. 실제 기업의 연구자료를 공개한 화면이 아닙니다.'},
+        {id: 'review', title: '요청·응답 대조', category: '치환 전후와 응답 복원 검토', src: './assets/ai-dlp/request-review-original.png', width: 1593, height: 1147, enhanced: {src: './assets/ai-dlp/request-review-ai.png', width: 1478, height: 1064},
+         alt: '원문 입력, 외부 AI 전달 내용, AI 응답과 역치환한 응답을 나란히 확인하는 실제 피드백 검토 화면.',
+         description: '원문 입력과 AI 전달 내용, AI 응답과 역치환한 응답을 한 화면에서 대조합니다. 처리 결과에 대한 사용자 피드백과 요청별 치환 관계도 함께 검토합니다.'}
+    ];
+
+    const DlpScreenshots = () => {
+        const [activeIndex, setActiveIndex] = useState(0);
+        const [expanded, setExpanded] = useState(false);
+        const [nativeSize, setNativeSize] = useState(false);
+        const [imageMode, setImageMode] = useState('enhanced');
+        const dialogRef = React.useRef(null);
+        const imageViewportRef = React.useRef(null);
+        const current = dlpScreens[activeIndex];
+        const isEnhanced = imageMode === 'enhanced';
+        const display = isEnhanced ? current.enhanced : current;
+        const displayAlt = isEnhanced ? `${current.title}의 실제 캡처를 바탕으로 AI로 가독성을 보정한 참고 화면. 세부 문구와 식별자는 실제 캡처에서 확인할 수 있습니다.` : current.alt;
+        const move = offset => setActiveIndex(index => (index + offset + dlpScreens.length) % dlpScreens.length);
+
+        useEffect(() => {
+            if (!expanded) return;
+            const dialog = dialogRef.current;
+            dialog.showModal();
+            return () => dialog.close();
+        }, [expanded]);
+
+        useEffect(() => {
+            imageViewportRef.current?.scrollTo({left: 0, top: 0});
+        }, [activeIndex, nativeSize, imageMode]);
+
+        return <section className="dlp-gallery" id="ai-dlp-screens" aria-labelledby="dlp-gallery-title">
+            <div className="dlp-gallery-heading"><div className="dlp-subheading"><span>구현 화면</span><h3 id="dlp-gallery-title">입력 보호부터 응답 복원까지</h3></div><span className="dlp-example-badge" aria-live="polite">{isEnhanced ? 'AI 가독성 보정본' : '로컬 PoC · 실제 캡처'}</span></div>
+            <div className="dlp-source-switch" role="group" aria-label="AI DLP 화면 자료 선택"><button type="button" aria-pressed={isEnhanced} onClick={() => setImageMode('enhanced')}>AI 보정본</button><button type="button" aria-pressed={!isEnhanced} onClick={() => setImageMode('original')}>실제 캡처</button><span>세부 문구·식별자는 실제 캡처에서 확인할 수 있습니다.</span></div>
+            <div className="dlp-screen-window">
+                <div className="dlp-screen-bar"><span>AI DLP / {current.title}</span><div className="dlp-screen-nav"><button type="button" onClick={() => move(-1)} aria-label="이전 AI DLP 화면">←</button><span>{String(activeIndex + 1).padStart(2, '0')} / 04</span><button type="button" onClick={() => move(1)} aria-label="다음 AI DLP 화면">→</button></div></div>
+                <button type="button" className="dlp-screen-preview" onClick={() => { setNativeSize(false); setExpanded(true); }} aria-label={`${current.title} AI DLP 캡처 확대 보기`} aria-haspopup="dialog"><img src={display.src} alt={displayAlt} width={display.width} height={display.height} loading="lazy" /><span className="dlp-screen-zoom" aria-hidden="true">화면 크게 보기 ↗</span></button>
+                <div className="dlp-screen-caption" aria-live="polite"><strong>{current.category}</strong><p>{current.description}</p></div>
+            </div>
+            <div className="dlp-screen-picker" role="group" aria-label="AI DLP 구현 화면 선택">{dlpScreens.map((screen, index) => {const thumbnail = isEnhanced ? screen.enhanced : screen; return <button key={screen.id} type="button" aria-pressed={activeIndex === index} onClick={() => setActiveIndex(index)}><span className="dlp-screen-thumb"><img src={thumbnail.src} alt="" width={thumbnail.width} height={thumbnail.height} loading="lazy" /></span><span className="dlp-screen-option-copy"><span>0{index + 1}</span><strong>{screen.title}</strong><span>{screen.category}</span></span></button>;})}</div>
+            <p className="dlp-gallery-disclosure">AI 보정본은 실제 캡처를 바탕으로 글씨와 윤곽의 가독성을 보완한 참고 이미지입니다. 세부 문구·식별자는 재구성 과정에서 달라질 수 있어 실제 캡처를 함께 제공합니다. 입력값은 테스트용 샘플이며, 접속정보는 가렸습니다.</p>
+            {expanded && <dialog className="isms-lightbox dlp-lightbox" ref={dialogRef} aria-labelledby="dlp-lightbox-title" onClose={() => setExpanded(false)} onClick={event => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={event => { if (event.target !== imageViewportRef.current && (event.key === 'ArrowRight' || event.key === 'ArrowLeft')) { event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1); } }}>
+                <div className="isms-lightbox-bar"><h3 id="dlp-lightbox-title">AI DLP · {current.title}</h3><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="AI DLP 확대 화면 닫기">닫기 ×</button></div>
+                <div className="dlp-image-tools"><select aria-label="확대 이미지 종류" value={imageMode} onChange={event => setImageMode(event.target.value)}><option value="enhanced">AI 보정본</option><option value="original">실제 캡처</option></select><div role="group" aria-label="AI DLP 이미지 표시 크기"><button type="button" aria-pressed={!nativeSize} onClick={() => setNativeSize(false)}>화면 맞춤</button><button type="button" aria-pressed={nativeSize} onClick={() => setNativeSize(true)}>100% 보기</button></div><a href={current.src} target="_blank" rel="noopener noreferrer" aria-label={`${current.title} 실제 캡처 새 탭에서 열기`}>실제 캡처 열기 ↗</a></div>
+                <p className="dlp-image-help" id="dlp-image-help">{isEnhanced ? 'AI 가독성 보정 참고 이미지입니다. 세부 문구와 식별자는 실제 캡처를 기준으로 확인하세요.' : '실제 로컬 PoC 캡처입니다.'} {nativeSize ? '100% 크기에서는 가로·세로로 스크롤할 수 있습니다.' : '작은 글씨는 100% 보기로 확인할 수 있습니다.'}</p>
+                <div className="dlp-image-viewer" ref={imageViewportRef} tabIndex={0} role="region" aria-label="AI DLP 캡처 이미지" aria-describedby="dlp-image-help"><img src={display.src} alt={displayAlt} width={display.width} height={display.height} style={nativeSize ? {width: display.width, maxWidth: 'none'} : {width: '100%', maxWidth: display.width}} /></div>
+                <div className="isms-lightbox-footer"><button type="button" onClick={() => move(-1)}>← 이전</button><span>0{activeIndex + 1} / 04 · {isEnhanced ? 'AI 가독성 보정본' : '실제 로컬 PoC 캡처'}</span><button type="button" onClick={() => move(1)}>다음 →</button></div>
+            </dialog>}
+        </section>;
+    };
+
+    const AiDlpCase = () => {
+        const [exampleId, setExampleId] = useState('privacy');
+        const [view, setView] = useState('request');
+        const example = dlpExamples.find(item => item.id === exampleId);
+        const requestView = view === 'request';
+        return (
+            <section className="section ai-dlp-case" id="ai-dlp" aria-labelledby="ai-dlp-title">
+                <div className="section-container">
+                    <div className="section-header fade-in">
+                        <div><div className="section-tag">Build Case 02 / AI Data Protection</div><h2 className="section-title" id="ai-dlp-title">AI DLP</h2></div>
+                        <p className="section-desc">생성형 AI에 전달하기 전의 정보 보호부터<br />응답 역치환과 요청별 처리 기록까지.</p>
+                    </div>
+                    <div className="dlp-intro fade-in">
+                        <div className="dlp-story">
+                            <div className="dlp-kicker">생성형 AI 정보 보호 PoC · 구현과 로컬 검증</div>
+                            <h3>보내기 전에는 대체값으로,<br />돌아온 응답은 원래 값으로.</h3>
+                            <p>생성형 AI를 무분별하게 사용하면서 업무 정보가 그대로 외부로 전달될 수 있다는 점을 고민했습니다. 입력값과 AI 도구가 가져온 결과를 검사하고, 보호 대상은 대체값으로 바꾼 뒤 AI에 전달하는 통제 계층을 구현한 PoC 프로젝트입니다.</p>
+                            <p>응답의 대체값은 다시 원래 값으로 돌려 사용자에게 보여줍니다. 위험하거나 확인할 수 없는 요청의 전송 판단과 요청별 처리 기록도 함께 구성했습니다.</p>
+                        </div>
+                        <dl className="dlp-project-facts">
+                            <div><dt>프로젝트</dt><dd>AI DLP 구현·로컬 검증</dd></div>
+                            <div><dt>검증 환경</dt><dd>로컬 구축·개인 테스트</dd></div>
+                            <div><dt>핵심 흐름</dt><dd>탐지·분류 → 치환 → 전송 판단 → 응답 역치환 → 기록</dd></div>
+                            <div><dt>적용 구분</dt><dd>사내 배포·상용 운영과 구분되는 PoC</dd></div>
+                        </dl>
+                    </div>
+
+                    <div className="dlp-architecture fade-in" aria-labelledby="dlp-flow-title">
+                        <div className="dlp-subheading"><span>처리 구조</span><h3 id="dlp-flow-title">사용자 입력뿐 아니라, 도구가 가져온 결과도 검사</h3></div>
+                        <ol className="dlp-route">
+                            <li><span>01</span><strong>입력·도구 결과</strong><p>문서·표·요청 내용에서 검사할 최종 텍스트 확인</p></li>
+                            <li><span>02</span><strong>탐지·분류·치환</strong><p>개인정보·비밀값·업무 식별자를 유형별 대체값으로 처리</p></li>
+                            <li className="is-boundary"><span>03</span><strong>전송 판단</strong><p>보호 처리 후 전달하거나, 위험·검사 불가 요청은 차단</p></li>
+                            <li><span>04</span><strong>응답 역치환</strong><p>AI 답변의 대체값을 사용자에게 필요한 원래 값으로 복원</p></li>
+                            <li><span>05</span><strong>요청별 기록</strong><p>탐지 항목·처리 위치·전송 여부와 요청·응답 연결</p></li>
+                        </ol>
+                    </div>
+
+                    <DlpScreenshots />
+
+                    <div className="dlp-walkthrough fade-in" aria-labelledby="dlp-example-title">
+                        <div className="dlp-example-heading"><div><span className="dlp-kicker">Illustrated Walkthrough</span><h3 id="dlp-example-title">치환과 역치환, 이렇게 연결됩니다.</h3></div><span className="dlp-example-badge">설명용 가상 예시</span></div>
+                        <p className="dlp-example-disclosure">구조를 설명하기 위한 화면이며 실제 제품 화면이나 탐지 성능 시연이 아닙니다. 외부 AI를 호출하지 않습니다.</p>
+                        <div className="dlp-example-toolbar">
+                            <div className="dlp-scenarios" role="group" aria-label="AI DLP 설명 예시 선택">
+                                {dlpExamples.map(item => <button type="button" key={item.id} aria-pressed={item.id === exampleId} aria-controls="dlp-example-panel" onClick={() => setExampleId(item.id)}>{item.label}</button>)}
+                            </div>
+                            <div className="dlp-view-switch" role="group" aria-label="요청과 응답 흐름 선택">
+                                <button type="button" aria-pressed={requestView} aria-controls="dlp-example-panel" onClick={() => setView('request')}>요청 흐름</button>
+                                <button type="button" aria-pressed={!requestView} aria-controls="dlp-example-panel" onClick={() => setView('response')}>응답 흐름</button>
+                            </div>
+                        </div>
+                        <div id="dlp-example-panel" className={`dlp-example-panel${example.blocked ? ' is-blocked' : ''}`} aria-live="polite" aria-atomic="true">
+                            <div className="dlp-comparison">
+                                <div className="dlp-message"><span>{requestView ? '검사 전 입력' : 'AI 응답'}</span><pre>{requestView ? example.original : example.response}</pre></div>
+                                <div className="dlp-message is-protected"><span>{requestView ? (example.blocked ? '전송 판단' : '외부 AI 전달 내용') : '사용자에게 표시되는 답변'}</span><pre>{requestView ? example.protected : example.restored}</pre></div>
+                            </div>
+                            <div className="dlp-example-footer">
+                                {example.mappings.length > 0 && <ul className="dlp-mappings" aria-label="설명 예시의 치환 관계">{example.mappings.map(([original, replacement]) => <li key={replacement}><span>{original}</span><span aria-hidden="true">→</span><code>{replacement}</code></li>)}</ul>}
+                                <p>{example.note}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="dlp-scope fade-in">
+                        <div className="dlp-subheading"><span>보호 범위</span><h3>정보의 유형과 확인 가능 여부에 따라 처리</h3></div>
+                        <div className="dlp-scope-grid">
+                            <article><span>01 / 개인정보</span><h4>이름·연락처·계정 식별자</h4><p>입력에 섞인 보호 대상을 탐지·분류하고 대체값으로 처리하는 흐름을 구성했습니다.</p></article>
+                            <article><span>02 / 인증정보</span><h4>API 키·토큰·비밀값</h4><p>비밀값 유형을 확인해 보호 처리 또는 전송 차단 판단에 연결했습니다.</p></article>
+                            <article><span>03 / 내부 시스템</span><h4>내부 주소·파일 위치·설정값</h4><p>외부 AI에 전달되는 최종 내용에 내부 시스템 정보가 포함되는지 확인합니다.</p></article>
+                            <article><span>04 / 연구·업무 기밀</span><h4>후보물질·배치·업무 식별자</h4><p>샘플 데이터의 업무용 명칭을 대체값으로 치환하고 응답에서 복원하는 구조를 검증했습니다.</p></article>
+                            <article><span>05 / AI 도구 결과</span><h4>웹 응답·외부 도구가 가져온 내용</h4><p>사용자 입력뿐 아니라 도구 결과도 AI 서버에 보내기 전 검사 대상으로 연결했습니다.</p></article>
+                            <article><span>06 / 검사 불가 데이터</span><h4>판독할 수 없는 문서·첨부</h4><p>검사할 수 없는 데이터는 그대로 전달하지 않고 요청을 중단하는 판단 흐름을 구성했습니다.</p></article>
+                        </div>
+                    </div>
+
+                    <div className="dlp-validation fade-in">
+                        <div className="dlp-validation-story"><div className="dlp-subheading"><span>로컬 검증</span><h3>샘플 입력과 처리 결과를 나란히 확인</h3></div><p>개인정보·비밀값이 섞인 고객 응대 메모와 연구·업무 기밀 형태의 샘플을 사용했습니다. 원문, 외부 AI에 전달되는 치환값, AI 응답, 사용자에게 표시할 역치환 결과를 대조하며 동작을 확인했습니다.</p><p>단순히 문자열을 숨기는 데서 끝내지 않고, 보호 처리 이후에도 답변을 업무 사용자가 읽을 수 있는지 살펴본 구현 사례입니다.</p></div>
+                        <div className="dlp-records"><span>요청 단위로 확인한 것</span><ul><li>어떤 유형이 탐지·처리되었는지</li><li>치환된 위치와 전송·차단 판단</li><li>요청과 AI 응답, 역치환 결과의 연결</li><li>현황 화면과 피드백 검토 화면의 대조</li></ul><p>PoC의 테스트 기록이며 실제 사내 운영 실적이나 탐지 정확도 지표로 제시하지 않습니다.</p></div>
+                    </div>
+                    <p className="dlp-project-note fade-in">AI DLP를 로컬 환경에 구축해 개인 테스트한 경험입니다. ISMS 도구의 사내 업무 활용과 구분하여 소개합니다.</p>
+                </div>
+            </section>
+        );
+    };
+
     const CredentialCard = ({ cert, index }) => {
         const expired = cert.expires && new Date(cert.expires + 'T23:59:59').getTime() < Date.now();
         const category = { cert: '자격', course: '교육', exam: '시험', lang: '어학' }[cert.type];
@@ -826,6 +1003,14 @@
         ];
 
         const techStack = {
+            "AI DLP 구현·로컬 PoC": [
+                "입력·도구 결과 검사",
+                "보호 대상 탐지·분류",
+                "대체값 치환·역치환",
+                "전송 판단·차단",
+                "요청·응답 기록",
+                "샘플 데이터 검증"
+            ],
             "인증·관리체계": [
                 "ISMS 최초 인증·사후심사",
                 "PG 보안 인증",
@@ -1511,6 +1696,7 @@
                                 <li><a className="nav-link" href="#home">Home</a></li>
                                 <li><a className="nav-link" href="#about">About</a></li>
                                 <li><a className="nav-link" href="#isms-tool">ISMS Tool</a></li>
+                                <li><a className="nav-link" href="#ai-dlp">AI DLP</a></li>
                                 <li><a className="nav-link" href="#projects">Career</a></li>
                                 <li><a className="nav-link" href="#tech">Skills</a></li>
                                 <li><a className="nav-link" href="#certs">Certs</a></li>
@@ -1533,9 +1719,11 @@
                 <section className="hero" id="home">
                     <div className="hero-container">
                         <div className="hero-left">
+                            <div className="hero-copy-label"><a href="#builds">ISMS + AI DLP 구축 사례</a><a href="./portfolio.html">기존 버전 보기 <span aria-hidden="true">↗</span></a></div>
                             <div className="hero-tag">Information Security Professional</div>
                             <h1 className="hero-name">홍기웅</h1>
                             <p className="hero-role">보안관제와 인프라 운영을 거쳐<br />ISMS·PG 인증 대응과 금융보안 업무를 담당합니다.</p>
+                            <p className="hero-build-note">사내 업무용 ISMS 도구와 AI DLP 구현·로컬 검증 경험도 소개합니다.</p>
                             <div className="hero-actions"><a className="hero-career-link" href="#projects">경력 살펴보기 <span aria-hidden="true">&rarr;</span></a></div>
                             <div className="hero-stats portfolio-focus">
                                 <div className="h-stat"><div className="h-stat-value">ISMS 인증 대응</div><div className="h-stat-label">최초심사·사후심사 준비 및 대응</div></div>
@@ -1544,7 +1732,20 @@
                                 <div className="h-stat"><div className="h-stat-value">보안 인프라 운영</div><div className="h-stat-label">보안 솔루션·인프라 도입 및 운영</div></div>
                             </div>
                         </div>
-                        <div className="hero-right"><a className="hero-evidence" href="#isms-screens"><div className="hero-evidence-top"><span>BUILT FROM PRACTICE</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div><h2>ISMS 통합관리 도구</h2><p>직접 기획·구현해 사내 업무에 사용하는 도구</p><div className="hero-evidence-image"><img src="./assets/isms/control-management.png?v=20261104-refined" alt="직접 구현한 ISMS 도구의 통제항목 관리 화면. 내부 정보는 마스킹되어 있습니다." width="1710" height="904" /></div><div className="hero-evidence-bottom"><span>정책 · 통제 · 증적 · 심사 이력</span><span>구현 화면 보기 &rarr;</span></div></a></div>
+                        <div className="hero-right hero-build-stack">
+                            <a className="hero-evidence" href="#isms-screens">
+                                <div className="hero-evidence-top"><span>01 / ISMS MANAGEMENT</span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div>
+                                <h2>ISMS 통합관리 도구</h2><p>직접 기획·구현 · 사내 업무 활용</p>
+                                <div className="hero-evidence-image"><img src="./assets/isms/control-management.png?v=20261104-refined" alt="직접 구현한 ISMS 도구의 통제항목 관리 화면. 내부 정보는 마스킹되어 있습니다." width="1710" height="904" /></div>
+                                <div className="hero-evidence-bottom"><span>정책 · 통제 · 증적 · 심사 이력</span><span>구현 화면 보기 →</span></div>
+                            </a>
+                            <a className="hero-evidence hero-dlp-evidence" href="#ai-dlp-screens">
+                                <div className="hero-evidence-top"><span>02 / AI DATA PROTECTION</span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div>
+                                <h2>AI DLP</h2><p>입력정보 보호 · 로컬 PoC 구현·검증</p>
+                                <div className="hero-evidence-image"><img src="./assets/ai-dlp/dashboard-ai.png" alt="실제 AI DLP 현황 캡처를 바탕으로 AI로 가독성을 보정한 미리보기. 접속정보는 가렸습니다." width="2063" height="762" /><span className="hero-image-source">AI 보정 미리보기</span></div>
+                                <div className="hero-evidence-bottom"><span>탐지 · 치환 · 응답 복원 · 기록</span><span>구현 화면 보기 →</span></div>
+                            </a>
+                        </div>
                     </div>
                 </section>
 
@@ -1555,7 +1756,14 @@
                         <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">소개</h2></div></div>
                         <div className="about-editorial fade-in">
                             <div className="about-principle"><div className="isms-feature-label">정보보호 실무</div><h3>보안 요구사항을<br />점검하고 개선해<br /><span>실제 운영에 반영합니다.</span></h3><div className="about-keywords"><span>정보보호 관리체계</span><span>금융보안 컴플라이언스</span><span>보안 솔루션·인프라</span></div></div>
-                            <div className="about-copy"><p>보안관제와 인프라 운영, 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영을 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 현재 금융감독원 요청자료 작성·제출과 CISO·임원 보고를 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 업무에 적용합니다.</p><div className="about-built-note"><strong>심사 준비에 필요한 도구를 직접 만들었습니다.</strong><p>법령·정책, 자산·통제항목, 증적·보완조치와 심사 이력을 한곳에서 관리합니다. 사내 업무에 사용하며 필요한 기능을 개선하고 있습니다.</p></div></div>
+                            <div className="about-copy"><p>보안관제와 인프라 운영, 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영을 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 현재 금융감독원 요청자료 작성·제출과 CISO·임원 보고를 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 업무에 적용합니다.</p><div className="about-built-note"><strong>실무의 고민을 도구로 구현했습니다.</strong><p>ISMS 도구는 직접 기획·구현해 사내 업무에 사용하고 있습니다. AI DLP 구현 과정에서는 입력정보 보호와 응답 복원 흐름을 로컬 환경에서 테스트했습니다.</p></div></div>
+                        </div>
+                        <div className="build-overview fade-in" id="builds">
+                            <div className="build-overview-heading"><div className="section-tag">Two Build Cases</div><h3>두 가지 보안 도구 구축 경험</h3><p>실제 업무에 사용하는 도구와 로컬에서 검증한 PoC를 구분해 소개합니다.</p></div>
+                            <div className="build-overview-grid">
+                                <a className="build-overview-card" href="#isms-tool"><div className="build-card-top"><span>01 / ISMS MANAGEMENT</span><span aria-hidden="true">↗</span></div><h4>ISMS 통합관리 도구</h4><p>정책·통제항목·자산·증적·보완조치·심사 이력을 한곳에서 연결합니다.</p><div className="build-card-status">직접 기획·구현 <span>사내 업무 활용</span></div></a>
+                                <a className="build-overview-card is-poc" href="#ai-dlp"><div className="build-card-top"><span>02 / AI DATA PROTECTION</span><span aria-hidden="true">↗</span></div><h4>AI DLP</h4><p>입력·도구 결과의 보호 처리, 전송 판단, 응답 역치환과 요청별 기록을 연결합니다.</p><div className="build-card-status">AI DLP 구현 <span>로컬 구축·개인 테스트</span></div></a>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -1565,7 +1773,7 @@
                 <section className="section isms-case" id="isms-tool" aria-labelledby="isms-case-title">
                     <div className="section-container">
                         <div className="section-header fade-in">
-                            <div><div className="section-tag">Built From Practice</div><h2 className="section-title" id="isms-case-title">ISMS 통합관리 도구</h2></div>
+                            <div><div className="section-tag">Build Case 01 / Built From Practice</div><h2 className="section-title" id="isms-case-title">ISMS 통합관리 도구</h2></div>
                             <p className="section-desc">심사 준비에서 생긴 문제를 정리하고 기능으로 구현했습니다.</p>
                         </div>
                         <div className="isms-case-intro fade-in">
@@ -1595,6 +1803,10 @@
                         </div>
                     </div>
                 </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <AiDlpCase />
 
                 <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
 
@@ -1720,4 +1932,3 @@
 </script>
 </body>
 </html>
-

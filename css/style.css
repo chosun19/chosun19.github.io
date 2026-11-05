@@ -2165,8 +2165,16 @@ nav {
 #projects .career-guide strong { font-size: 15px; }
 #projects .career-guide p { font-size: 12px; margin-top: 3px; }
 #projects .projects-list { gap: 14px; }
-#projects .project-card { grid-template-columns: 82px minmax(0, 1fr); padding: 0 !important; border-radius: 10px; }
+#projects .project-card { grid-template-columns: 128px minmax(0, 1fr); padding: 0 !important; border-radius: 10px; }
 #projects .project-card-left { padding: 18px 12px; }
+#projects .company-logo { display: flex; align-items: center; justify-content: center; width: 104px; height: 52px; border: 1px solid rgba(201, 169, 110, 0.22); border-radius: 8px; background: #181c24; isolation: isolate; overflow: hidden; }
+#projects .company-logo img { display: block; width: 100%; height: 100%; object-fit: contain; padding: 9px 8px; filter: grayscale(1) brightness(0) invert(0.88); }
+/* Paper-backed wordmarks use screen compositing to blend the white canvas. */
+#projects .company-logo[data-logo-treatment="paper"] img { filter: grayscale(1) invert(1); mix-blend-mode: screen; }
+#projects .company-logo-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--gold-2); font-size: 15px; font-weight: 600; }
+#projects .company-logo.is-unavailable img { display: none; }
+#projects .company-logo.is-unavailable .company-logo-fallback { display: flex; }
+#projects .project-card:hover .company-logo { transform: none; box-shadow: none; }
 #projects .project-card-body { padding: 20px 24px; gap: 9px; }
 #projects .project-card[role="button"] .project-card-body { padding-right: 44px !important; }
 #projects .project-card-title { font-size: 19px; }
@@ -2204,6 +2212,8 @@ nav {
 #contact .contact-card .contact-info { grid-column: 2; width: 100% !important; font-size: 14px !important; line-height: 1.6 !important; white-space: normal !important; word-break: normal !important; overflow-wrap: anywhere !important; }
 #contact .contact-card .mobile-only-br { display: none !important; }
 @media (max-width: 1100px) {
+    #projects .project-card { grid-template-columns: 112px minmax(0, 1fr); }
+    #projects .company-logo { width: 88px; height: 44px; }
     #projects .project-card-footer { grid-template-columns: minmax(0, 1fr); gap: 10px; }
     #projects .project-card-metric { text-align: left; }
     #tech .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2211,7 +2221,7 @@ nav {
 @media (max-width: 768px) {
     #projects .project-card { grid-template-columns: minmax(0, 1fr); padding: 0 !important; }
     #projects .project-card-left { padding: 15px 18px 0; min-height: 0; }
-    #projects .project-card-icon { margin: 0; width: 42px !important; height: 42px !important; }
+    #projects .project-card-icon.company-logo { margin: 0; width: 88px; height: 44px; }
     #projects .project-card[role="button"] .project-card-body { padding: 13px 18px 18px !important; }
     #projects .project-card-title { font-size: 18px; }
     #projects .project-card-role { line-height: 1.6; }

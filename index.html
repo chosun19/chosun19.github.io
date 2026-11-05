@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css?v=20261104-career-cta">
-    <link rel="stylesheet" href="./css/isms-case.css?v=20261105-feature-gallery">
+    <link rel="stylesheet" href="./css/isms-case.css?v=20261105-ai-assistant">
     <style>
         .mobile-only-br {
             display: none;
@@ -500,6 +500,24 @@
 
     const ismsScreens = [
         {
+            id: 'ai-assistant', title: 'AI 업무 도우미', category: '자료 확인에서 문서·검토 업무까지', sample: true,
+            src: './assets/isms/demo-ai-assistant.png?v=20261105-assistant', width: 1710, height: 1160,
+            description: '가상기업의 등록 자료와 보고서 양식으로 실제 Codex를 호출한 화면입니다. 원문 인용을 대조한 뒤 Word 파일을 생성하고 검토 업무를 등록합니다. 생성 파일과 실제 수행한 단계를 함께 확인합니다.',
+            alt: '가상기업 자료로 실제 AI가 작성한 보고서의 Word 받기와 내용 검토, 양식 버전, 실행 단계와 검토 업무 등록 결과. 실제 회사의 자료나 심사 판정이 아닙니다.'
+        },
+        {
+            id: 'document-templates', title: '문서 양식 보관함', category: '회사 양식·작성 위치·원본 보존', sample: true,
+            src: './assets/isms/demo-document-templates.png?v=20261105-assistant', width: 1710, height: 1080,
+            description: '시연용 Word 보고서와 Excel 점검대장 양식을 등록한 실제 화면입니다. 입력 표시와 빈 표 셀을 인식하고, 일반 양식의 작성 위치를 지정해 AI 작성에 사용할 수 있습니다. 원본 양식은 별도로 보관합니다.',
+            alt: '시연용 DOCX 보고서와 XLSX 점검대장, 분류와 작성 위치 수, 내용 확인과 AI 작성 버튼이 보이는 양식 보관함. 가상 자료입니다.'
+        },
+        {
+            id: 'template-result', title: '양식에 맞춘 Excel 작성', category: '원본 서식 유지·별도 결과물', sample: true,
+            src: './assets/isms/demo-template-result.png?v=20261105-assistant', width: 1710, height: 1160,
+            description: '가상기업 자료로 실제 AI를 호출해 지정한 Excel 셀을 채운 결과입니다. 원본과 별도의 검토 초안으로 저장하며 셀 서식·수식·병합을 보존합니다. 생성된 파일과 실제 실행 내역을 확인할 수 있습니다.',
+            alt: '등록한 점검대장 양식과 버전, 실제 생성한 Excel 파일의 받기·내용 검토, 검토 업무 등록 단계가 표시된 결과 화면. 가상 자료를 사용한 기능 시연입니다.'
+        },
+        {
             id: 'dashboard', title: 'ISMS 대시보드', category: '판정·남은 업무·일정 한눈에', sample: true,
             src: './assets/isms/demo-dashboard.png?v=20261105-features', width: 1710, height: 1040,
             description: '가상 데이터를 넣은 실제 앱 화면입니다. 적합·취약·확인 필요를 구분하고, 남은 조치와 정책 검토·일정·조직 범위로 이동하는 구성을 보여줍니다.',
@@ -593,12 +611,12 @@
 
     const IsmsScreenshots = () => {
         const groups = [
-            {id: 'all', name: '전체 기능', screens: ['dashboard', 'organization', 'controls', 'control-detail', 'evidence', 'evidence-links', 'assets', 'tasks', 'calendar', 'law', 'policy', 'ai-settings', 'audit', 'report', 'criteria']},
+            {id: 'all', name: '전체 기능', screens: ['dashboard', 'ai-assistant', 'document-templates', 'template-result', 'organization', 'controls', 'control-detail', 'evidence', 'evidence-links', 'assets', 'tasks', 'calendar', 'law', 'policy', 'ai-settings', 'audit', 'report', 'criteria']},
             {id: 'review', name: '검토·증적', screens: ['controls', 'control-detail', 'evidence', 'evidence-links', 'tasks']},
             {id: 'policy', name: '법령·정책', screens: ['law', 'policy', 'criteria']},
             {id: 'operations', name: '조직·운영', screens: ['dashboard', 'organization', 'assets', 'calendar']},
             {id: 'records', name: '심사·보고', screens: ['audit', 'report']},
-            {id: 'ai', name: 'AI 연동', screens: ['ai-settings']}
+            {id: 'ai', name: 'AI·문서 작성', screens: ['ai-assistant', 'document-templates', 'template-result', 'ai-settings']}
         ];
         const [activeGroup, setActiveGroup] = useState('all');
         const [activeIndex, setActiveIndex] = useState(ismsScreens.findIndex(screen => screen.id === 'dashboard'));
@@ -623,7 +641,7 @@
         return (
             <div className="isms-gallery" id="isms-screens">
                 <div className="isms-gallery-heading">
-                    <div><div className="isms-feature-label">구현 화면으로 확인</div><h3>운영 현황부터 증적 연결·AI 설정까지.</h3></div>
+                    <div><div className="isms-feature-label">구현 화면으로 확인</div><h3>운영 현황부터 증적 검토·AI 문서 작성까지.</h3></div>
                     <span className="isms-gallery-note">{ismsScreens.length}개 기능 화면 · 목록에서 직접 선택</span>
                 </div>
                 <div className="isms-proof-groups" role="group" aria-label="구현 화면 업무 흐름">
@@ -689,6 +707,25 @@
         </section>;
     };
 
+    const ismsAssistantSteps = [
+        {title: '참고 범위 선택', body: '선택한 심사의 통제항목·조직·자산·정책에서 요청과 관련된 자료를 구성합니다. 사용자도 참고 증적과 문서 양식을 지정할 수 있습니다.', detail: '다른 심사의 자료와 대화가 섞이지 않도록 요청 범위를 심사별로 제한했습니다.'},
+        {title: '근거와 입력 검증', body: 'AI가 반환한 출처 ID와 인용문이 실제 전달한 자료에 존재하는지 대조합니다. 발췌 범위와 이전 판독 기록의 시점을 결과에 남깁니다.', detail: '엑셀 셀마다 반복되던 출처를 행·파일 단위로 묶고, 출처 설명까지 포함한 최종 입력 크기를 검사하도록 개선했습니다.'},
+        {title: '회사 양식으로 작성', body: '등록한 Word·Excel 양식의 지정 문단·셀을 채워 실제 파일을 만듭니다. 원본 양식과 생성 파일을 별도로 보관하고 생성 파일의 해시를 대조합니다.', detail: '본문·표·머리말·셀 서식 등 수정하지 않을 부분을 보존하고, 누락되거나 알 수 없는 작성 위치는 반영하지 않도록 검증했습니다.'},
+        {title: '검토 업무로 연결', body: '작성 결과의 확인 방법과 완료 기준을 제안하고, 선택한 설정에 따라 담당자 검토 업무를 등록합니다. 정책 수정 제안도 현행 원본과 별도로 관리합니다.', detail: '문서 초안과 제안 업무를 만들며, 실제 점검·교육·승인 이력이나 통제항목의 최종 적합 판정을 자동으로 만들지 않습니다.'}
+    ];
+    const IsmsAssistant = () => {
+        const [active, setActive] = useState(0);
+        const item = ismsAssistantSteps[active];
+        return <section className="isms-assistant" id="isms-ai" aria-labelledby="isms-ai-title">
+            <div className="isms-feature-label">AI 업무 도우미</div>
+            <div className="isms-assistant-heading"><h3 id="isms-ai-title">요청에서 문서와 검토 업무까지</h3><a href="#isms-screens">구현 화면에서 확인 ↗</a></div>
+            <p className="isms-assistant-lead">등록 자료를 바탕으로 답변하고, 그 결과를 실제 파일과 후속 업무로 연결했습니다. 담당자가 근거와 생성 결과를 확인한 뒤 업무에 반영하도록 구성했습니다.</p>
+            <div className="isms-assistant-steps" role="group" aria-label="AI 업무 도우미 처리 단계">{ismsAssistantSteps.map((step,i)=><button type="button" key={step.title} aria-pressed={active===i} onClick={()=>setActive(i)}><span>0{i+1}</span><strong>{step.title}</strong><span aria-hidden="true">→</span></button>)}</div>
+            <article className="isms-assistant-detail" aria-live="polite"><h4>{item.title}</h4><p>{item.body}</p><div><strong>구현하며 확인한 점</strong><p>{item.detail}</p></div></article>
+            <p className="isms-assistant-note">모델은 구조화된 작성 결과를 반환하고 앱이 허용한 작업만 실행합니다. 같은 입력·모델·규칙의 기존 결과를 재사용하며, 규칙·자료가 바뀌면 다시 검토합니다. AI 의견은 담당자의 최종 판단과 구분합니다.</p>
+        </section>;
+    };
+
     const IsmsImplementation = () => <section className="isms-implementation" aria-labelledby="isms-implementation-title">
         <div className="isms-feature-label">현재 구현한 범위</div><h3 id="isms-implementation-title">각 메뉴가 하나의 운영 흐름으로 이어지도록</h3>
         <div className="isms-implementation-grid">{[
@@ -697,7 +734,7 @@
             ['조직·자산', '서비스 범위와 담당 업무 확인', '조직도에서 인증범위와 보안 역할을 구분합니다. 구성원과 기존 담당 기록이 일치하는 통제항목·자산을 함께 보여줍니다.'],
             ['법령·정책', '외부 기준에서 내부 검토로', '법령·행정규칙 조회와 개정 전후 비교를 지원합니다. 내부 정책 원본, 개선 의견, 수정안, 승인본을 구분해 관리합니다.'],
             ['심사·보고', '차수별 이력과 다음 점검', '과거 인증 결과·보완조치를 차수별로 보관합니다. 반복 점검 일정, 현황 보고서, 엑셀 내려받기를 통해 후속 업무를 관리합니다.'],
-            ['AI·이식', '분석 설정과 데이터 보관 구분', 'Codex·OpenAI API·로컬 OpenAI 호환 모델 연결을 설정합니다. 입력 자료와 분석 조건을 기록하고, 일치하는 기존 결과를 재사용할 수 있게 했습니다.']
+            ['AI 업무 도우미', '근거 확인부터 양식 작성·후속 검토까지', '등록 자료의 원문 인용을 대조하고 회사 양식으로 Word·Excel 초안을 작성합니다. 실제 생성 파일과 수행 단계, 검토 업무를 함께 관리하며 Codex·OpenAI API·로컬 AI 연결을 설정할 수 있습니다.']
         ].map(([label,title,body]) => <article key={label}><span>{label}</span><h4>{title}</h4><p>{body}</p></article>)}</div>
         <div className="isms-system-note"><strong>도구 구성</strong><p>Python 서버 · SQLite · JavaScript · SHA-256 원본 식별 · 법령 MCP · 선택형 AI 문서 분석</p><p>프로그램 소스와 회사별 자료·인증키를 분리해 다른 환경으로 옮길 수 있게 구성했습니다. 실제 문서 분석은 설정한 AI 제공자에 필요한 본문과 이미지를 전달하며, 검토 의견의 최종 반영은 담당자가 결정합니다.</p></div>
     </section>;
@@ -856,7 +893,7 @@
                 "title": "이지샵 - 정보인프라팀",
                 "period": "2024.12 ~ 재직 중",
                 "role": "정보인프라팀 매니저 / 정보보안",
-                "description": "사내 정보보호 담당자로서 ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다. 실무에서 고민한 관리 방식을 ISMS 통합관리 도구로 직접 구현하여 법령·정책 검토, 자산·통제항목, 증적·보완조치와 차수별 심사 이력을 함께 관리하고 있습니다. 보안솔루션·인프라의 신규 도입과 운영도 담당합니다.",
+                "description": "사내 정보보호 담당자로서 ISMS·PG 인증과 금융보안 컴플라이언스 업무를 수행합니다. 실무에서 고민한 관리 방식을 ISMS 통합관리 도구로 직접 구현하여 법령·정책 검토, 자산·통제항목, 증적·보완조치와 차수별 심사 이력을 함께 관리하고 있습니다. AI 업무 도우미의 근거 검증, 회사 양식 기반 문서 작성과 후속 검토 업무 연결도 구현했습니다. 보안솔루션·인프라의 신규 도입과 운영도 담당합니다.",
                 "highlights": [
                     "PG 금융보안 컴플라이언스: 금융보안 통합관제시스템(FIRST)·CPC 등을 통한 보안 위협정보, 공지 및 점검·자료제출 요구사항 확인",
                     "금융감독원 대응: 내부 현황 확인과 유관 부서 자료 취합, 보고서·증빙자료 작성 후 금융감독원 제출",
@@ -1548,6 +1585,7 @@
                         </div>
                         <IsmsDesignDecisions />
                         <IsmsScreenshots />
+                        <IsmsAssistant />
                         <IsmsImplementation />
                         <div className="isms-case-outcome fade-in">
                             <div><div className="isms-feature-label">실무에 적용한 변화</div><p>어떤 자료를 근거로 검토했는지, 무엇을 더 확인해야 하는지, 이후에 어떻게 조치했는지를 이어서 확인할 수 있게 했습니다. 실제 업무에서 발견한 문제를 다음 기능 개선의 기준으로 삼고 있습니다.</p></div>

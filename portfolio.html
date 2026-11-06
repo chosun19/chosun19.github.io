@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홍기웅 | 경력 중심 검토본 | ISMS 도구와 AI DLP 구축 사례</title>
+    <title>홍기웅 | ISMS 도구와 AI DLP 구축 사례</title>
     <link rel="canonical" href="https://chosun19.github.io/">
     <meta name="description" content="홍기웅의 정보보호 포트폴리오 확장본. 직접 기획·구현해 사내 업무에 사용하는 ISMS 통합관리 도구와 AI DLP 구현·로컬 검증 경험을 소개합니다.">
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -310,90 +310,6 @@
                 display: block !important;
             }
         }
-
-        /* Review-copy adjustments stay scoped to this page. */
-        #career-history .project-card-left { padding: 18px 12px; }
-        #career-history .project-card-icon.company-logo { display: flex; align-items: center; justify-content: center; width: 104px; height: 52px; border: 1px solid rgba(201,169,110,.22); border-radius: 8px; background: #181c24; isolation: isolate; overflow: hidden; flex-shrink: 0; }
-        #career-history .company-logo img { display: block; box-sizing: border-box; width: 100%; height: 100%; object-fit: contain; padding: 9px 8px; filter: grayscale(1) brightness(0) invert(.88); }
-        #career-history .company-logo[data-logo-treatment="paper"] img,
-        #career-history .company-logo[data-logo-treatment="paper-cropped"] img { filter: grayscale(1) invert(1); mix-blend-mode: screen; }
-        #career-history .company-logo[data-logo-treatment="paper-cropped"] img { object-fit: cover; object-position: 50% 46%; transform: scale(.84); }
-        #career-history .company-logo-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--gold-2); font-size: 15px; }
-        #career-history .company-logo.is-unavailable img { display: none; }
-        #career-history .company-logo.is-unavailable .company-logo-fallback { display: flex; }
-        #career-history .project-card:hover .company-logo { transform: none; box-shadow: none; }
-        @media(max-width: 768px) {
-            #career-history .project-card { grid-template-columns: minmax(0,1fr); padding: 0 !important; }
-            #career-history .project-card-left { padding: 15px 18px 0; min-height: 0; }
-            #career-history .project-card-icon.company-logo { margin: 0; width: 104px; height: 52px; }
-            #career-history .project-card[role="button"] .project-card-body { padding: 13px 18px 18px !important; }
-        }
-        @media(max-width: 1100px) {
-            .hero .hero-right.career-outcomes { display: flex !important; width: 100%; padding: 12px 0 0; gap: 0; }
-            .hero .career-outcomes h2 { font-size: 22px; margin: 12px 0 18px; }
-            .hero .career-outcomes a { padding: 15px 0; }
-            .hero .career-outcomes strong { font-size: 16px; }
-            .hero .career-outcomes p { font-size: 13px; }
-        }
-        #projects, #career-history { scroll-margin-top: 96px; }
-        .hero .career-outcomes { align-items: stretch; text-align: left; min-width: 0; }
-        .hero .career-outcomes > * { width: 100%; box-sizing: border-box; margin-left: 0; margin-right: 0; }
-        #cases .section-header { grid-template-columns: minmax(0, 1fr); }
-        #cases .section-title { font-size: 40px; word-break: keep-all; }
-        #isms-screens, #ai-dlp-screens { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 18px 24px; align-items: start; }
-        #isms-screens > .isms-gallery-heading, #isms-screens > .isms-proof-groups, #isms-screens > .isms-gallery-disclosure,
-        #ai-dlp-screens > .dlp-gallery-heading, #ai-dlp-screens > .dlp-gallery-disclosure { grid-column: 1 / -1; margin: 0; }
-        #isms-screens > .isms-screen-window, #ai-dlp-screens > .dlp-screen-window { min-width: 0; border-radius: 8px; }
-        #isms-screens > .isms-screen-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; max-height: 620px; overflow-y: auto; padding: 2px 6px 4px 2px; }
-        #isms-screens .isms-screen-option { grid-template-columns: 48px minmax(0, 1fr); padding: 9px; gap: 8px; align-items: center; border-radius: 6px; }
-        #isms-screens .isms-thumb { width: 48px; height: 44px; }
-        #isms-screens .isms-option-copy { gap: 5px; }
-        #isms-screens .isms-option-copy strong { font-size: 11px; }
-        #isms-screens .isms-option-copy > span:last-child > span { font-size: 10px; }
-        #ai-dlp-screens > .dlp-screen-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
-        #ai-dlp-screens .dlp-screen-thumb { height: 100px; }
-        #ai-dlp-screens .dlp-screen-preview { height: 365px; }
-        #ai-dlp-screens .dlp-screen-preview > img { height: 100%; width: 100%; object-fit: contain; }
-        #isms-screens .isms-screen-caption, #ai-dlp-screens .dlp-screen-caption { padding: 18px; }
-        #isms-screens .isms-caption-heading { flex-wrap: wrap; }
-        @media(max-width: 900px) {
-            #cases .section-title { font-size: 30px; }
-            #isms-screens, #ai-dlp-screens { grid-template-columns: minmax(0, 1fr); }
-            #isms-screens > .isms-screen-picker { max-height: 420px; }
-            #ai-dlp-screens .dlp-screen-preview { height: 280px; }
-        }
-        @media(max-width: 480px) { #cases .section-title { font-size: 23px; } }
-        .career-outcomes { padding: 12px 0; }
-        .career-outcomes h2 { font-size: 27px; line-height: 1.6; margin: 16px 0 24px; }
-        .career-outcomes a { display: block; padding: 20px 0; border-top: 1px solid #45413a; text-decoration: none; color: #eee; }
-        .career-outcomes a:hover strong { color: #e8c77d; }
-        .career-outcomes a span { display: block; font-size: 12px; color: #cbb786; margin-bottom: 9px; }
-        .career-outcomes strong { font-size: 18px; line-height: 1.6; }
-        .career-outcomes p { font-size: 14px; color: #bdbdbd; line-height: 1.8; margin-top: 8px; }
-        .sec-terminal-line { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; line-height: 1.85; margin-bottom: 12px; }
-        .sec-terminal-cursor, .sec-terminal-dots { display: none; }
-        .sec-terminal-title { font-size: 13px; color: #d5d5d5; }
-        .footer-text { color: #b8b8b8; font-size: 14px; }
-        .hero-build-note, .section-desc { color: #bdbdbd; }
-        .career-permalink, .case-heading a { color: #e8c77d; font-size: 14px; text-underline-offset: 5px; }
-        .judgment-case { padding: 32px 0; border-top: 1px solid #45413a; }
-        .case-heading span { color: #d4bc85; font-size: 13px; }
-        .case-heading h3 { font-size: 24px; margin: 12px 0; line-height: 1.5; }
-        .case-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 36px; margin: 28px 0 0; }
-        .case-steps dt { color: #e3cc99; font-size: 14px; margin-bottom: 8px; font-weight: 600; }
-        .case-steps dd { margin: 0; color: #d0d0d0; font-size: 15px; line-height: 1.9; overflow-wrap: anywhere; }
-        .practice-scope { padding: 28px 0; border-block: 1px solid #45413a; margin: 32px 0; }
-        .practice-scope h3 { font-size: 22px; }
-        .validation-table-wrap { overflow-x: auto; margin: 32px 0; }
-        .validation-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.8; color: #d0d0d0; }
-        .validation-table caption { text-align: left; font-size: 20px; color: #eee; margin-bottom: 18px; font-weight: 600; }
-        .validation-table th, .validation-table td { border-bottom: 1px solid #454545; padding: 14px; text-align: left; vertical-align: top; min-width: 130px; }
-        .validation-table thead { color: #e3cc99; }
-        .validation-table a, .validation-table a:visited { color: var(--gold-2, #e3cc99); text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-        .validation-table a:hover { color: var(--gold-3, #f1dfb5); text-decoration-thickness: 2px; }
-        .validation-table a:focus-visible { outline: 2px solid var(--gold-3, #f1dfb5); outline-offset: 4px; border-radius: 2px; }
-        @media(max-width: 650px) { .case-steps { grid-template-columns: 1fr; } .case-heading h3 { font-size: 21px; } .validation-table { font-size: 13px; } }
-
     </style>
 </head>
 <body>
@@ -496,10 +412,10 @@
                                         <span className="sec-dot sec-dot-yellow"></span>
                                         <span className="sec-dot sec-dot-green"></span>
                                     </div>
-                                    <div className="sec-terminal-title">{project.company} | 담당 범위와 주요 결과</div>
+                                    <div className="sec-terminal-title">{project.company} | 업무 요약</div>
                                 </div>
                                 <div className="sec-terminal-body">
-                                    {project.terminalLog.filter(line => line.type !== 'cmd').slice(0, 4).map((line, i) => (
+                                    {project.terminalLog.map((line, i) => (
                                         <div key={i} className={`sec-terminal-line ${line.type || ''}`} style={{animationDelay: `${0.5 + i * 0.15}s`}}>
                                             {line.type === 'cmd' && <span className="sec-prompt" style={{color: c1}}>$ </span>}
                                             {line.type === 'success' && <span style={{color: '#4CAF50'}}>[OK] </span>}
@@ -516,7 +432,6 @@
 
                             <div className="detail-hero-info">
                                 <h1 className="detail-hero-title">{project.title}</h1>
-                                <a className="career-permalink" href={'#career-' + index}>이 경력 직접 링크</a>
                                 <div className="detail-hero-meta">
                                     <span className="detail-hero-meta-item">근무 기간 {project.period}</span>
                                     <span className="detail-hero-meta-item">직무 {project.role}</span>
@@ -925,7 +840,7 @@
                         <div className="dlp-story">
                             <div className="dlp-kicker">생성형 AI 정보 보호 PoC · 구현과 로컬 검증</div>
                             <h3>보내기 전에는 대체값으로,<br />돌아온 응답은 원래 값으로.</h3>
-                            <p>사내에서 생성형 AI 사용이 늘고 외부의 정보 유출 사고 소식을 접하면서, 업무 정보가 AI에 그대로 전달되는 위험을 고민했습니다. 이를 계기로 입력값과 도구 결과를 검사하고 보호 대상을 대체값으로 바꾸는 통제 계층을 구상해, 개인 로컬 PoC로 구현했습니다.</p>
+                            <p>생성형 AI를 무분별하게 사용하면서 업무 정보가 그대로 외부로 전달될 수 있다는 점을 고민했습니다. 입력값과 AI 도구가 가져온 결과를 검사하고, 보호 대상은 대체값으로 바꾼 뒤 AI에 전달하는 통제 계층을 구현한 PoC 프로젝트입니다.</p>
                             <p>응답의 대체값은 다시 원래 값으로 돌려 사용자에게 보여줍니다. 위험하거나 확인할 수 없는 요청의 전송 판단과 요청별 처리 기록도 함께 구성했습니다.</p>
                         </div>
                         <dl className="dlp-project-facts">
@@ -989,13 +904,6 @@
                         <div className="dlp-validation-story"><div className="dlp-subheading"><span>로컬 검증</span><h3>샘플 입력과 처리 결과를 나란히 확인</h3></div><p>개인정보·비밀값이 섞인 고객 응대 메모와 연구·업무 기밀 형태의 샘플을 사용했습니다. 원문, 외부 AI에 전달되는 치환값, AI 응답, 사용자에게 표시할 역치환 결과를 대조하며 동작을 확인했습니다.</p><p>단순히 문자열을 숨기는 데서 끝내지 않고, 보호 처리 이후에도 답변을 업무 사용자가 읽을 수 있는지 살펴본 구현 사례입니다.</p></div>
                         <div className="dlp-records"><span>요청 단위로 확인한 것</span><ul><li>어떤 유형이 탐지·처리되었는지</li><li>치환된 위치와 전송·차단 판단</li><li>요청과 AI 응답, 역치환 결과의 연결</li><li>현황 화면과 피드백 검토 화면의 대조</li></ul><p>PoC의 테스트 기록이며 실제 사내 운영 실적이나 탐지 정확도 지표로 제시하지 않습니다.</p></div>
                     </div>
-<div className="validation-table-wrap"><table className="validation-table"><caption>로컬 검증: 관찰 내용과 공개 근거</caption><thead><tr><th scope="col">시험 조건</th><th scope="col">기대 동작</th><th scope="col">관찰·확인 내용</th><th scope="col">근거와 한계</th></tr></thead><tbody>
-<tr><th scope="row">개인정보·비밀값이 섞인 고객 응대 샘플</th><td>보호 대상이 대체값으로 바뀌어 외부 AI에 전달됨</td><td>원문과 치환된 전달 내용을 대조해 보호 처리 흐름을 확인했습니다.</td><td><a href="./assets/ai-dlp/input-protection-clean.png" target="_blank" rel="noopener noreferrer">02 입력정보 보호 캡처</a> · 샘플 범위의 확인이며 전체 탐지 성능을 입증하지 않음</td></tr>
-<tr><th scope="row">연구·업무 식별자를 포함한 샘플</th><td>식별자를 치환하고 응답의 대체값을 복원함</td><td>업무용 명칭의 치환과 사용자에게 표시할 역치환 결과를 대조했습니다.</td><td><a href="./assets/ai-dlp/research-protection-clean.png" target="_blank" rel="noopener noreferrer">03 업무 식별자 치환 캡처</a> · <a href="./assets/ai-dlp/request-review-clean.png" target="_blank" rel="noopener noreferrer">04 요청·응답 대조 캡처</a> · 원본 테스트 로그는 별도 공개하지 않음</td></tr>
-<tr><th scope="row">정상 문장 오탐</th><td>보호 대상이 없는 문장을 불필요하게 치환하지 않음</td><td>이 조건의 독립적인 시험 결과는 공개 자료에 없음</td><td>오탐률 판단 보류</td></tr>
-<tr><th scope="row">보호 대상 누락</th><td>샘플의 모든 보호 대상을 탐지함</td><td>정답 집합과 전체 탐지 결과의 대조 자료는 미제시</td><td>미탐률 판단 보류</td></tr>
-<tr><th scope="row">판독 불가 입력</th><td>검사할 수 없는 입력은 전송을 중단함</td><td>차단 설계는 설명했으나 해당 조건의 실행 기록은 미제시</td><td>개별 차단 통제의 동작 확인은 별도 근거가 필요함</td></tr>
-</tbody></table></div>
                     <p className="dlp-project-note fade-in">AI DLP를 로컬 환경에 구축해 개인 테스트한 경험입니다. ISMS 도구의 사내 업무 활용과 구분하여 소개합니다.</p>
                 </div>
             </section>
@@ -1016,16 +924,10 @@
     };
 
     const Portfolio = () => {
-        const readCareerHash = () => { const match = window.location.hash.match(/^#career-([0-6])$/); return match ? Number(match[1]) : null; };
-        const [selectedProject, setSelectedProject] = useState(readCareerHash);
-        useEffect(() => {
-            const sync = () => setSelectedProject(readCareerHash());
-            window.addEventListener('hashchange', sync);
-            return () => window.removeEventListener('hashchange', sync);
-        }, []);
+        const [selectedProject, setSelectedProject] = useState(null);
         const [menuOpen, setMenuOpen] = useState(false);
         const menuButtonRef = React.useRef(null);
-        const scrollPosRef = React.useRef(null);
+        const scrollPosRef = React.useRef(0);
 
         useEffect(() => {
             // The fragment target is rendered by React after the initial HTML loads.
@@ -1044,20 +946,14 @@
         const selectProject = (idx) => {
             setMenuOpen(false);
             scrollPosRef.current = window.scrollY;
-            window.location.hash = 'career-' + idx;
             setSelectedProject(idx);
         };
 
         const goBack = () => {
-            history.replaceState(null, '', '#projects');
             setSelectedProject(null);
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
-                    if (scrollPosRef.current !== null) {
-                        window.scrollTo({ top: scrollPosRef.current, behavior: 'instant' });
-                    } else {
-                        document.getElementById('projects')?.scrollIntoView({ behavior: 'instant', block: 'start' });
-                    }
+                    window.scrollTo(0, scrollPosRef.current);
                 });
             });
         };
@@ -1166,7 +1062,7 @@
 
         const projects = [
             {
-                "logoUrl": "./assets/logos/easyshop.svg",
+                "logoUrl": "https://www.easyshop.co.kr/static/home/new_images/homepage/logo.svg",
                 "employmentType": "정규직",
                 "region": "서울",
                 "industry": "은행·카드·투자기관",
@@ -1264,7 +1160,7 @@
                 ]
             },
             {
-                "logoUrl": "./assets/logos/bankware.png",
+                "logoUrl": "https://bankwareglobal.com/images/logo-renewal.png",
                 "employmentType": "정규직",
                 "region": "서울",
                 "industry": "소프트웨어·솔루션·ASP",
@@ -1273,7 +1169,7 @@
                 "title": "뱅크웨어글로벌 - ITS Unit",
                 "period": "2022.08 ~ 2024.11",
                 "role": "ITS Unit 책임 / 정보보안",
-                "description": "금융기관 차세대 SI 프로젝트에서 정보보안 담당자로 보안성 검토와 자체 보안성 심의 업무의 전반적인 관리를 총괄했습니다. 컨설팅업체와 협업하고 인프라·개발·컨설팅·고객사 간 업무를 조율했으며, 진행 현황과 검토 결과를 프로젝트 총괄 PM 및 고객사에 직접 보고했습니다.",
+                "description": "금융기관 차세대 SI 프로젝트의 정보보안 담당자로 참여하여 자체 보안성 심의 대응과 보안성 검토를 수행했습니다. 설계·개발·오픈 단계별 보안 요구사항을 정리하고 유관 부서와 보완조치 이행을 확인했습니다.",
                 "highlights": [
                     "자체 보안성 심의·검토: 심의 기준과 고객사 요구사항 분석, 시스템 구성·데이터 흐름·접근통제 검토",
                     "심의 대응자료: 보안성 검토보고서와 심의자료 작성, 질의·보완 요청 대응 및 관련 부서 협의",
@@ -1333,7 +1229,7 @@
                 ]
             },
             {
-                "logoUrl": "./assets/logos/wins.png",
+                "logoUrl": "https://www.wins21.com/assets/images/main/winstechnet.png",
                 "employmentType": "정규직",
                 "region": "대전",
                 "industry": "소프트웨어·솔루션·ASP",
@@ -1404,7 +1300,7 @@
                 ]
             },
             {
-                "logoUrl": "./assets/logos/seil.png",
+                "logoUrl": "https://images.weserv.nl/?url=seilsystem.kr/theme/wering/img/hdft/hd_logo.png",
                 "employmentType": "정규직",
                 "region": "세종",
                 "industry": "네트워크·통신",
@@ -1534,7 +1430,7 @@
                 ]
             },
             {
-                "logoUrl": "./assets/logos/hyangsu.png",
+                "logoUrl": "https://images.weserv.nl/?url=hyangsu.co.kr/data/skin/respon_default/images/skin/hd_logo_on.png",
                 "employmentType": "계약직",
                 "region": "대전",
                 "industry": "네트워크·통신",
@@ -1591,7 +1487,7 @@
                 ]
             },
             {
-                "logoUrl": "./assets/logos/big.gif",
+                "logoUrl": "https://images.weserv.nl/?url=www.big21c.co.kr/img/common/logo.gif",
                 "logoTreatment": "paper",
                 "employmentType": "정규직",
                 "region": "대전",
@@ -1786,9 +1682,10 @@
                             <button type="button" className="mobile-nav-toggle" ref={menuButtonRef} aria-expanded={menuOpen} aria-controls="portfolio-nav" onClick={() => setMenuOpen(open => !open)}><span>{menuOpen ? '닫기' : '메뉴'}</span><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">{menuOpen ? <path d="m5 5 10 10M5 15 15 5" /> : <path d="M3 5h14M3 10h14M3 15h14" />}</svg></button>
                             <ul id="portfolio-nav" className={`nav-links${menuOpen ? ' is-open' : ''}`} onClick={event => { if (event.target.closest('a')) setMenuOpen(false); }}>
                                 <li><a className="nav-link" href="#home">Home</a></li>
-                                <li><a className="nav-link" href="#projects">Career</a></li><li><a className="nav-link" href="#cases">Cases</a></li><li><a className="nav-link" href="#about">About</a></li>
+                                <li><a className="nav-link" href="#about">About</a></li>
                                 <li><a className="nav-link" href="#isms-tool">ISMS Tool</a></li>
                                 <li><a className="nav-link" href="#ai-dlp">AI DLP</a></li>
+                                <li><a className="nav-link" href="#projects">Career</a></li>
                                 <li><a className="nav-link" href="#tech">Skills</a></li>
                                 <li><a className="nav-link" href="#certs">Certs</a></li>
                                 <li><a className="nav-link" href="#education">Education</a></li>
@@ -1812,8 +1709,8 @@
                         <div className="hero-left">
                             <div className="hero-tag">Information Security Professional</div>
                             <h1 className="hero-name">홍기웅</h1>
-                            <p className="hero-role">기술적 통제를 이해하고<br />정보보호 관리체계를 운영합니다.</p>
-                            <p className="hero-build-note">2015년 보안 실무 시작 · 현재 ISMS·PG 인증, 금융보안 컴플라이언스 담당</p>
+                            <p className="hero-role">보안관제와 인프라 운영을 거쳐<br />ISMS·PG 인증 대응과 금융보안 업무를 담당합니다.</p>
+                            <p className="hero-build-note">사내 업무용 ISMS 도구와 AI DLP 구현·로컬 검증 경험도 소개합니다.</p>
                             <div className="hero-actions"><a className="hero-career-link" href="#projects">경력 살펴보기 <span aria-hidden="true">&rarr;</span></a></div>
                             <div className="hero-stats portfolio-focus">
                                 <div className="h-stat"><div className="h-stat-value">ISMS 인증 대응</div><div className="h-stat-label">최초심사·사후심사 준비 및 대응</div></div>
@@ -1822,15 +1719,81 @@
                                 <div className="h-stat"><div className="h-stat-value">보안 인프라 운영</div><div className="h-stat-label">보안 솔루션·인프라 도입 및 운영</div></div>
                             </div>
                         </div>
-                        <div className="hero-right career-outcomes">
-                            <div className="section-tag">Selected Outcomes</div>
-                            <h2>인증과 심의 대응을<br />운영 관리로 이어갑니다.</h2>
-                            <a href="#cases"><span>01 / 관리체계</span><strong>ISMS 최초 인증·사후심사 통과</strong><p>범위·자산·위험평가, 정책과 증적 정비, 보완조치 관리</p></a>
-                            <a href="#career-0"><span>02 / 금융보안</span><strong>PG 최초 보안 인증 취득</strong><p>보안 통제 점검과 심사 대응, 인증 이후 금융 컴플라이언스</p></a>
-                            <a href="#career-1"><span>03 / 보안성 검토</span><strong>금융권 차세대 보안성 심의 대응 완료</strong><p>개발·인프라·운영 부서 협의와 보완조치 이행 확인</p></a>
+                        <div className="hero-right hero-build-stack">
+                            <a className="hero-evidence" href="#isms-screens">
+                                <div className="hero-evidence-top"><span>01 / ISMS MANAGEMENT</span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div>
+                                <h2>ISMS 통합관리 도구</h2><p>직접 기획·구현 · 사내 업무 활용</p>
+                                <div className="hero-evidence-image"><img src="./assets/isms/control-management.png?v=20261104-refined" alt="직접 구현한 ISMS 도구의 통제항목 관리 화면. 내부 정보는 마스킹되어 있습니다." width="1710" height="904" /></div>
+                                <div className="hero-evidence-bottom"><span>정책 · 통제 · 증적 · 심사 이력</span><span>구현 화면 보기 →</span></div>
+                            </a>
+                            <a className="hero-evidence hero-dlp-evidence" href="#ai-dlp-screens">
+                                <div className="hero-evidence-top"><span>02 / AI DATA PROTECTION</span><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div>
+                                <h2>AI DLP</h2><p>입력정보 보호 · 로컬 PoC 구현·검증</p>
+                                <div className="hero-evidence-image"><img src="./assets/ai-dlp/dashboard-clean.png" alt="AI DLP 로컬 PoC의 처리 현황과 탐지 유형을 소개하는 미리보기. 접속정보는 가렸습니다." width="2063" height="762" /></div>
+                                <div className="hero-evidence-bottom"><span>탐지 · 치환 · 응답 복원 · 기록</span><span>구현 화면 보기 →</span></div>
+                            </a>
                         </div>
                     </div>
                 </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="about">
+                    <div className="section-container">
+                        <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">소개</h2></div></div>
+                        <div className="about-editorial fade-in">
+                            <div className="about-principle"><div className="isms-feature-label">정보보호 실무</div><h3>보안 요구사항을<br />점검하고 개선해<br /><span>실제 운영에 반영합니다.</span></h3><div className="about-keywords"><span>정보보호 관리체계</span><span>금융보안 컴플라이언스</span><span>보안 솔루션·인프라</span></div></div>
+                            <div className="about-copy"><p>보안관제와 인프라 운영, 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영을 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 현재 금융감독원 요청자료 작성·제출과 CISO·임원 보고를 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 업무에 적용합니다.</p><div className="about-built-note"><strong>실무의 고민을 도구로 구현했습니다.</strong><p>ISMS 도구는 직접 기획·구현해 사내 업무에 사용하고 있습니다. AI DLP 구현 과정에서는 입력정보 보호와 응답 복원 흐름을 로컬 환경에서 테스트했습니다.</p></div></div>
+                        </div>
+                        <div className="build-overview fade-in" id="builds">
+                            <div className="build-overview-heading"><div className="section-tag">Two Build Cases</div><h3>두 가지 보안 도구 구축 경험</h3><p>실제 업무에 사용하는 도구와 로컬에서 검증한 PoC를 구분해 소개합니다.</p></div>
+                            <div className="build-overview-grid">
+                                <a className="build-overview-card" href="#isms-tool"><div className="build-card-top"><span>01 / ISMS MANAGEMENT</span><span aria-hidden="true">↗</span></div><h4>ISMS 통합관리 도구</h4><p>정책·통제항목·자산·증적·보완조치·심사 이력을 한곳에서 연결합니다.</p><div className="build-card-status">직접 기획·구현 <span>사내 업무 활용</span></div></a>
+                                <a className="build-overview-card is-poc" href="#ai-dlp"><div className="build-card-top"><span>02 / AI DATA PROTECTION</span><span aria-hidden="true">↗</span></div><h4>AI DLP</h4><p>입력·도구 결과의 보호 처리, 전송 판단, 응답 역치환과 요청별 기록을 연결합니다.</p><div className="build-card-status">AI DLP 구현 <span>로컬 구축·개인 테스트</span></div></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section isms-case" id="isms-tool" aria-labelledby="isms-case-title">
+                    <div className="section-container">
+                        <div className="section-header fade-in">
+                            <div><div className="section-tag">Build Case 01 / Built From Practice</div><h2 className="section-title" id="isms-case-title">ISMS 통합관리 도구</h2></div>
+                            <p className="section-desc">심사 준비에서 생긴 문제를 정리하고 기능으로 구현했습니다.</p>
+                        </div>
+                        <div className="isms-case-intro fade-in">
+                            <div className="isms-case-story">
+                                <div className="isms-case-kicker">실무 요구사항 정의 · 설계 · 구현 검증</div>
+                                <h3>증적과 검토 근거를<br />한곳에서 관리하도록 만들었습니다.</h3>
+                                <p>같은 회의록을 여러 통제항목에서 사용하고 파일명은 유지한 채 내용을 갱신하는 일이 많았습니다. 이전 심사의 보완조치와 이번 심사의 준비 상태도 구분해 확인해야 했습니다.</p>
+                                <p>필요한 기능을 증적 수집, 항목별 근거 검토, 보완 업무, 심사 이력 관리로 나눠 설계했습니다. Codex로 기능을 구현하고 실제 자료를 적용하면서 문서 판독, 증적 연결, 검토 상태 표시를 반복해서 개선하고 있습니다.</p>
+                            </div>
+                            <div className="isms-cycle" aria-label="도구로 연결한 보안 관리 흐름">
+                                <div className="isms-cycle-heading">직접 정의하고 검증한 것</div>
+                                <ol>
+                                    <li><span className="isms-step-num" aria-hidden="true">01</span><div><strong>검토 기준</strong><span>적합·미흡·확인 필요와 보완 사유 구분</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">02</span><div><strong>자료 연결</strong><span>원본 하나와 여러 통제항목의 관계 관리</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">03</span><div><strong>이력 보존</strong><span>현재 자료와 이전 심사·검토 기록 구분</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">04</span><div><strong>업무 적용</strong><span>실제 자료로 동작을 확인하고 화면·흐름 개선</span></div></li>
+                                </ol>
+                            </div>
+                        </div>
+                        <IsmsDesignDecisions />
+                        <IsmsScreenshots />
+                        <IsmsAssistant />
+                        <IsmsImplementation />
+                        <div className="isms-case-outcome fade-in">
+                            <div><div className="isms-feature-label">실무 적용</div><p>검토에 사용한 증적과 근거 위치, 남은 확인사항, 후속 조치와 처리 이력을 함께 확인할 수 있습니다. 사내 업무에서 발견한 문제는 다음 기능 개선에 반영하고 있습니다.</p></div>
+                            <p className="isms-review-note">법령·정책 검토 의견은 담당자가 확인한 뒤 반영합니다.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <AiDlpCase />
 
                 <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
 
@@ -1842,34 +1805,6 @@
                                 <article key={idx} className="career-summary-card fade-in"><div className="career-summary-label"><span>{item.title}</span><span>{String(idx + 1).padStart(2, '0')}</span></div><h3>{item.value}</h3><p>{item.desc}</p></article>
                             ))}
                         </div>
-                    </div>
-                </section>
-
-                <section className="section" id="cases">
-                    <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">Selected Cases</div><h2 className="section-title">관리체계와 보안성 검토 사례</h2></div></div>
-                        <article className="judgment-case fade-in">
-                            <div className="case-heading"><span>01 / 이지샵</span><h3>ISMS 최초 인증부터 사후심사까지</h3><a href="#career-0">관련 경력 보기 →</a></div>
-                            <dl className="case-steps">
-                                <div><dt>문제와 기준</dt><dd>정책 문서와 실제 운영환경이 맞지 않는 부분을 정비해야 했습니다. 인증 범위·정보자산과 위험평가를 기준으로 통제와 증적을 정리했습니다.</dd></div>
-                                <div><dt>담당과 조율</dt><dd>사내 정보보호 담당자로서 정책·지침과 증적 정비, 심사 대응, 보완조치 관리를 수행했습니다. 현업과 운영 요구사항을 협의하며 통제의 반영 여부를 확인했습니다.</dd></div>
-                                <div><dt>정비 방식의 선택</dt><dd>문서와 운영환경의 불일치를 검토한 뒤, 개별 문서 수정에 그치지 않고 ISMS 인증 기준을 활용해 관리체계 전반을 정비하는 방안을 제안했습니다. 인증 범위·자산·위험평가와 통제 이행을 함께 확인하기 위한 선택이었습니다.</dd></div>
-                                <div><dt>확인된 결과</dt><dd>ISMS 최초 인증 취득 및 사후심사 통과. 심사 이력과 후속 조치를 관리하는 업무를 이어가고 있습니다.</dd></div>
-                            </dl>
-                        </article>
-                        <article className="judgment-case fade-in">
-                            <div className="case-heading"><span>02 / 뱅크웨어글로벌</span><h3>금융권 차세대 시스템 보안성 심의</h3><a href="#career-1">관련 경력 보기 →</a></div>
-                            <dl className="case-steps">
-                                <div><dt>검토 대상</dt><dd>금융기관 차세대 SI 프로젝트의 보안 담당자로서 시스템 구성·데이터 흐름·접근통제를 고객사 요구사항과 심의 기준에 따라 검토했습니다.</dd></div>
-                                <div><dt>관리 총괄과 조율</dt><dd>프로젝트의 정보보안 담당자로 보안성 검토와 자체 보안성 심의 업무의 전반적인 관리를 총괄했습니다. 컨설팅업체와 협업하면서 인프라·개발·컨설팅·고객사 간 요구사항과 보완 업무를 직접 조율했습니다.</dd></div>
-                                <div><dt>이행 확인과 보고</dt><dd>설계·개발·오픈 단계별 요구사항 반영과 보완조치 이행을 확인했습니다. 심의 대응자료와 검토 근거를 정리하고, 진행 현황 및 검토 결과를 프로젝트 총괄 PM과 고객사에 직접 보고했습니다.</dd></div>
-                                <div><dt>확인된 결과</dt><dd>OK저축은행 차세대 시스템 보안성 심의 대응 완료. 검토 근거와 보완조치 결과를 문서화했습니다.</dd></div>
-                            </dl>
-                        </article>
-                    </div>
-                </section>
-                <section className="section" id="career-history">
-                    <div className="section-container">
                         <div className="section-header fade-in"><div><div className="section-tag">Career</div><h2 className="section-title">경력 사항</h2></div></div>
                         <div className="career-guide" id="career-guide">
                             <div className="career-guide-icon" aria-hidden="true">
@@ -1925,74 +1860,6 @@
                         </div>
                     </div>
                 </section>
-
-                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
-
-
-
-                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
-
-                <section className="section" id="about">
-                    <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">소개</h2></div></div>
-                        <div className="about-editorial fade-in">
-                            <div className="about-principle"><div className="isms-feature-label">정보보호 실무</div><h3>보안 요구사항을<br />점검하고 개선해<br /><span>실제 운영에 반영합니다.</span></h3><div className="about-keywords"><span>정보보호 관리체계</span><span>금융보안 컴플라이언스</span><span>보안 솔루션·인프라</span></div></div>
-                            <div className="about-copy"><p>보안관제와 인프라 운영, 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영을 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 현재 금융감독원 요청자료 작성·제출과 CISO·임원 보고를 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 업무에 적용합니다.</p><div className="about-built-note"><strong>실무의 고민을 도구로 구현했습니다.</strong><p>ISMS 도구는 직접 기획·구현해 사내 업무에 사용하고 있습니다. AI DLP 구현 과정에서는 입력정보 보호와 응답 복원 흐름을 로컬 환경에서 테스트했습니다.</p></div></div>
-                        </div>
-                        <div className="build-overview fade-in" id="builds">
-                            <div className="build-overview-heading"><div className="section-tag">Two Build Cases</div><h3>두 가지 보안 도구 구축 경험</h3><p>실제 업무에 사용하는 도구와 로컬에서 검증한 PoC를 구분해 소개합니다.</p></div>
-                            <div className="build-overview-grid">
-                                <a className="build-overview-card" href="#isms-tool"><div className="build-card-top"><span>01 / ISMS MANAGEMENT</span><span aria-hidden="true">↗</span></div><h4>ISMS 통합관리 도구</h4><p>정책·통제항목·자산·증적·보완조치·심사 이력을 한곳에서 연결합니다.</p><div className="build-card-status">직접 기획·구현 <span>사내 업무 활용</span></div></a>
-                                <a className="build-overview-card is-poc" href="#ai-dlp"><div className="build-card-top"><span>02 / AI DATA PROTECTION</span><span aria-hidden="true">↗</span></div><h4>AI DLP</h4><p>입력·도구 결과의 보호 처리, 전송 판단, 응답 역치환과 요청별 기록을 연결합니다.</p><div className="build-card-status">AI DLP 구현 <span>로컬 구축·개인 테스트</span></div></a>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
-
-                <section className="section isms-case" id="isms-tool" aria-labelledby="isms-case-title">
-                    <div className="section-container">
-                        <div className="section-header fade-in">
-                            <div><div className="section-tag">Build Case 01 / Built From Practice</div><h2 className="section-title" id="isms-case-title">ISMS 통합관리 도구</h2></div>
-                            <p className="section-desc">심사 준비에서 생긴 문제를 정리하고 기능으로 구현했습니다.</p>
-                        </div>
-                        <div className="isms-case-intro fade-in">
-                            <div className="isms-case-story">
-                                <div className="isms-case-kicker">실무 요구사항 정의 · 설계 · 구현 검증</div>
-                                <h3>증적과 검토 근거를<br />한곳에서 관리하도록 만들었습니다.</h3>
-                                <p>정보보안담당자로 사내 정보보호 실무를 단독 담당하며, ISMS 심사 준비와 PG 보안 대응을 수행하고 주요 현황을 CISO·임원에게 보고했습니다. 혼자 준비하는 과정에서 자료와 진행상태를 관리하는 부담이 커졌고, 관리 업무를 더 효율적으로 수행할 방법을 고민했습니다.</p>
-                                <p>증적·통제항목·보완 업무·심사 이력을 한곳에서 연결하는 관리도구로 구체화했습니다. 같은 자료를 여러 통제항목에서 사용하거나 이전 심사 기록과 현재 준비상태를 구분하는 요구사항을 반영했고, 현재 본인의 관리 업무에 직접 사용하며 개선하고 있습니다.</p>
-                            </div>
-                            <div className="isms-cycle" aria-label="도구로 연결한 보안 관리 흐름">
-                                <div className="isms-cycle-heading">직접 정의하고 검증한 것</div>
-                                <ol>
-                                    <li><span className="isms-step-num" aria-hidden="true">01</span><div><strong>검토 기준</strong><span>적합·미흡·확인 필요와 보완 사유 구분</span></div></li>
-                                    <li><span className="isms-step-num" aria-hidden="true">02</span><div><strong>자료 연결</strong><span>원본 하나와 여러 통제항목의 관계 관리</span></div></li>
-                                    <li><span className="isms-step-num" aria-hidden="true">03</span><div><strong>이력 보존</strong><span>현재 자료와 이전 심사·검토 기록 구분</span></div></li>
-                                    <li><span className="isms-step-num" aria-hidden="true">04</span><div><strong>업무 적용</strong><span>실제 자료로 동작을 확인하고 화면·흐름 개선</span></div></li>
-                                </ol>
-                            </div>
-                        </div>
-<div className="practice-scope fade-in"><h3>사내 업무에 적용한 범위</h3><dl className="case-steps"><div><dt>사용 주체</dt><dd>사내 정보보호 실무를 단독 담당하는 정보보안담당자인 본인만 사용합니다. ISMS 심사 준비와 PG 보안 대응을 병행하는 관리 업무를 지원하기 위해 만들었으며, 주요 현황은 CISO·임원에게 보고합니다.</dd></div><div><dt>과거 기록과 현재 활용의 구분</dt><dd>최초·1차 사후심사 기록은 이력 자료로 등록하고, 2차 사후심사 준비자료와 구분해 관리합니다. 과거 심사를 이 도구로 수행했다는 의미는 아닙니다.</dd></div><div><dt>관리 방식</dt><dd>검토 근거 위치와 남은 확인사항, 후속 업무와 처리 이력을 함께 조회하도록 구성했습니다. 사용하며 발견한 개선사항을 기능에 반영합니다.</dd></div><div><dt>검토와 승인</dt><dd>AI 검토 결과와 담당자의 승인을 구분하며, 법령·정책 수정 의견은 담당자가 확인한 뒤 반영합니다.</dd></div></dl></div>
-                        <IsmsDesignDecisions />
-                        <IsmsScreenshots />
-                        <IsmsAssistant />
-                        <IsmsImplementation />
-                        <div className="isms-case-outcome fade-in">
-                            <div><div className="isms-feature-label">실무 적용</div><p>검토에 사용한 증적과 근거 위치, 남은 확인사항, 후속 조치와 처리 이력을 함께 확인할 수 있습니다. 사내 업무에서 발견한 문제는 다음 기능 개선에 반영하고 있습니다.</p></div>
-                            <p className="isms-review-note">법령·정책 검토 의견은 담당자가 확인한 뒤 반영합니다.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
-
-                <AiDlpCase />
-
-                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
-
-
 
                 <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
 

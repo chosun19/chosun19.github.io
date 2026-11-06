@@ -312,6 +312,22 @@
         }
 
         /* Review-copy adjustments stay scoped to this page. */
+        #career-history .project-card-left { padding: 18px 12px; }
+        #career-history .project-card-icon.company-logo { display: flex; align-items: center; justify-content: center; width: 104px; height: 52px; border: 1px solid rgba(201,169,110,.22); border-radius: 8px; background: #181c24; isolation: isolate; overflow: hidden; flex-shrink: 0; }
+        #career-history .company-logo img { display: block; box-sizing: border-box; width: 100%; height: 100%; object-fit: contain; padding: 9px 8px; filter: grayscale(1) brightness(0) invert(.88); }
+        #career-history .company-logo[data-logo-treatment="paper"] img,
+        #career-history .company-logo[data-logo-treatment="paper-cropped"] img { filter: grayscale(1) invert(1); mix-blend-mode: screen; }
+        #career-history .company-logo[data-logo-treatment="paper-cropped"] img { object-fit: cover; object-position: 50% 46%; transform: scale(.84); }
+        #career-history .company-logo-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--gold-2); font-size: 15px; }
+        #career-history .company-logo.is-unavailable img { display: none; }
+        #career-history .company-logo.is-unavailable .company-logo-fallback { display: flex; }
+        #career-history .project-card:hover .company-logo { transform: none; box-shadow: none; }
+        @media(max-width: 768px) {
+            #career-history .project-card { grid-template-columns: minmax(0,1fr); padding: 0 !important; }
+            #career-history .project-card-left { padding: 15px 18px 0; min-height: 0; }
+            #career-history .project-card-icon.company-logo { margin: 0; width: 104px; height: 52px; }
+            #career-history .project-card[role="button"] .project-card-body { padding: 13px 18px 18px !important; }
+        }
         @media(max-width: 1100px) {
             .hero .hero-right.career-outcomes { display: flex !important; width: 100%; padding: 12px 0 0; gap: 0; }
             .hero .career-outcomes h2 { font-size: 22px; margin: 12px 0 18px; }
@@ -1147,7 +1163,7 @@
 
         const projects = [
             {
-                "logoUrl": "https://www.easyshop.co.kr/static/home/new_images/homepage/logo.svg",
+                "logoUrl": "./assets/logos/easyshop.svg",
                 "employmentType": "정규직",
                 "region": "서울",
                 "industry": "은행·카드·투자기관",
@@ -1245,7 +1261,7 @@
                 ]
             },
             {
-                "logoUrl": "https://bankwareglobal.com/images/logo-renewal.png",
+                "logoUrl": "./assets/logos/bankware.png",
                 "employmentType": "정규직",
                 "region": "서울",
                 "industry": "소프트웨어·솔루션·ASP",
@@ -1314,7 +1330,7 @@
                 ]
             },
             {
-                "logoUrl": "https://www.wins21.com/assets/images/main/winstechnet.png",
+                "logoUrl": "./assets/logos/wins.png",
                 "employmentType": "정규직",
                 "region": "대전",
                 "industry": "소프트웨어·솔루션·ASP",
@@ -1385,7 +1401,7 @@
                 ]
             },
             {
-                "logoUrl": "https://images.weserv.nl/?url=seilsystem.kr/theme/wering/img/hdft/hd_logo.png",
+                "logoUrl": "./assets/logos/seil.png",
                 "employmentType": "정규직",
                 "region": "세종",
                 "industry": "네트워크·통신",
@@ -1515,7 +1531,7 @@
                 ]
             },
             {
-                "logoUrl": "https://images.weserv.nl/?url=hyangsu.co.kr/data/skin/respon_default/images/skin/hd_logo_on.png",
+                "logoUrl": "./assets/logos/hyangsu.png",
                 "employmentType": "계약직",
                 "region": "대전",
                 "industry": "네트워크·통신",
@@ -1572,7 +1588,7 @@
                 ]
             },
             {
-                "logoUrl": "https://images.weserv.nl/?url=www.big21c.co.kr/img/common/logo.gif",
+                "logoUrl": "./assets/logos/big.gif",
                 "logoTreatment": "paper",
                 "employmentType": "정규직",
                 "region": "대전",

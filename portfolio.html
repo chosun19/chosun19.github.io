@@ -312,6 +312,14 @@
         }
 
         /* Review-copy adjustments stay scoped to this page. */
+        @media(max-width: 1100px) {
+            .hero .hero-right.career-outcomes { display: flex !important; width: 100%; padding: 12px 0 0; gap: 0; }
+            .hero .career-outcomes h2 { font-size: 22px; margin: 12px 0 18px; }
+            .hero .career-outcomes a { padding: 15px 0; }
+            .hero .career-outcomes strong { font-size: 16px; }
+            .hero .career-outcomes p { font-size: 13px; }
+        }
+        #projects, #career-history { scroll-margin-top: 96px; }
         .hero .career-outcomes { align-items: stretch; text-align: left; min-width: 0; }
         .hero .career-outcomes > * { width: 100%; box-sizing: border-box; margin-left: 0; margin-right: 0; }
         #cases .section-header { grid-template-columns: minmax(0, 1fr); }
@@ -898,7 +906,7 @@
                         <div className="dlp-story">
                             <div className="dlp-kicker">생성형 AI 정보 보호 PoC · 구현과 로컬 검증</div>
                             <h3>보내기 전에는 대체값으로,<br />돌아온 응답은 원래 값으로.</h3>
-                            <p>생성형 AI를 무분별하게 사용하면서 업무 정보가 그대로 외부로 전달될 수 있다는 점을 고민했습니다. 입력값과 AI 도구가 가져온 결과를 검사하고, 보호 대상은 대체값으로 바꾼 뒤 AI에 전달하는 통제 계층을 구현한 PoC 프로젝트입니다.</p>
+                            <p>사내에서 생성형 AI 사용이 늘고 외부의 정보 유출 사고 소식을 접하면서, 업무 정보가 AI에 그대로 전달되는 위험을 고민했습니다. 이를 계기로 입력값과 도구 결과를 검사하고 보호 대상을 대체값으로 바꾸는 통제 계층을 구상해, 개인 로컬 PoC로 구현했습니다.</p>
                             <p>응답의 대체값은 다시 원래 값으로 돌려 사용자에게 보여줍니다. 위험하거나 확인할 수 없는 요청의 전송 판단과 요청별 처리 기록도 함께 구성했습니다.</p>
                         </div>
                         <dl className="dlp-project-facts">
@@ -962,7 +970,13 @@
                         <div className="dlp-validation-story"><div className="dlp-subheading"><span>로컬 검증</span><h3>샘플 입력과 처리 결과를 나란히 확인</h3></div><p>개인정보·비밀값이 섞인 고객 응대 메모와 연구·업무 기밀 형태의 샘플을 사용했습니다. 원문, 외부 AI에 전달되는 치환값, AI 응답, 사용자에게 표시할 역치환 결과를 대조하며 동작을 확인했습니다.</p><p>단순히 문자열을 숨기는 데서 끝내지 않고, 보호 처리 이후에도 답변을 업무 사용자가 읽을 수 있는지 살펴본 구현 사례입니다.</p></div>
                         <div className="dlp-records"><span>요청 단위로 확인한 것</span><ul><li>어떤 유형이 탐지·처리되었는지</li><li>치환된 위치와 전송·차단 판단</li><li>요청과 AI 응답, 역치환 결과의 연결</li><li>현황 화면과 피드백 검토 화면의 대조</li></ul><p>PoC의 테스트 기록이며 실제 사내 운영 실적이나 탐지 정확도 지표로 제시하지 않습니다.</p></div>
                     </div>
-<div className="validation-table-wrap"><table className="validation-table"><caption>공개된 로컬 검증 범위와 한계</caption><thead><tr><th scope="col">시험 항목</th><th scope="col">입력·확인 방법</th><th scope="col">확인한 동작</th><th scope="col">해석 범위</th></tr></thead><tbody><tr><th scope="row">개인정보·비밀값 치환</th><td>고객 응대 메모 형태의 샘플</td><td>원문과 외부 AI 전달 치환값 대조</td><td>샘플 동작 확인. 탐지 정확도 측정 아님</td></tr><tr><th scope="row">업무 식별자 복원</th><td>연구·업무 기밀 형태의 샘플</td><td>대체값과 응답 역치환 결과 대조</td><td>새로운 식별자·전체 입력 유형으로 일반화하지 않음</td></tr><tr><th scope="row">요청·응답 연결</th><td>요청별 처리 기록과 검토 화면</td><td>요청, 치환, AI 응답, 복원 결과 연결 확인</td><td>로컬 개인 테스트. 사내 운영 실적 아님</td></tr><tr><th scope="row">오탐·누락·판독 실패</th><td>정량 평가 자료 미제시</td><td>성능 판단 보류</td><td>오탐률·미탐률·실패율은 이 페이지에서 입증하지 않음</td></tr></tbody></table></div>
+<div className="validation-table-wrap"><table className="validation-table"><caption>로컬 검증: 관찰 내용과 공개 근거</caption><thead><tr><th scope="col">시험 조건</th><th scope="col">기대 동작</th><th scope="col">관찰·확인 내용</th><th scope="col">근거와 한계</th></tr></thead><tbody>
+<tr><th scope="row">개인정보·비밀값이 섞인 고객 응대 샘플</th><td>보호 대상이 대체값으로 바뀌어 외부 AI에 전달됨</td><td>원문과 치환된 전달 내용을 대조해 보호 처리 흐름을 확인했습니다.</td><td><a href="./assets/ai-dlp/input-protection-clean.png" target="_blank" rel="noopener noreferrer">02 입력정보 보호 캡처</a> · 샘플 범위의 확인이며 전체 탐지 성능을 입증하지 않음</td></tr>
+<tr><th scope="row">연구·업무 식별자를 포함한 샘플</th><td>식별자를 치환하고 응답의 대체값을 복원함</td><td>업무용 명칭의 치환과 사용자에게 표시할 역치환 결과를 대조했습니다.</td><td><a href="./assets/ai-dlp/research-protection-clean.png" target="_blank" rel="noopener noreferrer">03 업무 식별자 치환 캡처</a> · <a href="./assets/ai-dlp/request-review-clean.png" target="_blank" rel="noopener noreferrer">04 요청·응답 대조 캡처</a> · 원본 테스트 로그는 별도 공개하지 않음</td></tr>
+<tr><th scope="row">정상 문장 오탐</th><td>보호 대상이 없는 문장을 불필요하게 치환하지 않음</td><td>이 조건의 독립적인 시험 결과는 공개 자료에 없음</td><td>오탐률 판단 보류</td></tr>
+<tr><th scope="row">보호 대상 누락</th><td>샘플의 모든 보호 대상을 탐지함</td><td>정답 집합과 전체 탐지 결과의 대조 자료는 미제시</td><td>미탐률 판단 보류</td></tr>
+<tr><th scope="row">판독 불가 입력</th><td>검사할 수 없는 입력은 전송을 중단함</td><td>차단 설계는 설명했으나 해당 조건의 실행 기록은 미제시</td><td>개별 차단 통제의 동작 확인은 별도 근거가 필요함</td></tr>
+</tbody></table></div>
                     <p className="dlp-project-note fade-in">AI DLP를 로컬 환경에 구축해 개인 테스트한 경험입니다. ISMS 도구의 사내 업무 활용과 구분하여 소개합니다.</p>
                 </div>
             </section>
@@ -992,7 +1006,7 @@
         }, []);
         const [menuOpen, setMenuOpen] = useState(false);
         const menuButtonRef = React.useRef(null);
-        const scrollPosRef = React.useRef(0);
+        const scrollPosRef = React.useRef(null);
 
         useEffect(() => {
             // The fragment target is rendered by React after the initial HTML loads.
@@ -1020,7 +1034,11 @@
             setSelectedProject(null);
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
-                    window.scrollTo(0, scrollPosRef.current);
+                    if (scrollPosRef.current !== null) {
+                        window.scrollTo({ top: scrollPosRef.current, behavior: 'instant' });
+                    } else {
+                        document.getElementById('projects')?.scrollIntoView({ behavior: 'instant', block: 'start' });
+                    }
                 });
             });
         };
@@ -1805,6 +1823,34 @@
                                 <article key={idx} className="career-summary-card fade-in"><div className="career-summary-label"><span>{item.title}</span><span>{String(idx + 1).padStart(2, '0')}</span></div><h3>{item.value}</h3><p>{item.desc}</p></article>
                             ))}
                         </div>
+                    </div>
+                </section>
+
+                <section className="section" id="cases">
+                    <div className="section-container">
+                        <div className="section-header fade-in"><div><div className="section-tag">Selected Cases</div><h2 className="section-title">관리체계와 보안성 검토 사례</h2></div></div>
+                        <article className="judgment-case fade-in">
+                            <div className="case-heading"><span>01 / 이지샵</span><h3>ISMS 최초 인증부터 사후심사까지</h3><a href="#career-0">관련 경력 보기 →</a></div>
+                            <dl className="case-steps">
+                                <div><dt>문제와 기준</dt><dd>정책 문서와 실제 운영환경이 맞지 않는 부분을 정비해야 했습니다. 인증 범위·정보자산과 위험평가를 기준으로 통제와 증적을 정리했습니다.</dd></div>
+                                <div><dt>담당과 조율</dt><dd>사내 정보보호 담당자로서 정책·지침과 증적 정비, 심사 대응, 보완조치 관리를 수행했습니다. 현업과 운영 요구사항을 협의하며 통제의 반영 여부를 확인했습니다.</dd></div>
+                                <div><dt>정비 방식의 선택</dt><dd>문서와 운영환경의 불일치를 검토한 뒤, 개별 문서 수정에 그치지 않고 ISMS 인증 기준을 활용해 관리체계 전반을 정비하는 방안을 제안했습니다. 인증 범위·자산·위험평가와 통제 이행을 함께 확인하기 위한 선택이었습니다.</dd></div>
+                                <div><dt>확인된 결과</dt><dd>ISMS 최초 인증 취득 및 사후심사 통과. 심사 이력과 후속 조치를 관리하는 업무를 이어가고 있습니다.</dd></div>
+                            </dl>
+                        </article>
+                        <article className="judgment-case fade-in">
+                            <div className="case-heading"><span>02 / 뱅크웨어글로벌</span><h3>금융권 차세대 시스템 보안성 심의</h3><a href="#career-1">관련 경력 보기 →</a></div>
+                            <dl className="case-steps">
+                                <div><dt>검토 대상</dt><dd>금융기관 차세대 SI 프로젝트의 보안 담당자로서 시스템 구성·데이터 흐름·접근통제를 고객사 요구사항과 심의 기준에 따라 검토했습니다.</dd></div>
+                                <div><dt>판단과 협의</dt><dd>취약점·모의해킹 결과에서 보완 필요사항을 정리하고 개발·인프라·운영 담당자와 조치 방안 및 적용 방법을 협의했습니다.</dd></div>
+                                <div><dt>이행 확인</dt><dd>설계·개발·오픈 단계별 요구사항 반영 여부를 점검하고, 심의 질의와 보완 요청에 대응할 자료 및 검토 근거를 정리했습니다.</dd></div>
+                                <div><dt>확인된 결과</dt><dd>OK저축은행 차세대 시스템 보안성 심의 대응 완료. 검토 근거와 보완조치 결과를 문서화했습니다.</dd></div>
+                            </dl>
+                        </article>
+                    </div>
+                </section>
+                <section className="section" id="career-history">
+                    <div className="section-container">
                         <div className="section-header fade-in"><div><div className="section-tag">Career</div><h2 className="section-title">경력 사항</h2></div></div>
                         <div className="career-guide" id="career-guide">
                             <div className="career-guide-icon" aria-hidden="true">
@@ -1863,29 +1909,6 @@
 
                 <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
 
-                <section className="section" id="cases">
-                    <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">Selected Cases</div><h2 className="section-title">관리체계와 보안성 검토 사례</h2></div></div>
-                        <article className="judgment-case fade-in">
-                            <div className="case-heading"><span>01 / 이지샵</span><h3>ISMS 최초 인증부터 사후심사까지</h3><a href="#career-0">관련 경력 보기 →</a></div>
-                            <dl className="case-steps">
-                                <div><dt>문제와 기준</dt><dd>정책 문서와 실제 운영환경이 맞지 않는 부분을 정비해야 했습니다. 인증 범위·정보자산과 위험평가를 기준으로 통제와 증적을 정리했습니다.</dd></div>
-                                <div><dt>담당과 조율</dt><dd>사내 정보보호 담당자로서 정책·지침과 증적 정비, 심사 대응, 보완조치 관리를 수행했습니다. 현업과 운영 요구사항을 협의하며 통제의 반영 여부를 확인했습니다.</dd></div>
-                                <div><dt>판단과 관리</dt><dd>인증 이후에도 이전 심사의 증적과 보완조치 기록을 차수별로 구분하고, 다음 사후심사 준비자료와 연결해 관리했습니다.</dd></div>
-                                <div><dt>확인된 결과</dt><dd>ISMS 최초 인증 취득 및 사후심사 통과. 심사 이력과 후속 조치를 관리하는 업무를 이어가고 있습니다.</dd></div>
-                            </dl>
-                        </article>
-                        <article className="judgment-case fade-in">
-                            <div className="case-heading"><span>02 / 뱅크웨어글로벌</span><h3>금융권 차세대 시스템 보안성 심의</h3><a href="#career-1">관련 경력 보기 →</a></div>
-                            <dl className="case-steps">
-                                <div><dt>검토 대상</dt><dd>금융기관 차세대 SI 프로젝트의 보안 담당자로서 시스템 구성·데이터 흐름·접근통제를 고객사 요구사항과 심의 기준에 따라 검토했습니다.</dd></div>
-                                <div><dt>판단과 협의</dt><dd>취약점·모의해킹 결과에서 보완 필요사항을 정리하고 개발·인프라·운영 담당자와 조치 방안 및 적용 방법을 협의했습니다.</dd></div>
-                                <div><dt>이행 확인</dt><dd>설계·개발·오픈 단계별 요구사항 반영 여부를 점검하고, 심의 질의와 보완 요청에 대응할 자료 및 검토 근거를 정리했습니다.</dd></div>
-                                <div><dt>확인된 결과</dt><dd>OK저축은행 차세대 시스템 보안성 심의 대응 완료. 검토 근거와 보완조치 결과를 문서화했습니다.</dd></div>
-                            </dl>
-                        </article>
-                    </div>
-                </section>
 
 
                 <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
@@ -1919,8 +1942,8 @@
                             <div className="isms-case-story">
                                 <div className="isms-case-kicker">실무 요구사항 정의 · 설계 · 구현 검증</div>
                                 <h3>증적과 검토 근거를<br />한곳에서 관리하도록 만들었습니다.</h3>
-                                <p>같은 회의록을 여러 통제항목에서 사용하고 파일명은 유지한 채 내용을 갱신하는 일이 많았습니다. 이전 심사의 보완조치와 이번 심사의 준비 상태도 구분해 확인해야 했습니다.</p>
-                                <p>필요한 기능을 증적 수집, 항목별 근거 검토, 보완 업무, 심사 이력 관리로 나눠 설계했습니다. Codex로 기능을 구현하고 실제 자료를 적용하면서 문서 판독, 증적 연결, 검토 상태 표시를 반복해서 개선하고 있습니다.</p>
+                                <p>사내 1인 보안책임자 겸 담당자로 ISMS 심사 준비와 PG 보안 대응을 함께 수행했습니다. 혼자 준비하는 과정에서 자료와 진행상태를 관리하는 부담이 커졌고, 관리 업무를 더 효율적으로 수행할 방법을 고민했습니다.</p>
+                                <p>증적·통제항목·보완 업무·심사 이력을 한곳에서 연결하는 관리도구로 구체화했습니다. 같은 자료를 여러 통제항목에서 사용하거나 이전 심사 기록과 현재 준비상태를 구분하는 요구사항을 반영했고, 현재 본인의 관리 업무에 직접 사용하며 개선하고 있습니다.</p>
                             </div>
                             <div className="isms-cycle" aria-label="도구로 연결한 보안 관리 흐름">
                                 <div className="isms-cycle-heading">직접 정의하고 검증한 것</div>
@@ -1932,7 +1955,7 @@
                                 </ol>
                             </div>
                         </div>
-<div className="practice-scope fade-in"><h3>사내 업무에 적용한 범위</h3><dl className="case-steps"><div><dt>활용 업무</dt><dd>정보보호 담당 업무에서 증적·통제항목·보완조치와 심사 이력을 연결해 관리합니다. 최초·1차 사후심사 기록과 2차 사후심사 준비자료를 반영했습니다.</dd></div><div><dt>업무 방식의 변화</dt><dd>파일만 따로 확인하는 대신, 검토 근거 위치와 남은 확인사항, 후속 업무와 처리 이력을 함께 조회할 수 있도록 구성했습니다.</dd></div><div><dt>검토와 승인</dt><dd>AI 검토 결과와 담당자의 승인을 구분합니다. 법령·정책 수정 의견은 담당자가 확인한 뒤 반영합니다.</dd></div></dl></div>
+<div className="practice-scope fade-in"><h3>사내 업무에 적용한 범위</h3><dl className="case-steps"><div><dt>사용 주체</dt><dd>사내 1인 보안책임자 겸 담당자인 본인만 사용합니다. ISMS 심사 준비와 PG 보안 대응을 병행하는 관리 업무를 지원하기 위해 만들었습니다.</dd></div><div><dt>과거 기록과 현재 활용의 구분</dt><dd>최초·1차 사후심사 기록은 이력 자료로 등록하고, 2차 사후심사 준비자료와 구분해 관리합니다. 과거 심사를 이 도구로 수행했다는 의미는 아닙니다.</dd></div><div><dt>관리 방식</dt><dd>검토 근거 위치와 남은 확인사항, 후속 업무와 처리 이력을 함께 조회하도록 구성했습니다. 사용하며 발견한 개선사항을 기능에 반영합니다.</dd></div><div><dt>검토와 승인</dt><dd>AI 검토 결과와 담당자의 승인을 구분하며, 법령·정책 수정 의견은 담당자가 확인한 뒤 반영합니다.</dd></div></dl></div>
                         <IsmsDesignDecisions />
                         <IsmsScreenshots />
                         <IsmsAssistant />

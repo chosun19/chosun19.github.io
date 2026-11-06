@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홍기웅 | 정보보호·금융보안 포트폴리오</title>
-    <meta name="description" content="홍기웅의 정보보호·금융보안 포트폴리오. ISMS 인증 대응, PG 보안 관리, 금융감독원 대응, 보안 인프라 운영 경험과 직접 구현한 ISMS 통합관리 도구를 소개합니다.">
+    <title>홍기웅 | 경력 중심 검토본 | ISMS 도구와 AI DLP 구축 사례</title>
+    <link rel="canonical" href="https://chosun19.github.io/">
+    <meta name="description" content="홍기웅의 정보보호 포트폴리오 확장본. 직접 기획·구현해 사내 업무에 사용하는 ISMS 통합관리 도구와 AI DLP 구현·로컬 검증 경험을 소개합니다.">
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css?v=20261105-company-logos">
-    <link rel="stylesheet" href="./css/isms-case.css?v=20261105-ai-assistant">
+    <link rel="stylesheet" href="./css/portfolio-ai.css?v=20261106-comtec-logo-small">
+    <link rel="stylesheet" href="./css/portfolio-ai-isms.css?v=20261105-dlp-copy">
+    <link rel="stylesheet" href="./css/ai-dlp-case.css?v=20261106-hero-clean">
     <style>
         .mobile-only-br {
             display: none;
@@ -308,6 +310,36 @@
                 display: block !important;
             }
         }
+
+        /* Review-copy adjustments stay scoped to this page. */
+        .career-outcomes { padding: 12px 0; }
+        .career-outcomes h2 { font-size: 27px; line-height: 1.6; margin: 16px 0 24px; }
+        .career-outcomes a { display: block; padding: 20px 0; border-top: 1px solid #45413a; text-decoration: none; color: #eee; }
+        .career-outcomes a:hover strong { color: #e8c77d; }
+        .career-outcomes a span { display: block; font-size: 12px; color: #cbb786; margin-bottom: 9px; }
+        .career-outcomes strong { font-size: 18px; line-height: 1.6; }
+        .career-outcomes p { font-size: 14px; color: #bdbdbd; line-height: 1.8; margin-top: 8px; }
+        .sec-terminal-line { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; font-family: 'Noto Sans KR', sans-serif; font-size: 14px; line-height: 1.85; margin-bottom: 12px; }
+        .sec-terminal-cursor, .sec-terminal-dots { display: none; }
+        .sec-terminal-title { font-size: 13px; color: #d5d5d5; }
+        .footer-text { color: #b8b8b8; font-size: 14px; }
+        .hero-build-note, .section-desc { color: #bdbdbd; }
+        .career-permalink, .case-heading a { color: #e8c77d; font-size: 14px; text-underline-offset: 5px; }
+        .judgment-case { padding: 32px 0; border-top: 1px solid #45413a; }
+        .case-heading span { color: #d4bc85; font-size: 13px; }
+        .case-heading h3 { font-size: 24px; margin: 12px 0; line-height: 1.5; }
+        .case-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 36px; margin: 28px 0 0; }
+        .case-steps dt { color: #e3cc99; font-size: 14px; margin-bottom: 8px; font-weight: 600; }
+        .case-steps dd { margin: 0; color: #d0d0d0; font-size: 15px; line-height: 1.9; overflow-wrap: anywhere; }
+        .practice-scope { padding: 28px 0; border-block: 1px solid #45413a; margin: 32px 0; }
+        .practice-scope h3 { font-size: 22px; }
+        .validation-table-wrap { overflow-x: auto; margin: 32px 0; }
+        .validation-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.8; color: #d0d0d0; }
+        .validation-table caption { text-align: left; font-size: 20px; color: #eee; margin-bottom: 18px; font-weight: 600; }
+        .validation-table th, .validation-table td { border-bottom: 1px solid #454545; padding: 14px; text-align: left; vertical-align: top; min-width: 130px; }
+        .validation-table thead { color: #e3cc99; }
+        @media(max-width: 650px) { .case-steps { grid-template-columns: 1fr; } .case-heading h3 { font-size: 21px; } .validation-table { font-size: 13px; } }
+
     </style>
 </head>
 <body>
@@ -410,10 +442,10 @@
                                         <span className="sec-dot sec-dot-yellow"></span>
                                         <span className="sec-dot sec-dot-green"></span>
                                     </div>
-                                    <div className="sec-terminal-title">{project.company} | 업무 요약</div>
+                                    <div className="sec-terminal-title">{project.company} | 담당 범위와 주요 결과</div>
                                 </div>
                                 <div className="sec-terminal-body">
-                                    {project.terminalLog.map((line, i) => (
+                                    {project.terminalLog.filter(line => line.type !== 'cmd').slice(0, 4).map((line, i) => (
                                         <div key={i} className={`sec-terminal-line ${line.type || ''}`} style={{animationDelay: `${0.5 + i * 0.15}s`}}>
                                             {line.type === 'cmd' && <span className="sec-prompt" style={{color: c1}}>$ </span>}
                                             {line.type === 'success' && <span style={{color: '#4CAF50'}}>[OK] </span>}
@@ -430,6 +462,7 @@
 
                             <div className="detail-hero-info">
                                 <h1 className="detail-hero-title">{project.title}</h1>
+                                <a className="career-permalink" href={'#career-' + index}>이 경력 직접 링크</a>
                                 <div className="detail-hero-meta">
                                     <span className="detail-hero-meta-item">근무 기간 {project.period}</span>
                                     <span className="detail-hero-meta-item">직무 {project.role}</span>
@@ -738,6 +771,177 @@
         <div className="isms-system-note"><strong>도구 구성</strong><p>Python 서버 · SQLite · JavaScript · SHA-256 원본 식별 · 법령 MCP · 선택형 AI 문서 분석</p><p>프로그램 소스와 회사별 자료·인증키를 분리해 다른 환경으로 옮길 수 있게 구성했습니다. 실제 문서 분석은 설정한 AI 제공자에 필요한 본문과 이미지를 전달하며, 검토 의견의 최종 반영은 담당자가 결정합니다.</p></div>
     </section>;
 
+    const dlpExamples = [
+        {
+            id: 'privacy', label: '개인정보 예시',
+            original: '샘플 사용자에게 문의 답변을 작성해 주세요. 회신 주소는 demo.user@example.com입니다.',
+            protected: '[PERSON_001]에게 문의 답변을 작성해 주세요. 회신 주소는 [EMAIL_001]입니다.',
+            response: '[PERSON_001]님, 문의 주신 내용에 답변드립니다. 추가 안내는 [EMAIL_001]로 보내드리겠습니다.',
+            restored: '샘플 사용자님, 문의 주신 내용에 답변드립니다. 추가 안내는 demo.user@example.com로 보내드리겠습니다.',
+            mappings: [['샘플 사용자', '[PERSON_001]'], ['demo.user@example.com', '[EMAIL_001]']],
+            note: '보호 대상은 대체값으로 바꾸고, 답변에 돌아온 대체값은 사용자 화면에서 역치환하는 흐름입니다.'
+        },
+        {
+            id: 'research', label: '연구·업무 기밀 예시',
+            original: '가상 후보물질 SAMPLE-A의 시험 배치 BATCH-DEMO에 대한 검토 메모를 정리해 주세요.',
+            protected: '가상 후보물질 [COMPOUND_001]의 시험 배치 [BATCH_001]에 대한 검토 메모를 정리해 주세요.',
+            response: '[COMPOUND_001]의 [BATCH_001] 검토 내용을 요약했습니다. 추가 검토사항을 확인해 주세요.',
+            restored: 'SAMPLE-A의 BATCH-DEMO 검토 내용을 요약했습니다. 추가 검토사항을 확인해 주세요.',
+            mappings: [['SAMPLE-A', '[COMPOUND_001]'], ['BATCH-DEMO', '[BATCH_001]']],
+            note: '업무용 식별자를 대체값으로 처리하는 구조를 설명하는 가상 예시입니다. 실제 연구자료가 아닙니다.'
+        },
+        {
+            id: 'blocked', label: '전송 차단 예시', blocked: true,
+            original: '내용을 판독할 수 없는 첨부파일을 외부 AI에서 분석해 주세요.',
+            protected: '전송하지 않음\n검사할 수 없는 데이터는 요청을 중단하는 흐름',
+            response: '외부 AI를 호출하지 않음',
+            restored: '첨부파일을 확인할 수 없어 전송하지 않았습니다. 내용을 확인한 뒤 다시 요청해 주세요.',
+            mappings: [],
+            note: '검사할 수 없는 데이터나 위험한 요청은 외부 AI로 보내지 않는 전송 판단 구조를 설명합니다.'
+        }
+    ];
+
+    const dlpScreens = [
+        {id: 'dashboard', title: 'DLP 현황', category: '처리 현황과 탐지 유형', src: './assets/ai-dlp/dashboard-clean.png', width: 2063, height: 762,
+         alt: 'AI DLP 로컬 PoC의 현황 화면. 탐지·차단·피드백 기록과 유형별 분포를 보여주며 접속정보는 가렸습니다.',
+         description: 'DLP 상태, 탐지·차단·피드백 기록과 탐지 유형 분포를 확인하는 화면입니다. 표시된 건수는 로컬 테스트 기록이며 사내 운영 실적이나 탐지 정확도가 아닙니다.'},
+        {id: 'input', title: '입력정보 보호', category: '원문과 대체값의 연결', src: './assets/ai-dlp/input-protection-clean.png', width: 1465, height: 1073,
+         alt: '가상 고객 응대 메모의 개인정보와 테스트용 비밀값이 대체값에 연결되는 콘솔 참고 화면.',
+         description: '가상의 이름·연락처·계좌·테스트용 비밀값을 넣고 탐지 유형과 대체값 연결을 확인했습니다. 실제 개인정보나 유효한 인증정보가 아닌 샘플 데이터입니다.'},
+        {id: 'research', title: '업무 식별자 치환', category: '업무용 명칭과 내부 경로 보호', src: './assets/ai-dlp/research-protection-clean.png', width: 1462, height: 1076,
+         alt: '연구·업무 기밀 형태의 가상 샘플에서 후보물질·배치·문서 식별자를 치환하는 콘솔 참고 화면.',
+         description: '연구·업무 기밀 형태의 가상 샘플로 문서·후보물질·배치·업무 경로의 치환 관계를 확인했습니다. 실제 기업의 연구자료를 공개한 화면이 아닙니다.'},
+        {id: 'review', title: '요청·응답 대조', category: '치환 전후와 응답 복원 검토', src: './assets/ai-dlp/request-review-clean.png', width: 1478, height: 1064,
+         alt: '원문 입력, 외부 AI 전달 내용, AI 응답과 역치환한 응답을 나란히 확인하는 피드백 검토 참고 화면.',
+         description: '원문 입력과 AI 전달 내용, AI 응답과 역치환한 응답을 한 화면에서 대조합니다. 처리 결과에 대한 사용자 피드백과 요청별 치환 관계도 함께 검토합니다.'}
+    ];
+
+    const DlpScreenshots = () => {
+        const [activeIndex, setActiveIndex] = useState(0);
+        const [expanded, setExpanded] = useState(false);
+        const [nativeSize, setNativeSize] = useState(false);
+        const dialogRef = React.useRef(null);
+        const imageViewportRef = React.useRef(null);
+        const current = dlpScreens[activeIndex];
+        const move = offset => setActiveIndex(index => (index + offset + dlpScreens.length) % dlpScreens.length);
+
+        useEffect(() => {
+            if (!expanded) return;
+            const dialog = dialogRef.current;
+            dialog.showModal();
+            return () => dialog.close();
+        }, [expanded]);
+
+        useEffect(() => {
+            imageViewportRef.current?.scrollTo({left: 0, top: 0});
+        }, [activeIndex, nativeSize]);
+
+        return <section className="dlp-gallery" id="ai-dlp-screens" aria-labelledby="dlp-gallery-title">
+            <div className="dlp-gallery-heading"><div className="dlp-subheading"><span>구현 화면</span><h3 id="dlp-gallery-title">입력 보호부터 응답 복원까지</h3></div><span className="dlp-example-badge">로컬 PoC · 테스트 화면</span></div>
+            <div className="dlp-screen-window">
+                <div className="dlp-screen-bar"><span>AI DLP / {current.title}</span><div className="dlp-screen-nav"><button type="button" onClick={() => move(-1)} aria-label="이전 AI DLP 화면">←</button><span>{String(activeIndex + 1).padStart(2, '0')} / 04</span><button type="button" onClick={() => move(1)} aria-label="다음 AI DLP 화면">→</button></div></div>
+                <button type="button" className="dlp-screen-preview" onClick={() => { setNativeSize(false); setExpanded(true); }} aria-label={`${current.title} AI DLP 캡처 확대 보기`} aria-haspopup="dialog"><img src={current.src} alt={current.alt} width={current.width} height={current.height} loading="lazy" /><span className="dlp-screen-zoom" aria-hidden="true">화면 크게 보기 ↗</span></button>
+                <div className="dlp-screen-caption" aria-live="polite"><strong>{current.category}</strong><p>{current.description}</p></div>
+            </div>
+            <div className="dlp-screen-picker" role="group" aria-label="AI DLP 구현 화면 선택">{dlpScreens.map((screen, index) => <button key={screen.id} type="button" aria-pressed={activeIndex === index} onClick={() => setActiveIndex(index)}><span className="dlp-screen-thumb"><img src={screen.src} alt="" width={screen.width} height={screen.height} loading="lazy" /></span><span className="dlp-screen-option-copy"><span>0{index + 1}</span><strong>{screen.title}</strong><span>{screen.category}</span></span></button>)}</div>
+            <p className="dlp-gallery-disclosure">로컬 PoC 구현을 소개하는 참고 화면입니다. 입력값은 테스트용 샘플이며, 접속정보는 가렸습니다.</p>
+            {expanded && <dialog className="isms-lightbox dlp-lightbox" ref={dialogRef} aria-labelledby="dlp-lightbox-title" onClose={() => setExpanded(false)} onClick={event => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={event => { if (event.target !== imageViewportRef.current && (event.key === 'ArrowRight' || event.key === 'ArrowLeft')) { event.preventDefault(); move(event.key === 'ArrowRight' ? 1 : -1); } }}>
+                <div className="isms-lightbox-bar"><h3 id="dlp-lightbox-title">AI DLP · {current.title}</h3><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="AI DLP 확대 화면 닫기">닫기 ×</button></div>
+                <div className="dlp-image-tools"><div role="group" aria-label="AI DLP 이미지 표시 크기"><button type="button" aria-pressed={!nativeSize} onClick={() => setNativeSize(false)}>화면 맞춤</button><button type="button" aria-pressed={nativeSize} onClick={() => setNativeSize(true)}>100% 보기</button></div><a href={current.src} target="_blank" rel="noopener noreferrer" aria-label={`${current.title} 이미지 새 탭에서 열기`}>이미지 열기 ↗</a></div>
+                <p className="dlp-image-help" id="dlp-image-help">{nativeSize ? '100% 크기에서는 가로·세로로 스크롤할 수 있습니다.' : '작은 글씨는 100% 보기로 확인할 수 있습니다.'}</p>
+                <div className="dlp-image-viewer" ref={imageViewportRef} tabIndex={0} role="region" aria-label="AI DLP 캡처 이미지" aria-describedby="dlp-image-help"><img src={current.src} alt={current.alt} width={current.width} height={current.height} style={nativeSize ? {width: current.width, maxWidth: 'none'} : {width: '100%', maxWidth: current.width}} /></div>
+                <div className="isms-lightbox-footer"><button type="button" onClick={() => move(-1)}>← 이전</button><span>0{activeIndex + 1} / 04</span><button type="button" onClick={() => move(1)}>다음 →</button></div>
+            </dialog>}
+        </section>;
+    };
+
+    const AiDlpCase = () => {
+        const [exampleId, setExampleId] = useState('privacy');
+        const [view, setView] = useState('request');
+        const example = dlpExamples.find(item => item.id === exampleId);
+        const requestView = view === 'request';
+        return (
+            <section className="section ai-dlp-case" id="ai-dlp" aria-labelledby="ai-dlp-title">
+                <div className="section-container">
+                    <div className="section-header fade-in">
+                        <div><div className="section-tag">Build Case 02 / AI Data Protection</div><h2 className="section-title" id="ai-dlp-title">AI DLP</h2></div>
+                        <p className="section-desc">생성형 AI에 전달하기 전의 정보 보호부터<br />응답 역치환과 요청별 처리 기록까지.</p>
+                    </div>
+                    <div className="dlp-intro fade-in">
+                        <div className="dlp-story">
+                            <div className="dlp-kicker">생성형 AI 정보 보호 PoC · 구현과 로컬 검증</div>
+                            <h3>보내기 전에는 대체값으로,<br />돌아온 응답은 원래 값으로.</h3>
+                            <p>생성형 AI를 무분별하게 사용하면서 업무 정보가 그대로 외부로 전달될 수 있다는 점을 고민했습니다. 입력값과 AI 도구가 가져온 결과를 검사하고, 보호 대상은 대체값으로 바꾼 뒤 AI에 전달하는 통제 계층을 구현한 PoC 프로젝트입니다.</p>
+                            <p>응답의 대체값은 다시 원래 값으로 돌려 사용자에게 보여줍니다. 위험하거나 확인할 수 없는 요청의 전송 판단과 요청별 처리 기록도 함께 구성했습니다.</p>
+                        </div>
+                        <dl className="dlp-project-facts">
+                            <div><dt>프로젝트</dt><dd>AI DLP 구현·로컬 검증</dd></div>
+                            <div><dt>검증 환경</dt><dd>로컬 구축·개인 테스트</dd></div>
+                            <div><dt>핵심 흐름</dt><dd>탐지·분류 → 치환 → 전송 판단 → 응답 역치환 → 기록</dd></div>
+                            <div><dt>적용 구분</dt><dd>사내 배포·상용 운영과 구분되는 PoC</dd></div>
+                        </dl>
+                    </div>
+
+                    <div className="dlp-architecture fade-in" aria-labelledby="dlp-flow-title">
+                        <div className="dlp-subheading"><span>처리 구조</span><h3 id="dlp-flow-title">사용자 입력뿐 아니라, 도구가 가져온 결과도 검사</h3></div>
+                        <ol className="dlp-route">
+                            <li><span>01</span><strong>입력·도구 결과</strong><p>문서·표·요청 내용에서 검사할 최종 텍스트 확인</p></li>
+                            <li><span>02</span><strong>탐지·분류·치환</strong><p>개인정보·비밀값·업무 식별자를 유형별 대체값으로 처리</p></li>
+                            <li className="is-boundary"><span>03</span><strong>전송 판단</strong><p>보호 처리 후 전달하거나, 위험·검사 불가 요청은 차단</p></li>
+                            <li><span>04</span><strong>응답 역치환</strong><p>AI 답변의 대체값을 사용자에게 필요한 원래 값으로 복원</p></li>
+                            <li><span>05</span><strong>요청별 기록</strong><p>탐지 항목·처리 위치·전송 여부와 요청·응답 연결</p></li>
+                        </ol>
+                    </div>
+
+                    <DlpScreenshots />
+
+                    <div className="dlp-walkthrough fade-in" aria-labelledby="dlp-example-title">
+                        <div className="dlp-example-heading"><div><span className="dlp-kicker">Illustrated Walkthrough</span><h3 id="dlp-example-title">치환과 역치환, 이렇게 연결됩니다.</h3></div><span className="dlp-example-badge">설명용 가상 예시</span></div>
+                        <p className="dlp-example-disclosure">구조를 설명하기 위한 화면이며 실제 제품 화면이나 탐지 성능 시연이 아닙니다. 외부 AI를 호출하지 않습니다.</p>
+                        <div className="dlp-example-toolbar">
+                            <div className="dlp-scenarios" role="group" aria-label="AI DLP 설명 예시 선택">
+                                {dlpExamples.map(item => <button type="button" key={item.id} aria-pressed={item.id === exampleId} aria-controls="dlp-example-panel" onClick={() => setExampleId(item.id)}>{item.label}</button>)}
+                            </div>
+                            <div className="dlp-view-switch" role="group" aria-label="요청과 응답 흐름 선택">
+                                <button type="button" aria-pressed={requestView} aria-controls="dlp-example-panel" onClick={() => setView('request')}>요청 흐름</button>
+                                <button type="button" aria-pressed={!requestView} aria-controls="dlp-example-panel" onClick={() => setView('response')}>응답 흐름</button>
+                            </div>
+                        </div>
+                        <div id="dlp-example-panel" className={`dlp-example-panel${example.blocked ? ' is-blocked' : ''}`} aria-live="polite" aria-atomic="true">
+                            <div className="dlp-comparison">
+                                <div className="dlp-message"><span>{requestView ? '검사 전 입력' : 'AI 응답'}</span><pre>{requestView ? example.original : example.response}</pre></div>
+                                <div className="dlp-message is-protected"><span>{requestView ? (example.blocked ? '전송 판단' : '외부 AI 전달 내용') : '사용자에게 표시되는 답변'}</span><pre>{requestView ? example.protected : example.restored}</pre></div>
+                            </div>
+                            <div className="dlp-example-footer">
+                                {example.mappings.length > 0 && <ul className="dlp-mappings" aria-label="설명 예시의 치환 관계">{example.mappings.map(([original, replacement]) => <li key={replacement}><span>{original}</span><span aria-hidden="true">→</span><code>{replacement}</code></li>)}</ul>}
+                                <p>{example.note}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="dlp-scope fade-in">
+                        <div className="dlp-subheading"><span>보호 범위</span><h3>정보의 유형과 확인 가능 여부에 따라 처리</h3></div>
+                        <div className="dlp-scope-grid">
+                            <article><span>01 / 개인정보</span><h4>이름·연락처·계정 식별자</h4><p>입력에 섞인 보호 대상을 탐지·분류하고 대체값으로 처리하는 흐름을 구성했습니다.</p></article>
+                            <article><span>02 / 인증정보</span><h4>API 키·토큰·비밀값</h4><p>비밀값 유형을 확인해 보호 처리 또는 전송 차단 판단에 연결했습니다.</p></article>
+                            <article><span>03 / 내부 시스템</span><h4>내부 주소·파일 위치·설정값</h4><p>외부 AI에 전달되는 최종 내용에 내부 시스템 정보가 포함되는지 확인합니다.</p></article>
+                            <article><span>04 / 연구·업무 기밀</span><h4>후보물질·배치·업무 식별자</h4><p>샘플 데이터의 업무용 명칭을 대체값으로 치환하고 응답에서 복원하는 구조를 검증했습니다.</p></article>
+                            <article><span>05 / AI 도구 결과</span><h4>웹 응답·외부 도구가 가져온 내용</h4><p>사용자 입력뿐 아니라 도구 결과도 AI 서버에 보내기 전 검사 대상으로 연결했습니다.</p></article>
+                            <article><span>06 / 검사 불가 데이터</span><h4>판독할 수 없는 문서·첨부</h4><p>검사할 수 없는 데이터는 그대로 전달하지 않고 요청을 중단하는 판단 흐름을 구성했습니다.</p></article>
+                        </div>
+                    </div>
+
+                    <div className="dlp-validation fade-in">
+                        <div className="dlp-validation-story"><div className="dlp-subheading"><span>로컬 검증</span><h3>샘플 입력과 처리 결과를 나란히 확인</h3></div><p>개인정보·비밀값이 섞인 고객 응대 메모와 연구·업무 기밀 형태의 샘플을 사용했습니다. 원문, 외부 AI에 전달되는 치환값, AI 응답, 사용자에게 표시할 역치환 결과를 대조하며 동작을 확인했습니다.</p><p>단순히 문자열을 숨기는 데서 끝내지 않고, 보호 처리 이후에도 답변을 업무 사용자가 읽을 수 있는지 살펴본 구현 사례입니다.</p></div>
+                        <div className="dlp-records"><span>요청 단위로 확인한 것</span><ul><li>어떤 유형이 탐지·처리되었는지</li><li>치환된 위치와 전송·차단 판단</li><li>요청과 AI 응답, 역치환 결과의 연결</li><li>현황 화면과 피드백 검토 화면의 대조</li></ul><p>PoC의 테스트 기록이며 실제 사내 운영 실적이나 탐지 정확도 지표로 제시하지 않습니다.</p></div>
+                    </div>
+<div className="validation-table-wrap"><table className="validation-table"><caption>공개된 로컬 검증 범위와 한계</caption><thead><tr><th scope="col">시험 항목</th><th scope="col">입력·확인 방법</th><th scope="col">확인한 동작</th><th scope="col">해석 범위</th></tr></thead><tbody><tr><th scope="row">개인정보·비밀값 치환</th><td>고객 응대 메모 형태의 샘플</td><td>원문과 외부 AI 전달 치환값 대조</td><td>샘플 동작 확인. 탐지 정확도 측정 아님</td></tr><tr><th scope="row">업무 식별자 복원</th><td>연구·업무 기밀 형태의 샘플</td><td>대체값과 응답 역치환 결과 대조</td><td>새로운 식별자·전체 입력 유형으로 일반화하지 않음</td></tr><tr><th scope="row">요청·응답 연결</th><td>요청별 처리 기록과 검토 화면</td><td>요청, 치환, AI 응답, 복원 결과 연결 확인</td><td>로컬 개인 테스트. 사내 운영 실적 아님</td></tr><tr><th scope="row">오탐·누락·판독 실패</th><td>정량 평가 자료 미제시</td><td>성능 판단 보류</td><td>오탐률·미탐률·실패율은 이 페이지에서 입증하지 않음</td></tr></tbody></table></div>
+                    <p className="dlp-project-note fade-in">AI DLP를 로컬 환경에 구축해 개인 테스트한 경험입니다. ISMS 도구의 사내 업무 활용과 구분하여 소개합니다.</p>
+                </div>
+            </section>
+        );
+    };
+
     const CredentialCard = ({ cert, index }) => {
         const expired = cert.expires && new Date(cert.expires + 'T23:59:59').getTime() < Date.now();
         const category = { cert: '자격', course: '교육', exam: '시험', lang: '어학' }[cert.type];
@@ -752,7 +956,13 @@
     };
 
     const Portfolio = () => {
-        const [selectedProject, setSelectedProject] = useState(null);
+        const readCareerHash = () => { const match = window.location.hash.match(/^#career-([0-6])$/); return match ? Number(match[1]) : null; };
+        const [selectedProject, setSelectedProject] = useState(readCareerHash);
+        useEffect(() => {
+            const sync = () => setSelectedProject(readCareerHash());
+            window.addEventListener('hashchange', sync);
+            return () => window.removeEventListener('hashchange', sync);
+        }, []);
         const [menuOpen, setMenuOpen] = useState(false);
         const menuButtonRef = React.useRef(null);
         const scrollPosRef = React.useRef(0);
@@ -774,10 +984,12 @@
         const selectProject = (idx) => {
             setMenuOpen(false);
             scrollPosRef.current = window.scrollY;
+            window.location.hash = 'career-' + idx;
             setSelectedProject(idx);
         };
 
         const goBack = () => {
+            history.replaceState(null, '', '#projects');
             setSelectedProject(null);
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
@@ -825,6 +1037,14 @@
         ];
 
         const techStack = {
+            "AI DLP 구현·로컬 PoC": [
+                "입력·도구 결과 검사",
+                "보호 대상 탐지·분류",
+                "대체값 치환·역치환",
+                "전송 판단·차단",
+                "요청·응답 기록",
+                "샘플 데이터 검증"
+            ],
             "인증·관리체계": [
                 "ISMS 최초 인증·사후심사",
                 "PG 보안 인증",
@@ -1189,7 +1409,8 @@
                 ]
             },
             {
-                "logoUrl": "https://itcenpns.com/resources/itcen/assets/svg/logos/logo_pns.svg",
+                "logoUrl": "./assets/logos/comtec.png",
+                "logoTreatment": "paper-cropped",
                 "employmentType": "계약직",
                 "region": "대전",
                 "industry": "컴퓨터·하드웨어·장비",
@@ -1501,9 +1722,9 @@
                             <button type="button" className="mobile-nav-toggle" ref={menuButtonRef} aria-expanded={menuOpen} aria-controls="portfolio-nav" onClick={() => setMenuOpen(open => !open)}><span>{menuOpen ? '닫기' : '메뉴'}</span><svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">{menuOpen ? <path d="m5 5 10 10M5 15 15 5" /> : <path d="M3 5h14M3 10h14M3 15h14" />}</svg></button>
                             <ul id="portfolio-nav" className={`nav-links${menuOpen ? ' is-open' : ''}`} onClick={event => { if (event.target.closest('a')) setMenuOpen(false); }}>
                                 <li><a className="nav-link" href="#home">Home</a></li>
-                                <li><a className="nav-link" href="#about">About</a></li>
+                                <li><a className="nav-link" href="#projects">Career</a></li><li><a className="nav-link" href="#cases">Cases</a></li><li><a className="nav-link" href="#about">About</a></li>
                                 <li><a className="nav-link" href="#isms-tool">ISMS Tool</a></li>
-                                <li><a className="nav-link" href="#projects">Career</a></li>
+                                <li><a className="nav-link" href="#ai-dlp">AI DLP</a></li>
                                 <li><a className="nav-link" href="#tech">Skills</a></li>
                                 <li><a className="nav-link" href="#certs">Certs</a></li>
                                 <li><a className="nav-link" href="#education">Education</a></li>
@@ -1527,7 +1748,8 @@
                         <div className="hero-left">
                             <div className="hero-tag">Information Security Professional</div>
                             <h1 className="hero-name">홍기웅</h1>
-                            <p className="hero-role">보안관제와 인프라 운영을 거쳐<br />ISMS·PG 인증 대응과 금융보안 업무를 담당합니다.</p>
+                            <p className="hero-role">기술적 통제를 이해하고<br />정보보호 관리체계를 운영합니다.</p>
+                            <p className="hero-build-note">2015년 보안 실무 시작 · 현재 ISMS·PG 인증, 금융보안 컴플라이언스 담당</p>
                             <div className="hero-actions"><a className="hero-career-link" href="#projects">경력 살펴보기 <span aria-hidden="true">&rarr;</span></a></div>
                             <div className="hero-stats portfolio-focus">
                                 <div className="h-stat"><div className="h-stat-value">ISMS 인증 대응</div><div className="h-stat-label">최초심사·사후심사 준비 및 대응</div></div>
@@ -1536,54 +1758,12 @@
                                 <div className="h-stat"><div className="h-stat-value">보안 인프라 운영</div><div className="h-stat-label">보안 솔루션·인프라 도입 및 운영</div></div>
                             </div>
                         </div>
-                        <div className="hero-right"><a className="hero-evidence" href="#isms-screens"><div className="hero-evidence-top"><span>BUILT FROM PRACTICE</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12" /></svg></div><h2>ISMS 통합관리 도구</h2><p>직접 기획·구현해 사내 업무에 사용하는 도구</p><div className="hero-evidence-image"><img src="./assets/isms/control-management.png?v=20261104-refined" alt="직접 구현한 ISMS 도구의 통제항목 관리 화면. 내부 정보는 마스킹되어 있습니다." width="1710" height="904" /></div><div className="hero-evidence-bottom"><span>정책 · 통제 · 증적 · 심사 이력</span><span>구현 화면 보기 &rarr;</span></div></a></div>
-                    </div>
-                </section>
-
-                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
-
-                <section className="section" id="about">
-                    <div className="section-container">
-                        <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">소개</h2></div></div>
-                        <div className="about-editorial fade-in">
-                            <div className="about-principle"><div className="isms-feature-label">정보보호 실무</div><h3>보안 요구사항을<br />점검하고 개선해<br /><span>실제 운영에 반영합니다.</span></h3><div className="about-keywords"><span>정보보호 관리체계</span><span>금융보안 컴플라이언스</span><span>보안 솔루션·인프라</span></div></div>
-                            <div className="about-copy"><p>보안관제와 인프라 운영, 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영을 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 현재 금융감독원 요청자료 작성·제출과 CISO·임원 보고를 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 업무에 적용합니다.</p><div className="about-built-note"><strong>심사 준비에 필요한 도구를 직접 만들었습니다.</strong><p>법령·정책, 자산·통제항목, 증적·보완조치와 심사 이력을 한곳에서 관리합니다. 사내 업무에 사용하며 필요한 기능을 개선하고 있습니다.</p></div></div>
-                        </div>
-                    </div>
-                </section>
-
-                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
-
-                <section className="section isms-case" id="isms-tool" aria-labelledby="isms-case-title">
-                    <div className="section-container">
-                        <div className="section-header fade-in">
-                            <div><div className="section-tag">Built From Practice</div><h2 className="section-title" id="isms-case-title">ISMS 통합관리 도구</h2></div>
-                            <p className="section-desc">심사 준비에서 생긴 문제를 정리하고 기능으로 구현했습니다.</p>
-                        </div>
-                        <div className="isms-case-intro fade-in">
-                            <div className="isms-case-story">
-                                <div className="isms-case-kicker">실무 요구사항 정의 · 설계 · 구현 검증</div>
-                                <h3>증적과 검토 근거를<br />한곳에서 관리하도록 만들었습니다.</h3>
-                                <p>같은 회의록을 여러 통제항목에서 사용하고 파일명은 유지한 채 내용을 갱신하는 일이 많았습니다. 이전 심사의 보완조치와 이번 심사의 준비 상태도 구분해 확인해야 했습니다.</p>
-                                <p>필요한 기능을 증적 수집, 항목별 근거 검토, 보완 업무, 심사 이력 관리로 나눠 설계했습니다. Codex로 기능을 구현하고 실제 자료를 적용하면서 문서 판독, 증적 연결, 검토 상태 표시를 반복해서 개선하고 있습니다.</p>
-                            </div>
-                            <div className="isms-cycle" aria-label="도구로 연결한 보안 관리 흐름">
-                                <div className="isms-cycle-heading">직접 정의하고 검증한 것</div>
-                                <ol>
-                                    <li><span className="isms-step-num" aria-hidden="true">01</span><div><strong>검토 기준</strong><span>적합·미흡·확인 필요와 보완 사유 구분</span></div></li>
-                                    <li><span className="isms-step-num" aria-hidden="true">02</span><div><strong>자료 연결</strong><span>원본 하나와 여러 통제항목의 관계 관리</span></div></li>
-                                    <li><span className="isms-step-num" aria-hidden="true">03</span><div><strong>이력 보존</strong><span>현재 자료와 이전 심사·검토 기록 구분</span></div></li>
-                                    <li><span className="isms-step-num" aria-hidden="true">04</span><div><strong>업무 적용</strong><span>실제 자료로 동작을 확인하고 화면·흐름 개선</span></div></li>
-                                </ol>
-                            </div>
-                        </div>
-                        <IsmsDesignDecisions />
-                        <IsmsScreenshots />
-                        <IsmsAssistant />
-                        <IsmsImplementation />
-                        <div className="isms-case-outcome fade-in">
-                            <div><div className="isms-feature-label">실무 적용</div><p>검토에 사용한 증적과 근거 위치, 남은 확인사항, 후속 조치와 처리 이력을 함께 확인할 수 있습니다. 사내 업무에서 발견한 문제는 다음 기능 개선에 반영하고 있습니다.</p></div>
-                            <p className="isms-review-note">법령·정책 검토 의견은 담당자가 확인한 뒤 반영합니다.</p>
+                        <div className="hero-right career-outcomes">
+                            <div className="section-tag">Selected Outcomes</div>
+                            <h2>인증과 심의 대응을<br />운영 관리로 이어갑니다.</h2>
+                            <a href="#cases"><span>01 / 관리체계</span><strong>ISMS 최초 인증·사후심사 통과</strong><p>범위·자산·위험평가, 정책과 증적 정비, 보완조치 관리</p></a>
+                            <a href="#career-0"><span>02 / 금융보안</span><strong>PG 최초 보안 인증 취득</strong><p>보안 통제 점검과 심사 대응, 인증 이후 금융 컴플라이언스</p></a>
+                            <a href="#career-1"><span>03 / 보안성 검토</span><strong>금융권 차세대 보안성 심의 대응 완료</strong><p>개발·인프라·운영 부서 협의와 보완조치 이행 확인</p></a>
                         </div>
                     </div>
                 </section>
@@ -1656,6 +1836,97 @@
 
                 <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
 
+                <section className="section" id="cases">
+                    <div className="section-container">
+                        <div className="section-header fade-in"><div><div className="section-tag">Selected Cases</div><h2 className="section-title">관리체계와 보안성 검토 사례</h2></div></div>
+                        <article className="judgment-case fade-in">
+                            <div className="case-heading"><span>01 / 이지샵</span><h3>ISMS 최초 인증부터 사후심사까지</h3><a href="#career-0">관련 경력 보기 →</a></div>
+                            <dl className="case-steps">
+                                <div><dt>문제와 기준</dt><dd>정책 문서와 실제 운영환경이 맞지 않는 부분을 정비해야 했습니다. 인증 범위·정보자산과 위험평가를 기준으로 통제와 증적을 정리했습니다.</dd></div>
+                                <div><dt>담당과 조율</dt><dd>사내 정보보호 담당자로서 정책·지침과 증적 정비, 심사 대응, 보완조치 관리를 수행했습니다. 현업과 운영 요구사항을 협의하며 통제의 반영 여부를 확인했습니다.</dd></div>
+                                <div><dt>판단과 관리</dt><dd>인증 이후에도 이전 심사의 증적과 보완조치 기록을 차수별로 구분하고, 다음 사후심사 준비자료와 연결해 관리했습니다.</dd></div>
+                                <div><dt>확인된 결과</dt><dd>ISMS 최초 인증 취득 및 사후심사 통과. 심사 이력과 후속 조치를 관리하는 업무를 이어가고 있습니다.</dd></div>
+                            </dl>
+                        </article>
+                        <article className="judgment-case fade-in">
+                            <div className="case-heading"><span>02 / 뱅크웨어글로벌</span><h3>금융권 차세대 시스템 보안성 심의</h3><a href="#career-1">관련 경력 보기 →</a></div>
+                            <dl className="case-steps">
+                                <div><dt>검토 대상</dt><dd>금융기관 차세대 SI 프로젝트의 보안 담당자로서 시스템 구성·데이터 흐름·접근통제를 고객사 요구사항과 심의 기준에 따라 검토했습니다.</dd></div>
+                                <div><dt>판단과 협의</dt><dd>취약점·모의해킹 결과에서 보완 필요사항을 정리하고 개발·인프라·운영 담당자와 조치 방안 및 적용 방법을 협의했습니다.</dd></div>
+                                <div><dt>이행 확인</dt><dd>설계·개발·오픈 단계별 요구사항 반영 여부를 점검하고, 심의 질의와 보완 요청에 대응할 자료 및 검토 근거를 정리했습니다.</dd></div>
+                                <div><dt>확인된 결과</dt><dd>OK저축은행 차세대 시스템 보안성 심의 대응 완료. 검토 근거와 보완조치 결과를 문서화했습니다.</dd></div>
+                            </dl>
+                        </article>
+                    </div>
+                </section>
+
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section" id="about">
+                    <div className="section-container">
+                        <div className="section-header fade-in"><div><div className="section-tag">About</div><h2 className="section-title">소개</h2></div></div>
+                        <div className="about-editorial fade-in">
+                            <div className="about-principle"><div className="isms-feature-label">정보보호 실무</div><h3>보안 요구사항을<br />점검하고 개선해<br /><span>실제 운영에 반영합니다.</span></h3><div className="about-keywords"><span>정보보호 관리체계</span><span>금융보안 컴플라이언스</span><span>보안 솔루션·인프라</span></div></div>
+                            <div className="about-copy"><p>보안관제와 인프라 운영, 금융권 SI 보안성 검토, 사내 정보보호 관리체계 운영을 경험한 정보보안 실무자입니다.</p><p>ISMS 최초 인증·사후심사와 PG 최초 보안 인증에 대응했습니다. 현재 금융감독원 요청자료 작성·제출과 CISO·임원 보고를 담당하고 있습니다.</p><p>스토리지, DB 접근제어, 원격접속 및 네트워크 보안장비를 새로 도입하고 운영했습니다. 현업과 요구사항을 조율하며 정보보호 정책과 기술적 통제를 업무에 적용합니다.</p><div className="about-built-note"><strong>실무의 고민을 도구로 구현했습니다.</strong><p>ISMS 도구는 직접 기획·구현해 사내 업무에 사용하고 있습니다. AI DLP 구현 과정에서는 입력정보 보호와 응답 복원 흐름을 로컬 환경에서 테스트했습니다.</p></div></div>
+                        </div>
+                        <div className="build-overview fade-in" id="builds">
+                            <div className="build-overview-heading"><div className="section-tag">Two Build Cases</div><h3>두 가지 보안 도구 구축 경험</h3><p>실제 업무에 사용하는 도구와 로컬에서 검증한 PoC를 구분해 소개합니다.</p></div>
+                            <div className="build-overview-grid">
+                                <a className="build-overview-card" href="#isms-tool"><div className="build-card-top"><span>01 / ISMS MANAGEMENT</span><span aria-hidden="true">↗</span></div><h4>ISMS 통합관리 도구</h4><p>정책·통제항목·자산·증적·보완조치·심사 이력을 한곳에서 연결합니다.</p><div className="build-card-status">직접 기획·구현 <span>사내 업무 활용</span></div></a>
+                                <a className="build-overview-card is-poc" href="#ai-dlp"><div className="build-card-top"><span>02 / AI DATA PROTECTION</span><span aria-hidden="true">↗</span></div><h4>AI DLP</h4><p>입력·도구 결과의 보호 처리, 전송 판단, 응답 역치환과 요청별 기록을 연결합니다.</p><div className="build-card-status">AI DLP 구현 <span>로컬 구축·개인 테스트</span></div></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <section className="section isms-case" id="isms-tool" aria-labelledby="isms-case-title">
+                    <div className="section-container">
+                        <div className="section-header fade-in">
+                            <div><div className="section-tag">Build Case 01 / Built From Practice</div><h2 className="section-title" id="isms-case-title">ISMS 통합관리 도구</h2></div>
+                            <p className="section-desc">심사 준비에서 생긴 문제를 정리하고 기능으로 구현했습니다.</p>
+                        </div>
+                        <div className="isms-case-intro fade-in">
+                            <div className="isms-case-story">
+                                <div className="isms-case-kicker">실무 요구사항 정의 · 설계 · 구현 검증</div>
+                                <h3>증적과 검토 근거를<br />한곳에서 관리하도록 만들었습니다.</h3>
+                                <p>같은 회의록을 여러 통제항목에서 사용하고 파일명은 유지한 채 내용을 갱신하는 일이 많았습니다. 이전 심사의 보완조치와 이번 심사의 준비 상태도 구분해 확인해야 했습니다.</p>
+                                <p>필요한 기능을 증적 수집, 항목별 근거 검토, 보완 업무, 심사 이력 관리로 나눠 설계했습니다. Codex로 기능을 구현하고 실제 자료를 적용하면서 문서 판독, 증적 연결, 검토 상태 표시를 반복해서 개선하고 있습니다.</p>
+                            </div>
+                            <div className="isms-cycle" aria-label="도구로 연결한 보안 관리 흐름">
+                                <div className="isms-cycle-heading">직접 정의하고 검증한 것</div>
+                                <ol>
+                                    <li><span className="isms-step-num" aria-hidden="true">01</span><div><strong>검토 기준</strong><span>적합·미흡·확인 필요와 보완 사유 구분</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">02</span><div><strong>자료 연결</strong><span>원본 하나와 여러 통제항목의 관계 관리</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">03</span><div><strong>이력 보존</strong><span>현재 자료와 이전 심사·검토 기록 구분</span></div></li>
+                                    <li><span className="isms-step-num" aria-hidden="true">04</span><div><strong>업무 적용</strong><span>실제 자료로 동작을 확인하고 화면·흐름 개선</span></div></li>
+                                </ol>
+                            </div>
+                        </div>
+<div className="practice-scope fade-in"><h3>사내 업무에 적용한 범위</h3><dl className="case-steps"><div><dt>활용 업무</dt><dd>정보보호 담당 업무에서 증적·통제항목·보완조치와 심사 이력을 연결해 관리합니다. 최초·1차 사후심사 기록과 2차 사후심사 준비자료를 반영했습니다.</dd></div><div><dt>업무 방식의 변화</dt><dd>파일만 따로 확인하는 대신, 검토 근거 위치와 남은 확인사항, 후속 업무와 처리 이력을 함께 조회할 수 있도록 구성했습니다.</dd></div><div><dt>검토와 승인</dt><dd>AI 검토 결과와 담당자의 승인을 구분합니다. 법령·정책 수정 의견은 담당자가 확인한 뒤 반영합니다.</dd></div></dl></div>
+                        <IsmsDesignDecisions />
+                        <IsmsScreenshots />
+                        <IsmsAssistant />
+                        <IsmsImplementation />
+                        <div className="isms-case-outcome fade-in">
+                            <div><div className="isms-feature-label">실무 적용</div><p>검토에 사용한 증적과 근거 위치, 남은 확인사항, 후속 조치와 처리 이력을 함께 확인할 수 있습니다. 사내 업무에서 발견한 문제는 다음 기능 개선에 반영하고 있습니다.</p></div>
+                            <p className="isms-review-note">법령·정책 검토 의견은 담당자가 확인한 뒤 반영합니다.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+                <AiDlpCase />
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
+
+
+                <div className="section-divider"><div className="section-divider-line"></div><div className="section-divider-diamond"></div><div className="section-divider-line"></div></div>
+
                 <section className="section" id="tech">
                     <div className="section-container">
                         <div className="section-header fade-in"><div><div className="section-tag">Expertise</div><h2 className="section-title">업무 역량과 활용 기술</h2></div></div>
@@ -1712,4 +1983,3 @@
 </script>
 </body>
 </html>
-

@@ -312,6 +312,33 @@
         }
 
         /* Review-copy adjustments stay scoped to this page. */
+        .hero .career-outcomes { align-items: stretch; text-align: left; min-width: 0; }
+        .hero .career-outcomes > * { width: 100%; box-sizing: border-box; margin-left: 0; margin-right: 0; }
+        #cases .section-header { grid-template-columns: minmax(0, 1fr); }
+        #cases .section-title { font-size: 40px; word-break: keep-all; }
+        #isms-screens, #ai-dlp-screens { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 18px 24px; align-items: start; }
+        #isms-screens > .isms-gallery-heading, #isms-screens > .isms-proof-groups, #isms-screens > .isms-gallery-disclosure,
+        #ai-dlp-screens > .dlp-gallery-heading, #ai-dlp-screens > .dlp-gallery-disclosure { grid-column: 1 / -1; margin: 0; }
+        #isms-screens > .isms-screen-window, #ai-dlp-screens > .dlp-screen-window { min-width: 0; border-radius: 8px; }
+        #isms-screens > .isms-screen-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; max-height: 620px; overflow-y: auto; padding: 2px 6px 4px 2px; }
+        #isms-screens .isms-screen-option { grid-template-columns: 48px minmax(0, 1fr); padding: 9px; gap: 8px; align-items: center; border-radius: 6px; }
+        #isms-screens .isms-thumb { width: 48px; height: 44px; }
+        #isms-screens .isms-option-copy { gap: 5px; }
+        #isms-screens .isms-option-copy strong { font-size: 11px; }
+        #isms-screens .isms-option-copy > span:last-child > span { font-size: 10px; }
+        #ai-dlp-screens > .dlp-screen-picker { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+        #ai-dlp-screens .dlp-screen-thumb { height: 100px; }
+        #ai-dlp-screens .dlp-screen-preview { height: 365px; }
+        #ai-dlp-screens .dlp-screen-preview > img { height: 100%; width: 100%; object-fit: contain; }
+        #isms-screens .isms-screen-caption, #ai-dlp-screens .dlp-screen-caption { padding: 18px; }
+        #isms-screens .isms-caption-heading { flex-wrap: wrap; }
+        @media(max-width: 900px) {
+            #cases .section-title { font-size: 30px; }
+            #isms-screens, #ai-dlp-screens { grid-template-columns: minmax(0, 1fr); }
+            #isms-screens > .isms-screen-picker { max-height: 420px; }
+            #ai-dlp-screens .dlp-screen-preview { height: 280px; }
+        }
+        @media(max-width: 480px) { #cases .section-title { font-size: 23px; } }
         .career-outcomes { padding: 12px 0; }
         .career-outcomes h2 { font-size: 27px; line-height: 1.6; margin: 16px 0 24px; }
         .career-outcomes a { display: block; padding: 20px 0; border-top: 1px solid #45413a; text-decoration: none; color: #eee; }

@@ -1,38 +1,9 @@
 /* Shared screen-only links between the portfolio and the printable resume. */
-.document-portal,
 .document-quick-link {
-    --document-gold: #dfc08a;
     --document-ink: #1b1710;
     text-decoration: none;
     -webkit-tap-highlight-color: rgba(223, 192, 138, .16);
 }
-
-.document-portal {
-    display: grid;
-    grid-template-columns: 42px minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 16px;
-    padding: 21px 22px;
-    border: 1px solid #c9a96e85;
-    border-left: 3px solid var(--document-gold);
-    border-radius: 10px;
-    background: radial-gradient(ellipse at top left, #c9a96e18, transparent 75%), #15161b;
-    color: #f1e9da;
-    box-shadow: 0 10px 30px #0000001a;
-    transition: border-color .2s, box-shadow .2s, transform .2s;
-}
-
-.document-portal--hero { margin-top: 20px; }
-.document-portal--resume { max-width: 210mm; margin: 0 auto 24px; }
-.document-portal-icon { display: grid; place-items: center; width: 42px; height: 48px; border: 1px solid #c9a96e40; border-radius: 8px; color: var(--document-gold); background: #c9a96e0c; }
-.document-portal-copy { display: grid; gap: 4px; min-width: 0; }
-.document-portal-label { color: var(--document-gold); font: 500 9px/1.6 'JetBrains Mono', monospace; letter-spacing: .12em; }
-.document-portal-title { color: #f1e9da; font-size: 16px; font-weight: 600; line-height: 1.65; letter-spacing: -.035em; word-break: keep-all; }
-.document-portal-description { color: #c1bcb2; font-size: 11px; line-height: 1.8; word-break: keep-all; overflow-wrap: anywhere; }
-.document-portal-action { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 10px 14px; border-radius: 5px; background: var(--document-gold); color: var(--document-ink); font-size: 12px; font-weight: 700; white-space: nowrap; }
-.document-portal-arrow { flex-shrink: 0; transition: transform .2s; }
-.document-portal:hover { color: #f1e9da; border-color: var(--document-gold); box-shadow: 0 10px 36px #c9a96e12; transform: translateY(-2px); }
-.document-portal:hover .document-portal-arrow { transform: translateX(3px); }
 
 .document-quick-link {
     display: inline-flex;
@@ -52,7 +23,6 @@
 }
 
 .document-quick-link:hover { color: var(--document-ink); background: #f0d9a8; box-shadow: 0 4px 20px #c9a96e20; }
-.document-portal:focus-visible,
 .document-quick-link:focus-visible { outline: 2px solid #f0d9a8; outline-offset: 5px; }
 nav .nav-inner { gap: 24px; }
 nav .nav-links { margin-left: auto; }
@@ -73,21 +43,12 @@ nav .document-quick-link { margin-left: 0; }
     nav .nav-links.is-open .nav-link::after { display: none; }
 }
 
-@media (max-width: 880px) {
-    .document-portal--resume { margin-right: 24px; margin-left: 24px; }
-}
-
 @media (max-width: 600px) {
     nav .nav-inner { padding-right: 16px; padding-left: 16px; gap: 8px; }
     nav .nav-inner .logo { max-width: 100px; font-size: 15px; line-height: 1.35; letter-spacing: 1px; white-space: normal; }
     nav .document-quick-link { padding: 9px 11px; font-size: 11px; }
     nav .document-quick-link > svg { display: none; }
     nav .mobile-nav-toggle { padding: 8px 10px; gap: 7px; }
-    .document-portal { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; padding: 18px; }
-    .document-portal-icon { width: 36px; height: 42px; }
-    .document-portal-title { font-size: 15px; }
-    .document-portal-action { grid-column: 1 / -1; justify-content: space-between; margin-top: 2px; }
-    .document-portal--resume { margin: 0 18px 20px; }
     .screen-bar .bar-inner { flex-wrap: wrap; gap: 12px; padding: 12px 18px; }
     .screen-bar .wordmark { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; }
     .screen-bar .wordmark span { margin-top: 0; font-size: 7px; letter-spacing: .05em; }
@@ -100,14 +61,9 @@ nav .document-quick-link { margin-left: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .document-portal,
-    .document-portal-arrow,
     .document-quick-link { transition: none; }
-    .document-portal:hover,
-    .document-portal:hover .document-portal-arrow { transform: none; }
 }
 
 @media print {
-    .document-portal,
     .document-quick-link { display: none !important; }
 }

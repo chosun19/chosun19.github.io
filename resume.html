@@ -263,6 +263,7 @@
         }
         @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
+    <link rel="stylesheet" href="./css/document-navigation.css?v=20261108-cross-links">
 </head>
 <body>
     <a class="skip-link" href="#resume">이력서 본문으로 이동</a>
@@ -270,7 +271,7 @@
         <div class="bar-inner">
             <a class="wordmark" href="#resume">KIWOONG HONG<span>RESUME &amp; EXPERIENCE</span></a>
             <div class="bar-actions">
-                <a class="portfolio-link" href="./">포트폴리오 ↗</a>
+                <a class="document-quick-link" href="./"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="3" width="15" height="14" rx="1.5"/><path d="M2.5 7h15M7.5 7v10"/></svg>포트폴리오 보기</a>
                 <button class="print-button" id="print-resume" type="button" aria-label="이력서와 경력기술서 인쇄 또는 PDF 저장">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 8V3h10v5M7 17H4V9h16v8h-3M7 14h10v7H7z"/><path d="M16 11h1"/></svg>
                     인쇄 / PDF 저장
@@ -282,6 +283,11 @@
         <div><h2>이력서 · 경력기술서</h2><p>정보보호 실무 경험과 업무에서 출발한 구축 사례를 한 문서에 담았습니다.</p></div>
         <span class="edition">2026.11</span>
     </div>
+    <a class="document-portal document-portal--resume" href="./">
+        <span class="document-portal-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></span>
+        <span class="document-portal-copy"><span class="document-portal-label">EXPLORE THE PORTFOLIO</span><strong class="document-portal-title">포트폴리오 보기</strong><span class="document-portal-description">경력별 상세 내용과 ISMS · AI DLP 구현 화면을 확인하세요.</span></span>
+        <span class="document-portal-action">사이트 열기<svg class="document-portal-arrow" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></span>
+    </a>
     <nav class="section-nav" aria-label="문서 목차">
         <a href="#resume" aria-current="location"><span>01</span> 핵심 요약</a>
         <a href="#current"><span>02</span> 현재 업무</a>
@@ -432,7 +438,7 @@
             <footer class="page-footer"><a href="https://chosun19.github.io/">KIWOONG HONG · chosun19.github.io</a><span>05 / 05</span></footer>
         </section>
     </main>
-    <footer class="screen-bottom"><a href="./">포트폴리오로 돌아가기 ↗</a><span>인쇄 / PDF 저장 시 A4 문서로 출력됩니다.</span></footer>
+    <footer class="screen-bottom"><a class="document-quick-link" href="./">포트폴리오 보기 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 10h13m-5-5 5 5-5 5"/></svg></a><span>인쇄 / PDF 저장 시 A4 문서로 출력됩니다.</span></footer>
     <script>
         const printButton = document.getElementById('print-resume');
         printButton.addEventListener('click', async () => {
